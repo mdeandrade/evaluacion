@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `cargos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cargos` (
-  `id_cargo` int(11) NOT NULL,
+  `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
   `nom_cargo` varchar(45) NOT NULL,
   `id_estatus` int(11) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
@@ -51,7 +51,7 @@ DROP TABLE IF EXISTS `estatus`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estatus` (
-  `id_estatus` int(11) NOT NULL,
+  `id_estatus` int(11) NOT NULL AUTO_INCREMENT,
   `nom_estatus` varchar(45) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
@@ -78,7 +78,7 @@ DROP TABLE IF EXISTS `menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menu` (
-  `id menu` int(11) NOT NULL,
+  `id menu` int(11) NOT NULL AUTO_INCREMENT,
   `id_menu_padre` int(11) NOT NULL,
   `nom_menu` varchar(45) NOT NULL,
   `orden` int(11) DEFAULT NULL,
@@ -109,7 +109,7 @@ DROP TABLE IF EXISTS `menu_rol`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menu_rol` (
-  `id_menu` int(11) NOT NULL,
+  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
   `id_rol` int(11) NOT NULL,
   `id_estatus` int(11) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
@@ -137,7 +137,7 @@ DROP TABLE IF EXISTS `personas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `personas` (
-  `id_persona` int(11) NOT NULL,
+  `id_persona` int(11) NOT NULL AUTO_INCREMENT,
   `pri_nom` varchar(45) NOT NULL,
   `seg_nom` varchar(45) DEFAULT NULL,
   `pri_ape` varchar(45) NOT NULL,
@@ -287,4 +287,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-13 14:40:33
+-- Dump completed on 2017-03-13 15:25:47
