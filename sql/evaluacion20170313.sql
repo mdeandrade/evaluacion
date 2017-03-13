@@ -78,7 +78,7 @@ DROP TABLE IF EXISTS `menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menu` (
-  `id menu` int(11) NOT NULL AUTO_INCREMENT,
+  `id menu` int(11) NOT NULL,
   `id_menu_padre` int(11) NOT NULL,
   `nom_menu` varchar(45) NOT NULL,
   `orden` int(11) DEFAULT NULL,
@@ -109,7 +109,7 @@ DROP TABLE IF EXISTS `menu_rol`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menu_rol` (
-  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
+  `id_menu` int(11) NOT NULL,
   `id_rol` int(11) NOT NULL,
   `id_estatus` int(11) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
@@ -173,7 +173,7 @@ DROP TABLE IF EXISTS `personas_cargos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `personas_cargos` (
-  `id_persona` int(11) NOT NULL,
+  `id_persona` int(11) NOT NULL AUTO_INCREMENT,
   `id_cargo` int(11) NOT NULL,
   `id_estatus` int(11) NOT NULL,
   `creado_por` int(11) DEFAULT NULL,
@@ -201,7 +201,7 @@ DROP TABLE IF EXISTS `roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `roles` (
-  `id_rol` int(11) NOT NULL,
+  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
   `nom_rol` varchar(45) NOT NULL,
   `id_estatus` int(11) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
@@ -277,6 +277,10 @@ LOCK TABLES `usuarios_roles` WRITE;
 /*!40000 ALTER TABLE `usuarios_roles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `usuarios_roles` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'evaluacion'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -287,4 +291,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-13 15:25:47
+-- Dump completed on 2017-03-13 16:25:21
