@@ -5,14 +5,14 @@
     private $conn   = NULL;          
                 function __construct() 
                 {
-                    $this->dbname = "expedientes";
-                    $this->host = '192.168.5.5';
+                    $this->dbname = "evaluacion";
+                    $this->host = 'localhost';
                     $this->port = "3306";
                     $this->charset = "utf8";
                     $this->dsn = "mysql:dbname=".$this->dbname.";host=".$this->host.";port=".$this->port.";charset=".$this->charset;  
                     $this->username = 'root';
-                    $this->password = '54redsxz';
-					return $this->open();
+                    $this->password = '123456';
+                    return $this->open();
                     
                 }            
 		public function getConnect($connect = ''){
