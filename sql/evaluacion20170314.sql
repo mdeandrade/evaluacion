@@ -116,7 +116,9 @@ CREATE TABLE `menu_rol` (
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_menu`)
+  PRIMARY KEY (`id_menu`),
+  KEY `id_rol_idx` (`id_rol`),
+  KEY `id_estatus_idx` (`id_estatus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -237,7 +239,10 @@ CREATE TABLE `usuarios` (
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_usuario`)
+  `id_persona` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`),
+  KEY `id_persona_idx` (`id_persona`),
+  CONSTRAINT `id_persona` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -277,10 +282,6 @@ LOCK TABLES `usuarios_roles` WRITE;
 /*!40000 ALTER TABLE `usuarios_roles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `usuarios_roles` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'evaluacion'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -291,4 +292,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-13 16:25:21
+-- Dump completed on 2017-03-14 12:33:56
