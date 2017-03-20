@@ -4,7 +4,7 @@ $_SERVER["DOCUMENT_ROOT"] = "../xampp/htdocs";
 error_reporting(1);
 $project_folder = '/evaluacion';
 $development_env = false;
-if($_SERVER['HTTP_HOST'] == '127.0.0.1' or $_SERVER['HTTP_HOST'] == 'localhost' or strpos($_SERVER['HTTP_HOST'], "localhost") !== false)
+if($_SERVER['HTTP_HOST'] == 'localhost' or $_SERVER['HTTP_HOST'] == 'localhost' or strpos($_SERVER['HTTP_HOST'], "localhost") !== false)
 {
 	$development_env = true;
 }
@@ -14,7 +14,7 @@ if($development_env == true)
 }
 
 define("main_folder",$project_folder);//Project name and directory name//prueba 2
-define("title","Sistema de evaluación y desempeño de la Contraloría Metropolitana de Caracas");
+define("title","Sistema de evaluación del desempeño de la Contraloría Metropolitana de Caracas");
 define("Author","Contraloría Metropolitana de Caracas");
 define("Company","Sistema_RRHH");
 define("version","");
@@ -24,18 +24,18 @@ define("upload_dir",$_SERVER["DOCUMENT_ROOT"]."/".main_folder."/web/uploads/docu
 define("images_dir","../../../../web/images/");
 
 /* configuraciones apache*/
-$base_dir  = __DIR__; // Absolute path to your installation, ex: /var/www/mywebsite
-$doc_root  = preg_replace("!${_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']); # ex: /var/www
-$base_url  = preg_replace("!^${doc_root}!", '', $base_dir); # ex: '' or '/mywebsite'
+$base_dir  = __DIR__; // Absolute path to your installation, ex: ../xampp/htdocs/PhpProject1
+$doc_root  = preg_replace("!${_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']); # ex: xampp/htdocs
+$base_url  = preg_replace("!^${doc_root}!", '', $base_dir); # ex: '' or '/PhpProject1'
 $protocol  = empty($_SERVER['HTTPS']) ? 'http' : 'https';
 $port      = $_SERVER['SERVER_PORT'];
 $disp_port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port";
 $domain    = $_SERVER['SERVER_NAME'].$project_folder;
 $full_url  = "${protocol}://${domain}";
 
-define("base_dir",__DIR__);// Absolute path to your installation, ex: /var/www/mywebsite
-define("doc_root", preg_replace("!${_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']));// ex: /var/www
-define("base_url",preg_replace("!^${doc_root}!", '', $base_dir));# ex: '' or '/mywebsite'
+define("base_dir",__DIR__);// Absolute path to your installation, ex: ../xampp/htdocs/PhpProject1
+define("doc_root", preg_replace("!${_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']));// ex: ../xampp/htdocs
+define("base_url",preg_replace("!^${doc_root}!", '', $base_dir));# ex: '' or '/PhpProject1'
 define("protocol",empty($_SERVER['HTTPS']) ? 'http' : 'https');
 define("port",$_SERVER['SERVER_PORT']);
 define("disp_port",($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port");
@@ -76,4 +76,3 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Folios.class.php')
  Class autoloads by model_base_generator.php
 **/
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Users.class.php");
-
