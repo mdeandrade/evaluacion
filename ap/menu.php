@@ -5,7 +5,7 @@
              <img src="<?php echo full_url;?>/web/img/contraloria.png" width="80">
         </div>
         <div class="col-xs-4 text-center">
-            <h1>Sistema de registro y control de expediente</h1>
+            <h1>Sistema de evaluación del desempeño de la Contraloría Metropolitana de Caracas</h1>
         </div>
         <div class="col-xs-4 text-center">
              <img src="<?php echo full_url;?>/web/img/sncf.png" width="100"    >
