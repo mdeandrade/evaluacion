@@ -16,19 +16,24 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`evaluacion` /*!40100 DEFAULT CHARACTER 
 
 USE `evaluacion`;
 
-/*Table structure for table `adm` */
+/*Table structure for table ` usuarios` */
 
-DROP TABLE IF EXISTS `adm`;
+DROP TABLE IF EXISTS ` usuarios`;
 
-CREATE TABLE `adm` (
-  `id_adm` int(11) NOT NULL AUTO_INCREMENT,
-  `id_persona` int(11) DEFAULT NULL,
-  `id_cargo` int(11) DEFAULT NULL,
-  `id_estatus` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_adm`)
+CREATE TABLE ` usuarios` (
+  `id_persona` int(11) NOT NULL,
+  `nom_usuario` varchar(45) NOT NULL,
+  `clave` varchar(100) NOT NULL,
+  `id_estatus` varchar(10) DEFAULT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_persona`),
+  KEY `id_persona_idx` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `adm` */
+/*Data for the table ` usuarios` */
 
 /*Table structure for table `cargos` */
 
@@ -49,33 +54,28 @@ CREATE TABLE `cargos` (
 
 /*Data for the table `cargos` */
 
-/*Table structure for table `directores` */
+/*Table structure for table `competencias` */
 
-DROP TABLE IF EXISTS `directores`;
+DROP TABLE IF EXISTS `competencias`;
 
-CREATE TABLE `directores` (
-  `id_directores` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `competencias` (
+  `id_competencia` int(11) NOT NULL AUTO_INCREMENT,
   `id_persona` int(11) DEFAULT NULL,
-  `id_cargo` int(11) DEFAULT NULL,
-  `id_estatus` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_directores`)
+  `fec_aplicacion` datetime DEFAULT NULL,
+  `calificacion` decimal(10,0) DEFAULT NULL,
+  `competencias` varchar(1000) DEFAULT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
+  `revisado_por` int(11) DEFAULT NULL,
+  `val_peso` decimal(10,0) DEFAULT NULL,
+  PRIMARY KEY (`id_competencia`),
+  KEY `id_person` (`id_persona`),
+  CONSTRAINT `id_person` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `directores` */
-
-/*Table structure for table `empleados` */
-
-DROP TABLE IF EXISTS `empleados`;
-
-CREATE TABLE `empleados` (
-  `id_empleados` int(11) NOT NULL AUTO_INCREMENT,
-  `id_persona` int(11) DEFAULT NULL,
-  `id_cargo` int(11) DEFAULT NULL,
-  `id_estatus` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_empleados`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `empleados` */
+/*Data for the table `competencias` */
 
 /*Table structure for table `estatus` */
 
@@ -93,17 +93,61 @@ CREATE TABLE `estatus` (
 
 /*Data for the table `estatus` */
 
-/*Table structure for table `grupos` */
+/*Table structure for table `evaluacion_resultado` */
 
-DROP TABLE IF EXISTS `grupos`;
+DROP TABLE IF EXISTS `evaluacion_resultado`;
 
-CREATE TABLE `grupos` (
-  `id_grupo` int(11) NOT NULL AUTO_INCREMENT,
-  `id_estatus` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_grupo`)
+CREATE TABLE `evaluacion_resultado` (
+  `id_evaluacion` int(11) DEFAULT NULL,
+  `id_proc` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `grupos` */
+/*Data for the table `evaluacion_resultado` */
+
+/*Table structure for table `evaluaciones` */
+
+DROP TABLE IF EXISTS `evaluaciones`;
+
+CREATE TABLE `evaluaciones` (
+  `id_evaluaciones` int(11) NOT NULL AUTO_INCREMENT,
+  `id_persona` int(11) NOT NULL,
+  `id_cargo` int(11) NOT NULL,
+  `id_ubicacion` int(11) NOT NULL,
+  `id_proc` int(11) DEFAULT NULL,
+  `objetivos` varchar(2000) NOT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
+  `revisado_por` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_evaluaciones`,`id_persona`,`id_cargo`,`id_ubicacion`),
+  KEY `fk_id_personas` (`id_persona`),
+  KEY `fk_id_cargos` (`id_cargo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `evaluaciones` */
+
+/*Table structure for table `evaluadores` */
+
+DROP TABLE IF EXISTS `evaluadores`;
+
+CREATE TABLE `evaluadores` (
+  `id_evaluador` int(11) NOT NULL,
+  `id_cargo` int(11) DEFAULT NULL,
+  `id_persona` int(11) DEFAULT NULL,
+  `id_ubicacion` int(11) DEFAULT NULL,
+  `fec_asignacion` datetime DEFAULT NULL,
+  `id_proc` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_evaluador`),
+  KEY `id_cargos` (`id_cargo`),
+  KEY `id_per` (`id_persona`),
+  KEY `fk_id_ubicacion` (`id_ubicacion`),
+  CONSTRAINT `fk_id_ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`),
+  CONSTRAINT `id_cargos` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`),
+  CONSTRAINT `id_per` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `evaluadores` */
 
 /*Table structure for table `menu` */
 
@@ -134,36 +178,36 @@ CREATE TABLE `menu` (
 DROP TABLE IF EXISTS `menu_rol`;
 
 CREATE TABLE `menu_rol` (
-  `id_menu` int(11) DEFAULT NULL,
-  `id_rol` int(11) DEFAULT NULL,
+  `id_menu` int(11) NOT NULL,
+  `id_rol` int(11) NOT NULL,
   `id_estatus` int(11) DEFAULT NULL,
-  `creado_por` varchar(45) DEFAULT NULL,
+  `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
-  `actualizado_por` varchar(45) DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  KEY `id_men` (`id_menu`),
-  KEY `id_rol` (`id_rol`),
-  KEY `id_esta` (`id_estatus`),
-  CONSTRAINT `id_esta` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
-  CONSTRAINT `id_men` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id menu`),
-  CONSTRAINT `id_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
+  PRIMARY KEY (`id_menu`),
+  KEY `id_rol_idx` (`id_rol`),
+  KEY `id_estatus_idx` (`id_estatus`),
+  CONSTRAINT `id_estatus` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_menu` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id menu`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `menu_rol` */
 
-/*Table structure for table `obreros` */
+/*Table structure for table `odis` */
 
-DROP TABLE IF EXISTS `obreros`;
+DROP TABLE IF EXISTS `odis`;
 
-CREATE TABLE `obreros` (
-  `id_obreros` int(11) NOT NULL AUTO_INCREMENT,
-  `id_personas` int(11) DEFAULT NULL,
-  `id_cargo` int(11) DEFAULT NULL,
-  `id_estatus` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_obreros`)
+CREATE TABLE `odis` (
+  `id_odi` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` int(11) NOT NULL,
+  `orden` int(3) DEFAULT NULL,
+  `val_peso` decimal(3,0) DEFAULT NULL,
+  PRIMARY KEY (`id_odi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `obreros` */
+/*Data for the table `odis` */
 
 /*Table structure for table `personas` */
 
@@ -185,7 +229,13 @@ CREATE TABLE `personas` (
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_persona`)
+  `id_ubicacion` int(11) DEFAULT NULL,
+  `fec_ingreso` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_persona`),
+  KEY `fk_id_estatu` (`id_estatus`),
+  KEY `id_ubicacion` (`id_ubicacion`),
+  CONSTRAINT `fk_id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
+  CONSTRAINT `id_ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `personas` */
@@ -203,14 +253,28 @@ CREATE TABLE `personas_cargos` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_persona`),
-  KEY `id_cargo_idx` (`id_cargo`),
   KEY `id_estatus_idx` (`id_estatus`),
-  CONSTRAINT `id_cargo` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `id_estatus` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `id_persona` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `id_cargo` (`id_cargo`),
+  CONSTRAINT `fk_id_persona` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`),
+  CONSTRAINT `id_cargo` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`),
+  CONSTRAINT `id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `personas_cargos` */
+
+/*Table structure for table `procesos` */
+
+DROP TABLE IF EXISTS `procesos`;
+
+CREATE TABLE `procesos` (
+  `id_proc` int(20) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(2000) DEFAULT NULL,
+  `fec_desde` date DEFAULT NULL,
+  `fec_hasta` date DEFAULT NULL,
+  PRIMARY KEY (`id_proc`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `procesos` */
 
 /*Table structure for table `roles` */
 
@@ -229,42 +293,24 @@ CREATE TABLE `roles` (
 
 /*Data for the table `roles` */
 
-/*Table structure for table `rrhh` */
+/*Table structure for table `ubicaciones` */
 
-DROP TABLE IF EXISTS `rrhh`;
+DROP TABLE IF EXISTS `ubicaciones`;
 
-CREATE TABLE `rrhh` (
-  `id_rrhh` int(11) NOT NULL AUTO_INCREMENT,
-  `id_persona` int(11) DEFAULT NULL,
-  `id_cargo` int(11) DEFAULT NULL,
-  `id_estatus` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_rrhh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `rrhh` */
-
-/*Table structure for table `usuarios` */
-
-DROP TABLE IF EXISTS `usuarios`;
-
-CREATE TABLE `usuarios` (
-  `id_usuario` int(11) NOT NULL,
-  `nom_usuario` varchar(45) NOT NULL,
-  `clave` varchar(45) NOT NULL,
-  `id_estatus` varchar(10) DEFAULT NULL,
+CREATE TABLE `ubicaciones` (
+  `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_ubicacion` varchar(100) NOT NULL,
+  `id_personas` int(11) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  `id_persona` int(11) DEFAULT NULL,
-  `id_personas` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_usuario`),
-  KEY `id_persona_idx` (`id_personas`),
-  KEY `id_persona` (`id_persona`),
-  CONSTRAINT `id_personas` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
+  PRIMARY KEY (`id_ubicacion`),
+  KEY `id_personas` (`id_personas`),
+  CONSTRAINT `id_personas` FOREIGN KEY (`id_personas`) REFERENCES `personas` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `usuarios` */
+/*Data for the table `ubicaciones` */
 
 /*Table structure for table `usuarios_roles` */
 
@@ -280,10 +326,10 @@ CREATE TABLE `usuarios_roles` (
   `id_estatus` int(11) NOT NULL,
   PRIMARY KEY (`id_persona`,`id_rol`),
   KEY `id_rol_idx` (`id_rol`),
-  KEY `id_estatus_idx` (`id_estatus`),
-  CONSTRAINT `id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
-  CONSTRAINT `id_perso` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`),
-  CONSTRAINT `id_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
+  KEY `fk_estatus` (`id_estatus`),
+  CONSTRAINT `fk_estatus` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
+  CONSTRAINT `fk_persona` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`),
+  CONSTRAINT `fk_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `usuarios_roles` */
