@@ -12,7 +12,7 @@ MySQL - 10.1.10-MariaDB : Database - evaluacion
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`evaluacion` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`evaluacion` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `evaluacion`;
 
@@ -70,12 +70,26 @@ CREATE TABLE `competencias` (
   `fec_actualizado` datetime DEFAULT NULL,
   `revisado_por` int(11) DEFAULT NULL,
   `val_peso` decimal(10,0) DEFAULT NULL,
+  `peso_fijo` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id_competencia`),
   KEY `id_person` (`id_persona`),
   CONSTRAINT `id_person` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `competencias` */
+
+/*Table structure for table `competencias_niveles` */
+
+DROP TABLE IF EXISTS `competencias_niveles`;
+
+CREATE TABLE `competencias_niveles` (
+  `id_competencia` int(11) NOT NULL,
+  `id_proc` int(11) NOT NULL,
+  `id_nivel` int(11) NOT NULL,
+  PRIMARY KEY (`id_competencia`,`id_proc`,`id_nivel`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `competencias_niveles` */
 
 /*Table structure for table `estatus` */
 
@@ -98,8 +112,20 @@ CREATE TABLE `estatus` (
 DROP TABLE IF EXISTS `evaluacion_resultado`;
 
 CREATE TABLE `evaluacion_resultado` (
-  `id_evaluacion` int(11) DEFAULT NULL,
-  `id_proc` int(11) DEFAULT NULL
+  `id_evaluacion` int(11) NOT NULL,
+  `id_proc` int(11) DEFAULT NULL,
+  `id_odi` int(11) DEFAULT NULL,
+  `id_competencias` int(11) DEFAULT NULL,
+  `id_evaluador` int(11) DEFAULT NULL,
+  `val_peso` varchar(11) DEFAULT NULL,
+  `val_rango` varchar(11) DEFAULT NULL,
+  `val_resultado` varchar(11) DEFAULT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
+  KEY `id_evaluacion` (`id_evaluacion`),
+  KEY `id_proc` (`id_proc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `evaluacion_resultado` */
@@ -136,8 +162,9 @@ CREATE TABLE `evaluadores` (
   `id_cargo` int(11) DEFAULT NULL,
   `id_persona` int(11) DEFAULT NULL,
   `id_ubicacion` int(11) DEFAULT NULL,
-  `fec_asignacion` datetime DEFAULT NULL,
+  `id_evaluacion` int(11) DEFAULT NULL,
   `id_proc` int(11) DEFAULT NULL,
+  `fec_asignacion` datetime DEFAULT NULL,
   PRIMARY KEY (`id_evaluador`),
   KEY `id_cargos` (`id_cargo`),
   KEY `id_per` (`id_persona`),
@@ -195,6 +222,24 @@ CREATE TABLE `menu_rol` (
 
 /*Data for the table `menu_rol` */
 
+/*Table structure for table `niveles` */
+
+DROP TABLE IF EXISTS `niveles`;
+
+CREATE TABLE `niveles` (
+  `id_estatus` int(11) NOT NULL,
+  `id_nivel` int(11) NOT NULL,
+  `id_proc` int(11) NOT NULL,
+  `directivo` varchar(11) DEFAULT NULL,
+  `profesional` varchar(11) DEFAULT NULL,
+  `tecnicos` varchar(11) DEFAULT NULL,
+  `asistentes` varchar(11) DEFAULT NULL,
+  `auxiliares` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`id_estatus`,`id_nivel`,`id_proc`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `niveles` */
+
 /*Table structure for table `odis` */
 
 DROP TABLE IF EXISTS `odis`;
@@ -204,7 +249,10 @@ CREATE TABLE `odis` (
   `descripcion` int(11) NOT NULL,
   `orden` int(3) DEFAULT NULL,
   `val_peso` decimal(3,0) DEFAULT NULL,
-  PRIMARY KEY (`id_odi`)
+  `id_persona` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_odi`),
+  KEY `id_persona` (`id_persona`),
+  CONSTRAINT `id_persona` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `odis` */
@@ -215,6 +263,7 @@ DROP TABLE IF EXISTS `personas`;
 
 CREATE TABLE `personas` (
   `id_persona` int(11) NOT NULL AUTO_INCREMENT,
+  `id_proc` int(11) DEFAULT NULL,
   `pri_nom` varchar(45) NOT NULL,
   `seg_nom` varchar(45) DEFAULT NULL,
   `pri_ape` varchar(45) NOT NULL,
@@ -231,6 +280,7 @@ CREATE TABLE `personas` (
   `fec_actualizado` datetime DEFAULT NULL,
   `id_ubicacion` int(11) DEFAULT NULL,
   `fec_ingreso` datetime DEFAULT NULL,
+  `nivel` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id_persona`),
   KEY `fk_id_estatu` (`id_estatus`),
   KEY `id_ubicacion` (`id_ubicacion`),
@@ -271,10 +321,47 @@ CREATE TABLE `procesos` (
   `descripcion` varchar(2000) DEFAULT NULL,
   `fec_desde` date DEFAULT NULL,
   `fec_hasta` date DEFAULT NULL,
+  `peso_odi` varchar(10) DEFAULT NULL,
+  `peso_competencia` varchar(10) DEFAULT NULL,
+  `id_estatus_proc` int(11) DEFAULT NULL,
+  `rangos_max_odi` varchar(6) DEFAULT NULL,
+  `rangos_max_competencias` varchar(6) DEFAULT NULL,
+  `fec_apertura_odi` date DEFAULT NULL,
+  `fec_cierre_odi` date DEFAULT NULL,
+  `fec_apertura_evaluacion` date DEFAULT NULL,
+  `fec_cierre_evaluacion` date DEFAULT NULL,
+  `max_odis_permitidos` varchar(10) DEFAULT NULL,
+  `creado_pro` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `procesos` */
+
+/*Table structure for table `rangos` */
+
+DROP TABLE IF EXISTS `rangos`;
+
+CREATE TABLE `rangos` (
+  `val_rango` varchar(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `rangos` */
+
+/*Table structure for table `responsables_ubicacion` */
+
+DROP TABLE IF EXISTS `responsables_ubicacion`;
+
+CREATE TABLE `responsables_ubicacion` (
+  `id_proc` int(11) NOT NULL,
+  `id_persona` int(11) NOT NULL,
+  `id_ubicacion` int(11) NOT NULL,
+  PRIMARY KEY (`id_proc`,`id_persona`,`id_ubicacion`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `responsables_ubicacion` */
 
 /*Table structure for table `roles` */
 
@@ -301,6 +388,7 @@ CREATE TABLE `ubicaciones` (
   `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT,
   `nom_ubicacion` varchar(100) NOT NULL,
   `id_personas` int(11) DEFAULT NULL,
+  `id_estatus` int(11) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
