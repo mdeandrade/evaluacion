@@ -19,13 +19,14 @@
 		}
 		public function GetLogin($user,$password)
 		{	
-			
+                        
+			echo $user."---".$password;
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios
-			->where('nom_usuario =?',$user)
+                        ->select('*')
+			->where('upper(nom_usuario) =?',strtoupper($user))
 			->and('clave =?',hash('sha256', $password))
                         ->and('id_estatus=?',1);	
-                        //echo $q;die;
 			$ConnectionORM->close();	
 			
 			
