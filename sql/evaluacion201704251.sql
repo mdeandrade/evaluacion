@@ -86,6 +86,10 @@ CREATE TABLE `competencias_niveles` (
   `id_competencia` int(11) NOT NULL,
   `id_proc` int(11) NOT NULL,
   `id_nivel` int(11) NOT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_competencia`,`id_proc`,`id_nivel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -165,6 +169,10 @@ CREATE TABLE `evaluadores` (
   `id_evaluacion` int(11) DEFAULT NULL,
   `id_proc` int(11) DEFAULT NULL,
   `fec_asignacion` datetime DEFAULT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actulizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_evaluador`),
   KEY `id_cargos` (`id_cargo`),
   KEY `id_per` (`id_persona`),
@@ -235,6 +243,10 @@ CREATE TABLE `niveles` (
   `tecnicos` varchar(11) DEFAULT NULL,
   `asistentes` varchar(11) DEFAULT NULL,
   `auxiliares` varchar(11) DEFAULT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_estatus`,`id_nivel`,`id_proc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -250,6 +262,10 @@ CREATE TABLE `odis` (
   `orden` int(3) DEFAULT NULL,
   `val_peso` decimal(3,0) DEFAULT NULL,
   `id_persona` int(11) DEFAULT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_odi`),
   KEY `id_persona` (`id_persona`),
   CONSTRAINT `id_persona` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
@@ -345,7 +361,11 @@ CREATE TABLE `procesos` (
 DROP TABLE IF EXISTS `rangos`;
 
 CREATE TABLE `rangos` (
-  `val_rango` varchar(11) DEFAULT NULL
+  `val_rango` varchar(11) DEFAULT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `rangos` */
@@ -358,6 +378,10 @@ CREATE TABLE `responsables_ubicacion` (
   `id_proc` int(11) NOT NULL,
   `id_persona` int(11) NOT NULL,
   `id_ubicacion` int(11) NOT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`,`id_persona`,`id_ubicacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
