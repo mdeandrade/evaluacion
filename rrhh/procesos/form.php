@@ -11,6 +11,7 @@
     <li role="presentation" class="active"><a href="#datos_generales" aria-controls="datos_generales" role="tab" data-toggle="tab">Datos generales</a></li>
     <li role="presentation"><a href="#niveles" aria-controls="niveles" role="tab" data-toggle="tab">Niveles</a></li>
     <li role="presentation"><a href="#competencias" aria-controls="competencias" role="tab" data-toggle="tab">Competencias</a></li>
+    <li role="presentation"><a href="#niveles" aria-controls="odis" role="tab" data-toggle="tab">Odis</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -18,10 +19,11 @@
     <div role="tabpanel" class="tab-pane active" id="datos_generales"><?php require('datos_generales.php');?></div>
     <div role="tabpanel" class="tab-pane" id="niveles"><?php require('niveles.php');?></div>
     <div role="tabpanel" class="tab-pane" id="competencias"><?php require('competencias.php');?></div>
+    <div role="tabpanel" class="tab-pane" id="odis"><?php require('odis.php');?></div>
   </div>
 
 </div>
-    <button type="submit" >Guardar</button>
+    <button type="submit" class="btn btn-success">Guardar</button>
 </form>
 
 <?php include('../../view_footer_solicitud.php')?>

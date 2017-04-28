@@ -1,7 +1,7 @@
 <?php
 session_start();
-//$_SERVER["DOCUMENT_ROOT"] = "../xampp/htdocs";
-$_SERVER["DOCUMENT_ROOT"] = "/var/www/html";
+$_SERVER["DOCUMENT_ROOT"] = "/xampp/htdocs";
+//$_SERVER["DOCUMENT_ROOT"] = "/var/www/html";
 error_reporting(1);
 $project_folder = '/evaluacion';
 $development_env = false;
