@@ -16,25 +16,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`evaluacion` /*!40100 DEFAULT CHARACTER 
 
 USE `evaluacion`;
 
-/*Table structure for table ` usuarios` */
-
-DROP TABLE IF EXISTS ` usuarios`;
-
-CREATE TABLE ` usuarios` (
-  `id_persona` int(11) NOT NULL,
-  `nom_usuario` varchar(45) NOT NULL,
-  `clave` varchar(100) NOT NULL,
-  `id_estatus` varchar(10) DEFAULT NULL,
-  `creado_por` int(11) DEFAULT NULL,
-  `fec_creado` datetime DEFAULT NULL,
-  `actualizado_por` int(11) DEFAULT NULL,
-  `fec_actualizado` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_persona`),
-  KEY `id_persona_idx` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table ` usuarios` */
-
 /*Table structure for table `cargos` */
 
 DROP TABLE IF EXISTS `cargos`;
@@ -141,7 +122,6 @@ DROP TABLE IF EXISTS `evaluaciones`;
 CREATE TABLE `evaluaciones` (
   `id_evaluaciones` int(11) NOT NULL AUTO_INCREMENT,
   `id_persona` int(11) NOT NULL,
-  `id_cargo` int(11) NOT NULL,
   `id_ubicacion` int(11) NOT NULL,
   `id_proc` int(11) DEFAULT NULL,
   `objetivos` varchar(2000) NOT NULL,
@@ -150,9 +130,8 @@ CREATE TABLE `evaluaciones` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   `revisado_por` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_evaluaciones`,`id_persona`,`id_cargo`,`id_ubicacion`),
-  KEY `fk_id_personas` (`id_persona`),
-  KEY `fk_id_cargos` (`id_cargo`)
+  PRIMARY KEY (`id_evaluaciones`,`id_persona`,`id_ubicacion`),
+  KEY `fk_id_personas` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `evaluaciones` */
@@ -306,28 +285,6 @@ CREATE TABLE `personas` (
 
 /*Data for the table `personas` */
 
-/*Table structure for table `personas_cargos` */
-
-DROP TABLE IF EXISTS `personas_cargos`;
-
-CREATE TABLE `personas_cargos` (
-  `id_persona` int(11) NOT NULL AUTO_INCREMENT,
-  `id_cargo` int(11) NOT NULL,
-  `id_estatus` int(11) NOT NULL,
-  `creado_por` int(11) DEFAULT NULL,
-  `fec_creado` datetime DEFAULT NULL,
-  `actualizado_por` int(11) DEFAULT NULL,
-  `fec_actualizado` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_persona`),
-  KEY `id_estatus_idx` (`id_estatus`),
-  KEY `id_cargo` (`id_cargo`),
-  CONSTRAINT `fk_id_persona` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`),
-  CONSTRAINT `id_cargo` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`),
-  CONSTRAINT `id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `personas_cargos` */
-
 /*Table structure for table `procesos` */
 
 DROP TABLE IF EXISTS `procesos`;
@@ -423,6 +380,25 @@ CREATE TABLE `ubicaciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `ubicaciones` */
+
+/*Table structure for table `usuarios` */
+
+DROP TABLE IF EXISTS `usuarios`;
+
+CREATE TABLE `usuarios` (
+  `id_persona` int(11) NOT NULL,
+  `nom_usuario` varchar(45) NOT NULL,
+  `clave` varchar(100) NOT NULL,
+  `id_estatus` varchar(10) DEFAULT NULL,
+  `creado_por` int(11) DEFAULT NULL,
+  `fec_creado` datetime DEFAULT NULL,
+  `actualizado_por` int(11) DEFAULT NULL,
+  `fec_actualizado` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_persona`),
+  KEY `id_persona_idx` (`id_persona`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `usuarios` */
 
 /*Table structure for table `usuarios_roles` */
 
