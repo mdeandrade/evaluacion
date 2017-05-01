@@ -15,7 +15,7 @@ if($development_env == true)
 }
 
 define("main_folder",$project_folder);//Project name and directory name//prueba 2
-define("title","Sistema de evaluación del desempeño de la Contraloría Metropolitana de Caracas");
+define("title","Sistema de Evaluación del Desempeño de la Contraloría Metropolitana de Caracas");
 define("Author","Contraloría Metropolitana de Caracas");
 define("Company","Sistema_RRHH");
 define("version","");
