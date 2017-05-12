@@ -12,7 +12,7 @@ $values = $_REQUEST;
 		case "index":
 			executeIndex($values);	
 		break;
-        case "acceso":
+                case "acceso":
 			executeAcceso($values);	
 		break;
 		case "bienvenida":
@@ -46,14 +46,15 @@ $values = $_REQUEST;
 	}
 	function executeAcceso($values = null)
 	{
-               
+              
 		$Login = new Login();
 		$q = $Login->GetLogin($values["nom_usuario"],$values["clave"]);
                
 		//echo $q;die;
+                //print_r($values);die;
 		if(count($q)> 0)
 		{	
-                        
+                       
 			$_SESSION['id_persona'] = $q[0]['id_persona'];
 			$_SESSION['nom_usuario'] = $q[0]['nom_usuario'];
 			executeBienvenida($values);
