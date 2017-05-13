@@ -32,7 +32,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Mi perfil<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="<?php echo full_url?>/ap/Perfil/index.php">Cambiar Clave</a></li>
+            <li><a href="<?php echo full_url?>/rrhh/perfil/index.php">Cambiar Clave</a></li>
           </ul>
         </li>
         <li><a href="<?php echo full_url?>/rrhh/index.php?action=logout"><i class="fa fa-power-off"></i> Cerrar sesión</a></li>
@@ -41,7 +41,15 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> Usuarios <span class="caret"></span></a>
           <ul class="dropdown-menu">
-              <li><a href="<?php echo full_url?>/rrhh/usuarios/index.php?action=index">Lista de usuarios</a></li>
+              <li><a href="<?php echo full_url?>/rrhh/Usuarios/index.php?action=index">Lista de usuarios</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> Procesos <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><a href="<?php echo full_url?>/rrhh/usuarios/index.php?action=index">Todos los procesos</a></li>
           </ul>
         </li>
       </ul>        
