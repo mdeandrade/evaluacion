@@ -80,6 +80,7 @@
         <tbody>
             <tr>
                 <td>1</td>
+                 <input type="radio" value="" name="" id="">
             </tr>
             <tr>
                 <td>2</td>
