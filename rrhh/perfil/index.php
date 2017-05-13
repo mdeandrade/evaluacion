@@ -106,7 +106,7 @@ $values = array_merge($values,$_FILES);
 					"nom_grupo" => $list['nom_grupo'],
 					"nom_estatus" => $list['nom_estatus'],
 					"actions" => 
-                                       '<form method="POST" action = "'.full_url.'/ap/Usuarios/index.php" >'
+                                       '<form method="POST" action = "'.full_url.'/rrhh/usuarios/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
                                        .'<input type="hidden" name="id_usuario" value="'.$id_usuario.'">  '
                                        .'<button class="btn btn-default btn-sm" title="Ver detalle" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
