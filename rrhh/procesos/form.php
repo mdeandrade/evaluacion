@@ -13,7 +13,7 @@
     <li role="presentation"><a href="#ubicaciones" aria-controls="ubicaciones" role="tab" data-toggle="tab">Ubicaciones</a></li>
     <li role="presentation"><a href="#evaluadores" aria-controls="evaluadores" role="tab" data-toggle="tab">Evaluadores</a></li>
     <li role="presentation"><a href="#competencias" aria-controls="competencias" role="tab" data-toggle="tab">Competencias</a></li>
-    <li role="presentation"><a href="#niveles" aria-controls="odis" role="tab" data-toggle="tab">Odis</a></li>
+    <li role="presentation"><a href="#odis" aria-controls="odis" role="tab" data-toggle="tab">Odis</a></li>
   </ul>
 
   <!-- Tab panes -->
