@@ -1,4 +1,4 @@
-  <div class="form-group">
+    <div class="form-group">
         <label for="exampleInputEmail1">Descripción</label>
         <input type="text" class="form-control" name="descripcion" value="<?php if(isset($values['descripcion']) and $values['descripcion']!='') echo $values['descripcion'];?>" id="exampleInputEmail1" placeholder="Descripción">
             <?php if(isset($errors['descripcion']) and $errors['descripcion']!=''):?>

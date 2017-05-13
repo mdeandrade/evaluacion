@@ -51,7 +51,7 @@ $values = $_REQUEST;
 		$q = $Login->GetLogin($values["nom_usuario"],$values["clave"]);
                
 		//echo $q;die;
-                //print_r($values);die;
+                //print_r($values);
 		if(count($q)> 0)
 		{	
                        

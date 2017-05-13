@@ -35,7 +35,7 @@
             <li><a href="<?php echo full_url?>/ap/Perfil/index.php">Cambiar Clave</a></li>
           </ul>
         </li>
-        <li><a href="<?php echo full_url?>/ap/index.php?action=logout"><i class="fa fa-power-off"></i> Cerrar sesión</a></li>
+        <li><a href="<?php echo full_url?>/rrhh/index.php?action=logout"><i class="fa fa-power-off"></i> Cerrar sesión</a></li>
       </ul>
       <ul class="nav navbar-nav">
         <li class="dropdown">

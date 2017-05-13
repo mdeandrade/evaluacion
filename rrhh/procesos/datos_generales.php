@@ -35,7 +35,7 @@
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Rango maximo para los odis</label>
-        <input type="text" class="form-control" name="rengo_max_odi" value="<?php if(isset($values['rengo_max_odi']) and $values['rengo_max_odi']!='') echo $values['rengo_max_odi'];?>" id="exampleInputEmail1" placeholder="Rengo odi">
+        <input type="text" class="form-control" name="rengo_max_odi" value="<?php if(isset($values['rengo_max_odi']) and $values['rengo_max_odi']!='') echo $values['rengo_max_odi'];?>" id="exampleInputEmail1" placeholder="Rango odi">
             <?php if(isset($errors['rengo_max_odi']) and $errors['rengo_max_odi']!=''):?>
             <div class="alert alert-danger"><?php echo $errors['rengo_max_odi'];?></div>
             <?php endif;?>
