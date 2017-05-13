@@ -17,30 +17,39 @@
             <tbody>
                 <tr>
                     <td>1</td>
+                    <td>Compromiso de Trabajo: Establecer altos estandares de desempeño; abocarse al 
+                        logro de metas ambisiosas y trabajar con empeño para lograrlas</td>
                 </tr>
                 <tr>
                     <td>2</td>
+                    <td></td>
                 </tr>
                 <tr>
                      <td>3</td>
+                     <td></td>
                 </tr>
                 <tr>
                      <td>4</td>
+                     <td></td>
                 </tr>
                 <tr>
                      <td>5</td>
+                     <td></td>
                 </tr>
                 <tr>
                     <td>6</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>7</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>8</td>
+                    <td></td>
                 </tr>
             </tbody>
 
         </table>
 
-    <button type="submit" class="btn btn-success">Guardar</button>
+   
