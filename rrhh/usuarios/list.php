@@ -21,7 +21,7 @@
 			</tfoot>
 		</table>
 
-	<a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i> Agregar</a>
+	<a class="btn btn-success"  href="<?php echo full_url."/rrhh/usuarios/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i> Agregar</a>
 </div>
 	<?php include('../../view_footer_solicitud.php')?>
 <script>
