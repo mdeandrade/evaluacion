@@ -80,7 +80,6 @@
         <tbody>
             <tr>
                 <td>1</td>
-                 <input type="radio" value="" name="" id="">
             </tr>
             <tr>
                 <td>2</td>
@@ -107,4 +106,4 @@
 
             </table>
 
-    <button type="submit" class="btn btn-success">Guardar</button>
+    <button type="submit" class="btn btn-success">Guardar</button><br>
