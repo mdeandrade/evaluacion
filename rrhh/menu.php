@@ -21,7 +21,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-		<a class="navbar-brand" href="<?php echo full_url;?>/ap/index.php?action=bienvenida"><i class="fa fa-home"></i></a>
+		<a class="navbar-brand" href="<?php echo full_url;?>/rrhh/index.php?action=bienvenida"><i class="fa fa-home"></i></a>
 		<!--<a class="navbar-brand" href="<?php echo full_url;?>/ap/index.php?action=bienvenida"><img src="<?php echo full_url;?>/web/img/titulo.png"></a>-->
 
     </div>
