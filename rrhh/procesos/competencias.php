@@ -17,8 +17,7 @@
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>Compromiso de Trabajo: Establecer altos estandares de desempeño; abocarse al 
-                        logro de metas ambisiosas y trabajar con empeño para lograrlas</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>2</td>
