@@ -21,3 +21,4 @@ $values = $_REQUEST;
         
 	require('principal.php');
 	}	
+ 
