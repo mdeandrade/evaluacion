@@ -9,18 +9,13 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#datos_generales" aria-controls="datos_generales" role="tab" data-toggle="tab">Datos generales</a></li>
-    <li role="presentation"><a href="#niveles" aria-controls="niveles" role="tab" data-toggle="tab">Niveles</a></li>
     <li role="presentation"><a href="#evaluadores" aria-controls="evaluadores" role="tab" data-toggle="tab">Evaluaciones</a></li>
-    <li role="presentation"><a href="#competencias" aria-controls="competencias" role="tab" data-toggle="tab">Competencias</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="datos_generales"><?php require('datos_generales.php');?></div>
-    <div role="tabpanel" class="tab-pane" id="niveles"><?php require('niveles.php');?></div>
     <div role="tabpanel" class="tab-pane" id="evaluadores"><?php require('evaluaciones.php');?></div>
-    <div role="tabpanel" class="tab-pane" id="competencias"><?php require('competencias.php');?></div>
-
   </div>
 
 </div>
@@ -30,3 +25,14 @@
 </form>
 
 <?php include('../../view_footer_solicitud.php')?>
+<script>
+
+$(document).ready(function(){
+    $(".rango1").change(function(){
+        alert($('input[name=rango1]:radio:checked').val());
+
+    });
+    
+});
+
+</script>

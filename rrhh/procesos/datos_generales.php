@@ -3,7 +3,7 @@
       <div class="form-group">
         <div class="row">
         <div class="col-md-0"></div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <label for="exampleInputEmail1">Descripción</label>
             <input type="text" class="form-control" name="descripcion" value="<?php if(isset($values['descripcion']) and $values['descripcion']!='') echo $values['descripcion'];?>" id="exampleInputEmail1" placeholder="Descripción del proceso">
                 <?php if(isset($errors['descripcion']) and $errors['descripcion']!=''):?>
@@ -58,7 +58,7 @@
                 <?php if(isset($errors['fec_cierre_odi']) and $errors['fec_cierre_odi']!=''):?>
                 <div class="alert alert-danger"><?php echo $errors['fec_cierre_odi'];?></div>
                 <?php endif;?>
-      
+
             <label for="exampleInputEmail1">Fecha de apertura para las competencias</label>
             <input type="date" class="form-control" name="fec_apertura_competencia" value="<?php if(isset($values['fec_apertura_competencia']) and $values['fec_apertura_competencia']!='') echo $values['fec_apertura_competencia'];?>" id="exampleInputEmail1" placeholder="Fecha apertura competencia">
                 <?php if(isset($errors['fec_apertura_competencia']) and $errors['fec_apertura_competencia']!=''):?>
@@ -83,13 +83,16 @@
                     <option>Dirección de Control de la Administración Descentralizada</option>
                     <option>Dirección de Determinación de Responsabilidades</option>
                 </select>
-  </div>
-  </div>
-</div>
-    <br>
-      <br>
-    <div class="form-group">
-        <label for="exampleInputFile">Cargar personal</label>
-        <input type="file" id="id_persona">
-    </div>
-    </div>
+        </div>
+        </div>
+        </div>
+          <div class="form-group">
+            <div class="row">
+            <div class="col-md-0"></div>
+            <div class="col-md-4">
+              <label for="exampleInputFile">Cargar personal</label>
+              <input type="file" id="id_persona">
+          </div>
+          </div>
+          </div>
+          </div>
