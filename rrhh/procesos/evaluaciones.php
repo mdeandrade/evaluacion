@@ -1,4 +1,5 @@
       <br>
+      <!-- <br>
     <div class="container">
     <div class="form-inline">
         <label for="exampleInputEmail1">Apellidos</label>
@@ -26,4 +27,4 @@
             <?php endif;?>
     </div>
     </div>
-      <br>
+      <br> -->

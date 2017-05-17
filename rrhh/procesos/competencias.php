@@ -1,3 +1,4 @@
+  <!-- se debe adaptar al bootstrap. Joss -->
           <br>
         <div class="container">
         <div class="form-group"><h4>Estatus: </h4>
@@ -20,7 +21,7 @@
                 <tr>
                     <td>1</td>
                     <td><input type="text" name="competencia" style="width: 100%"></td>
-                    <td><input type="number" name="quantity" min="1" max="10"></td>
+                    <td><input type="number" name="quantity" readonly=""></td>
                     <td><input type="radio" name="rango" value="1"></td>
                     <td><input type="radio" name="rango" value="2"></td>
                     <td><input type="radio" name="rango" value="3"></td>
@@ -30,7 +31,7 @@
                 <tr>
                     <td>2</td>
                     <td><input type="text" name="competencia" style="width: 100%"></td>
-                    <td><input type="number" name="quantity" min="1" max="10"></td>
+                    <td><input type="number" name="quantity" readonly=""></td>
                     <td><input type="radio" name="rango" value="1"></td>
                     <td><input type="radio" name="rango" value="2"></td>
                     <td><input type="radio" name="rango" value="3"></td>
@@ -40,7 +41,7 @@
                 <tr>
                      <td>3</td>
                      <td><input type="text" name="competencia" style="width: 100%"><br></td>
-                     <td><input type="number" name="quantity" min="1" max="10"></td>
+                     <td><input type="number" name="quantity" readonly=""></td>
                      <td><input type="radio" name="rango" value="1"></td>
                      <td><input type="radio" name="rango" value="2"></td>
                      <td><input type="radio" name="rango" value="3"></td>
