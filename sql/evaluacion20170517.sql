@@ -88,9 +88,13 @@ CREATE TABLE `estatus` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_estatus`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `estatus` */
+
+insert  into `estatus`(`id_estatus`,`nom_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(1,'activo',NULL,NULL,NULL,NULL),
+(2,'inactivo',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `evaluacion_resultado` */
 
@@ -277,9 +281,14 @@ CREATE TABLE `personas` (
   KEY `id_ubicacion` (`id_ubicacion`),
   CONSTRAINT `fk_id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
   CONSTRAINT `id_ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `personas` */
+
+insert  into `personas`(`id_persona`,`id_proc`,`pri_nom`,`seg_nom`,`pri_ape`,`seg_ape`,`tip_documento`,`num_documento`,`sexo`,`edo_civil`,`fec_nacimiento`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`,`id_ubicacion`,`fec_ingreso`,`nivel`) values 
+(1,NULL,'carlos','eduardo','angulo','astudillo','cedula','25053060','masculino','soltero','1984-05-15',1,NULL,NULL,NULL,NULL,1,NULL,NULL),
+(2,NULL,'josselline','alexandra','padilla','fernandez','cedula','25561949','femenino','soltero','1989-06-18',2,NULL,NULL,NULL,NULL,2,NULL,NULL),
+(3,NULL,'gitsell','maria','ugueto','romero','cedula','24333157','femenino','soltero','1990-06-06',1,NULL,NULL,NULL,NULL,1,NULL,NULL);
 
 /*Table structure for table `procesos` */
 
@@ -337,7 +346,12 @@ CREATE TABLE `responsables_ubicacion` (
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_proc`,`id_persona`,`id_ubicacion`)
+  PRIMARY KEY (`id_proc`,`id_persona`,`id_ubicacion`),
+  KEY `id_p` (`id_persona`),
+  KEY `id_ubica` (`id_ubicacion`),
+  CONSTRAINT `id_p` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`),
+  CONSTRAINT `id_procesos` FOREIGN KEY (`id_proc`) REFERENCES `procesos` (`id_proc`),
+  CONSTRAINT `id_ubica` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `responsables_ubicacion` */
@@ -374,10 +388,17 @@ CREATE TABLE `ubicaciones` (
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_ubicacion`),
   KEY `id_personas` (`id_personas`),
+  KEY `id_estatu` (`id_estatus`),
+  CONSTRAINT `id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
   CONSTRAINT `id_personas` FOREIGN KEY (`id_personas`) REFERENCES `personas` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `ubicaciones` */
+
+insert  into `ubicaciones`(`id_ubicacion`,`nom_ubicacion`,`id_personas`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(1,'direccion de tecnologia de la informacion',1,1,NULL,NULL,NULL,NULL),
+(2,'administracion',2,1,NULL,NULL,NULL,NULL),
+(3,'recursos humanos',3,1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `usuarios` */
 
