@@ -316,9 +316,12 @@ CREATE TABLE `procesos` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `procesos` */
+
+insert  into `procesos`(`id_proc`,`descripcion`,`fec_desde`,`fec_hasta`,`peso_odi`,`peso_competencia`,`id_estatus_proc`,`rangos_max_odi`,`rangos_max_competencias`,`fec_apertura_odi`,`fec_cierre_odi`,`fec_apertura_evaluacion`,`fec_cierre_evaluacion`,`fec_apertura_competencia`,`fec_cierre_competencia`,`max_odis_permitidos`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(1,'enero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `rangos` */
 
@@ -355,6 +358,9 @@ CREATE TABLE `responsables_ubicacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `responsables_ubicacion` */
+
+insert  into `responsables_ubicacion`(`id_proc`,`id_persona`,`id_ubicacion`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(1,2,2,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `roles` */
 
