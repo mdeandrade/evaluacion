@@ -20,8 +20,11 @@
 
 </div>
     <button type="submit" class="btn btn-success">Guardar</button>
-    <button type="submit" class="btn btn-primary">Inicio</button>
+    <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
+    <a class="btn btn-primary" href="index.php?action=generar_evaluaciones&id_proc=<?php echo $values['id_proc']?>">Inicio</a>
     <button type="submit" class="btn btn-danger">Culminar</button>
+    <?php endif;?>
+    
 </form>
 
 <?php include('../../view_footer_solicitud.php')?>

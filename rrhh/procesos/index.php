@@ -28,6 +28,9 @@ $values = array_merge($values,$_FILES);
 		case "list_json":
 			executeListJson($values);	
 		break;
+		case "generar_evaluaciones":
+			executeGenerarEvaluciones($values);	
+		break;
 		default:
                         executeIndex($values);
 		break;
@@ -126,3 +129,10 @@ $values = array_merge($values,$_FILES);
 		echo json_encode($array_json);die;
 		
 	}
+        function executeGenerarEvaluciones($values)
+        {
+            
+            $Evaluaciones = new Evaluaciones;
+            $generar  = $Evaluaciones->generar($values);
+            
+        }	
