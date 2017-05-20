@@ -18,7 +18,7 @@
 			
 		}
 
-            function generar($values){
+                function generar($values){
 
                             //select
                             //recuerden usar el id_proc
@@ -26,8 +26,8 @@
                             $ConnectionORM = new ConnectionORM();
                             $q = $ConnectionORM->getConnect()->usuarios
                             ->select("*")
-                            ->join("users_data","INNER JOIN users_data on users_data.id_users = users.id_user")	
-                            ->where("usuarios.id_usuario=?",$values['id_usuario']);
+                            ->join("users_data","INNER JOIN users_data on users_data.id_proc = users.id_proc")	
+                            ->where("evaluaciones.id_proc=?",$values['id_proc']);
                 
                             
                             
@@ -45,7 +45,7 @@
                                 );
                                 $ConnectionORM = new ConnectionORM();
                                 $q = $ConnectionORM->getConnect()->usuarios()->insert($array);//insert a tabla de usuarios
-                                $values['id_usuario'] = $ConnectionORM->getConnect()->usuarios()->insert_id();
+                                $values['id_proc'] = $ConnectionORM->getConnect()->usuarios()->insert_id();
                             endforeach;
                             //die;
                             //insert
