@@ -5,17 +5,17 @@
 	<table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
 			<thead>
 				<tr>
-					<th>ID.Cargo</th>
-                                        <th>Cargo</th>
+					<th>Nro. Proceso</th>
+                                        <th>Proceso</th>
                                         <th>Estatus</th>
 					<th>Detalle</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<th><input id="idPoliza" name="id_cargo" type="text"></th>
-                                        <th><input id="NumPoliza" name="nom_cargo" type="text"></th>
-                                        <th><input id="Placa" name="id_estatus" type="text"></th>			
+					<th><input id="id_pro" name="id_proc" type="text"></th>
+                                        <th><input id="descripcion" name="descripcion" type="text"></th>
+                                        <th><input id="nom_estatus" name="id_estatus" type="text"></th>			
 					<th>Detalle</th>
 				</tr>
 			</tfoot>

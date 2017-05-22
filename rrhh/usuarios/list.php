@@ -1,11 +1,11 @@
 <?php include('../../view_header_app.php')?>
 <?php include('../menu.php')?>
 <div class="container">
-	<h1 class="text-center big_title">Procesos</h1>
+	<h1 class="text-center big_title">Usuarios</h1>
 	<table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
 			<thead>
 				<tr>
-					<th>ID.Cargo</th>
+					<th>Nro Usuario</th>
                                         <th>Cargo</th>
                                         <th>Estatus</th>
 					<th>Detalle</th>
