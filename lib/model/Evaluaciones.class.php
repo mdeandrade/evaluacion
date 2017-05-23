@@ -16,31 +16,54 @@
 		public function __construct() 
 		{
 			
+		}	
+		function save($values){
+			 
+                        $array = array(
+                            "id_proc" => $values['id_proc'],
+                            "descripcion" => $values['descripcion'],
+                            "fec_apertura_evaluacion" => $values['fec_apertura_evaluacion'],
+                            "fec_cierre_evaluacion" => $values['fec_cierre_evaluacion'],
+                            "peso_odi" => $values['peso_odi'],
+                            "peso_competencia" => $values['peso_competencia'],
+                            "id_estatus_proc" => $values['id_estatus_proc'],
+                            "rangos_max_odi" => $values['rangos_max_odi'],
+                            "rangos_max_competencias" => $values['rangos_max_competencias'],
+                            "fec_apertura_odi" => $values['fec_apertura_odi'],
+                            "fec_cierre_odi" => $values['fec_cierre_odi'],
+                            "fec_apertura_competencia" => $values['fec_apertura_competencia'],
+                            "fec_cierre_competencia" => $values['fec_cierre_competencia'],
+                            "max_odis_permitidos" => $values['max_odis_permitidos']
+                                
+                        );
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->usuarios()->insert($array);
+			$values['id_usuario'] = $ConnectionORM->getConnect()->usuarios()->insert_id();
+			return $values;	
+			
 		}
-
                 function generar($values){
 
                             //select
                             //recuerden usar el id_proc
                 
                             $ConnectionORM = new ConnectionORM();
-                            $q = $ConnectionORM->getConnect()->usuarios
+                            $q = $ConnectionORM->getConnect()->evaluacion
                             ->select("*")
-                            ->join("users_data","INNER JOIN users_data on users_data.id_proc = users.id_proc")	
+                            ->join("evaluacion_data","INNER JOIN evaluacion_data on evaluacion_data.id_proc = evaluaciones.id_proc")	
                             ->where("evaluaciones.id_proc=?",$values['id_proc']);
                 
                             
                             
-                            foreach($q as $usuario):
+                            foreach($q as $evaluacion):
                                 
-                                //echo $usuario['id_usuario']."<br>";
+                                //echo $evalaucion['id_evalauciones']."<br>";
                                $array = array(
+                                "id_evaluaciones" => $values['id_evaluaciones'],
+                                "id_ubicacion" => $values['id_ubicacion'],
                                 "id_persona" => $values['id_persona'],
-                                "id_usuario" => $values['id_persona'],
-                                "nom_usuario" => $values['nom_usuario'],
-                                "id_grupo" => $values['id_grupo'],
-                                "clave" => hash('sha256',$values['clave']),
-                                "id_estatus" => $values['id_estatus']
+                                "id_proc" => $values['id_proc'],
+                                "objetivos" => $values['objetivos']
 
                                 );
                                 $ConnectionORM = new ConnectionORM();

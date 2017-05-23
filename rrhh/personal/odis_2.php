@@ -55,82 +55,82 @@
             <tr>
                 <td>1</td>
                 <td><input type="text" name="odi" style="width: 100%"></td>
-                <td><input type="number" name="quantity" min="1" max="10"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="1"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="2"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="3"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="4"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="5"></td>
+                <td><input type="number" name="peso1" min="1" max="10"></td>
+                <td><input type="radio" name="rango1"id="inlineRadio1" value="1"></td>
+                <td><input type="radio" name="rango1"id="inlineRadio1" value="2"></td>
+                <td><input type="radio" name="rango1"id="inlineRadio1" value="3"></td>
+                <td><input type="radio" name="rango1"id="inlineRadio1" value="4"></td>
+                <td><input type="radio" name="rango1"id="inlineRadio1" value="5"></td>
             </tr>
             <tr>
                 <td>2</td>
                 <td><input type="text" name="odi" style="width: 100%"></td>
-                <td><input type="number" name="quantity" min="1" max="10"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="1"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="2"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="3"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="4"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="5"></td>
+                <td><input type="number" name="peso2" min="1" max="10"></td>
+                <td><input type="radio" name="rango2"id="inlineRadio1" value="1"></td>
+                <td><input type="radio" name="rango2"id="inlineRadio1" value="2"></td>
+                <td><input type="radio" name="rango2"id="inlineRadio1" value="3"></td>
+                <td><input type="radio" name="rango2"id="inlineRadio1" value="4"></td>
+                <td><input type="radio" name="rango2"id="inlineRadio1" value="5"></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td><input type="text" name="odi" style="width: 100%"></td>
-                <td><input type="number" name="quantity" min="1" max="10"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="1"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="2"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="3"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="4"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="5"></td>
+                <td><input type="number" name="peso3" min="1" max="10"></td>
+                <td><input type="radio" name="rango3"id="inlineRadio1" value="1"></td>
+                <td><input type="radio" name="rango3"id="inlineRadio1" value="2"></td>
+                <td><input type="radio" name="rango3"id="inlineRadio1" value="3"></td>
+                <td><input type="radio" name="rango3"id="inlineRadio1" value="4"></td>
+                <td><input type="radio" name="rango3"id="inlineRadio1" value="5"></td>
             </tr>
             <tr>
                 <td>4</td>
                 <td><input type="text" name="odi" style="width: 100%"></td>
-                <td><input type="number" name="quantity" min="1" max="10"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="1"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="2"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="3"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="4"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="5"></td>
+                <td><input type="number" name="peso4" min="1" max="10"></td>
+                <td><input type="radio" name="rango4"id="inlineRadio1" value="1"></td>
+                <td><input type="radio" name="rango4"id="inlineRadio1" value="2"></td>
+                <td><input type="radio" name="rang4"id="inlineRadio1" value="3"></td>
+                <td><input type="radio" name="rango4"id="inlineRadio1" value="4"></td>
+                <td><input type="radio" name="rango4"id="inlineRadio1" value="5"></td>
             </tr>
             <tr>
                 <td>5</td>
                 <td><input type="text" name="odi" style="width: 100%"></td>
-                <td><input type="number" name="quantity" min="1" max="10"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="1"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="2"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="3"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="4"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="5"></td>
+                <td><input type="number" name="peso5" min="1" max="10"></td>
+                <td><input type="radio" name="rango5"id="inlineRadio1" value="1"></td>
+                <td><input type="radio" name="rango5"id="inlineRadio1" value="2"></td>
+                <td><input type="radio" name="rango5"id="inlineRadio1" value="3"></td>
+                <td><input type="radio" name="rango5"id="inlineRadio1" value="4"></td>
+                <td><input type="radio" name="rango5"id="inlineRadio1" value="5"></td>
             </tr>
             <tr>
                 <td>6</td>
                 <td><input type="text" name="odi" style="width: 100%"></td>
-                <td><input type="number" name="quantity" min="1" max="10"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="1"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="2"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="3"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="4"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="5"></td>
+                <td><input type="number" name="peso6" min="1" max="10"></td>
+                <td><input type="radio" name="rango6"id="inlineRadio1" value="1"></td>
+                <td><input type="radio" name="rango6"id="inlineRadio1" value="2"></td>
+                <td><input type="radio" name="rango6"id="inlineRadio1" value="3"></td>
+                <td><input type="radio" name="rango6"id="inlineRadio1" value="4"></td>
+                <td><input type="radio" name="rango6"id="inlineRadio1" value="5"></td>
             </tr>
             <tr>
                 <td>7</td>
                 <td><input type="text" name="odi" style="width: 100%"></td>
-                <td><input type="number" name="quantity" min="1" max="10"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="1"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="2"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="3"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="4"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="5"></td>
+                <td><input type="number" name="peso7" min="1" max="10"></td>
+                <td><input type="radio" name="rango7"id="inlineRadio1" value="1"></td>
+                <td><input type="radio" name="rango7"id="inlineRadio1" value="2"></td>
+                <td><input type="radio" name="rango7"id="inlineRadio1" value="3"></td>
+                <td><input type="radio" name="rango7"id="inlineRadio1" value="4"></td>
+                <td><input type="radio" name="rango7"id="inlineRadio1" value="5"></td>
             </tr>
             <tr>
                 <td>8</td>
                 <td><input type="text" name="odi" style="width: 100%"></td>
-                <td><input type="number" name="quantity" min="1" max="10"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="1"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="2"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="3"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="4"></td>
-                <td><input type="radio" name="rango"id="inlineRadio1" value="5"></td>
+                <td><input type="number" name="peso8" min="1" max="10"></td>
+                <td><input type="radio" name="rango8"id="inlineRadio1" value="1"></td>
+                <td><input type="radio" name="rango8"id="inlineRadio1" value="2"></td>
+                <td><input type="radio" name="rango8"id="inlineRadio1" value="3"></td>
+                <td><input type="radio" name="rango8"id="inlineRadio1" value="4"></td>
+                <td><input type="radio" name="rango8"id="inlineRadio1" value="5"></td>
             </tr>
             </tbody>
 

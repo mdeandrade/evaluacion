@@ -135,7 +135,9 @@ CREATE TABLE `evaluaciones` (
   `fec_actualizado` datetime DEFAULT NULL,
   `revisado_por` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_evaluaciones`,`id_persona`,`id_ubicacion`),
-  KEY `fk_id_personas` (`id_persona`)
+  KEY `fk_id_personas` (`id_persona`),
+  KEY `id_proc` (`id_proc`),
+  CONSTRAINT `id_proc` FOREIGN KEY (`id_proc`) REFERENCES `procesos` (`id_proc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `evaluaciones` */
@@ -297,8 +299,8 @@ DROP TABLE IF EXISTS `procesos`;
 CREATE TABLE `procesos` (
   `id_proc` int(20) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(2000) DEFAULT NULL,
-  `fec_desde` date DEFAULT NULL,
-  `fec_hasta` date DEFAULT NULL,
+  `fec_apertura_evaluacion` date DEFAULT NULL,
+  `fec_cierra_evaluacion` date DEFAULT NULL,
   `peso_odi` varchar(10) DEFAULT NULL,
   `peso_competencia` varchar(10) DEFAULT NULL,
   `id_estatus_proc` int(11) DEFAULT NULL,
@@ -306,8 +308,6 @@ CREATE TABLE `procesos` (
   `rangos_max_competencias` varchar(6) DEFAULT NULL,
   `fec_apertura_odi` date DEFAULT NULL,
   `fec_cierre_odi` date DEFAULT NULL,
-  `fec_apertura_evaluacion` date DEFAULT NULL,
-  `fec_cierre_evaluacion` date DEFAULT NULL,
   `fec_apertura_competencia` date DEFAULT NULL,
   `fec_cierre_competencia` date DEFAULT NULL,
   `max_odis_permitidos` varchar(10) DEFAULT NULL,
@@ -320,8 +320,8 @@ CREATE TABLE `procesos` (
 
 /*Data for the table `procesos` */
 
-insert  into `procesos`(`id_proc`,`descripcion`,`fec_desde`,`fec_hasta`,`peso_odi`,`peso_competencia`,`id_estatus_proc`,`rangos_max_odi`,`rangos_max_competencias`,`fec_apertura_odi`,`fec_cierre_odi`,`fec_apertura_evaluacion`,`fec_cierre_evaluacion`,`fec_apertura_competencia`,`fec_cierre_competencia`,`max_odis_permitidos`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-(1,'enero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `procesos`(`id_proc`,`descripcion`,`fec_apertura_evaluacion`,`fec_cierra_evaluacion`,`peso_odi`,`peso_competencia`,`id_estatus_proc`,`rangos_max_odi`,`rangos_max_competencias`,`fec_apertura_odi`,`fec_cierre_odi`,`fec_apertura_competencia`,`fec_cierre_competencia`,`max_odis_permitidos`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(1,'enero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `rangos` */
 
