@@ -16,23 +16,23 @@
 		);
 		$validator_values['fec_apertura_evaluacion'] = array(
 
-			"minlength" => 10,
-			"maxlength" => 20,
-			"type" => "number",
+			"minlength" => 8,
+			"maxlength" => 10,
+			"type" => "date",
 			"label" => "Fecha desde",
 			"required" => true
 		);
 		$validator_values['fec_cierre_evaluacion'] = array(
 
-			"minlength" => 10,
-			"maxlength" => 20,
-			"type" => "number",
+			"minlength" => 8,
+			"maxlength" => 10,
+			"type" => "date",
 			"label" => "Fecha hasta",
 			"required" => true
 		);
 		$validator_values['peso_odi'] = array(
 
-			"minlength" => 10,
+			"minlength" => 1,
 			"maxlength" => 100,
 			"type" => "number",
 			"label" => "Peso máximo para los ODI",
@@ -40,7 +40,7 @@
 		);
 		$validator_values['peso_competencia'] = array(
 
-			"minlength" => 10,
+			"minlength" => 1,
 			"maxlength" => 100,
 			"type" => "number",
 			"label" => "Peso máximo para las competencia",
@@ -48,7 +48,7 @@
 		);
 		$validator_values['rango_max_odi'] = array(
 
-			"minlength" => 10,
+			"minlength" => 1,
 			"maxlength" => 100,
 			"type" => "number",
 			"label" => "Rango maximo para los ODI",
@@ -56,7 +56,7 @@
 		);
 		$validator_values['rango_max_competencia'] = array(
 
-			"minlength" => 10,
+			"minlength" => 1,
 			"maxlength" => 100,
 			"type" => "number",
 			"label" => "Rango maximo por competncia",
@@ -72,33 +72,33 @@
 		);
 		$validator_values['fec_apertura_odi'] = array(
 
-			"minlength" => 10,
-			"maxlength" => 100,
-			"type" => "number",
+			"minlength" => 8,
+			"maxlength" => 10,
+			"type" => "date",
 			"label" => "Fecha de apertura para los ODI",
 			"required" => true
 		);
 		$validator_values['fec_cierre_odi'] = array(
 
-			"minlength" => 10,
-			"maxlength" => 100,
-			"type" => "number",
+			"minlength" => 8,
+			"maxlength" => 10,
+			"type" => "date",
 			"label" => "Fecha cierre para los ODI",
 			"required" => true
 		);
 		$validator_values['fec_apertura_competencia'] = array(
 
-			"minlength" => 10,
-			"maxlength" => 100,
-			"type" => "number",
+			"minlength" => 8,
+			"maxlength" => 10,
+			"type" => "date",
 			"label" => "Fecha apertura para las comptencia",
 			"required" => true
 		);
 		$validator_values['fec_cierre_competencia'] = array(
 
-			"minlength" => 10,
-			"maxlength" => 100,
-			"type" => "number",
+			"minlength" => 8,
+			"maxlength" => 10,
+			"type" => "date",
 			"label" => "Fecha cierre para las comptencia",
 			"required" => true
 		);
