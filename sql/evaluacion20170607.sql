@@ -162,9 +162,11 @@ CREATE TABLE `evaluadores` (
   KEY `id_cargos` (`id_cargo`),
   KEY `id_per` (`id_persona`),
   KEY `fk_id_ubicacion` (`id_ubicacion`),
+  KEY `id_proce` (`id_proc`),
   CONSTRAINT `fk_id_ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`),
   CONSTRAINT `id_cargos` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`),
-  CONSTRAINT `id_per` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
+  CONSTRAINT `id_per` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`),
+  CONSTRAINT `id_proce` FOREIGN KEY (`id_proc`) REFERENCES `procesos` (`id_proc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `evaluadores` */
@@ -301,27 +303,24 @@ CREATE TABLE `procesos` (
   `descripcion` varchar(2000) DEFAULT NULL,
   `fec_apertura_evaluacion` date DEFAULT NULL,
   `fec_cierra_evaluacion` date DEFAULT NULL,
-  `peso_odi` varchar(10) DEFAULT NULL,
-  `peso_competencia` varchar(10) DEFAULT NULL,
   `id_estatus_proc` int(11) DEFAULT NULL,
-  `rangos_max_odi` varchar(6) DEFAULT NULL,
-  `rangos_max_competencias` varchar(6) DEFAULT NULL,
   `fec_apertura_odi` date DEFAULT NULL,
   `fec_cierre_odi` date DEFAULT NULL,
+  `peso_odi` varchar(10) DEFAULT NULL,
+  `rangos_max_odi` varchar(6) DEFAULT NULL,
   `fec_apertura_competencia` date DEFAULT NULL,
   `fec_cierre_competencia` date DEFAULT NULL,
+  `peso_competencia` varchar(10) DEFAULT NULL,
+  `rangos_max_competencias` varchar(6) DEFAULT NULL,
   `max_odis_permitidos` varchar(10) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `procesos` */
-
-insert  into `procesos`(`id_proc`,`descripcion`,`fec_apertura_evaluacion`,`fec_cierra_evaluacion`,`peso_odi`,`peso_competencia`,`id_estatus_proc`,`rangos_max_odi`,`rangos_max_competencias`,`fec_apertura_odi`,`fec_cierre_odi`,`fec_apertura_competencia`,`fec_cierre_competencia`,`max_odis_permitidos`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-(1,'enero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `rangos` */
 
@@ -358,9 +357,6 @@ CREATE TABLE `responsables_ubicacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `responsables_ubicacion` */
-
-insert  into `responsables_ubicacion`(`id_proc`,`id_persona`,`id_ubicacion`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-(1,2,2,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `roles` */
 
@@ -426,7 +422,11 @@ CREATE TABLE `usuarios` (
 /*Data for the table `usuarios` */
 
 insert  into `usuarios`(`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-(0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',NULL,NULL,NULL,NULL);
+(0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',NULL,NULL,NULL,NULL),
+(1,'carlos','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',NULL,NULL,NULL,NULL),
+(2,'josselline','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','3',NULL,NULL,NULL,NULL),
+(3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','4',NULL,NULL,NULL,NULL),
+(4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','5',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `usuarios_roles` */
 
