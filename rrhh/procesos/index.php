@@ -134,8 +134,5 @@ $values = array_merge($values,$_FILES);
             
             $Evaluaciones = new Evaluaciones;
             $generar  = $Evaluaciones->generar($values);
-            print_r($generar);
-            echo "ssssssssss";
-            return false;
             
         }	

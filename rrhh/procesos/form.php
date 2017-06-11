@@ -3,7 +3,7 @@
 
 <h1 class="text-center">Procesos</h1>
 <form action="index.php" method="post" enctype="multipart/form-data">
-    <input type="text" name="action" value="<?php if(isset($values['action']) and $values['action']!='') echo $values['action'];?>">
+      <input type="hidden" name="action" value="<?php if(isset($values['action']) and $values['action']!='') echo $values['action'];?>">
 <div>
 
   <!-- Nav tabs -->
@@ -19,6 +19,7 @@
   </div>
 
 </div>
+      <button class="btn btn-default" href="<?php echo full_url?>/rrhh/procesos/index.php">Regresar</button>
     <button type="submit" class="btn btn-success">Guardar</button>
     <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
     <a class="btn btn-primary" href="index.php?action=generar_evaluaciones&id_proc=<?php echo $values['id_proc']?>">Inicio</a>
