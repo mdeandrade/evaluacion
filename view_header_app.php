@@ -17,7 +17,7 @@
  </head>
 <body>
     <div class="" style="background-color: #cccccc;">
-        <img src="<?php echo full_url?>/web/img/cmc.jpg" width="100%">
+        <img src="<?php echo full_url?>/web/img/cmc_header.jpg" width="100%">
         <!--<img class="text-right" src="<?php echo full_url?>/web/img/sncf.png" width="100">-->
 
     </div>
