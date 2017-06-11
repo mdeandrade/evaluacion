@@ -1,27 +1,32 @@
 <?php include('../../view_header_app.php')?>
 <?php include('../menu.php')?>
 <div class="container">
-	<h1 class="text-center big_title">Usuarios</h1>
-	<table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
+	<h1 class="text-center big_title">Listado de usuarios</h1>
+        <div class="container-pro">
+            <br>
+	<table id="example"  class="table table-striped table-responsive" width="100%" cellspacing="0">
 			<thead>
 				<tr>
-					<th>Nro Usuario</th>
-                                        <th>Cargo</th>
-                                        <th>Estatus</th>
-					<th>Detalle</th>
+					<th>Usuario</th>
+                                        <th>Nombre</th>
+                                        <th>Ubicación</th>
+					<th>Estatus</th>
+                                        <th>Expedientes</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<th><input id="idPoliza" name="id_cargo" type="text"></th>
-                                        <th><input id="NumPoliza" name="nom_cargo" type="text"></th>
-                                        <th><input id="Placa" name="id_estatus" type="text"></th>			
-					<th>Detalle</th>
+					<th><input id="id_usuario" name="nom_usuario" type="text"></th>
+                                        <th><input id="" name="" type="text"></th>
+                                        <th><input id="ubicacion" name="ubicacion" type="text"></th>
+                                        <th><input id="estatus" name="id_estatus" type="text"></th>			
+					<th>Expediente</th>
 				</tr>
 			</tfoot>
 		</table>
-
-	<a class="btn btn-success"  href="<?php echo full_url."/rrhh/usuarios/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i> Agregar</a>
+</div>
+	<!--<a class="btn btn-success"  href="<?php echo full_url."/rrhh/usuarios/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i> Agregar</a>
+-->
 </div>
 	<?php include('../../view_footer_solicitud.php')?>
 <script>
@@ -32,13 +37,13 @@ $(document).ready(function() {
 	$('#example tfoot th').each( function () {
 		var title = $('#example thead th').eq( $(this).index() ).text();
 		
-		if(title != 'Detalle')
+		if(title != 'Expediente')
 		{
-			$(this).html( '<input size="10" class="input-sm filtros" id="column_'+$(this).index()+'" type="text" placeholder="'+title+'" />' );			
+			$(this).html( '<input size="20" class="input-sm filtros" id="column_'+$(this).index()+'" type="text" placeholder="'+title+'" />' );			
 		}
-		if(title == 'Detalle')
+		if(title == 'Expedientes')
 		{
-			$(this).html( '<button id="clear">Limpiar</button>' );	
+			$(this).html( '<button id="">Expediente</button>' );	
 		}
 
 	} );
@@ -60,7 +65,7 @@ $(document).ready(function() {
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 3 ] }
+          { 'bSortable': false, 'aTargets': [ 4 ] }
        ]				
     });
 
@@ -84,8 +89,13 @@ $('#column_3').on ('keypress', function(e){
         table.column(table.column(3)).search($(this).val()).draw();
     }
 });
+$('#column_4').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(4)).search($(this).val()).draw();
+    }
+});
 
-
+<!--
 	$('#clear').click(function(){
 		table.search( '' ).columns().search( '' ).draw();
 		$('.filtros').val('');
@@ -93,5 +103,4 @@ $('#column_3').on ('keypress', function(e){
 
 
 } );
-
 </script>
