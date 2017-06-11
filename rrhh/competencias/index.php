@@ -35,7 +35,7 @@ $values = array_merge($values,$_FILES);
 	function executeIndex($values = null)
 	{
 
-		require('list.php');
+		require('form.php');
 	}
 	function executeNew($values = null, $errors = null)
 	{

@@ -105,4 +105,7 @@
         </table>
       </div>
       </div>
-        <br>
+      <div class="col-sm-12 col-sm-12">
+        <a class="btn btn-default" href="<?php echo full_url?>/rrhh/index.php?action=bienvenida">Regresar</a>
+        <button type="submit" class="btn btn-success">Aceptar</button>
+      </div> 
