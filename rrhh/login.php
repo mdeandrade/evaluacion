@@ -1,42 +1,46 @@
 <?php include("../view_header.php");?>
-
-        	<div class="col-md-4 col-lg-4">
-        	</div>
-        	
-            <div class="col-md-4 col-lg-4">
-				 <div class="panel panel-vinotinto ">
+<style type="text/css">
+body {
+    background-image: url(<?php echo full_url?>/web/img/fondo_cmc.jpg);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-attachment: fixed;
+}
+</style>
+        <br>
+        <br>
+       <div class="container">
+              <div class="row">
+              	<div class="col-lg-6 col-md-5 col-sm-12 col-xs-12">
+                </div>
+                <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12">
+				 <div class="panel panel-index">
 					<div class="panel-heading" >
-					  <label class="panel-title"><?php echo title;?></label>
+					  <label class="panel-title" align='center' ><?php echo title;?></label>
 					</div>
 				  <div class="panel-body">
-                                      
-                                      <div align='center' class="visible-lg visible-md">
-                                         <img src="<?php echo full_url;?>/web/img/contraloria.png" class="img-responsive" width="150"> 
-                                      </div>
+
                                       <div align='center' class="visible-sm visible-xs">
                                          <!--<img src="<?php echo full_url;?>/web/img/g190.png" class="img-responsive" width="100"> -->
-                                      </div>					
+                                      </div>
                                         <form name="" id="" novalidate action="<?php echo full_url;?>/rrhh/index.php" method="POST">
-			                
+
                                 <input type="hidden" name="action" value="acceso"/>
 			                    <div class="control-group form-group">
-			                        <div class="controls">
+			                    <div class="controls">
 			                            <label>Usuario:</label>
-										
-										<input type="text" autocomplete="off" class="form-control" name="nom_usuario" placeholder=""  required />
-											
-										
+							<input type="text" autocomplete="off" class="form-control" name="nom_usuario" placeholder="Nombre de usuario"  required />
 			                            <p class="help-block"></p>
-			                        </div>
+			                    </div>
 			                    </div>
 			                    <div class="control-group form-group">
 			                        <div class="controls">
 			                            <label>Clave:</label>
-			                            <input autocomplete="off" name='clave' type="password" class="form-control" id="password" required data-validation-required-message="">
-			                        </div>
+			                            <input autocomplete="off" name='clave' type="password" class="form-control" id="password" required data-validation-required-message="" placeholder="Clave">
+                                                </div>
 			                    </div>
-								<div class="control-group form-group">
-			                        <div class="controls">
+                                            <div class="control-group form-group">
+			                    <div class="controls">
 										<?php /*
 
 											  $options = array();
@@ -53,33 +57,31 @@
 											  echo Securimage::getCaptchaHtml($options);
 											  echo "\n</div><strong><p class='text-center small'>Respete letras mayúsculas y minúsculas</p></strong>\n";
 										 */?>
-			 							
-							
-								                           
-			                           
-			                        </div>
+
+
+
+
+			                    </div>
 			                    </div>
 							<div class="row">
                                                             <div align="center">
-                                                                <button type="submit" class="btn-lg btn-success">Conectar <i class="fa fa-arrow-right"></i></button>
-
-
+                                                                <button type="submit" class="btn btn-success">Conectar <i class="fa fa-arrow-right"></i></button>
                                                             </div>
 							</div>
 							<div class="row">
                                                             <div align="center">
-                                                                <a href="<?php echo full_url;?>/rrhh/registrarse.php"> ¡Recuperación de clave !</a>
+                                                                <a class="btn btn-link" href="<?php echo full_url;?>/rrhh/registrarse.php"> ¡Recuperación de clave!</a>
 								<hr>
                                                             </div>
-                                                            
+
 							</div>
 			                    <!-- For success/fail messages -->
-			                    
+
 			                    <?php if(isset($values['message']) and $values['message']!=''):?>
 											<script>
 												$(document).ready(function(){
 												$('.modal-body').html('<div class="alert alert-success" role="alert"><?php echo $values['message']?></div>');
-												$('#myModal').modal('show');	
+												$('#myModal').modal('show');
 												});
 
 
@@ -87,12 +89,15 @@
 
 			                    <?php endif;?>
 								<?php if(isset($values['errors']) and $values['errors']!=''):?>
-			                    	
+
 			                    	<div id="" class="alert alert-danger"><?php echo $values['errors'];?></div>
 			                    <?php endif;?>
 			                </form>
-				  </div>
-				</div>              
+                                    </div>
+				</div>
+                </div>
+              </div>
             </div>
+           
 
-<?php include("../view_footer_clean.php");?>		
+<?php include("../view_footer_clean.php");?>
