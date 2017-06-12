@@ -1,5 +1,5 @@
 
-    
+
     <!--<div class="row">
         <div class="col-xs-4 text-center">
              <img src="<?php echo full_url;?>/web/img/contraloria.png" width="80">
@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Mi perfil<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i> Mi perfil<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="<?php echo full_url?>/rrhh/perfil/index.php">Cambiar Clave</a></li>
           </ul>
@@ -47,12 +47,12 @@
       </ul>
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> Procesos <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i> Procesos <span class="caret"></span></a>
           <ul class="dropdown-menu">
               <li><a href="<?php echo full_url?>/rrhh/procesos/index.php?action=index">Todos los procesos</a></li>
           </ul>
         </li>
-      </ul> 
+      </ul>
       <!--<ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> Personal <span class="caret"></span></a>
@@ -60,7 +60,7 @@
               <li><a href="<?php echo full_url?>/rrhh/personal/index.php?action=index">Listado del Personal</a></li>
           </ul>
         </li>
-      </ul> 
+      </ul>
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#"" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> Niveles <span class="caret"></span></a>
@@ -71,19 +71,18 @@
       </ul>-->
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> Compentencias <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Compentencias <span class="caret"></span></a>
            <ul class="dropdown-menu">
               <li><a href="<?php echo full_url?>/rrhh/competencias/index.php?action=index">Formulario de Competencias</a></li>
           </ul>
         </li>
-      </ul> 
-       
- 
+      </ul>
+
+
   </div><!-- /.container-fluid -->
 </nav>
 		<div class="row">
 			<div class="col-sm-2 col-sm-offset-8">Usuario: <strong><?php echo $_SESSION['nom_usuario']; ?></strong></div>
-			
-			
-		</div>
 
+
+		</div>

@@ -1,11 +1,23 @@
 <?php include("../view_header.php");?>
 <style type="text/css">
 body {
-    background-image: url(<?php echo full_url?>/web/img/fondo_cmc.jpg);
+    background-image: url(<?php echo full_url?>/web/img/productivity2.jpg);
     background-repeat: no-repeat;
-    background-position: top right;
+    background-position: center;
     background-attachment: fixed;
-}
+  }
+  label{
+    font-family: Trebuchet MS;
+  }
+button[type=submit] {
+    background-color: #ba1717;
+    border-color: #ba1717;
+  }
+button[type=submit]:hover {
+    background-color: #9c1414;
+    align-items: center;
+    border-color: #fff;
+  }
 </style>
         <br>
         <br>
@@ -98,6 +110,6 @@ body {
                 </div>
               </div>
             </div>
-           
+
 
 <?php include("../view_footer_clean.php");?>
