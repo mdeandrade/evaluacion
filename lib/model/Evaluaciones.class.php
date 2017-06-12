@@ -17,52 +17,56 @@
 		{
 			
 		}
-                
-                function saveEvalaucion($values){
+                function saveProcesos($values){
 			 
                         $array = array(
-                             "id_proc" => $values['id_proc'],
-                             "descripcion" => $values['descripcion'],
-                             "fec_apertura_evaluacion" => $values['fec_apertura_evaluacion'],
-                             "fec_cierre_evaluacion" => $values['fec_cierre_evaluacion'],
-                             "id_estatus_proc" => $values['id_estatus_proc'],
-                             "fec_apertura_odi" => $values['fec_apertura_odi'],
-                             "fec_cierre_odi" => $values['fec_cierre_odi'],
-                             "peso_odi" => $values['peso_odi'],
-                             "rangos_max_odi" => $values['rangos_max_odi'],
-                             "fec_apertura_competencia" => $values['fec_apertura_competencia'],
-                             "fec_cierre_competencia" => $values['fec_cierre_competencia'],
-                             "peso_competencia" => $values['peso_competencia'],
-                             "rangos_max_coetencias" => $values['rangos_max_coetencias'],
-                             "max_odis_permitidos" => $values['max_odis_permitidos'],
-
+                            "id_proc" => $values['id_proc'],
+                            "descripcion" => $values['descripcion'],
+                            "fec_apertura_evaluacion" => $values['fec_apertura_evaluacion'],
+                            "fec_cierre_evaluacion" => $values['fec_cierre_evaluacion'],
+                            "id_estatus_proc" => $values['id_estatus_proc'],
+                            "fec_apertura_odi" => $values['fec_apertura_odi'],
+                            "fec_cierre_odi" => $values['fec_cierre_odi'],
+                            "peso_odi" => $values['peso_odi'],
+                            "rangos_max_odi" => $values['rangos_max_odi'],
+                            "fec_apertura_competencia" => $values['fec_apertura_competencia'],
+                            "fec_cierre_competencia" => $values['fec_cierre_competencia'],
+                            "peso_competencia" => $values['peso_competencia'],
+                            "rangos_max_coetencias" => $values['rangos_max_coetencias'],
+                            "max_odis_permitidos" => $values['max_odis_permitidos']
                             
                         );
 			$ConnectionORM = new ConnectionORM();
-                        $q = $ConnectionORM->getConnect()->procesos()->insert($array);//insert a tabla de usuarios
+                        $q = $ConnectionORM->getConnect()->procesos()->insert($array);
                         $values['id_proc'] = $ConnectionORM->getConnect()->procesos()->insert_id();
-			return $values;
-                        
+			return $values;	
 			
 		}
-		function updateEvaluacion($values){
+                function updateUser($values){
 
                         $array = array(
-                            'nom_usuario' => $values['nom_usuario'],
-                            'id_grupo' => $values['id_grupo'],
-                            'id_estatus' => $values['id_estatus'],
-                            
+                            "id_proc" => $values['id_proc'],
+                            "descripcion" => $values['descripcion'],
+                            "fec_apertura_evaluacion" => $values['fec_apertura_evaluacion'],
+                            "fec_cierre_evaluacion" => $values['fec_cierre_evaluacion'],
+                            "id_estatus_proc" => $values['id_estatus_proc'],
+                            "fec_apertura_odi" => $values['fec_apertura_odi'],
+                            "fec_cierre_odi" => $values['fec_cierre_odi'],
+                            "peso_odi" => $values['peso_odi'],
+                            "rangos_max_odi" => $values['rangos_max_odi'],
+                            "fec_apertura_competencia" => $values['fec_apertura_competencia'],
+                            "fec_cierre_competencia" => $values['fec_cierre_competencia'],
+                            "peso_competencia" => $values['peso_competencia'],
+                            "rangos_max_coetencias" => $values['rangos_max_coetencias'],
+                            "max_odis_permitidos" => $values['max_odis_permitidos']
                         );
                         
-			if(isset($values['clave']) and $values['clave']!='')
-			{
-				$array['clave'] = hash('sha256', $values['clave']);
-			}
-			$id_usuario = $values['id_usuario'];
-                        //echo $id_usuario;die;
+			$id_proc = $values['id_proc'];
+                        //echo $id_proc;die;
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->usuarios("id_usuario", $id_usuario)->update($array);
+			$q = $ConnectionORM->getConnect()->usuarios("id_proc", $id_proc)->update($array);
 			return $q;
+                        
 			
 		}
                 function generar($values){
@@ -74,7 +78,6 @@
                             $q = $ConnectionORM->getConnect()->Evaluaciones
                             ->select("*")
                             ->join("procesos","INNER JOIN procesos p on p.id_proc = procesos.id_proc")	
-                            ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus")
                             ->where("evaluaciones.id_proc=?",$values['id_proc']);
                 
                             
@@ -83,20 +86,12 @@
                                 
                                 //echo $uprocesos['id_proc']."<br>";
                                $array = array(
+                                "id_evaluaciones" => $values['id_evaluaciones'],
+                                "id_personas" => $values['did_personas'],
+                                "id_ubicacion" => $values['id_ubicacion'],
                                 "id_proc" => $values['id_proc'],
-                                "descripcion" => $values['descripcion'],
-                                "fec_apertura_evaluacion" => $values['fec_apertura_evaluacion'],
-                                "fec_cierre_evaluacion" => $values['fec_cierre_evaluacion'],
-                                "id_estatus_proc" => $values['id_estatus_proc'],
-                                "fec_apertura_odi" => $values['fec_apertura_odi'],
-                                "fec_cierre_odi" => $values['fec_cierre_odi'],
-                                "peso_odi" => $values['peso_odi'],
-                                "rangos_max_odi" => $values['rangos_max_odi'],
-                                "fec_apertura_competencia" => $values['fec_apertura_competencia'],
-                                "fec_cierre_competencia" => $values['fec_cierre_competencia'],
-                                "peso_competencia" => $values['peso_competencia'],
-                                "rangos_max_coetencias" => $values['rangos_max_coetencias'],
-                                "max_odis_permitidos" => $values['max_odis_permitidos'],
+                                "objetivos" => $values['objetivos'],
+                                
 
                                 );
                                 $ConnectionORM = new ConnectionORM();

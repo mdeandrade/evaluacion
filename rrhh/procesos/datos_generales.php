@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row">
          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <label for="exampleInputEmail1">Descripción</label><small class="text-danger">(*)</small>
+             <label for="exampleInputEmail1">Descripción</label><small class="text-danger">(*)</small>
             <input type="text" class="form-control" name="descripcion" value="<?php if(isset($values['descripcion']) and $values['descripcion']!='') echo $values['descripcion'];?>" id="exampleInputEmail1" placeholder="Descripción del proceso">
                 <?php if(isset($errors['descripcion']) and $errors['descripcion']!=''):?>
                 <div class="alert alert-danger"><?php echo $errors['descripcion'];?></div>
