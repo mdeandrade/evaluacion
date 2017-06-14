@@ -55,9 +55,19 @@ CREATE TABLE `competencias` (
   PRIMARY KEY (`id_competencia`),
   KEY `id_person` (`id_persona`),
   CONSTRAINT `id_person` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `competencias` */
+
+insert  into `competencias`(`id_competencia`,`id_persona`,`fec_aplicacion`,`calificacion`,`competencias`,`peso_fijo`,`val_peso`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`,`revisado_por`) values 
+(1,NULL,NULL,NULL,'Compromiso de Trabajo establecer altos estándares de desempeño, abocarse al logro de metas ambiciosas y trabaja con empeño para lograrlas','7',NULL,NULL,NULL,NULL,NULL,NULL),
+(2,NULL,NULL,NULL,'Auto Desarrollo: mido la motivación para el mejoramiento continuo a través de estudios, cursos, lecturas y cualquier otra actividad individual u organizacional que aseguren su evolución personal y profesional','6',NULL,NULL,NULL,NULL,NULL,NULL),
+(3,NULL,NULL,NULL,'Creatividad e iniciativa: mido la capacidad del empleado para aportar y concretar ideas útiles y oportunas que permitan el mejoramiento continuo de los procesos, para alcanzar los objetivos establecidos','7',NULL,NULL,NULL,NULL,NULL,NULL),
+(4,NULL,NULL,NULL,'Comunicación: mide la habilidad para recibir, comprender y transmitir en forma oral y escrita ideas e información de manera que facilite la rápida comprensión, logrando una actitud positiva en cualquier situación de trabajo',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(5,NULL,NULL,NULL,'Adaptación a las normas de la organización: mide el grado en que el empleado cumple con las políticas, normas y procedimientos establecidos por el organismo en cuanto a: apariencia personal, puntualidad, asistencia y otras normativas',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(6,NULL,NULL,NULL,'Gestión de procesos: mide la capacidad que posee el empleado para planificar y dar seguimiento de las actividades emprendidas, enfatizando la consecución de los resultados con una adecuada administración de los recursos',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(7,NULL,NULL,NULL,'Capacidad de análisis y síntesis: mide la habilidad para identificar y jerarquizar los elementos, relaciones y principios que integran un sistema, situación o problema, formulando soluciones concretas y relevantes',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(8,NULL,NULL,NULL,'Trabajo en equipo: Mide la disposición a la unificación de esfuerzos con el resto de los empleados del área, en la consecución de las actividades y objetivos comunes',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `competencias_niveles` */
 
@@ -302,25 +312,34 @@ CREATE TABLE `procesos` (
   `id_proc` int(20) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(2000) DEFAULT NULL,
   `fec_apertura_evaluacion` date DEFAULT NULL,
-  `fec_cierra_evaluacion` date DEFAULT NULL,
+  `fec_cierre_evaluacion` date DEFAULT NULL,
   `id_estatus_proc` int(11) DEFAULT NULL,
   `fec_apertura_odi` date DEFAULT NULL,
   `fec_cierre_odi` date DEFAULT NULL,
   `peso_odi` varchar(10) DEFAULT NULL,
-  `rangos_max_odi` varchar(6) DEFAULT NULL,
+  `rangos_max_odi` varchar(10) DEFAULT NULL,
   `fec_apertura_competencia` date DEFAULT NULL,
   `fec_cierre_competencia` date DEFAULT NULL,
   `peso_competencia` varchar(10) DEFAULT NULL,
-  `rangos_max_competencias` varchar(6) DEFAULT NULL,
+  `rangos_max_competencias` varchar(10) DEFAULT NULL,
   `max_odis_permitidos` varchar(10) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `procesos` */
+
+insert  into `procesos`(`id_proc`,`descripcion`,`fec_apertura_evaluacion`,`fec_cierre_evaluacion`,`id_estatus_proc`,`fec_apertura_odi`,`fec_cierre_odi`,`peso_odi`,`rangos_max_odi`,`fec_apertura_competencia`,`fec_cierre_competencia`,`peso_competencia`,`rangos_max_competencias`,`max_odis_permitidos`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(1,'competencia','2017-06-11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(2,'competencia','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-16','1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(3,'competencia','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-16','1',NULL,'2017-06-11','2017-06-11','1',NULL,NULL,NULL,NULL,NULL,NULL),
+(4,'sadfsadfsdfsd','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','1',NULL,'2017-06-13','2017-06-13','1',NULL,NULL,NULL,NULL,NULL,NULL),
+(5,'gggggggggggggg','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-11','1',NULL,'2017-06-11','2017-06-11','1',NULL,NULL,NULL,NULL,NULL,NULL),
+(6,'competencia','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-13','1',NULL,'2017-06-11','2017-06-11','1',NULL,NULL,NULL,NULL,NULL,NULL),
+(7,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','1',NULL,'2017-06-13','2017-06-13','1',NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `rangos` */
 
@@ -411,6 +430,7 @@ CREATE TABLE `usuarios` (
   `nom_usuario` varchar(45) NOT NULL,
   `clave` varchar(100) NOT NULL,
   `id_estatus` varchar(10) DEFAULT NULL,
+  `perfiles` varchar(2) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
@@ -421,12 +441,12 @@ CREATE TABLE `usuarios` (
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-(0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',NULL,NULL,NULL,NULL),
-(1,'carlos','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',NULL,NULL,NULL,NULL),
-(2,'josselline','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','3',NULL,NULL,NULL,NULL),
-(3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','4',NULL,NULL,NULL,NULL),
-(4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','5',NULL,NULL,NULL,NULL);
+insert  into `usuarios`(`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`perfiles`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',NULL,NULL,NULL,NULL,NULL),
+(1,'carlos','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',NULL,NULL,NULL,NULL,NULL),
+(2,'josselline','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','3',NULL,NULL,NULL,NULL,NULL),
+(3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','4',NULL,NULL,NULL,NULL,NULL),
+(4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','5',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `usuarios_roles` */
 
