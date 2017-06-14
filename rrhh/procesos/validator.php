@@ -32,11 +32,11 @@
 		);
                 $validator_values['id_estatus'] = array(
 
-			"minlength" => 10,
-			"maxlength" => 20,
+			"minlength" => 1,
+			"maxlength" => 2,
 			"type" => "text",
 			"label" => "Estatus",
-			"required" => true
+			"required" => FALSE
 		);
                 $validator_values['fec_apertura_odi'] = array(
 

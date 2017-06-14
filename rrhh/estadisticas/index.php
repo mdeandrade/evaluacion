@@ -28,9 +28,6 @@ $values = array_merge($values,$_FILES);
 		case "list_json":
 			executeListJson($values);	
 		break;
-		case "generar_evaluaciones":
-			executeGenerarEvaluciones($values);	
-		break;
 		default:
                         executeIndex($values);
 		break;
@@ -38,7 +35,7 @@ $values = array_merge($values,$_FILES);
 	function executeIndex($values = null)
 	{
 
-		require('list.php');
+		require('form.php');
 	}
 	function executeNew($values = null, $errors = null)
 	{
@@ -51,15 +48,12 @@ $values = array_merge($values,$_FILES);
 	{
            
             $errors = validate($values,$_FILES);
-            
             if(count($errors)>0){
-                //print_r($errors);die();
 		executeNew($values,$errors);die;
             }else{
-                //echo 'kkkk';die();
                 //print_r($values);die;
-                $Evaluaciones = new Evaluaciones();
-                $values = $Evaluaciones->saveProcesos($values);
+                $Cargos = new Cargos();
+                $values = $Cargos->saveCargos($values);
                
                 executeEdit($values);
             }
@@ -68,8 +62,8 @@ $values = array_merge($values,$_FILES);
 	function executeEdit($values = null,$errors = null,$msg = null)
 	{
 		//print_r($values);die;
-		$Evaluaciones = new Evaluaciones();
-		$values = $Evaluaciones->getProcesosById($values);
+		$Cargos = new Cargos();
+		$values = $Cargos->getCargosById($values);
 		$values['action'] = 'update';
                 $values['msg'] = $msg;
 		
@@ -84,8 +78,8 @@ $values = array_merge($values,$_FILES);
 		executeEdit($values,$errors);die;
             }else{
                
-                $Evaluaciones = new Evaluaciones();
-                $values = $Evaluaciones ->updateProcesos($values);
+                $Cargos = new Cargos();
+                $Cargos ->updateCargos($values);
                 $msg = "Actualizado correctamente";
                 //print_r($values);die;
                 executeEdit($values,$errors,$msg);die;
@@ -132,10 +126,3 @@ $values = array_merge($values,$_FILES);
 		echo json_encode($array_json);die;
 		
 	}
-        function executeGenerarEvaluciones($values)
-        {
-            
-            $Evaluaciones = new Evaluaciones;
-            $generar  = $Evaluaciones->generar($values);
-            
-        }	

@@ -77,6 +77,22 @@
           </ul>
         </li>
       </ul>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Reclamos <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+              <li><a href="<?php echo full_url?>/rrhh/reclamos/index.php?action=index">Reclamos</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Estadísticas <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+              <li><a href="<?php echo full_url?>/rrhh/estadisticas/index.php?action=index"></a></li>
+          </ul>
+        </li>
+      </ul>
 
 
   </div><!-- /.container-fluid -->

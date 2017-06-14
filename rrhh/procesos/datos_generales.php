@@ -26,9 +26,12 @@
           </div>
           <div class="clearfix visible-md-block"></div>
           <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-            <label for="exampleInputEmail1">Estatus</label><small class="text-danger">(*)</small>
+            <label for="exampleInputEmail1">Estatuslll</label><small class="text-danger">(*)</small>
                 <select class="form-control" name="id_estatus" value="<?php if(isset($values['id_estatus']) and $values['id_estatus']!='') echo $values['id_estatus'];?>" id="exampleInputEmail1" placeholder="Estatus">
-                    <?php if(isset($errors['id_estatus']) and $errors['id_estatus']!=''):?>
+                    <option value="1" <?php if(isset($values['id_estatus']) and $values['id_estatus']=='1') echo "selected='selected'";?>>Activo</option>
+                    <option value="0" <?php if(isset($values['id_estatus']) and $values['id_estatus']=='0') echo "selected='selected'";?>>Desactivado</option>
+
+                        <?php if(isset($errors['id_estatus']) and $errors['id_estatus']!=''):?>
                     <div class="alert alert-danger"><?php echo $errors['id_estatus'];?></div>
                   <?php endif;?>
                     <option>Activo</option>
@@ -56,7 +59,7 @@
           </div>
            <div class="clearfix visible-md-block"></div>
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <label for="exampleInputEmail1">Peso maximo para ODI</label><small class="text-danger">(*)</small>
+            <label for="exampleInputEmail1">Peso máximo para ODI</label><small class="text-danger">(*)</small>
             <input type="text" class="form-control" name="peso_odi" value="<?php if(isset($values['peso_odi']) and $values['peso_odi']!='') echo $values['peso_odi'];?>" id="exampleInputEmail1" placeholder="Peso de ODI">
                   <?php if(isset($errors['peso_odi']) and $errors['peso_odi']!=''):?>
                   <div class="alert alert-danger"><?php echo $errors['peso_odi'];?></div>

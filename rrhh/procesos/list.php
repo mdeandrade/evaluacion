@@ -50,6 +50,8 @@
 				</tr>
 			</tfoot>
 	</table>
+        <a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"> Agregar</a>			
+
 </div>       
        
 	<?php include('../../view_footer_solicitud.php')?>
