@@ -3,53 +3,35 @@
 <div class="container">
 	<h1 class="text-center big_title">Procesos</h1>
 
-       <div class="container-pro">
-	<table id="" class="table table-striped  table-responsive" width="100%" cellspacing="0">
+	<table id="example" class="table table-striped  table-responsive" width="100%" cellspacing="0">
 			<thead>
 				<tr>
-					<th>Proceso 1</th>
-                                        <th>Proceso 2</th>
-                                        <th>Descripción</th>
-                                        <th></th>
-                                </tr>
+                    <th>ID</th>
+					<th>Descripción</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Detalle</th>
+                </tr>
 			</thead>
 			<tfoot>
 				<tr>
-                                    <th><input id="id_pro" name="id_proc" type="radio"></th> 
-                                    <th><input id="id_pro" name="id_proc" type="radio"></th>
-                                        <th><input id="descripcion" name="descripcion" type="text"></th>
-                                        <th><a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"> Agregar</a></th>			
+                    <th>ID</th>
+					<th>Descripción</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Detalle</th>	
 				</tr>
 			</tfoot>
 	</table>
- </div>
-        
-        <br>
-        <br>
-        <h1 class="text-center">Registro</h1>
-        <table id="example" class="table table-striped table-responsive" width="100%" cellspacing="0">
-                <thead>
-				<tr>
-                                        <th>Fecha de inicio</th>
-                                        <th>Fecha de fin</th>
-					<th>Proceso</th>
-                                        <th>Descripción</th>
-                                        <th>Estatus</th>
-                                        <th></th>
-                                </tr>
-			</thead>
-			<tfoot>
-				<tr>
-                                    <th><input id="fec_apertura" name="fecha_ini" type="date"></th>
-                                    <th><input id="fec_cierre" name="fecha_fin" type="date"></th>
-                                    <th><label>1 <input id="id_pro" name="id_proc" type="radio" readonly=""></label>
-                                        <label>2<input id="id_pro" name="id_proc" type="radio"readonly=""></label></th>
-                                    <th><input id="descripcion" name="descripcion" type="text"readonly=""></th>
-                                    <th><input id="estatus" name="id_estatus" type="text"></th>
-                                    <th><!--<a class="btn"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"> -->Detalles</a></th>			
-				</tr>
-			</tfoot>
-	</table>
+      
         <a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"> Agregar</a>			
 
 </div>       
@@ -69,7 +51,7 @@ $(document).ready(function() {
 		}
 		if(title == '')
 		{
-			$(this).html( '<button id="detalles">Detalles</button>' );	
+			$(this).html( '<button id="detalles">Limpiar</button>' );	
 		}
 
 	} );
@@ -80,19 +62,23 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": true,
 		 "sDom": 'ltrip',
-        "ajax": "<?php echo full_url."/ap/Cargos/index.php?action=list_json"?>",
+        "ajax": "<?php echo full_url."/rrhh/procesos/index.php?action=list_json"?>",
 		"language": {
                 "url": "<?php echo full_url."/web/js/"?>datatables.spanish.lang"
         },
         "columns": [
-            { "data": "fec_apertura" },
-            { "data": "fec_cierre"},
             { "data": "id_proc" },
-            { "data": "descripcion" },
+            { "data": "descripcion"},
+            { "data": "fec_apertura_evaluacion" },
+            { "data": "fec_cierre_evaluacion" },
+            { "data": "fec_apertura_odi" },
+            { "data": "fec_cierre_odi"},
+            { "data": "fec_apertura_competencia" },
+            { "data": "fec_cierre_competencia" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 3 ] }
+          { 'bSortable': false, 'aTargets': [ 8 ] }
        ]				
     });
 $('#column_0').on ('keypress', function(e){
@@ -125,19 +111,28 @@ $('#column_5').on ('keypress', function(e){
         table.column(table.column(5)).search($(this).val()).draw();
     }
 });
-<!--
 $('#column_6').on ('keypress', function(e){
     if(e.which == 13) {
         table.column(table.column(6)).search($(this).val()).draw();
     }
 });
+$('#column_7').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(7)).search($(this).val()).draw();
+    }
+});
+$('#column_8').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(8)).search($(this).val()).draw();
+    }
+});
+
 
 
 	$('#clear').click(function(){
 		table.search( '' ).columns().search( '' ).draw();
 		$('.filtros').val('');
 	});
-        -->
 
 
 } );
