@@ -11,7 +11,7 @@
 	 *
 	 * @author marcos
 	 */
-	class Evaluaciones {
+	class Procesos {
 		
 		public function __construct() 
 		{

@@ -29,7 +29,7 @@ $values = array_merge($values,$_FILES);
 			executeListJson($values);	
 		break;
 		case "generar_evaluaciones":
-			executeGenerarEvaluciones($values);	
+                    executeGenerarEvaluacionesciones($values);	
 		break;
 		default:
                         executeIndex($values);
@@ -58,8 +58,8 @@ $values = array_merge($values,$_FILES);
             }else{
                 //echo 'kkkk';die();
                 //print_r($values);die;
-                $Evaluaciones = new Evaluaciones();
-                $values = $Evaluaciones->saveProcesos($values);
+                $Procesos = new Procesoss();
+                $values = $Procesos->saveProcesos($values);
                
                 executeEdit($values);
             }
@@ -68,8 +68,8 @@ $values = array_merge($values,$_FILES);
 	function executeEdit($values = null,$errors = null,$msg = null)
 	{
 		//print_r($values);die;
-		$Evaluaciones = new Evaluaciones();
-		$values = $Evaluaciones->getProcesosById($values);
+		$Procesos = new Procesoss();
+		$values = $Procesoss->getProcesosById($values);
 		$values['action'] = 'update';
                 $values['msg'] = $msg;
 		
@@ -132,10 +132,10 @@ $values = array_merge($values,$_FILES);
 		echo json_encode($array_json);die;
 		
 	}
-        function executeGenerarEvaluciones($values)
+        function executeGenerarEvaluaciones($values)
         {
             
-            $Evaluaciones = new Evaluaciones;
-            $generar  = $Evaluaciones->generar($values);
+            $Procesos = new Procesos();
+            $generar  = $Procesos->generar($values);
             
         }	
