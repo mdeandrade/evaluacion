@@ -11,7 +11,7 @@
 	 *
 	 * @author marcos
 	 */
-	class Procesos {
+	class Evaluaciones {
 		
 		public function __construct() 
 		{
@@ -110,8 +110,7 @@
                             $ConnectionORM = new ConnectionORM();
                             $q = $ConnectionORM->getConnect()->Evaluaciones
                             ->select("*")
-                            ->join("procesos","INNER JOIN procesos p on p.id_proc = procesos.id_proc")
-                            ->join("personas","INNER JOIN personas p on per.id_personas = personas.id_personas")
+                            ->join("procesos","INNER JOIN procesos p on p.id_proc = procesos.id_proc")	
                             ->where("evaluaciones.id_proc=?",$values['id_proc']);
                 
                             

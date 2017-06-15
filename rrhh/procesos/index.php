@@ -1,141 +1,74 @@
-<?php include("../../autoload.php");?>	
-<?php include("validator.php");?>
-<?php include("../security/security.php");?>
-<?php $action = "";
+<?php include("../autoload.php");?>		
+<?php //include("security.php");?>						
+<?php
 
+
+$action = "";
 if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 	$action = $_REQUEST["action"];
 }
-
 $values = $_REQUEST;
-$values = array_merge($values,$_FILES);
 	switch ($action) {
 		case "index":
 			executeIndex($values);	
 		break;
-		case "new":
-			executeNew($values);	
+                case "acceso":
+			executeAcceso($values);	
 		break;
-		case "add":
-			executeAdd($values);	
-		break;            
-                case "edit":
-			executeEdit($values);	
+		case "bienvenida":
+			executeBienvenida($values);	
 		break;
-                case "update":
-			executeUpdate($values);	
-		break;
-		case "list_json":
-			executeListJson($values);	
-		break;
-		case "generar_evaluaciones":
-                    executeGenerarEvaluacionesciones($values);	
+		case "logout":
+			executeLogout($values);	
 		break;
 		default:
-                        executeIndex($values);
+			executeIndex($values);
 		break;
 	}
-	function executeIndex($values = null)
+						
+	function executeIndex($values = null){
+    
+	if(isset($_SESSION['id_usuario']) and $_SESSION['id_usuario']!='')
 	{
-
-		require('list.php');
-	}
-	function executeNew($values = null, $errors = null)
-	{
-                $values['action'] = "add";
-		require('form.php');
-	}
-
-        
-	function executeAdd($values = null,$errors = array())
-	{
-           
-            $errors = validate($values,$_FILES);
-            
-            if(count($errors)>0){
-                //print_r($errors);die();
-		executeNew($values,$errors);die;
-            }else{
-                //echo 'kkkk';die();
-                //print_r($values);die;
-                $Procesos = new Procesos();
-                $values = $Procesos->saveProcesos($values);
-               
-                executeEdit($values);
-            }
-                
-	}
-	function executeEdit($values = null,$errors = null,$msg = null)
-	{
-		//print_r($values);die;
-		$Procesos = new Procesos();
-		$values = $Procesoss->getProcesosById($values);
-		$values['action'] = 'update';
-                $values['msg'] = $msg;
+		executeBienvenida();
+	}else{
+		session_destroy();
+		unset($_SESSION['id_usuario'],$_SESSION['nombres'],$_SESSION['apellidos'],$_SESSION['usuario']);
+		require('login.php');
+	}	
 		
-		require('form.php');
-	}
-	function executeUpdate($values = null)
-	{
 
-            $errors = validate($values,$_FILES);
-            if(count($errors)>0){
-               
-		executeEdit($values,$errors);die;
-            }else{
-               
-                $Procesos = new Procesos();
-                $values = $Procesos ->updateProcesos($values);
-                $msg = "Actualizado correctamente";
-                //print_r($values);die;
-                executeEdit($values,$errors,$msg);die;
-            }
-		
-		
+	
 	}
-	function executeListJson($values)
+	function executeBienvenida($values = null){
+	
+	require('bienvenida.php');
+	}
+	function executeAcceso($values = null)
 	{
-		$Cargos= new Cargos();
-		$list_json = $Cargos ->getCargosList($values);
-		$list_json_cuenta = $Cargos ->getCountCargosList($values);
-		$array_json = array();
-		$array_json['recordsTotal'] = $list_json_cuenta;
-		$array_json['recordsFiltered'] = $list_json_cuenta;
-		if(count($list_json)>0)
-		{
-			foreach ($list_json as $list) 
-			{
-
-				$id_cargo = $list['id_cargo'];
-				$array_json['data'][] = array(
-					"id_cargo" => $id_cargo,
-					"nom_cargo" => $list['nom_cargo'],
-					"nom_estatus" => $list['nom_estatus'],
-					"actions" => 
-                                       '<form method="POST" action = "'.full_url.'/ap/Cargos/index.php" >'
-                                       .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id_cargo" value="'.$id_cargo.'">  '
-                                       .'<button class="btn btn-default btn-sm" title="Ver detalle" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
-                                        .'</form>'
-					);	
-			}		
-		}else{
-			$array_json['recordsTotal'] = 0;
-			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array(
-                            "id_cargo"=>null,
-                            "nom_cargo"=>"",
-                            "nom_estatus"=>"",
-                            "actions"=>""
-                            );
+              
+		$Login = new Login();
+		$q = $Login->GetLogin($values["nom_usuario"],$values["clave"]);
+               
+		//echo $q;die;
+                //print_r($values);
+		if(count($q)> 0)
+		{	
+                       
+			$_SESSION['id_persona'] = $q[0]['id_persona'];
+			$_SESSION['nom_usuario'] = $q[0]['nom_usuario'];
+			executeBienvenida($values);
 		}
-		echo json_encode($array_json);die;
-		
+		else
+		{
+			$values = null;
+			$values["errors"] = "Usuario o clave incorrecto";
+			executeIndex($values);
+		}
 	}
-        function executeGenerarEvaluaciones($values)
-        {
-            
-            $Procesos = new Procesos();
-            $generar  = $Procesos->generar($values);
-            
-        }	
+	function executeLogout($values = null){
+        session_destroy();
+	unset($_SESSION['id_perms'],$_SESSION['id_user'],$_SESSION['id_company'],$_SESSION['name'],$_SESSION['login']);
+
+	require('login.php');
+	}
