@@ -62,6 +62,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendors/swiftmailer/lib/
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/ValidateBase.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/vendors/securimage/securimage.php');
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Login.class.php');
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Evaluaciones.class.php');
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Usuarios.class.php');
 /*validation class*/
 
