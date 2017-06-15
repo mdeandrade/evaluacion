@@ -58,7 +58,7 @@ $values = array_merge($values,$_FILES);
             }else{
                 //echo 'kkkk';die();
                 //print_r($values);die;
-                $Procesos = new Procesoss();
+                $Procesos = new Procesos();
                 $values = $Procesos->saveProcesos($values);
                
                 executeEdit($values);
@@ -68,7 +68,7 @@ $values = array_merge($values,$_FILES);
 	function executeEdit($values = null,$errors = null,$msg = null)
 	{
 		//print_r($values);die;
-		$Procesos = new Procesoss();
+		$Procesos = new Procesos();
 		$values = $Procesoss->getProcesosById($values);
 		$values['action'] = 'update';
                 $values['msg'] = $msg;
@@ -84,8 +84,8 @@ $values = array_merge($values,$_FILES);
 		executeEdit($values,$errors);die;
             }else{
                
-                $Evaluaciones = new Evaluaciones();
-                $values = $Evaluaciones ->updateProcesos($values);
+                $Procesos = new Procesos();
+                $values = $Procesos ->updateProcesos($values);
                 $msg = "Actualizado correctamente";
                 //print_r($values);die;
                 executeEdit($values,$errors,$msg);die;
