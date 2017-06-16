@@ -2,27 +2,40 @@
 <?php include('../menu.php')?>
 <div class="container">
 	<h1 class="text-center big_title">Procesos</h1>
-	<table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
+
+	<table id="example" class="table table-striped  table-responsive" width="100%" cellspacing="0">
 			<thead>
 				<tr>
-					<th>ID.Cargo</th>
-                                        <th>Cargo</th>
-                                        <th>Estatus</th>
-					<th>Detalle</th>
-				</tr>
+                    <th>ID</th>
+					<th>Descripción</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Detalle</th>
+                </tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<th><input id="idPoliza" name="id_cargo" type="text"></th>
-                                        <th><input id="NumPoliza" name="nom_cargo" type="text"></th>
-                                        <th><input id="Placa" name="id_estatus" type="text"></th>			
-					<th>Detalle</th>
+                    <th>ID</th>
+					<th>Descripción</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Fecha desde</th>
+                    <th>Fecha hasta</th>
+                    <th>Detalle</th>	
 				</tr>
 			</tfoot>
-		</table>
+	</table>
+      
+        <a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"> Agregar</a>			
 
-	<a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i> Agregar</a>
-</div>
+</div>       
+       
 	<?php include('../../view_footer_solicitud.php')?>
 <script>
 
@@ -34,11 +47,11 @@ $(document).ready(function() {
 		
 		if(title != 'Detalle')
 		{
-			$(this).html( '<input size="10" class="input-sm filtros" id="column_'+$(this).index()+'" type="text" placeholder="'+title+'" />' );			
+			$(this).html( '<input size="20" class="input-sm filtros" id="column_'+$(this).index()+'" type="text" placeholder="'+title+'" />' );			
 		}
-		if(title == 'Detalle')
+		if(title == '')
 		{
-			$(this).html( '<button id="clear">Limpiar</button>' );	
+			$(this).html( '<button id="detalles">Limpiar</button>' );	
 		}
 
 	} );
@@ -49,21 +62,25 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": true,
 		 "sDom": 'ltrip',
-        "ajax": "<?php echo full_url."/ap/Cargos/index.php?action=list_json"?>",
+        "ajax": "<?php echo full_url."/rrhh/procesos/index.php?action=list_json"?>",
 		"language": {
                 "url": "<?php echo full_url."/web/js/"?>datatables.spanish.lang"
         },
         "columns": [
-            { "data": "id_cargo" },
-            { "data": "nom_cargo" },
-            { "data": "nom_estatus" },
+            { "data": "id_proc" },
+            { "data": "descripcion"},
+            { "data": "fec_apertura_evaluacion" },
+            { "data": "fec_cierre_evaluacion" },
+            { "data": "fec_apertura_odi" },
+            { "data": "fec_cierre_odi"},
+            { "data": "fec_apertura_competencia" },
+            { "data": "fec_cierre_competencia" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 3 ] }
+          { 'bSortable': false, 'aTargets': [ 8 ] }
        ]				
     });
-
 $('#column_0').on ('keypress', function(e){
     if(e.which == 13) {
         table.column(table.column(0)).search($(this).val()).draw();
@@ -84,6 +101,32 @@ $('#column_3').on ('keypress', function(e){
         table.column(table.column(3)).search($(this).val()).draw();
     }
 });
+$('#column_4').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(4)).search($(this).val()).draw();
+    }
+});
+$('#column_5').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(5)).search($(this).val()).draw();
+    }
+});
+$('#column_6').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(6)).search($(this).val()).draw();
+    }
+});
+$('#column_7').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(7)).search($(this).val()).draw();
+    }
+});
+$('#column_8').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(8)).search($(this).val()).draw();
+    }
+});
+
 
 
 	$('#clear').click(function(){
