@@ -1,38 +1,30 @@
 <?php include('../../view_header_app.php')?>
 <?php include('../menu.php')?>
 <div class="container">
-	<h1 class="text-center big_title">Procesos</h1>
+	<h1 class="text-center big_title">Reclamos</h1>
 
 	<table id="example" class="table table-striped  table-responsive" width="100%" cellspacing="0">
 			<thead>
 				<tr>
                     <th>ID</th>
-					<th>Descripción</th>
-                    <th>Fecha desde</th>
-                    <th>Fecha hasta</th>
-                    <th>Fecha desde</th>
-                    <th>Fecha hasta</th>
-                    <th>Fecha desde</th>
-                    <th>Fecha hasta</th>
+					<th>Persona</th>
+                    <th>Evaluacion</th>
+                    <th>Ubicacion</th>
                     <th>Detalle</th>
                 </tr>
 			</thead>
 			<tfoot>
 				<tr>
                     <th>ID</th>
-					<th>Descripción</th>
-                    <th>Fecha desde</th>
-                    <th>Fecha hasta</th>
-                    <th>Fecha desde</th>
-                    <th>Fecha hasta</th>
-                    <th>Fecha desde</th>
-                    <th>Fecha hasta</th>
+					<th>Persona</th>
+                    <th>Evaluacion</th>
+                    <th>Ubicacion</th>
                     <th>Detalle</th>	
 				</tr>
 			</tfoot>
 	</table>
       
-        <a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"> Agregar</a>			
+        <a class="btn btn-success"  href="<?php echo full_url."/rrhh/reclamos/index.php?action=new"?>"> Agregar</a>			
 
 </div>       
        
@@ -62,19 +54,15 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": true,
 		 "sDom": 'ltrip',
-        "ajax": "<?php echo full_url."/rrhh/procesos/index.php?action=list_json"?>",
+        "ajax": "<?php echo full_url."/rrhh/reclamos/index.php?action=list_json"?>",
 		"language": {
                 "url": "<?php echo full_url."/web/js/"?>datatables.spanish.lang"
         },
         "columns": [
             { "data": "id_proc" },
-            { "data": "descripcion"},
-            { "data": "fec_apertura_evaluacion" },
-            { "data": "fec_cierre_evaluacion" },
-            { "data": "fec_apertura_odi" },
-            { "data": "fec_cierre_odi"},
-            { "data": "fec_apertura_competencia" },
-            { "data": "fec_cierre_competencia" },
+            { "data": "id_persona"},
+            { "data": "id_evaluacion" },
+            { "data": "id_ubicacion" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
@@ -101,7 +89,7 @@ $('#column_3').on ('keypress', function(e){
         table.column(table.column(3)).search($(this).val()).draw();
     }
 });
-$('#column_4').on ('keypress', function(e){
+/*$('#column_4').on ('keypress', function(e){
     if(e.which == 13) {
         table.column(table.column(4)).search($(this).val()).draw();
     }
@@ -125,7 +113,7 @@ $('#column_8').on ('keypress', function(e){
     if(e.which == 13) {
         table.column(table.column(8)).search($(this).val()).draw();
     }
-});
+});*/
 
 
 
