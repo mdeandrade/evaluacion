@@ -26,16 +26,10 @@
           </div>
           <div class="clearfix visible-md-block"></div>
           <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-            <label for="exampleInputEmail1">Estatuslll</label><small class="text-danger">(*)</small>
+            <label for="exampleInputEmail1">Estatus</label><small class="text-danger">(*)</small>
                 <select class="form-control" name="id_estatus" value="<?php if(isset($values['id_estatus']) and $values['id_estatus']!='') echo $values['id_estatus'];?>" id="exampleInputEmail1" placeholder="Estatus">
                     <option value="1" <?php if(isset($values['id_estatus']) and $values['id_estatus']=='1') echo "selected='selected'";?>>Activo</option>
                     <option value="0" <?php if(isset($values['id_estatus']) and $values['id_estatus']=='0') echo "selected='selected'";?>>Desactivado</option>
-
-                        <?php if(isset($errors['id_estatus']) and $errors['id_estatus']!=''):?>
-                    <div class="alert alert-danger"><?php echo $errors['id_estatus'];?></div>
-                  <?php endif;?>
-                    <option>Activo</option>
-                    <option>Inactivo</option>
                 </select>
           </div>
            <br>
@@ -65,7 +59,7 @@
                   <div class="alert alert-danger"><?php echo $errors['peso_odi'];?></div>
                   <?php endif;?>
           </div>
-          
+
           <div class="clearfix visible-md-block"></div>
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <label for="exampleInputEmail1">Rango maximo para ODI</label><small class="text-danger">(*)</small>
@@ -74,7 +68,7 @@
                 <div class="alert alert-danger"><?php echo $errors['rango_max_odi'];?></div>
                 <?php endif;?>
           </div>
-          
+
           <!--<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <label for="exampleInputEmail1">Ubicación</label><small class="text-danger">(*)</small>
                 <select class="form-control" name="id_ubicacion" value="<?php if(isset($values['id_ubicacion']) and $values['id_ubicacion']!='') echo $values['id_ubicacion'];?>" id="exampleInputEmail1">
@@ -124,7 +118,7 @@
                 <div class="alert alert-danger"><?php echo $errors['rango_max_competencia'];?></div>
                 <?php endif;?>
           </div>
-          
+
           <div class="clearfix visible-md-block"></div>
           <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
             <label for="exampleInputFile">Cargar personal</label>

@@ -1,4 +1,4 @@
-<?php include("../../autoload.php");?>	
+<?php include("../../autoload.php");?>
 <?php include("validator.php");?>
 <?php include("../security/security.php");?>
 <?php $action = "";
@@ -11,22 +11,22 @@ $values = $_REQUEST;
 $values = array_merge($values,$_FILES);
 	switch ($action) {
 		case "index":
-			executeIndex($values);	
+			executeIndex($values);
 		break;
 		case "new":
-			executeNew($values);	
+			executeNew($values);
 		break;
 		case "add":
-			executeAdd($values);	
-		break;            
+			executeAdd($values);
+		break;
                 case "edit":
-			executeEdit($values);	
+			executeEdit($values);
 		break;
                 case "update":
-			executeUpdate($values);	
+			executeUpdate($values);
 		break;
 		case "list_json":
-			executeListJson($values);	
+			executeListJson($values);
 		break;
 		default:
                         executeIndex($values);
@@ -43,30 +43,30 @@ $values = array_merge($values,$_FILES);
 		require('form.php');
 	}
 
-        
+
 	function executeAdd($values = null,$errors = array())
 	{
-           
+
             $errors = validate($values,$_FILES);
             if(count($errors)>0){
 		executeNew($values,$errors);die;
             }else{
                 //print_r($values);die;
-                $Cargos = new Cargos();
-                $values = $Cargos->saveCargos($values);
-               
+                $Usuarios = new Usuarios();
+                $values = $Usuarios->saveUsuarios($values);
+
                 executeEdit($values);
             }
-                
+
 	}
 	function executeEdit($values = null,$errors = null,$msg = null)
 	{
 		//print_r($values);die;
-		$Cargos = new Cargos();
-		$values = $Cargos->getCargosById($values);
+		$Usuarios = new Usuarios();
+		$values = $Usuarios->getUsuariosById($values);
 		$values['action'] = 'update';
                 $values['msg'] = $msg;
-		
+
 		require('form.php');
 	}
 	function executeUpdate($values = null)
@@ -74,55 +74,53 @@ $values = array_merge($values,$_FILES);
 
             $errors = validate($values,$_FILES);
             if(count($errors)>0){
-               
+
 		executeEdit($values,$errors);die;
             }else{
-               
-                $Cargos = new Cargos();
-                $Cargos ->updateCargos($values);
+
+                $Usuarios = new Usuarios();
+                $Usuarios ->updateUsuarios($values);
                 $msg = "Actualizado correctamente";
                 //print_r($values);die;
                 executeEdit($values,$errors,$msg);die;
             }
-		
-		
+
+
 	}
 	function executeListJson($values)
 	{
-		$Cargos= new Cargos();
-		$list_json = $Cargos ->getCargosList($values);
-		$list_json_cuenta = $Cargos ->getCountCargosList($values);
+		$Usuarios= new Usuarios();
+		$list_json = $Usuarios ->getUsuariosList($values);
+		$list_json_cuenta = $Usuarios ->getCountUsuariosList($values);
 		$array_json = array();
 		$array_json['recordsTotal'] = $list_json_cuenta;
 		$array_json['recordsFiltered'] = $list_json_cuenta;
 		if(count($list_json)>0)
 		{
-			foreach ($list_json as $list) 
+			foreach ($list_json as $list)
 			{
-
-				$id_cargo = $list['id_cargo'];
+				$id_persona = $list['id_persona'];
 				$array_json['data'][] = array(
-					"id_cargo" => $id_cargo,
-					"nom_cargo" => $list['nom_cargo'],
-					"nom_estatus" => $list['nom_estatus'],
-					"actions" => 
-                                       '<form method="POST" action = "'.full_url.'/ap/Cargos/index.php" >'
+					"id_persona" => $id_persona,
+					"nom_usuario" => $list['nom_usuario'],
+					"id_estatus" => $list['id_estatus'],
+					"actions" =>
+                                       '<form method="POST" action = "'.full_url.'/rrhh/usuarios/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id_cargo" value="'.$id_cargo.'">  '
+                                       .'<input type="hidden" name="id_persona" value="'.id_persona.'">  '
                                        .'<button class="btn btn-default btn-sm" title="Ver detalle" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
                                         .'</form>'
-					);	
-			}		
+					);
+			}
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array(
-                            "id_cargo"=>null,
-                            "nom_cargo"=>"",
-                            "nom_estatus"=>"",
-                            "actions"=>""
-                            );
+				$array_json['data'][] = array(
+					"id_persona" => null,
+					"nom_usuario" => "",
+					"id_estatus" => "",
+					"actions" => ""
+					);
 		}
 		echo json_encode($array_json);die;
-		
-	}
+    }

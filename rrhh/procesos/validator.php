@@ -68,7 +68,7 @@
 			"maxlength" => 2,
 			"type" => "number",
 			"label" => "Rango maximo para los ODI",
-			"required" => true
+			"required" => true        
 		);
                 $validator_values['fec_apertura_competencia'] = array(
 

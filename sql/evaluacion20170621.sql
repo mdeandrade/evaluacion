@@ -317,29 +317,36 @@ CREATE TABLE `procesos` (
   `fec_apertura_odi` date DEFAULT NULL,
   `fec_cierre_odi` date DEFAULT NULL,
   `peso_odi` varchar(10) DEFAULT NULL,
-  `rangos_max_odi` varchar(10) DEFAULT NULL,
+  `rango_max_odi` varchar(10) DEFAULT NULL,
   `fec_apertura_competencia` date DEFAULT NULL,
   `fec_cierre_competencia` date DEFAULT NULL,
   `peso_competencia` varchar(10) DEFAULT NULL,
-  `rangos_max_competencias` varchar(10) DEFAULT NULL,
+  `rango_max_competencia` varchar(10) DEFAULT NULL,
   `max_odis_permitidos` varchar(10) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `procesos` */
 
-insert  into `procesos`(`id_proc`,`descripcion`,`fec_apertura_evaluacion`,`fec_cierre_evaluacion`,`id_estatus_proc`,`fec_apertura_odi`,`fec_cierre_odi`,`peso_odi`,`rangos_max_odi`,`fec_apertura_competencia`,`fec_cierre_competencia`,`peso_competencia`,`rangos_max_competencias`,`max_odis_permitidos`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+insert  into `procesos`(`id_proc`,`descripcion`,`fec_apertura_evaluacion`,`fec_cierre_evaluacion`,`id_estatus_proc`,`fec_apertura_odi`,`fec_cierre_odi`,`peso_odi`,`rango_max_odi`,`fec_apertura_competencia`,`fec_cierre_competencia`,`peso_competencia`,`rango_max_competencia`,`max_odis_permitidos`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
 (1,'competencia','2017-06-11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (2,'competencia','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-16','1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (3,'competencia','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-16','1',NULL,'2017-06-11','2017-06-11','1',NULL,NULL,NULL,NULL,NULL,NULL),
 (4,'sadfsadfsdfsd','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','1',NULL,'2017-06-13','2017-06-13','1',NULL,NULL,NULL,NULL,NULL,NULL),
 (5,'gggggggggggggg','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-11','1',NULL,'2017-06-11','2017-06-11','1',NULL,NULL,NULL,NULL,NULL,NULL),
 (6,'competencia','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-13','1',NULL,'2017-06-11','2017-06-11','1',NULL,NULL,NULL,NULL,NULL,NULL),
-(7,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','1',NULL,'2017-06-13','2017-06-13','1',NULL,NULL,NULL,NULL,NULL,NULL);
+(7,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','1',NULL,'2017-06-13','2017-06-13','1',NULL,NULL,NULL,NULL,NULL,NULL),
+(8,'competencia','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-11','5',NULL,'2017-06-11','2017-06-11','5',NULL,NULL,NULL,NULL,NULL,NULL),
+(9,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','1',NULL,'2017-06-13','2017-06-13','1',NULL,NULL,NULL,NULL,NULL,NULL),
+(10,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','2',NULL,'2017-06-13','2017-06-13','2',NULL,NULL,NULL,NULL,NULL,NULL),
+(11,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','2','2','2017-06-13','2017-06-13','2',NULL,NULL,NULL,NULL,NULL,NULL),
+(12,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','2','2','2017-06-13','2017-06-13','2',NULL,NULL,NULL,NULL,NULL,NULL),
+(13,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','2','2','2017-06-13','2017-06-13','2',NULL,NULL,NULL,NULL,NULL,NULL),
+(14,'competencia','2017-06-21','2017-06-21',1,'2017-06-21','2017-06-21','2','2','2017-06-21','2017-06-21','2','2',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `rangos` */
 
