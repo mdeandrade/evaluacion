@@ -20,7 +20,7 @@
 
 </div>
       <a class="btn btn-default" href="<?php echo full_url?>/rrhh/index.php?action=bienvenida">Regresar</a>
-    <button type="submit" class="btn btn-success">Guardar</button>
+    <button type="submit" id="guardar" class="btn btn-success">Guardar</button>
     <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
     <a class="btn btn-primary" href="index.php?action=generar_evaluaciones&id_proc=<?php echo $values['id_proc']?>">Inicio</a>
     <button type="submit" class="btn btn-danger">Culminar</button>
@@ -29,8 +29,34 @@
 </form>
 
 <?php include('../../view_footer_solicitud.php')?>
+
 <script>
 
+        /*$("#guardar").click(function() {
+                var rango_1= $('#rango_1').val();
+                alert(rango_1);
+                return false;
+            });*/
+    $('#guardar').click(function(){
+            var rango_1= $('#rango_1').val();
+            var rango_1 = 5;
+            
+            if(rango_1 > 5){
+                bootbox.alert("El valor del rango debe ser menor a 5.");
+                return false;
+            }
+        });
+        
+    $('#guardar').click(function(){
+            var rango_2= $('#rango_2').val();
+            var rango_2 = 5;
+            
+            if(rango_2 > 5){
+                bootbox.alert("El valor del rango debe ser menor a 5.");
+                return false;
+            }
+        });
+            
 $(document).ready(function(){
     $(".rango1").change(function(){
         alert($('input[name=rango1]:radio:checked').val());

@@ -328,7 +328,7 @@ CREATE TABLE `procesos` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 /*Data for the table `procesos` */
 
@@ -346,7 +346,15 @@ insert  into `procesos`(`id_proc`,`descripcion`,`fec_apertura_evaluacion`,`fec_c
 (11,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','2','2','2017-06-13','2017-06-13','2',NULL,NULL,NULL,NULL,NULL,NULL),
 (12,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','2','2','2017-06-13','2017-06-13','2',NULL,NULL,NULL,NULL,NULL,NULL),
 (13,'competencia','2017-06-13','2017-06-13',1,'2017-06-13','2017-06-13','2','2','2017-06-13','2017-06-13','2',NULL,NULL,NULL,NULL,NULL,NULL),
-(14,'competencia','2017-06-21','2017-06-21',1,'2017-06-21','2017-06-21','2','2','2017-06-21','2017-06-21','2','2',NULL,NULL,NULL,NULL,NULL);
+(14,'competencia','2017-06-21','2017-06-21',1,'2017-06-21','2017-06-21','2','2','2017-06-21','2017-06-21','2','2',NULL,NULL,NULL,NULL,NULL),
+(15,'competencia','2017-06-23','2017-06-23',1,'2017-06-23','2017-06-23','5','5','2017-06-23','2017-06-23','5','5',NULL,NULL,NULL,NULL,NULL),
+(16,'competencia','2017-06-23','2017-06-23',1,'2017-06-23','2017-06-23','5','5','2017-06-23','2017-06-23','5','5',NULL,NULL,NULL,NULL,NULL),
+(17,'competencia','2017-06-23','2017-06-23',1,'2017-06-23','2017-06-23','5','5','2017-06-23','2017-06-23','5','5',NULL,NULL,NULL,NULL,NULL),
+(18,'competencia','2017-06-23','2017-06-23',1,'2017-06-23','2017-06-23','4','4','2017-06-23','2017-06-23','4','4',NULL,NULL,NULL,NULL,NULL),
+(19,'zxzgggggggg','2017-12-31','2015-01-31',1,'2017-12-31','2017-12-31','1','1','2017-12-31','2017-12-31','2','2',NULL,NULL,NULL,NULL,NULL),
+(20,'competencia','2017-06-16','2017-06-16',1,'2017-06-16','2017-06-16','2','3','2017-06-16','2017-06-16','2','3',NULL,NULL,NULL,NULL,NULL),
+(21,'fggregrgrdgrgrgf','2017-06-16','2017-06-16',1,'2017-06-16','2017-06-16','5','6','2017-06-16','2017-06-16','5','5',NULL,NULL,NULL,NULL,NULL),
+(22,'fgrhgreytrgrdgrd','2017-06-14','2017-06-14',1,'2017-06-14','2017-06-14','50','3','2017-06-14','2017-06-14','50','2',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `rangos` */
 
@@ -437,7 +445,7 @@ CREATE TABLE `usuarios` (
   `nom_usuario` varchar(45) NOT NULL,
   `clave` varchar(100) NOT NULL,
   `id_estatus` varchar(10) DEFAULT NULL,
-  `perfiles` varchar(2) DEFAULT NULL,
+  `perfil` varchar(2) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
@@ -448,12 +456,12 @@ CREATE TABLE `usuarios` (
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`perfiles`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-(0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',NULL,NULL,NULL,NULL,NULL),
-(1,'carlos','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',NULL,NULL,NULL,NULL,NULL),
-(2,'josselline','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','3',NULL,NULL,NULL,NULL,NULL),
-(3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','4',NULL,NULL,NULL,NULL,NULL),
-(4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','5',NULL,NULL,NULL,NULL,NULL);
+insert  into `usuarios`(`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`perfil`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1','A',NULL,NULL,NULL,NULL),
+(1,'carlos','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1','B',NULL,NULL,NULL,NULL),
+(2,'josselline','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1','C',NULL,NULL,NULL,NULL),
+(3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1','D',NULL,NULL,NULL,NULL),
+(4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1','B',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `usuarios_roles` */
 

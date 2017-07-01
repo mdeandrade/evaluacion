@@ -17,13 +17,13 @@
 		{
 			
 		}
-		public function getUsuariosList($values)
+               public function getUsuariosList($values)
 		{	
 			$columns = array();
-			$columns[0] = 'id_usuario';
+			$columns[0] = 'id_persona';
 			$columns[1] = 'nom_usuario';
-			$columns[2] = 'id_grupo';
-			$columns[3] = 'id_estatus';
+			$columns[2] = 'nom_estatus';
+            
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -32,7 +32,7 @@
 			
 			if(isset($values['columns'][0]['search']['value']) and $values['columns'][0]['search']['value']!='')
 			{
-				$where.=" AND id_usuario = ".$values['columns'][0]['search']['value']."";
+				$where.=" AND id_persona = ".$values['columns'][0]['search']['value']."";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
 			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
@@ -42,14 +42,34 @@
 			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_grupo) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
+			/*if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][3]['search']['value']."%')";
+				$where.=" AND upper(fec_cierre_evaluacion) like ('%".$values['columns'][3]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}	
+			}
+                        if(isset($values['columns'][4]['search']['value']) and $values['columns'][4]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_apertura_odi) like ('%".$values['columns'][4]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][5]['search']['value']) and $values['columns'][5]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_cierre_odi) like ('%".$values['columns'][5]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][6]['search']['value']) and $values['columns'][6]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_apertura_competencia) like ('%".$values['columns'][6]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][7]['search']['value']) and $values['columns'][7]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_cierre_competencia) like ('%".$values['columns'][7]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}*/
 				
 			
 			
@@ -64,21 +84,20 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios
-			->select("*,nom_grupo, nom_estatus")
-			->order("$column_order $order")
-                        ->join("grupos","INNER JOIN grupos g on g.id_grupo = usuarios.id_grupo")  
-                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus")        
+			->select("*")
+			->order("$column_order $order")   
+                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus") 
 			->where("$where")
 			->limit($limit,$offset);
 			//echo $q;die;
 			return $q; 			
 		}
-		public function getCountUsuariosList($values)
+		public function getCountProcesosList($values)
 		{	
 			$where = '1 = 1';
 			if(isset($values['columns'][0]['search']['value']) and $values['columns'][0]['search']['value']!='')
 			{
-				$where.=" AND id_usuario = ".$values['columns'][0]['search']['value']."";
+				$where.=" AND id_persona = ".$values['columns'][0]['search']['value']."";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
 			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
@@ -88,28 +107,29 @@
 			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_grupo) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
+			/*if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][3]['search']['value']."%')";
+				$where.=" AND upper(fec_cierre_evaluacion) like ('%".$values['columns'][3]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}
+			}*/	
+				
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios
 			->select("count(*) as cuenta")	
-                        ->join("grupos","INNER JOIN grupos g on g.id_grupo = usuarios.id_grupo")  
                         ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus") 
 			->where("$where")
 			->fetch();
 			return $q['cuenta']; 			
 		}
-		public function getUserById($values){
+		
+               public function getUserById($values){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios
 			->select("*")
-			->where("usuarios.id_usuario=?",$values['id_usuario'])
+			->where("usuarios.id_persona=?",$values['id_persona'])
 			->fetch();
 			return $q; 				
 			
@@ -125,11 +145,10 @@
 			 
                         $array = array(
                             "id_persona" => $values['id_persona'],
-                            "id_usuario" => $values['id_persona'],
                             "nom_usuario" => $values['nom_usuario'],
-                            "id_grupo" => $values['id_grupo'],
+                            "id_estatus" => $values['id_estatus'],
                             "clave" => hash('sha256',$values['clave']),
-                            "id_estatus" => $values['id_estatus']
+                            "perfiles" => $values['perfiles']
                             
                         );
 			$ConnectionORM = new ConnectionORM();
@@ -142,7 +161,7 @@
 
                         $array = array(
                             'nom_usuario' => $values['nom_usuario'],
-                            'id_grupo' => $values['id_grupo'],
+                            'id_estatus' => $values['id_estatus'],
                             'id_estatus' => $values['id_estatus'],
                             
                         );

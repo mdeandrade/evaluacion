@@ -27,7 +27,7 @@
         <div class="alert alert-danger"><?php echo $errors['clave2'];?></div>
         <?php endif;?>
   </div>
- 
+  
     <div class="form-group col-sm-12">
 
         <label class="radio-inline bg-success">

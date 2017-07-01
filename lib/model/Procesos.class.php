@@ -45,16 +45,36 @@
 				$where.=" AND upper(descripcion) like ('%".$values['columns'][1]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			/*if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_grupo) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(fec_apertura_evaluacion) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
 			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][3]['search']['value']."%')";
+				$where.=" AND upper(fec_cierre_evaluacion) like ('%".$values['columns'][3]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}	*/
+			}
+                        if(isset($values['columns'][4]['search']['value']) and $values['columns'][4]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_apertura_odi) like ('%".$values['columns'][4]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][5]['search']['value']) and $values['columns'][5]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_cierre_odi) like ('%".$values['columns'][5]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][6]['search']['value']) and $values['columns'][6]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_apertura_competencia) like ('%".$values['columns'][6]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][7]['search']['value']) and $values['columns'][7]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_cierre_competencia) like ('%".$values['columns'][7]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
 				
 			
 			
@@ -89,16 +109,16 @@
 				$where.=" AND upper(descripcion) like ('%".$values['columns'][1]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			/*if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_grupo) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(fec_apertura_evaluacion) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
 			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][3]['search']['value']."%')";
+				$where.=" AND upper(fec_cierre_evaluacion) like ('%".$values['columns'][3]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}	*/
+			}	
 				
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->procesos
@@ -117,11 +137,11 @@
                             "fec_apertura_odi" => $values['fec_apertura_odi'],
                             "fec_cierre_odi" => $values['fec_cierre_odi'],
                             "peso_odi" => $values['peso_odi'],
-                            "rangos_max_odi" => $values['rangos_max_odi'],
+                            "rango_max_odi" => $values['rango_max_odi'],
                             "fec_apertura_competencia" => $values['fec_apertura_competencia'],
                             "fec_cierre_competencia" => $values['fec_cierre_competencia'],
                             "peso_competencia" => $values['peso_competencia'],
-                            "rangos_max_competencias" => $values['rangos_max_coetencias'],
+                            "rango_max_competencia" => $values['rango_max_competencia'],
                             //"max_odis_permitidos" => $values['max_odis_permitidos']
                             
                         );
@@ -131,56 +151,31 @@
 			return $values;	
 			
 		}
-                function updateUser($values){
+                function updateProcesos($values){
 
                         $array = array(
                             "id_proc" => $values['id_proc'],
                             "descripcion" => $values['descripcion'],
                             "fec_apertura_evaluacion" => $values['fec_apertura_evaluacion'],
                             "fec_cierre_evaluacion" => $values['fec_cierre_evaluacion'],
-                            "id_estatus_proc" => $values['id_estatus_proc'],
+                            "id_estatus_proc" => $values['id_estatus'],
                             "fec_apertura_odi" => $values['fec_apertura_odi'],
                             "fec_cierre_odi" => $values['fec_cierre_odi'],
                             "peso_odi" => $values['peso_odi'],
-                            "rangos_max_odi" => $values['rangos_max_odi'],
+                            "rango_max_odi" => $values['rango_max_odi'],
                             "fec_apertura_competencia" => $values['fec_apertura_competencia'],
                             "fec_cierre_competencia" => $values['fec_cierre_competencia'],
                             "peso_competencia" => $values['peso_competencia'],
-                            "rangos_max_coetencias" => $values['rangos_max_coetencias'],
-                            "max_odis_permitidos" => $values['max_odis_permitidos']
+                            "rango_max_competencia" => $values['rango_max_competencia']
+                            //"max_odis_permitidos" => $values['max_odis_permitidos']
                         );
                         
 			$id_proc = $values['id_proc'];
                         //echo $id_proc;die;
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->usuarios("id_proc", $id_proc)->update($array);
+			$q = $ConnectionORM->getConnect()->procesos("id_proc", $id_proc)->update($array);
 			return $q;
                         
-			
-		}
-		function updateProcesos($values){
-
-                        $array = array(
-                            "id_proc" => $values['id_proc'],
-                            "descripcion" => $values['descripcion'],
-                            "fec_apertura_evaluacion" => $values['fec_apertura_evaluacion'],
-                            "fec_cierre_evaluacion" => $values['fec_cierre_evaluacion'],
-                            "id_estatus_proc" => $values['id_estatus_proc'],
-                            "fec_apertura_odi" => $values['fec_apertura_odi'],
-                            "fec_cierre_odi" => $values['fec_cierre_odi'],
-                            "peso_odi" => $values['peso_odi'],
-                            "rangos_max_odi" => $values['rangos_max_odi'],
-                            "fec_apertura_competencia" => $values['fec_apertura_competencia'],
-                            "fec_cierre_competencia" => $values['fec_cierre_competencia'],
-                            "peso_competencia" => $values['peso_competencia'],
-                            "rangos_max_coetencias" => $values['rangos_max_coetencias'],
-                            //"max_odis_permitidos" => $values['max_odis_permitidos']
-                        );
-			$id_proc = $values['id_proc'];
-                        //echo $id_usuario;die;
-			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->procesos("id_proc", $id_proc)->update($array);
-			return $values;
 			
 		}
 		public function getProcesosById($values){
@@ -199,11 +194,10 @@
                 
                             $ConnectionORM = new ConnectionORM();
                             $q = $ConnectionORM->getConnect()->Procesos
-                            ->select("*")
-                            ->join("procesos","INNER JOIN procesos p on p.id_proc = procesos.id_proc")	
-                            ->where("evaluaciones.id_proc=?",$values['id_proc']);
-                
-                            
+                            ->select("id_persona.personas")
+                            ->order("pri_ape, id_ubicaion")
+                            ->join("ubicaciones","INNER JOIN ubicaciones u on u.id_ubicacion = ubicaciones.id_ubicacion")
+                            ->where("id_estatus=1",$values['id_proc']);
                             
                             foreach($q as $procesos):
                                 
@@ -211,8 +205,8 @@
                                $array = array(
                                 "id_personas" => $values['did_personas'],
                                 "id_ubicacion" => $values['id_ubicacion'],
-                                "id_proc" => $values['id_proc'],
-                                "objetivos" => $values['objetivos'],
+                                
+                                
                                 
 
                                 );
