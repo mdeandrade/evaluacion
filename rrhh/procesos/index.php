@@ -31,6 +31,9 @@ $values = array_merge($values,$_FILES);
 		case "generar_evaluaciones":
 			executeGenerarEvaluciones($values);
 		break;
+                case "query":
+			executePersonas($values);
+		break;
 		default:
                         executeIndex($values);
 		break;
@@ -140,6 +143,7 @@ $values = array_merge($values,$_FILES);
 		}
 		echo json_encode($array_json);die;
     }
+    
         function executeGenerarEvaluciones($values)
         {
 
@@ -147,3 +151,5 @@ $values = array_merge($values,$_FILES);
             $generar  = $Evaluaciones->generar($values);
 
         }
+        
+         

@@ -1,36 +1,32 @@
 <?php include('../../view_header_app.php')?>
 <?php include('../menu.php')?>
 
-<h1 class="text-center">Procesos</h1>
-<form action="index.php" method="post" enctype="multipart/form-data">
-    <input type="text" name="action" value="<?php if(isset($values['action']) and $values['action']!='') echo $values['action'];?>">
-<div>
-
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#datos_generales" aria-controls="datos_generales" role="tab" data-toggle="tab">Datos generales</a></li>
-    <li role="presentation"><a href="#niveles" aria-controls="niveles" role="tab" data-toggle="tab">Niveles</a></li>
-    <li role="presentation"><a href="#ubicaciones" aria-controls="ubicaciones" role="tab" data-toggle="tab">Ubicaciones</a></li>
-    <li role="presentation"><a href="#evaluadores" aria-controls="evaluadores" role="tab" data-toggle="tab">Evaluadores</a></li>
-    <li role="presentation"><a href="#competencias" aria-controls="competencias" role="tab" data-toggle="tab">Competencias</a></li>
-    <li role="presentation"><a href="#odis" aria-controls="odis" role="tab" data-toggle="tab">Odis</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="datos_generales"><?php require('datos_generales.php');?></div>
-    <div role="tabpanel" class="tab-pane" id="niveles"><?php require('niveles.php');?></div>
-    <div role="tabpanel" class="tab-pane" id="ubicaciones"><?php require('ubicaciones.php');?></div>
-    <div role="tabpanel" class="tab-pane" id="evaluadores"><?php require('evaluadores.php');?></div>
-    <div role="tabpanel" class="tab-pane" id="competencias"><?php require('competencias.php');?></div>
-    <div role="tabpanel" class="tab-pane" id="odis"><?php require('odis.php');?></div>
-    
+<br>
+    <div class="container">
+    <div class="form-inline">
+      <div class="form-group">
+      <div class="row">
+      <div class="col-md-0"></div>
+      <div class="col-md-5">
+        <label for="exampleInputEmail1">Nivel</label>
+        <select class="form-control" name="id_nivel" value="<?php if(isset($values['id_nivel']) and $values['id_nivel']!='') echo $values['id_nivel'];?>" id="exampleInputEmail1" placeholder="Estatus">
+            <?php if(isset($errors['id_nivel']) and $errors['id_nivel']!=''):?>
+            <div class="alert alert-danger"><?php echo $errors['id_nivel'];?></div>
+          <?php endif;?>
+              <option>Directivo</option>
+              <option>Profesional</option>
+              <option>Tecnico</option>
+              <option>Administrativio</option>
+              <option>Auxiliares</option>
+        </select>
+    </div>
+    </div>
   </div>
-
-</div>
-    <button type="submit" class="btn btn-success">Guardar</button>
-    <button type="submit" class="btn btn-primary">Inicio</button>
-    <button type="submit" class="btn btn-danger">Culminar</button>
-</form>
-
-<?php include('../../view_footer_solicitud.php')?>
+        <label for="exampleInputEmail1">Descripción</label>
+        <input type="text" class="form-control" name="descripcion" value="<?php if(isset($values['descripcion']) and $values['descripcion']!='') echo $values['descripcion'];?>" id="exampleInputEmail1" placeholder="Descripción">
+            <?php if(isset($errors['descripcion']) and $errors['descripcion']!=''):?>
+            <div class="alert alert-danger"><?php echo $errors['descripcion'];?></div>
+            <?php endif;?>
+    </div>
+    </div>
+      <br>

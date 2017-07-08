@@ -16,6 +16,7 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="datos_generales"><?php require('datos_generales.php');?></div>
     <div role="tabpanel" class="tab-pane" id="evaluadores"><?php require('evaluaciones.php');?></div>
+    
   </div>
 
 </div>

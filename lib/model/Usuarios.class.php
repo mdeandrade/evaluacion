@@ -17,12 +17,12 @@
 		{
 			
 		}
-               public function getUsuariosList($values)
+               public function getProcesosList($values)
 		{	
 			$columns = array();
 			$columns[0] = 'id_persona';
 			$columns[1] = 'nom_usuario';
-			$columns[2] = 'nom_estatus';
+			$columns[2] = 'id_estatus';
             
 			$column_order = $columns[0];
 			$where = '1 = 1';
@@ -45,31 +45,7 @@
 				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			/*if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
-			{
-				$where.=" AND upper(fec_cierre_evaluacion) like ('%".$values['columns'][3]['search']['value']."%')";
-				//echo $values['columns'][0]['search']['value'];die;
-			}
-                        if(isset($values['columns'][4]['search']['value']) and $values['columns'][4]['search']['value']!='')
-			{
-				$where.=" AND upper(fec_apertura_odi) like ('%".$values['columns'][4]['search']['value']."%')";
-				//echo $values['columns'][0]['search']['value'];die;
-			}
-                        if(isset($values['columns'][5]['search']['value']) and $values['columns'][5]['search']['value']!='')
-			{
-				$where.=" AND upper(fec_cierre_odi) like ('%".$values['columns'][5]['search']['value']."%')";
-				//echo $values['columns'][0]['search']['value'];die;
-			}
-                        if(isset($values['columns'][6]['search']['value']) and $values['columns'][6]['search']['value']!='')
-			{
-				$where.=" AND upper(fec_apertura_competencia) like ('%".$values['columns'][6]['search']['value']."%')";
-				//echo $values['columns'][0]['search']['value'];die;
-			}
-                        if(isset($values['columns'][7]['search']['value']) and $values['columns'][7]['search']['value']!='')
-			{
-				$where.=" AND upper(fec_cierre_competencia) like ('%".$values['columns'][7]['search']['value']."%')";
-				//echo $values['columns'][0]['search']['value'];die;
-			}*/
+			
 				
 			
 			
@@ -85,8 +61,8 @@
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios
 			->select("*")
-			->order("$column_order $order")   
-                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus") 
+			->order("$column_order $order") 
+                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus")
 			->where("$where")
 			->limit($limit,$offset);
 			//echo $q;die;
@@ -110,16 +86,12 @@
 				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			/*if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
-			{
-				$where.=" AND upper(fec_cierre_evaluacion) like ('%".$values['columns'][3]['search']['value']."%')";
-				//echo $values['columns'][0]['search']['value'];die;
-			}*/	
+				
 				
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios
 			->select("count(*) as cuenta")	
-                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus") 
+                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus")
 			->where("$where")
 			->fetch();
 			return $q['cuenta']; 			
@@ -137,7 +109,7 @@
 		function deleteUser($id_user){
 			unset($values['action']);
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->users("id_user", $id_user)->delete();
+			$q = $ConnectionORM->getConnect()->users("id_persona", $id_persona)->delete();
 			
 			
 		}		

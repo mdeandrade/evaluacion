@@ -137,6 +137,7 @@ CREATE TABLE `evaluaciones` (
   `id_evaluaciones` int(11) NOT NULL AUTO_INCREMENT,
   `id_persona` int(11) NOT NULL,
   `id_ubicacion` int(11) NOT NULL,
+  `id_estatus` int(11) DEFAULT NULL,
   `id_proc` int(11) DEFAULT NULL,
   `objetivos` varchar(2000) NOT NULL,
   `creado_por` int(11) DEFAULT NULL,
@@ -283,26 +284,30 @@ CREATE TABLE `personas` (
   `edo_civil` varchar(45) DEFAULT NULL,
   `fec_nacimiento` date DEFAULT NULL,
   `id_estatus` int(11) DEFAULT NULL,
+  `fec_ingreso` datetime DEFAULT NULL,
+  `nivel` varchar(11) DEFAULT NULL,
+  `id_ubicacion` int(11) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  `id_ubicacion` int(11) DEFAULT NULL,
-  `fec_ingreso` datetime DEFAULT NULL,
-  `nivel` varchar(11) DEFAULT NULL,
+  `id_cargo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_persona`),
   KEY `fk_id_estatu` (`id_estatus`),
   KEY `id_ubicacion` (`id_ubicacion`),
   CONSTRAINT `fk_id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
   CONSTRAINT `id_ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `personas` */
 
-insert  into `personas`(`id_persona`,`id_proc`,`pri_nom`,`seg_nom`,`pri_ape`,`seg_ape`,`tip_documento`,`num_documento`,`sexo`,`edo_civil`,`fec_nacimiento`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`,`id_ubicacion`,`fec_ingreso`,`nivel`) values 
-(1,NULL,'carlos','eduardo','angulo','astudillo','cedula','25053060','masculino','soltero','1984-05-15',1,NULL,NULL,NULL,NULL,1,NULL,NULL),
-(2,NULL,'josselline','alexandra','padilla','fernandez','cedula','25561949','femenino','soltero','1989-06-18',2,NULL,NULL,NULL,NULL,2,NULL,NULL),
-(3,NULL,'gitsell','maria','ugueto','romero','cedula','24333157','femenino','soltero','1990-06-06',1,NULL,NULL,NULL,NULL,1,NULL,NULL);
+insert  into `personas`(`id_persona`,`id_proc`,`pri_nom`,`seg_nom`,`pri_ape`,`seg_ape`,`tip_documento`,`num_documento`,`sexo`,`edo_civil`,`fec_nacimiento`,`id_estatus`,`fec_ingreso`,`nivel`,`id_ubicacion`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`,`id_cargo`) values 
+(1,NULL,'carlos','eduardo','angulo','astudillo','cedula','25053060','masculino','soltero','1984-05-15',1,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
+(2,NULL,'josselline','alexandra','padilla','fernandez','cedula','25561949','femenino','soltero','1989-06-18',2,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
+(3,NULL,'gitsell','maria','ugueto','romero','cedula','24333157','femenino','soltero','1990-06-06',1,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
+(4,NULL,'michelle','gisselle','colmenares','rivera','cedula','25899906','femenino','casado','1996-04-10',1,NULL,NULL,3,NULL,NULL,NULL,NULL,NULL),
+(5,NULL,'oscar','alberto','morales','castillo','cedula','22341555','masculino','casado','1988-07-07',2,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
+(6,NULL,'gabriel','enrique','briceño','perez','cedula','19270900','masculino','casado','1989-06-07',1,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `procesos` */
 
@@ -328,7 +333,7 @@ CREATE TABLE `procesos` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 /*Data for the table `procesos` */
 
@@ -354,7 +359,8 @@ insert  into `procesos`(`id_proc`,`descripcion`,`fec_apertura_evaluacion`,`fec_c
 (19,'zxzgggggggg','2017-12-31','2015-01-31',1,'2017-12-31','2017-12-31','1','1','2017-12-31','2017-12-31','2','2',NULL,NULL,NULL,NULL,NULL),
 (20,'competencia','2017-06-16','2017-06-16',1,'2017-06-16','2017-06-16','2','3','2017-06-16','2017-06-16','2','3',NULL,NULL,NULL,NULL,NULL),
 (21,'fggregrgrdgrgrgf','2017-06-16','2017-06-16',1,'2017-06-16','2017-06-16','5','6','2017-06-16','2017-06-16','5','5',NULL,NULL,NULL,NULL,NULL),
-(22,'fgrhgreytrgrdgrd','2017-06-14','2017-06-14',1,'2017-06-14','2017-06-14','50','3','2017-06-14','2017-06-14','50','2',NULL,NULL,NULL,NULL,NULL);
+(22,'fgrhgreytrgrdgrd','2017-06-14','2017-06-14',1,'2017-06-14','2017-06-14','50','3','2017-06-14','2017-06-14','50','2',NULL,NULL,NULL,NULL,NULL),
+(23,'competencia','2017-06-25','2017-06-25',1,'2017-06-25','2017-06-25','50','4','2017-06-25','2017-06-25','50','3',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `rangos` */
 
@@ -404,10 +410,18 @@ CREATE TABLE `roles` (
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id_rol`),
+  KEY `id_esta` (`id_estatus`),
+  CONSTRAINT `id_esta` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `roles` */
+
+insert  into `roles`(`id_rol`,`nom_rol`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(1,'Administrador',1,NULL,NULL,NULL,NULL),
+(2,'Evaluador',1,NULL,NULL,NULL,NULL),
+(3,'Evaluado',1,NULL,NULL,NULL,NULL),
+(4,'Contralor',1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `ubicaciones` */
 
@@ -445,23 +459,25 @@ CREATE TABLE `usuarios` (
   `nom_usuario` varchar(45) NOT NULL,
   `clave` varchar(100) NOT NULL,
   `id_estatus` varchar(10) DEFAULT NULL,
-  `perfil` varchar(2) DEFAULT NULL,
+  `id_rol` int(11) DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_persona`),
-  KEY `id_persona_idx` (`id_persona`)
+  KEY `id_persona_idx` (`id_persona`),
+  KEY `id_roles` (`id_rol`),
+  CONSTRAINT `id_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`perfil`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-(0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1','A',NULL,NULL,NULL,NULL),
-(1,'carlos','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1','B',NULL,NULL,NULL,NULL),
-(2,'josselline','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1','C',NULL,NULL,NULL,NULL),
-(3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1','D',NULL,NULL,NULL,NULL),
-(4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1','B',NULL,NULL,NULL,NULL);
+insert  into `usuarios`(`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`id_rol`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',1,NULL,NULL,NULL,NULL),
+(1,'carlos','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',2,NULL,NULL,NULL,NULL),
+(2,'josselline','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','3',3,NULL,NULL,NULL,NULL),
+(3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','4',4,NULL,NULL,NULL,NULL),
+(4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','5',1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `usuarios_roles` */
 

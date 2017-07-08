@@ -57,6 +57,7 @@ $values = $_REQUEST;
                        
 			$_SESSION['id_persona'] = $q[0]['id_persona'];
 			$_SESSION['nom_usuario'] = $q[0]['nom_usuario'];
+                        /*$_SESSION['id_rol'] = $q[0]['id_rol'];*/
 			executeBienvenida($values);
 		}
 		else

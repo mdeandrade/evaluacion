@@ -22,8 +22,8 @@ class Personal {
 			$columns = array();
 			$columns[0] = 'id_persona';
 			$columns[1] = 'nombres';
-			$columns[2] = 'id_grupo';
-			$columns[3] = 'id_estatus';
+			$columns[2] = 'id_uicacion';
+                        $columns[3] = 'id_cargo';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -42,14 +42,15 @@ class Personal {
 			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_grupo) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(nom_ubicacion) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}			
-			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
+			}
+                        if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][3]['search']['value']."%')";
+				$where.=" AND upper(nom_cargo) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}	
+			}
+				
 				
 			
 			
@@ -66,8 +67,7 @@ class Personal {
 			$q = $ConnectionORM->getConnect()->personal
 			->select("*,nom_grupo, nom_estatus")
 			->order("$column_order $order")
-                        ->join("grupos","INNER JOIN grupos g on g.id_grupo = personal.id_grupo")  
-                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = personal.id_estatus")        
+                        ->join("ubicacion","INNER JOIN ubicacion u on u.id_ubicacion = personal.id_ubicacion")         
 			->where("$where")
 			->limit($limit,$offset);
 			//echo $q;die;
@@ -88,19 +88,19 @@ class Personal {
 			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_grupo) like ('%".$values['columns'][2]['search']['value']."%')";
-				//echo $values['columns'][0]['search']['value'];die;
-			}			
-			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
-			{
-				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][3]['search']['value']."%')";
+				$where.=" AND upper(nom_ubicacion) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
+                        if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			{
+				$where.=" AND upper(nom_cargo) like ('%".$values['columns'][2]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+			
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->personal
 			->select("count(*) as cuenta")	
-                        ->join("grupos","INNER JOIN grupos g on g.id_grupo = personal.id_grupo")  
-                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = personal.id_estatus") 
+                        ->join("ubicacion","INNER JOIN ubicacion u on u.id_ubicacion = personal.id_ubicacion")    
 			->where("$where")
 			->fetch();
 			return $q['cuenta']; 			
@@ -257,4 +257,16 @@ class Personal {
 			$Aws->desactivarGruero($id_user);
 
 		}
+                 function executePersonas($values){
+                        
+                        $ConnectionORM = new ConnectionORM();
+                        $q = $ConnectionORM->getConnect()->Personal
+                        ->select("*")
+                        ->where("id_persona=?",$id_persona)
+                        ->order("id_ubicacion,pri_nom,pri_ape,id_nivel");
+                        
+                        var_dump($q);die;
+            
+           }
+ 
 }

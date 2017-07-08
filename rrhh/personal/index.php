@@ -100,15 +100,16 @@ $values = array_merge($values,$_FILES);
 			foreach ($list_json as $list) 
 			{
 
-				$id_cargo = $list['id_cargo'];
+				$id_persona = $list['id_persona'];
 				$array_json['data'][] = array(
-					"id_cargo" => $id_cargo,
+					"id_persona" => id_persona,
+                                        "pri_nom" => $list['pri_ape']." ".$list['nombres'],
+					"nom_uicacion" => $list['nom_uicacion'],
 					"nom_cargo" => $list['nom_cargo'],
-					"nom_estatus" => $list['nom_estatus'],
 					"actions" => 
-                                       '<form method="POST" action = "'.full_url.'/ap/Cargos/index.php" >'
+                                       '<form method="POST" action = "'.full_url.'/rrhh/personal/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id_cargo" value="'.$id_cargo.'">  '
+                                       .'<input type="hidden" name="id_cargo" value="'.$id_persona.'">  '
                                        .'<button class="btn btn-default btn-sm" title="Ver detalle" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
                                         .'</form>'
 					);	
@@ -126,3 +127,33 @@ $values = array_merge($values,$_FILES);
 		echo json_encode($array_json);die;
 		
 	}
+        function executePersonas($values)
+                 {
+            $Evaluaciones = new Evaluaciones;
+            $consulta  = $Evaluaciones->generar($values);
+
+
+                $html = '<table class="table table-striped table-bordered" class="col-md-12 col-lg-12 col-sm-12 col-xs-12" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Nombre y Apellido</th>
+                            <th style="text-align: center;">Cargo</th>
+                <th style="text-align: center;">Departamento</th>
+                            <th style="text-align: center;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+
+
+                foreach($consulta AS $fila){
+
+    $generar_evaluacion = '<a href="#" data-toggle="tooltip" title="Generar Evaluación"><span class="fa fa-eye" style="margin-left:15px;"></span></a>';
+    $html.='<tr>
+        <td>' . $fila['pri_nom'] . ' ' . $fila['pri_ape'] . '</td>
+        <td >'. $fila['id_cargo'] . '</td>
+        <td >'. $fila['id_ubicacion'] . '</td>
+        <td>'.$generar_evaluacion.'</td>
+        </tr>';
+} // FIN DE FOREACH
+         }
+    $html.='</table>';
