@@ -81,7 +81,12 @@ CREATE TABLE `competencias_niveles` (
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_competencia`,`id_proc`,`id_nivel`)
+  PRIMARY KEY (`id_competencia`,`id_proc`,`id_nivel`),
+  KEY `id_n` (`id_nivel`),
+  KEY `id_proces` (`id_proc`),
+  CONSTRAINT `id_compe` FOREIGN KEY (`id_competencia`) REFERENCES `competencias` (`id_competencia`),
+  CONSTRAINT `id_n` FOREIGN KEY (`id_nivel`) REFERENCES `niveles` (`id_estatus`),
+  CONSTRAINT `id_proces` FOREIGN KEY (`id_proc`) REFERENCES `procesos` (`id_proc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `competencias_niveles` */
@@ -98,13 +103,14 @@ CREATE TABLE `estatus` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_estatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `estatus` */
 
 insert  into `estatus`(`id_estatus`,`nom_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
 (1,'activo',NULL,NULL,NULL,NULL),
-(2,'inactivo',NULL,NULL,NULL,NULL);
+(2,'inactivo',NULL,NULL,NULL,NULL),
+(3,'odis_asignados',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `evaluacion_resultado` */
 
@@ -123,8 +129,14 @@ CREATE TABLE `evaluacion_resultado` (
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  KEY `id_evaluacion` (`id_evaluacion`),
-  KEY `id_proc` (`id_proc`)
+  KEY `id_e` (`id_evaluacion`),
+  KEY `id_pr` (`id_proc`),
+  KEY `id_odi` (`id_odi`),
+  KEY `id_c` (`id_competencias`),
+  CONSTRAINT `id_c` FOREIGN KEY (`id_competencias`) REFERENCES `competencias` (`id_competencia`),
+  CONSTRAINT `id_e` FOREIGN KEY (`id_evaluacion`) REFERENCES `evaluaciones` (`id_evaluacion`),
+  CONSTRAINT `id_odi` FOREIGN KEY (`id_odi`) REFERENCES `odis` (`id_odi`),
+  CONSTRAINT `id_pr` FOREIGN KEY (`id_proc`) REFERENCES `procesos` (`id_proc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `evaluacion_resultado` */
@@ -134,7 +146,7 @@ CREATE TABLE `evaluacion_resultado` (
 DROP TABLE IF EXISTS `evaluaciones`;
 
 CREATE TABLE `evaluaciones` (
-  `id_evaluaciones` int(11) NOT NULL AUTO_INCREMENT,
+  `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT,
   `id_persona` int(11) NOT NULL,
   `id_ubicacion` int(11) NOT NULL,
   `id_estatus` int(11) DEFAULT NULL,
@@ -145,10 +157,13 @@ CREATE TABLE `evaluaciones` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   `revisado_por` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_evaluaciones`,`id_persona`,`id_ubicacion`),
+  PRIMARY KEY (`id_evaluacion`,`id_persona`,`id_ubicacion`),
   KEY `fk_id_personas` (`id_persona`),
   KEY `id_proc` (`id_proc`),
-  CONSTRAINT `id_proc` FOREIGN KEY (`id_proc`) REFERENCES `procesos` (`id_proc`)
+  KEY `id_ubic` (`id_ubicacion`),
+  CONSTRAINT `id_pe` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`),
+  CONSTRAINT `id_proc` FOREIGN KEY (`id_proc`) REFERENCES `procesos` (`id_proc`),
+  CONSTRAINT `id_ubic` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `evaluaciones` */
@@ -174,13 +189,17 @@ CREATE TABLE `evaluadores` (
   KEY `id_per` (`id_persona`),
   KEY `fk_id_ubicacion` (`id_ubicacion`),
   KEY `id_proce` (`id_proc`),
+  KEY `id_valua` (`id_evaluacion`),
   CONSTRAINT `fk_id_ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`),
   CONSTRAINT `id_cargos` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`),
-  CONSTRAINT `id_per` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`),
-  CONSTRAINT `id_proce` FOREIGN KEY (`id_proc`) REFERENCES `procesos` (`id_proc`)
+  CONSTRAINT `id_proce` FOREIGN KEY (`id_proc`) REFERENCES `procesos` (`id_proc`),
+  CONSTRAINT `id_valua` FOREIGN KEY (`id_evaluacion`) REFERENCES `evaluaciones` (`id_evaluacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `evaluadores` */
+
+insert  into `evaluadores`(`id_evaluador`,`id_cargo`,`id_persona`,`id_ubicacion`,`id_evaluacion`,`id_proc`,`fec_asignacion`,`creado_por`,`fec_creado`,`actulizado_por`,`fec_actualizado`) values 
+(0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `menu` */
 
@@ -284,6 +303,7 @@ CREATE TABLE `personas` (
   `edo_civil` varchar(45) DEFAULT NULL,
   `fec_nacimiento` date DEFAULT NULL,
   `id_estatus` int(11) DEFAULT NULL,
+  `correo` varchar(50) DEFAULT NULL,
   `fec_ingreso` datetime DEFAULT NULL,
   `nivel` varchar(11) DEFAULT NULL,
   `id_ubicacion` int(11) DEFAULT NULL,
@@ -297,17 +317,19 @@ CREATE TABLE `personas` (
   KEY `id_ubicacion` (`id_ubicacion`),
   CONSTRAINT `fk_id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
   CONSTRAINT `id_ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `personas` */
 
-insert  into `personas`(`id_persona`,`id_proc`,`pri_nom`,`seg_nom`,`pri_ape`,`seg_ape`,`tip_documento`,`num_documento`,`sexo`,`edo_civil`,`fec_nacimiento`,`id_estatus`,`fec_ingreso`,`nivel`,`id_ubicacion`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`,`id_cargo`) values 
-(1,NULL,'carlos','eduardo','angulo','astudillo','cedula','25053060','masculino','soltero','1984-05-15',1,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
-(2,NULL,'josselline','alexandra','padilla','fernandez','cedula','25561949','femenino','soltero','1989-06-18',2,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
-(3,NULL,'gitsell','maria','ugueto','romero','cedula','24333157','femenino','soltero','1990-06-06',1,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
-(4,NULL,'michelle','gisselle','colmenares','rivera','cedula','25899906','femenino','casado','1996-04-10',1,NULL,NULL,3,NULL,NULL,NULL,NULL,NULL),
-(5,NULL,'oscar','alberto','morales','castillo','cedula','22341555','masculino','casado','1988-07-07',2,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
-(6,NULL,'gabriel','enrique','briceño','perez','cedula','19270900','masculino','casado','1989-06-07',1,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL);
+insert  into `personas`(`id_persona`,`id_proc`,`pri_nom`,`seg_nom`,`pri_ape`,`seg_ape`,`tip_documento`,`num_documento`,`sexo`,`edo_civil`,`fec_nacimiento`,`id_estatus`,`correo`,`fec_ingreso`,`nivel`,`id_ubicacion`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`,`id_cargo`) values 
+(1,NULL,'carlos','eduardo','angulo','astudillo','cedula','25053060','masculino','soltero','1984-05-15',1,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
+(2,NULL,'josselline','alexandra','padilla','fernandez','cedula','25561949','femenino','soltero','1989-06-18',2,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
+(3,NULL,'gitsell','maria','ugueto','romero','cedula','24333157','femenino','soltero','1990-06-06',1,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
+(4,NULL,'michelle','gisselle','colmenares','rivera','cedula','25899906','femenino','casado','1996-04-10',1,NULL,NULL,NULL,3,NULL,NULL,NULL,NULL,NULL),
+(5,NULL,'oscar','alberto','morales','castillo','cedula','22341555','masculino','casado','1988-07-07',2,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
+(6,NULL,'gabriel','enrique','briceño','perez','cedula','19270900','masculino','casado','1989-06-07',1,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
+(7,NULL,'marcel','antonio','romero','zambrano','cedula','10234569','masculino','soltero','1970-02-03',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(8,NULL,'miriam','alicia','romero','guerra','cedula','6467675','femenino','soltera','1960-04-03',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `procesos` */
 
@@ -333,7 +355,7 @@ CREATE TABLE `procesos` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 /*Data for the table `procesos` */
 
@@ -360,7 +382,12 @@ insert  into `procesos`(`id_proc`,`descripcion`,`fec_apertura_evaluacion`,`fec_c
 (20,'competencia','2017-06-16','2017-06-16',1,'2017-06-16','2017-06-16','2','3','2017-06-16','2017-06-16','2','3',NULL,NULL,NULL,NULL,NULL),
 (21,'fggregrgrdgrgrgf','2017-06-16','2017-06-16',1,'2017-06-16','2017-06-16','5','6','2017-06-16','2017-06-16','5','5',NULL,NULL,NULL,NULL,NULL),
 (22,'fgrhgreytrgrdgrd','2017-06-14','2017-06-14',1,'2017-06-14','2017-06-14','50','3','2017-06-14','2017-06-14','50','2',NULL,NULL,NULL,NULL,NULL),
-(23,'competencia','2017-06-25','2017-06-25',1,'2017-06-25','2017-06-25','50','4','2017-06-25','2017-06-25','50','3',NULL,NULL,NULL,NULL,NULL);
+(23,'competencia','2017-06-25','2017-06-25',1,'2017-06-25','2017-06-25','50','4','2017-06-25','2017-06-25','50','3',NULL,NULL,NULL,NULL,NULL),
+(24,'competencia','2017-06-23','2017-06-21',1,'2017-06-11','2017-06-21','2','2','2017-06-11','2017-06-21','2','2',NULL,NULL,NULL,NULL,NULL),
+(25,'saadefrfrfrfacdxcdv','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-11','2','2','2017-06-11','2017-06-11','2','2',NULL,NULL,NULL,NULL,NULL),
+(26,'gyhjhjkuhyyhuhjy','2017-06-22','2017-06-22',1,'2017-06-22','2017-06-22','3','5','2017-06-22','2017-06-22','3','5',NULL,NULL,NULL,NULL,NULL),
+(27,'fgrhgreytrgrdgrd','2017-06-22','2017-06-22',1,'2017-06-22','2017-06-22','5','5','2017-06-22','2017-06-22','5','5',NULL,NULL,NULL,NULL,NULL),
+(28,'jfigjkjfckifjfuisvjlkd','2017-07-13','2017-07-13',1,'2017-07-13','2017-07-13','5','5','2017-07-13','2017-07-13','5','5',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `rangos` */
 
@@ -441,14 +468,19 @@ CREATE TABLE `ubicaciones` (
   KEY `id_estatu` (`id_estatus`),
   CONSTRAINT `id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
   CONSTRAINT `id_personas` FOREIGN KEY (`id_personas`) REFERENCES `personas` (`id_persona`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Data for the table `ubicaciones` */
 
 insert  into `ubicaciones`(`id_ubicacion`,`nom_ubicacion`,`id_personas`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-(1,'direccion de tecnologia de la informacion',1,1,NULL,NULL,NULL,NULL),
-(2,'administracion',2,1,NULL,NULL,NULL,NULL),
-(3,'recursos humanos',3,1,NULL,NULL,NULL,NULL);
+(1,'Dirección de Consultoría Juídica',1,1,NULL,NULL,NULL,NULL),
+(2,'Dirección de Administración',2,1,NULL,NULL,NULL,NULL),
+(3,'Dirección de Recursos Humanos',3,1,NULL,NULL,NULL,NULL),
+(4,'Dirección de Planificación y Control de Gestión',4,1,NULL,NULL,NULL,NULL),
+(5,'Dirección de Tecnología de la Información',5,1,NULL,NULL,NULL,NULL),
+(6,'Dirección de Control de la Administración Centralizada',6,1,NULL,NULL,NULL,NULL),
+(7,'Dirección de Control de la Administración Descentralizada',7,1,NULL,NULL,NULL,NULL),
+(8,'irección de Determinación de Responsabilidades',8,1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `usuarios` */
 
@@ -474,10 +506,10 @@ CREATE TABLE `usuarios` (
 
 insert  into `usuarios`(`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`id_rol`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
 (0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',1,NULL,NULL,NULL,NULL),
-(1,'carlos','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',2,NULL,NULL,NULL,NULL),
-(2,'josselline','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','3',3,NULL,NULL,NULL,NULL),
-(3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','4',4,NULL,NULL,NULL,NULL),
-(4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','5',1,NULL,NULL,NULL,NULL);
+(1,'carlos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',2,NULL,NULL,NULL,NULL),
+(2,'josselline','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',3,NULL,NULL,NULL,NULL),
+(3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',4,NULL,NULL,NULL,NULL),
+(4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1',1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `usuarios_roles` */
 

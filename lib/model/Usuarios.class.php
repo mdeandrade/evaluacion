@@ -120,7 +120,7 @@
                             "nom_usuario" => $values['nom_usuario'],
                             "id_estatus" => $values['id_estatus'],
                             "clave" => hash('sha256',$values['clave']),
-                            "perfiles" => $values['perfiles']
+                            /*"perfiles" => $values['perfiles]*/
                             
                         );
 			$ConnectionORM = new ConnectionORM();

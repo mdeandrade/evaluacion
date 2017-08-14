@@ -9,19 +9,25 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#datos_generales" aria-controls="datos_generales" role="tab" data-toggle="tab">Datos generales</a></li>
-    <li role="presentation"><a href="#evaluadores" aria-controls="evaluadores" role="tab" data-toggle="tab">Evaluaciones</a></li>
+    <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
+    <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
+    <li role="presentation"><a href="#evaluadores" aria-controls="evaluadores" role="tab" data-toggle="tab">Evaluadores</a></li>
+    <li role="presentation"><a href="#evaluaciones" aria-controls="evaluaciones" role="tab" data-toggle="tab">Evaluaciones</a></li>
+    <?php endif;?>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="datos_generales"><?php require('datos_generales.php');?></div>
-    <div role="tabpanel" class="tab-pane" id="evaluadores"><?php require('evaluaciones.php');?></div>
-    
+    <div role="tabpanel" class="tab-pane" id="funcionarios"><?php require('funcionarios.php');?></div>
+    <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
+    <div role="tabpanel" class="tab-pane" id="evaluadores"><?php require('evaluadores.php');?></div>
+    <div role="tabpanel" class="tab-pane" id="evaluaciones"><?php require('evaluaciones.php');?></div>
+    <?php endif;?>
   </div>
 
 </div>
-      <a class="btn btn-default" href="<?php echo full_url?>/rrhh/index.php?action=bienvenida">Regresar</a>
-    <button type="submit" id="guardar" class="btn btn-success">Guardar</button>
+    <a class="btn btn-default" href="<?php echo full_url?>/rrhh/index.php?action=list.php">Regresar</a>
     <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
     <a class="btn btn-primary" href="index.php?action=generar_evaluaciones&id_proc=<?php echo $values['id_proc']?>">Inicio</a>
     <button type="submit" class="btn btn-danger">Culminar</button>

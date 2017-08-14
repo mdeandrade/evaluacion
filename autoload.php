@@ -1,7 +1,7 @@
 <?php
 session_start();
-//$_SERVER["DOCUMENT_ROOT"] = "/xampp/htdocs";
-$_SERVER["DOCUMENT_ROOT"] = "/var/www/html";
+$_SERVER["DOCUMENT_ROOT"] = "/xampp/htdocs";
+//$_SERVER["DOCUMENT_ROOT"] = "/var/www/html";
 error_reporting(1);
 $project_folder = '/evaluacion';
 $development_env = false;
@@ -63,6 +63,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/ValidateBase.class.php")
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/vendors/securimage/securimage.php');
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Login.class.php');
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Procesos.class.php');
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Funcionarios.class.php');
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Usuarios.class.php');
 /*validation class*/
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendor/GUMP/gump.class.php");

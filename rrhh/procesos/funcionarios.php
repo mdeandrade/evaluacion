@@ -1,0 +1,22 @@
+          <h1 class="text-center">Funcionarios</h1>
+        <br>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+    <div class="form-group" rel="popover" data-trigger="hover" data-content="Total obtenido correspondiente a la sumatoria peso x rango." data-original-title="" style="display: block;">
+<label class="control-label control-label-left col-sm-3" for="">Seleccione el archivo con los funcionarios<span class="req"> *</span></label>
+<input type="file" id="id_persona">
+    </div>
+        </div> 
+         <div class="col-sm-12 col-sm-12">
+             Campos obligatorios <small class="text-danger">(*)</small>
+          </div> 
+        <br><br><br>
+                <div class="clearfix"></div>
+          
+      
+    <br><br>
+     
+        <button type="submit" id="guardar" class="btn btn-success">Guardar</button>
+        
+        <br><br>
+
+          

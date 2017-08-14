@@ -63,6 +63,7 @@ $values = array_merge($values,$_FILES);
                 //print_r($values);die;
                 $Procesos = new Procesos();
                 $values = $Procesos->saveProcesos($values);
+                
 
                 executeEdit($values);
             }
@@ -121,7 +122,7 @@ $values = array_merge($values,$_FILES);
 					"actions" =>
                                        '<form method="POST" action = "'.full_url.'/rrhh/procesos/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id_proc" value="'.id_proc.'">  '
+                                       .'<input type="hidden" name="id_proc" value="'.$id_proc.'">  '
                                        .'<button class="btn btn-default btn-sm" title="Ver detalle" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
                                         .'</form>'
 					);

@@ -119,18 +119,16 @@
                 <?php endif;?>
           </div>
 
-          <div class="clearfix visible-md-block"></div>
-          <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
-            <label for="exampleInputFile">Cargar personal</label>
-            <input type="file" id="id_persona">
-          </div>
+          <br>
           <div class="col-sm-12 col-sm-12">
              Campos obligatorios <small class="text-danger">(*)</small>
           </div>
         </div>
       </div>
       <br>
-
+       <button type="submit" id="guardar" class="btn btn-success">Guardar</button>
+        
+        <br><br>
       <script>  
          /*$('#guardar').click(function(){
             var input1=$('.rango1').val();
