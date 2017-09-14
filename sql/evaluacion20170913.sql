@@ -31,9 +31,13 @@ CREATE TABLE `cargos` (
   PRIMARY KEY (`id_cargo`),
   KEY `fk_id_estatus` (`id_estatus`),
   CONSTRAINT `fk_id_estatus` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `cargos` */
+
+insert  into `cargos`(`id_cargo`,`nom_cargo`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(1,'tecnico I',1,NULL,NULL,NULL,NULL),
+(2,'Ingeniero I',1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `competencias` */
 
@@ -103,14 +107,15 @@ CREATE TABLE `estatus` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_estatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `estatus` */
 
 insert  into `estatus`(`id_estatus`,`nom_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
 (1,'activo',NULL,NULL,NULL,NULL),
 (2,'inactivo',NULL,NULL,NULL,NULL),
-(3,'odis_asignados',NULL,NULL,NULL,NULL);
+(3,'habilitado',NULL,NULL,NULL,NULL),
+(4,'deshabilitado',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `evaluacion_resultado` */
 
@@ -291,13 +296,13 @@ CREATE TABLE `odis` (
 DROP TABLE IF EXISTS `personas`;
 
 CREATE TABLE `personas` (
-  `id_persona` int(11) NOT NULL AUTO_INCREMENT,
   `id_proc` int(11) DEFAULT NULL,
+  `id_persona` int(11) NOT NULL AUTO_INCREMENT,
   `pri_nom` varchar(45) NOT NULL,
   `seg_nom` varchar(45) DEFAULT NULL,
   `pri_ape` varchar(45) NOT NULL,
   `seg_ape` varchar(45) DEFAULT NULL,
-  `tip_documento` varchar(45) NOT NULL,
+  `tip_documento` varchar(45) DEFAULT NULL,
   `num_documento` varchar(45) NOT NULL,
   `sexo` varchar(45) DEFAULT NULL,
   `edo_civil` varchar(45) DEFAULT NULL,
@@ -315,21 +320,51 @@ CREATE TABLE `personas` (
   PRIMARY KEY (`id_persona`),
   KEY `fk_id_estatu` (`id_estatus`),
   KEY `id_ubicacion` (`id_ubicacion`),
+  KEY `id_cargo` (`id_cargo`),
   CONSTRAINT `fk_id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
+  CONSTRAINT `id_cargo` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`),
   CONSTRAINT `id_ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 /*Data for the table `personas` */
 
-insert  into `personas`(`id_persona`,`id_proc`,`pri_nom`,`seg_nom`,`pri_ape`,`seg_ape`,`tip_documento`,`num_documento`,`sexo`,`edo_civil`,`fec_nacimiento`,`id_estatus`,`correo`,`fec_ingreso`,`nivel`,`id_ubicacion`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`,`id_cargo`) values 
-(1,NULL,'carlos','eduardo','angulo','astudillo','cedula','25053060','masculino','soltero','1984-05-15',1,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
-(2,NULL,'josselline','alexandra','padilla','fernandez','cedula','25561949','femenino','soltero','1989-06-18',2,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
-(3,NULL,'gitsell','maria','ugueto','romero','cedula','24333157','femenino','soltero','1990-06-06',1,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
-(4,NULL,'michelle','gisselle','colmenares','rivera','cedula','25899906','femenino','casado','1996-04-10',1,NULL,NULL,NULL,3,NULL,NULL,NULL,NULL,NULL),
-(5,NULL,'oscar','alberto','morales','castillo','cedula','22341555','masculino','casado','1988-07-07',2,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
-(6,NULL,'gabriel','enrique','briceño','perez','cedula','19270900','masculino','casado','1989-06-07',1,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
-(7,NULL,'marcel','antonio','romero','zambrano','cedula','10234569','masculino','soltero','1970-02-03',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(8,NULL,'miriam','alicia','romero','guerra','cedula','6467675','femenino','soltera','1960-04-03',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `personas`(`id_proc`,`id_persona`,`pri_nom`,`seg_nom`,`pri_ape`,`seg_ape`,`tip_documento`,`num_documento`,`sexo`,`edo_civil`,`fec_nacimiento`,`id_estatus`,`correo`,`fec_ingreso`,`nivel`,`id_ubicacion`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`,`id_cargo`) values 
+(NULL,1,'carlos','eduardo','angulo','astudillo','cedula','25053060','masculino','soltero','1984-05-15',1,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
+(NULL,2,'josselline','alexandra','padilla','fernandez','cedula','25561949','femenino','soltero','1989-06-18',2,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
+(NULL,3,'gitsell','maria','ugueto','romero','cedula','24333157','femenino','soltero','1990-06-06',1,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
+(NULL,4,'michelle','gisselle','colmenares','rivera','cedula','25899906','femenino','casado','1996-04-10',1,NULL,NULL,NULL,3,NULL,NULL,NULL,NULL,NULL),
+(NULL,5,'oscar','alberto','morales','castillo','cedula','22341555','masculino','casado','1988-07-07',2,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
+(NULL,6,'gabriel','enrique','briceño','perez','cedula','19270900','masculino','casado','1989-06-07',1,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
+(NULL,7,'marcel','antonio','romero','zambrano','cedula','10234569','masculino','soltero','1970-02-03',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(NULL,8,'miriam','alicia','romero','guerra','cedula','6467675','femenino','soltera','1960-04-03',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(NULL,9,'nancy',NULL,'padilla',NULL,'','24235345','femenino',NULL,'0000-00-00',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,10,'nancy',NULL,'padilla',NULL,'','24235345','femenino',NULL,'0000-00-00',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,11,'nancy',NULL,'padilla',NULL,'','24235345','femenino',NULL,'1984-01-01',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,12,'nancy',NULL,'padilla',NULL,NULL,'24235345','femenino',NULL,'1984-01-01',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,13,'nancy',NULL,'padilla',NULL,NULL,'24235345','femenino',NULL,'1984-01-01',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,14,'carlos',NULL,'angulo',NULL,NULL,'2505360','masculino',NULL,'1984-01-02',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,15,'josselline',NULL,'romero',NULL,NULL,'112543','femenino',NULL,'1984-01-03',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,16,'eduardo',NULL,'ugueto',NULL,NULL,'2543522','masculino',NULL,'1984-01-04',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,17,'mirian',NULL,'carillo',NULL,NULL,'988777','femenino',NULL,'1984-01-05',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,18,'alicia',NULL,'morales',NULL,NULL,'554656','femenino',NULL,'1984-01-06',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,2),
+(NULL,19,'maria',NULL,'astudillo',NULL,NULL,'255677','femenino',NULL,'1984-01-07',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,2),
+(NULL,20,'nancy',NULL,'angulo',NULL,NULL,'2505360','femenino',NULL,'1984-01-08',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,2,NULL,NULL,NULL,NULL,2),
+(NULL,21,'nancy',NULL,'padilla',NULL,NULL,'24235345','femenino',NULL,'1984-01-01',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,22,'carlos',NULL,'angulo',NULL,NULL,'2505360','masculino',NULL,'1984-01-02',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,23,'josselline',NULL,'romero',NULL,NULL,'112543','femenino',NULL,'1984-01-03',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,24,'eduardo',NULL,'ugueto',NULL,NULL,'2543522','masculino',NULL,'1984-01-04',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,25,'mirian',NULL,'carillo',NULL,NULL,'988777','femenino',NULL,'1984-01-05',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,26,'alicia',NULL,'morales',NULL,NULL,'554656','femenino',NULL,'1984-01-06',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,2),
+(NULL,27,'maria',NULL,'astudillo',NULL,NULL,'255677','femenino',NULL,'1984-01-07',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,2),
+(NULL,28,'nancy',NULL,'angulo',NULL,NULL,'2505360','femenino',NULL,'1984-01-08',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,2,NULL,NULL,NULL,NULL,2),
+(NULL,29,'nancy',NULL,'padilla',NULL,NULL,'24235345','femenino',NULL,'1984-01-01',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,30,'carlos',NULL,'angulo',NULL,NULL,'2505360','masculino',NULL,'1984-01-02',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,31,'josselline',NULL,'romero',NULL,NULL,'112543','femenino',NULL,'1984-01-03',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,32,'eduardo',NULL,'ugueto',NULL,NULL,'2543522','masculino',NULL,'1984-01-04',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,33,'mirian',NULL,'carillo',NULL,NULL,'988777','femenino',NULL,'1984-01-05',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,34,'alicia',NULL,'morales',NULL,NULL,'554656','femenino',NULL,'1984-01-06',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,2),
+(NULL,35,'maria',NULL,'astudillo',NULL,NULL,'255677','femenino',NULL,'1984-01-07',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,2),
+(NULL,36,'nancy',NULL,'angulo',NULL,NULL,'2505360','femenino',NULL,'1984-01-08',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,2,NULL,NULL,NULL,NULL,2);
 
 /*Table structure for table `procesos` */
 
@@ -355,7 +390,7 @@ CREATE TABLE `procesos` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 
 /*Data for the table `procesos` */
 
@@ -385,9 +420,38 @@ insert  into `procesos`(`id_proc`,`descripcion`,`fec_apertura_evaluacion`,`fec_c
 (23,'competencia','2017-06-25','2017-06-25',1,'2017-06-25','2017-06-25','50','4','2017-06-25','2017-06-25','50','3',NULL,NULL,NULL,NULL,NULL),
 (24,'competencia','2017-06-23','2017-06-21',1,'2017-06-11','2017-06-21','2','2','2017-06-11','2017-06-21','2','2',NULL,NULL,NULL,NULL,NULL),
 (25,'saadefrfrfrfacdxcdv','2017-06-11','2017-06-11',1,'2017-06-11','2017-06-11','2','2','2017-06-11','2017-06-11','2','2',NULL,NULL,NULL,NULL,NULL),
-(26,'gyhjhjkuhyyhuhjy','2017-06-22','2017-06-22',1,'2017-06-22','2017-06-22','3','5','2017-06-22','2017-06-22','3','5',NULL,NULL,NULL,NULL,NULL),
 (27,'fgrhgreytrgrdgrd','2017-06-22','2017-06-22',1,'2017-06-22','2017-06-22','5','5','2017-06-22','2017-06-22','5','5',NULL,NULL,NULL,NULL,NULL),
-(28,'jfigjkjfckifjfuisvjlkd','2017-07-13','2017-07-13',1,'2017-07-13','2017-07-13','5','5','2017-07-13','2017-07-13','5','5',NULL,NULL,NULL,NULL,NULL);
+(28,'jfigjkjfckifjfuisvjlkd','2017-07-13','2017-07-13',1,'2017-07-13','2017-07-13','5','5','2017-07-13','2017-07-13','5','5',NULL,NULL,NULL,NULL,NULL),
+(29,'11111111111111111','2017-06-16','2017-06-23',1,'2017-06-16','0000-00-00','2','4','2017-06-21','2017-06-16','50','4',NULL,NULL,NULL,NULL,NULL),
+(30,'ewrfwerwerwrw','2017-06-22','2017-06-16',1,'2017-06-22','2017-06-16','50','3','2017-06-22','2017-06-23','3','3',NULL,NULL,NULL,NULL,NULL),
+(31,'competencia','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(32,'competencia','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(33,'competencia','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(34,'dfsdgfsgtrgtr','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','2','2','2017-08-25','2017-08-25','3','3',NULL,NULL,NULL,NULL,NULL),
+(35,'cdsjfirehjflka','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(36,'cdsjfirehjflka','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(37,'cdsjfirehjflka','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(38,'cdsjfirehjflka','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(39,'cdsjfirehjflka','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(40,'cdsjfirehjflka','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(41,'cdsjfirehjflka','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(42,'cddfgrwgfre','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','2','2','2017-08-25','2017-08-25','2','2',NULL,NULL,NULL,NULL,NULL),
+(43,'cdsjfirehjflka','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','2','2','2017-08-25','2017-08-25','3','3',NULL,NULL,NULL,NULL,NULL),
+(44,'competencia','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','1','1','2017-08-25','2017-08-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(45,'competencia','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','3','3','2017-08-25','2017-08-25','2','2',NULL,NULL,NULL,NULL,NULL),
+(46,'competencia','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','3','3','2017-08-25','2017-08-25','2','2',NULL,NULL,NULL,NULL,NULL),
+(47,'competencia','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','3','3','2017-08-25','2017-08-25','2','2',NULL,NULL,NULL,NULL,NULL),
+(70,'competencia','2017-01-25','2017-01-25',1,'2017-01-25','2017-01-25','1','1','2017-01-25','2017-01-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(71,'competencia','2017-01-25','2017-01-25',1,'2017-01-25','2017-01-25','1','1','2017-01-25','2017-01-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(72,'competencia','2017-01-25','2017-01-25',1,'2017-01-25','2017-01-25','1','1','2017-01-25','2017-01-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(73,'competencia','2017-01-25','2017-01-25',1,'2017-01-25','2017-01-25','1','1','2017-01-25','2017-01-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(74,'competencia','2017-01-25','2017-01-25',1,'2017-01-25','2017-01-25','1','1','2017-01-25','2017-01-25','1','1',NULL,NULL,NULL,NULL,NULL),
+(75,'competencia','2017-08-25','2017-08-25',1,'2017-08-25','2017-08-25','3','3','2017-08-25','2017-08-25','2','2',NULL,NULL,NULL,NULL,NULL),
+(76,'gyhjhjkuhyyhuhjy','2017-08-29','2017-08-29',1,'2017-08-29','2017-08-29','2','2','2017-08-29','2017-08-29','3','3',NULL,NULL,NULL,NULL,NULL),
+(77,'competencia','2017-08-29','2017-08-29',1,'2017-08-29','2017-08-29','2','2','2017-08-29','2017-08-29','3','3',NULL,NULL,NULL,NULL,NULL),
+(78,'cdsjfirehjflka','2017-08-29','2017-08-29',1,'2017-08-29','2017-08-29','2','2','2017-08-29','2017-08-29','2','2',NULL,NULL,NULL,NULL,NULL),
+(79,'dfreagterwgtw','2017-08-31','2017-08-31',1,'2017-08-31','2017-08-31','3','4','2017-08-31','2017-08-31','3','3',NULL,NULL,NULL,NULL,NULL),
+(80,'cfsdfffwrefwefew','2017-09-03','2017-09-03',1,'2017-09-03','2017-09-03','3','3','2017-09-03','2017-09-03','3','3',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `rangos` */
 
@@ -424,6 +488,11 @@ CREATE TABLE `responsables_ubicacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `responsables_ubicacion` */
+
+insert  into `responsables_ubicacion`(`id_proc`,`id_persona`,`id_ubicacion`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(2,1,1,NULL,NULL,NULL,NULL),
+(2,2,2,NULL,NULL,NULL,NULL),
+(2,3,1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `roles` */
 
@@ -468,25 +537,26 @@ CREATE TABLE `ubicaciones` (
   KEY `id_estatu` (`id_estatus`),
   CONSTRAINT `id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
   CONSTRAINT `id_personas` FOREIGN KEY (`id_personas`) REFERENCES `personas` (`id_persona`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `ubicaciones` */
 
 insert  into `ubicaciones`(`id_ubicacion`,`nom_ubicacion`,`id_personas`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-(1,'Dirección de Consultoría Juídica',1,1,NULL,NULL,NULL,NULL),
+(1,'Dirección de Consultoría Jurídica',1,1,NULL,NULL,NULL,NULL),
 (2,'Dirección de Administración',2,1,NULL,NULL,NULL,NULL),
 (3,'Dirección de Recursos Humanos',3,1,NULL,NULL,NULL,NULL),
 (4,'Dirección de Planificación y Control de Gestión',4,1,NULL,NULL,NULL,NULL),
 (5,'Dirección de Tecnología de la Información',5,1,NULL,NULL,NULL,NULL),
 (6,'Dirección de Control de la Administración Centralizada',6,1,NULL,NULL,NULL,NULL),
 (7,'Dirección de Control de la Administración Descentralizada',7,1,NULL,NULL,NULL,NULL),
-(8,'irección de Determinación de Responsabilidades',8,1,NULL,NULL,NULL,NULL);
+(8,'Dirección de Determinación de Responsabilidades',8,1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `usuarios` */
 
 DROP TABLE IF EXISTS `usuarios`;
 
 CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `id_persona` int(11) NOT NULL,
   `nom_usuario` varchar(45) NOT NULL,
   `clave` varchar(100) NOT NULL,
@@ -496,20 +566,20 @@ CREATE TABLE `usuarios` (
   `fec_creado` datetime DEFAULT NULL,
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_persona`),
+  PRIMARY KEY (`id_usuario`),
   KEY `id_persona_idx` (`id_persona`),
   KEY `id_roles` (`id_rol`),
   CONSTRAINT `id_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`id_rol`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-(0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',1,NULL,NULL,NULL,NULL),
-(1,'carlos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',2,NULL,NULL,NULL,NULL),
-(2,'josselline','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',3,NULL,NULL,NULL,NULL),
-(3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',4,NULL,NULL,NULL,NULL),
-(4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1',1,NULL,NULL,NULL,NULL);
+insert  into `usuarios`(`id_usuario`,`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`id_rol`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(1,0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',1,NULL,NULL,NULL,NULL),
+(2,1,'carlos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','2',2,NULL,NULL,NULL,NULL),
+(3,2,'josselline','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',3,NULL,NULL,NULL,NULL),
+(4,3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',4,NULL,NULL,NULL,NULL),
+(5,4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1',1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `usuarios_roles` */
 

@@ -1,24 +1,18 @@
 <?php include("../view_header.php");?>
 <style type="text/css">
 body {
-    background-image: url(<?php echo full_url?>/web/img/productivity2.jpg);
+    background-image: url(<?php echo full_url?>/web/img/fondo_cmc.jpg);
+    -webkit-background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: left;
     background-attachment: fixed;
   }
-  label{
-    font-family: Trebuchet MS;
-  }
-button[type=submit] {
-    background-color: #ba1717;
-    border-color: #ba1717;
-  }
-button[type=submit]:hover {
-    background-color: #9c1414;
-    align-items: center;
-    border-color: #fff;
-  }
+
 </style>
+        <br>
+        <br>
+        <br>
+        <br>
         <br>
         <br>
        <div class="container">
@@ -28,6 +22,7 @@ button[type=submit]:hover {
                 <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12">
 				 <div class="panel panel-index">
 					<div class="panel-heading" >
+                                            <br>
 					  <label class="panel-title" align='center' ><?php echo title;?></label>
 					</div>
 				  <div class="panel-body">
@@ -45,6 +40,7 @@ button[type=submit]:hover {
 			                            <p class="help-block"></p>
 			                    </div>
 			                    </div>
+                                <br>
 			                    <div class="control-group form-group">
 			                        <div class="controls">
 			                            <label>Clave:</label>
@@ -75,16 +71,17 @@ button[type=submit]:hover {
 
 			                    </div>
 			                    </div>
+                                <br>
 							<div class="row">
                                                             <div align="center">
                                                                 <button type="submit" class="btn btn-success">Conectar <i class="fa fa-arrow-right"></i></button>
                                                             </div>
 							</div>
-							<div class="row">
-                                                            <div align="center">
+							  <!--<div class="row">
+                                                           <div align="center">
                                                                 <a class="btn btn-link" href="<?php echo full_url;?>/rrhh/registrarse.php"> ¡Recuperación de clave!</a>
 								<hr>
-                                                            </div>
+                                                            </div> -->
 
 							</div>
 			                    <!-- For success/fail messages -->

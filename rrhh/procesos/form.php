@@ -27,7 +27,9 @@
   </div>
 
 </div>
-    <a class="btn btn-default" href="<?php echo full_url?>/rrhh/index.php?action=list.php">Regresar</a>
+           <!--<button type="submit" id="guardar" class="btn btn-success">Guardar</button>-->
+
+    <a class="btn btn-default" href="<?php echo full_url?>/rrhh/procesos/index.php?action=Index">Regresar</a>
     <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
     <a class="btn btn-primary" href="index.php?action=generar_evaluaciones&id_proc=<?php echo $values['id_proc']?>">Inicio</a>
     <button type="submit" class="btn btn-danger">Culminar</button>
@@ -71,5 +73,90 @@ $(document).ready(function(){
     });
     
 });
+$(document).ready(function() {
+    $("input[type=radio]").click(function(event){
+        var valor = $(event.target).val();
+        if(valor =="acuerdo"){
+            $("#si").show();
+            $("#no").hide();
+        } else if (valor == "desacuerdo") {
+            $("#si").hide();
+            $("#no").show();
+        } else {
+            // Otra cosa
+        }
+    });
+});
+/*$(function () {
+   //evaluación
+        $('#fec_apertura').datetimepicker();
+        $('#fec_cierre').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#fec_apertura").on("dp.change", function (e) {
+            $('#fec_cierre').data("DateTimePicker").minDate(e.date);
+        });
+        $("#fec_cierre").on("dp.change", function (e) {
+            $('#fec_apertura').data("DateTimePicker").maxDate(e.date);
+        });
+    //odi
+         $('#fec_apertura_odi').datetimepicker();
+        $('#fec_cierre_odi').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#fec_apertura_odi").on("dp.change", function (e) {
+            $('#fec_cierre_odi').data("DateTimePicker").minDate(e.date);
+        });
+        $("#fec_cierre_odi").on("dp.change", function (e) {
+            $('#fec_apertura_odi').data("DateTimePicker").maxDate(e.date);
+        });
+      //competencia
+        $('#fec_apertura_competencia').datetimepicker();
+        $('#fec_cierre_competencia').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#fec_apertura_competencia").on("dp.change", function (e) {
+            $('#fec_cierre_competencia').data("DateTimePicker").minDate(e.date);
+        });
+        $("#fec_cierre_competencia").on("dp.change", function (e) {
+            $('#fec_apertura_competencia').data("DateTimePicker").maxDate(e.date);
+        });
 
+    });
+    $(function () {
+                   $('#evaluacion').datetimepicker();
+               });
+      $(function () {
+               $('#notificacion').datetimepicker();
+           });*/
+$(document).ready(function() {
+    $("input[type=radio]").click(function(event){
+        var valor = $(event.target).val();
+        if(valor =="acuerdo"){
+            $("#si").show();
+            $("#no").hide();
+        } else if (valor == "desacuerdo") {
+            $("#si").hide();
+            $("#no").show();
+        } else {
+            // Otra cosa
+        }
+    });
+});
+
+jQuery(document).ready(function(){
+$(".oculto").hide();
+  $(".inf").click(function(){
+      var nodo = $(this).attr("href");
+
+      if ($(nodo).is(":visible")){
+           $(nodo).hide();
+           return false;
+      }else{
+    $(".oculto").hide("slow");
+    $(nodo).fadeToggle("fast");
+    return false;
+      }
+});
+});
 </script>

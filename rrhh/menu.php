@@ -38,19 +38,13 @@
         <li><a href="<?php echo full_url?>/rrhh/index.php?action=logout"><i class="fa fa-power-off"></i> Cerrar sesión</a></li>
       </ul>
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> Usuarios <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-              <li><a href="<?php echo full_url?>/rrhh/usuarios/index.php?action=index">Lista de usuarios</a></li>
-          </ul>
+        <li class="">
+          <a class="dropdown-toggle" href="<?php echo full_url?>/rrhh/usuarios/index.php?action=index" role="button" aria-haspopup="true"><i class="fa fa-users"></i>Usuarios</a>
         </li>
       </ul>
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i> Procesos <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-              <li><a href="<?php echo full_url?>/rrhh/procesos/index.php?action=index">Todos los procesos</a></li>
-          </ul>
+          <a class="dropdown-toggle" href="<?php echo full_url?>/rrhh/procesos/index.php?action=index" role="button" aria-haspopup="true"><i class="fa fa-cogs"></i>Procesos</a>
         </li>
       </ul>
       <ul class="nav navbar-nav">
@@ -69,22 +63,6 @@
           </ul>
         </li>
       </ul>-->
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Compentencias <span class="caret"></span></a>
-           <ul class="dropdown-menu">
-              <li><a href="<?php echo full_url?>/rrhh/competencias/index.php?action=index">Formulario de Competencias</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Reclamos <span class="caret"></span></a>
-           <ul class="dropdown-menu">
-              <li><a href="<?php echo full_url?>/rrhh/reclamos/index.php?action=index">Reclamos</a></li>
-          </ul>
-        </li>
-      </ul>
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Estadísticas <span class="caret"></span></a>

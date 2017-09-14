@@ -1,5 +1,5 @@
 <?php include('../../view_header_app.php')?>
-<?php include('../menu.php')?>
+<?php include('../menu.php');?>
 <div class="container">
 	<h1 class="text-center big_title">Personal</h1>
 
@@ -7,9 +7,11 @@
 		<thead>
                     <tr>
                     <th>ID</th>
+                    <th>Número de documento</th>
                     <th>Empleados</th>
-                    <th>Direccion</th>
+                    <th>Ubicación</th>
                     <th>Cargo</th>
+                    <th>Estatus</th>
                     <th>Detalle</th>
                     </tr>
 		</thead>
@@ -17,20 +19,23 @@
                 <thead>
                     <tr>
                     <th>ID</th>
+                    <th>Número de documento</th>
                     <th>Empleados</th>
-                    <th>Direccion</th>
+                    <th>Ubicación</th>
                     <th>Cargo</th>
+                    <th>Estatus</th>
                     <th>Detalle</th>
                     </tr>
                 </thead>
+                
 			
 	</table>
       
-        <a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"> Agregar</a>			
+        <a class="btn btn-success"  href="<?php echo full_url."/rrhh/personal/index.php?action=new"?>"> Agregar</a>			
 
-</div>       
+</div>      
        
-	<?php include('../../view_footer_solicitud.php')?>
+	<?php include('../../view_footer_solicitud.php');?>
 <script>
 
 	
@@ -56,19 +61,22 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": true,
 		 "sDom": 'ltrip',
-        "ajax": "<?php echo full_url."/rrhh/procesos/index.php?action=list_json"?>",
+        "ajax": "<?php echo full_url."/rrhh/personal/index.php?action=list_json"?>",
 		"language": {
                 "url": "<?php echo full_url."/web/js/"?>datatables.spanish.lang"
         },
         "columns": [
             { "data": "id_persona" },
+            { "data": "num_documento"},
+            { "data": "pri_ape"},
             { "data": "pri_nom"},
-            { "data": "id_uicacion" },
+            { "data": "id_ubicacion" },
             { "data": "id_cargo" },
+            { "data": "id_estatus" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 4 ] }
+          { 'bSortable': false, 'aTargets': [ 7 ] }
        ]				
     });
 $('#column_0').on ('keypress', function(e){
@@ -96,7 +104,16 @@ $('#column_4').on ('keypress', function(e){
         table.column(table.column(4)).search($(this).val()).draw();
     }
 });
-
+$('#column_5').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(5)).search($(this).val()).draw();
+    }
+});
+$('#column_6').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(6)).search($(this).val()).draw();
+    }
+});
 
 	$('#clear').click(function(){
 		table.search( '' ).columns().search( '' ).draw();

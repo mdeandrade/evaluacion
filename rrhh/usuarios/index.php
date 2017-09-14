@@ -28,6 +28,9 @@ $values = array_merge($values,$_FILES);
 		case "list_json":
 			executeListJson($values);
 		break;
+                /*case "show":
+			executeShow($values);
+		break;*/
 		default:
                         executeIndex($values);
 		break;
@@ -66,7 +69,7 @@ $values = array_merge($values,$_FILES);
 		$values = $Usuarios->getUsuariosById($values);
 		$values['action'] = 'update';
                 $values['msg'] = $msg;
-
+                
 		require('form.php');
 	}
 	function executeUpdate($values = null)
@@ -89,6 +92,7 @@ $values = array_merge($values,$_FILES);
 	}
 	function executeListJson($values)
 	{
+            //print_r($values);die;
 		$Usuarios= new Usuarios();
 		$list_json = $Usuarios ->getUsuariosList($values);
 		$list_json_cuenta = $Usuarios ->getCountUsuariosList($values);
@@ -97,17 +101,19 @@ $values = array_merge($values,$_FILES);
 		$array_json['recordsFiltered'] = $list_json_cuenta;
 		if(count($list_json)>0)
 		{
+                    //print_r($values);die;
 			foreach ($list_json as $list)
 			{
-				$id_persona = $list['id_persona'];
+                            //print_r($values);die;
+				$id_usuario = $list['id_usuario'];
 				$array_json['data'][] = array(
-					"id_persona" => $id_persona,
+					"id_usuario" => $id_usuario,
 					"nom_usuario" => $list['nom_usuario'],
 					"id_estatus" => $list['id_estatus'],
 					"actions" =>
                                        '<form method="POST" action = "'.full_url.'/rrhh/usuarios/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id_persona" value="'.id_persona.'">  '
+                                       .'<input type="hidden" name="id_usuario" value="'.$id_usuario.'">  '
                                        .'<button class="btn btn-default btn-sm" title="Ver detalle" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
                                         .'</form>'
 					);
@@ -116,11 +122,20 @@ $values = array_merge($values,$_FILES);
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
 				$array_json['data'][] = array(
-					"id_persona" => null,
-					"nom_usuario" => "",
-					"id_estatus" => "",
-					"actions" => ""
+					"id_usuario" => null,
+					"nom_usuario" => null,
+					"nom_estatus" => null,
+					"actions" => null
 					);
 		}
 		echo json_encode($array_json);die;
-    }
+    }        
+        /*function executeShow ($values)
+                {
+                    $Personas = new $Personas();
+                    $lista_personas = $Personas->getPersonas($values);
+                    $Roles = new Roles();
+                    $lista_usuario_rol = $Roles->getRoles($values); 
+                }*/
+              
+            

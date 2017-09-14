@@ -1,26 +1,25 @@
 <?php include('../../view_header_app.php')?>
 <?php include('../menu.php')?>
-<div class="container">
+<div class="container-fluid">
 	<h1 class="text-center big_title">Procesos</h1>
-
 	<table id="example" class="table table-striped  table-responsive" width="100%" cellspacing="0">
-			<thead>
-				<tr>
-                    <th>ID</th>
-					<th>Descripción</th>
-                    <th>Fecha desde</th>
-                    <th>Fecha hasta</th>
-                    <th>Fecha desde</th>
-                    <th>Fecha hasta</th>
-                    <th>Fecha desde</th>
-                    <th>Fecha hasta</th>
+            <thead>
+                <tr>
+                    <th>Número de proceso</th>
+                    <th>Descripción</th>
+                    <th>Inicio del proceso</th>
+                    <th>Fin del proceso</th>
+                    <th>Incio de asignación ODI</th>
+                    <th>Fin de asignación de ODI</th>
+                    <th>Inicio de evaluación</th>
+                    <th>Fin de evaluación</th>
                     <th>Detalle</th>
                 </tr>
-			</thead>
-			<tfoot>
-				<tr>
-                    <th>ID</th>
-					<th>Descripción</th>
+            </thead>
+            <tfoot>
+		<tr>
+                    <th>Número de proceso</th>
+                    <th>Descripción</th>
                     <th>Fecha desde</th>
                     <th>Fecha hasta</th>
                     <th>Fecha desde</th>
@@ -28,8 +27,8 @@
                     <th>Fecha desde</th>
                     <th>Fecha hasta</th>
                     <th>Detalle</th>
-				</tr>
-			</tfoot>
+		</tr>
+            </tfoot>
 	</table>
 
         <a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"> Agregar</a>

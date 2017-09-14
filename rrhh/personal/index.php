@@ -52,8 +52,8 @@ $values = array_merge($values,$_FILES);
 		executeNew($values,$errors);die;
             }else{
                 //print_r($values);die;
-                $Cargos = new Cargos();
-                $values = $Cargos->saveCargos($values);
+                $id_persona = new Personal();
+                $values = $id_persona->savePersonal($values);
                
                 executeEdit($values);
             }
@@ -62,8 +62,8 @@ $values = array_merge($values,$_FILES);
 	function executeEdit($values = null,$errors = null,$msg = null)
 	{
 		//print_r($values);die;
-		$Cargos = new Cargos();
-		$values = $Cargos->getCargosById($values);
+		$id_persona = new Personal();
+		$values = $id_persona->getPersonalById($values);
 		$values['action'] = 'update';
                 $values['msg'] = $msg;
 		
@@ -78,8 +78,8 @@ $values = array_merge($values,$_FILES);
 		executeEdit($values,$errors);die;
             }else{
                
-                $Cargos = new Cargos();
-                $Cargos ->updateCargos($values);
+                $id_persona = new Personal();
+                $id_persona ->updatePersonal($values);
                 $msg = "Actualizado correctamente";
                 //print_r($values);die;
                 executeEdit($values,$errors,$msg);die;
@@ -89,45 +89,53 @@ $values = array_merge($values,$_FILES);
 	}
 	function executeListJson($values)
 	{
-		$Cargos= new Cargos();
-		$list_json = $Cargos ->getCargosList($values);
-		$list_json_cuenta = $Cargos ->getCountCargosList($values);
+            //print_r($values);die;
+		$Personas= new Personas();
+		$list_json = $Personas ->getPersonasList($values);
+		$list_json_cuenta = $Personas ->getCountPersonasList($values);
 		$array_json = array();
 		$array_json['recordsTotal'] = $list_json_cuenta;
 		$array_json['recordsFiltered'] = $list_json_cuenta;
 		if(count($list_json)>0)
 		{
-			foreach ($list_json as $list) 
+                    //print_r($values);die;
+			foreach ($list_json as $list)
 			{
-
+                            //print_r($values);die;
 				$id_persona = $list['id_persona'];
 				$array_json['data'][] = array(
-					"id_persona" => id_persona,
-                                        "pri_nom" => $list['pri_ape']." ".$list['nombres'],
-					"nom_uicacion" => $list['nom_uicacion'],
-					"nom_cargo" => $list['nom_cargo'],
-					"actions" => 
-                                       '<form method="POST" action = "'.full_url.'/rrhh/personal/index.php" >'
+					"id_persona" => $id_persona,
+					"num_documento" => $list['num_documento'],
+                                        "pri_ape" => $list['pri_ape'],
+                                        "pri_ape" =>$list['pri_nom'],
+					"nom_ubicacion" => $list['nom_ubicacion'],
+                                        "nom_cargo" => $list['nom_cargo'],
+                                        "nom_estatus" => $list['nom_estatus'],
+					"actions" =>
+                                        '<form method="POST" action = "'.full_url.'/rrhh/personal/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id_cargo" value="'.$id_persona.'">  '
+                                       .'<input type="hidden" name="id_persona" value="'.$id_persona.'">  '
                                        .'<button class="btn btn-default btn-sm" title="Ver detalle" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
                                         .'</form>'
-					);	
-			}		
+					);
+			}
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array(
-                            "id_cargo"=>null,
-                            "nom_cargo"=>"",
-                            "nom_estatus"=>"",
-                            "actions"=>""
-                            );
+				$array_json['data'][] = array(
+					"id_persona" => null,
+					"num_documento" => null,
+                                        "nom_persona" => null,
+                                        "nom_ubicacion" => null,
+                                        "nom_cago" => null,
+					"nom_estatus" => null,
+					"actions" => null
+					);
 		}
 		echo json_encode($array_json);die;
-		
 	}
-        function executePersonas($values)
+        
+       /* function executePersonas($values)
                  {
             $Evaluaciones = new Evaluaciones;
             $consulta  = $Evaluaciones->generar($values);
@@ -157,3 +165,16 @@ $values = array_merge($values,$_FILES);
 } // FIN DE FOREACH
          }
     $html.='</table>';
+        
+        function executePersonas($values){
+                        
+                        $ConnectionORM = new ConnectionORM();
+                        $q = $ConnectionORM->getConnect()->Personal
+                        ->select("*")
+                        ->where("id_persona=?",$id_persona)
+                        ->order("id_ubicacion,pri_nom,pri_ape,id_nivel");
+                        
+                        //echo'<pre>';var_dump($q);die;
+                        /*var_dump($q);die;*/
+            
+          

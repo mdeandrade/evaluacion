@@ -1,25 +1,24 @@
 <?php include('../../view_header_app.php')?>
 <?php include('../menu.php')?>
-<div class="container">
-	<h1 class="text-center big_title">Usuarios</h1>
-
+<div class="container-fluid">
+	<h1 class="text-center big_title">Listado de Usuarios</h1>
 	<table id="example" class="table table-striped  table-responsive" width="100%" cellspacing="0">
-			<thead>
-				<tr>
+            <thead>
+		<tr>
                     <th>ID</th>
-					<th>Nombre de usuario</th>
+                    <th>Nombre de usuario</th>
                     <th>Estatus</th>
                     <th>Detalle</th>
                 </tr>
-			</thead>
-			<tfoot>
-				<tr>
+            </thead>
+            <tfoot>
+		<tr>
                     <th>ID</th>
-					<th>Nombre de usuario</th>
+                    <th>Descripción</th>
                     <th>Estatus</th>
                     <th>Detalle</th>
-				</tr>
-			</tfoot>
+		</tr>
+            </tfoot>
 	</table>
 
         <a class="btn btn-success"  href="<?php echo full_url."/rrhh/usuarios/index.php?action=new"?>"> Agregar</a>
@@ -57,13 +56,13 @@ $(document).ready(function() {
                 "url": "<?php echo full_url."/web/js/"?>datatables.spanish.lang"
         },
         "columns": [
-            { "data": "id_persona" },
+            { "data": "id_usuario" },
             { "data": "nom_usuario"},
             { "data": "id_estatus" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 8 ] }
+          { 'bSortable': false, 'aTargets': [ 3 ] }
        ]
     });
 $('#column_0').on ('keypress', function(e){
@@ -81,11 +80,7 @@ $('#column_2').on ('keypress', function(e){
         table.column(table.column(2)).search($(this).val()).draw();
     }
 });
-$('#column_3').on ('keypress', function(e){
-    if(e.which == 13) {
-        table.column(table.column(3)).search($(this).val()).draw();
-    }
-});
+
 	$('#clear').click(function(){
 		table.search( '' ).columns().search( '' ).draw();
 		$('.filtros').val('');

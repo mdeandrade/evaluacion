@@ -19,10 +19,10 @@ $values = array_merge($values,$_FILES);
 		case "add":
 			executeAdd($values);
 		break;
-    case "edit":
+                case "edit":
 			executeEdit($values);
 		break;
-  case "update":
+                case "update":
 			executeUpdate($values);
 		break;
 		case "list_json":
@@ -31,7 +31,10 @@ $values = array_merge($values,$_FILES);
 		case "generar_evaluaciones":
 			executeGenerarEvaluciones($values);
 		break;
-                case "query":
+                case "upload":
+			executeUploadPersonas($values);
+		break;
+                case "save":
 			executePersonas($values);
 		break;
 		default:
@@ -59,14 +62,15 @@ $values = array_merge($values,$_FILES);
                 //print_r($errors);die();
 		executeNew($values,$errors);die;
             }else{
+                
                 //echo 'kkkk';die();
                 //print_r($values);die;
                 $Procesos = new Procesos();
                 $values = $Procesos->saveProcesos($values);
+                executeUploadPersonas($values);
                 
-
-                executeEdit($values);
             }
+         executeEdit($values);
 
 	}
 	function executeEdit($values = null,$errors = null,$msg = null)
@@ -114,11 +118,11 @@ $values = array_merge($values,$_FILES);
 					"id_proc" => $id_proc,
 					"descripcion" => $list['descripcion'],
 					"fec_apertura_evaluacion" => $list['fec_apertura_evaluacion'],
-                    "fec_cierre_evaluacion" => $list['fec_cierre_evaluacion'],
-                    "fec_apertura_odi" => $list['fec_apertura_odi'],
-                    "fec_cierre_odi" => $list['fec_cierre_odi'],
-                    "fec_apertura_competencia" => $list['fec_apertura_competencia'],
-                    "fec_cierre_competencia" => $list['fec_cierre_competencia'],
+                                        "fec_cierre_evaluacion" => $list['fec_cierre_evaluacion'],
+                                        "fec_apertura_odi" => $list['fec_apertura_odi'],
+                                        "fec_cierre_odi" => $list['fec_cierre_odi'],
+                                        "fec_apertura_competencia" => $list['fec_apertura_competencia'],
+                                        "fec_cierre_competencia" => $list['fec_cierre_competencia'],
 					"actions" =>
                                        '<form method="POST" action = "'.full_url.'/rrhh/procesos/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
@@ -134,11 +138,11 @@ $values = array_merge($values,$_FILES);
 					"id_proc" => null,
 					"descripcion" => null,
 					"nom_estatus" => null,
-                    "nom_estatus" => null,
-                    "nom_estatus" => null,
-                    "nom_estatus" => null,
-                    "nom_estatus" => null,
-                    "nom_estatus" => null,
+                                        "nom_estatus" => null,
+                                        "nom_estatus" => null,
+                                        "nom_estatus" => null,
+                                        "nom_estatus" => null,
+                                        "nom_estatus" => null,
 					"actions" => null
 					);
 		}
@@ -151,6 +155,78 @@ $values = array_merge($values,$_FILES);
             $Evaluaciones = new Evaluaciones;
             $generar  = $Evaluaciones->generar($values);
 
+        }
+         function executeUploadPersonas($values)
+        {
+            $Personas = new Personas();
+            //print_r($values);die;
+            if(isset($values['Archivo']) and $values['Archivo']['size']>0)
+                {
+                    //obtenemos el archivo .csv
+                    $tipo = $values['Archivo']['type'];
+                    $tamanio = $values['Archivo']['size'];
+
+                    $archivotmp = $values['Archivo']['tmp_name'];
+
+                    //cargamos el archivo
+                    $lineas = file($archivotmp);
+
+                    //inicializamos variable a 0, esto nos ayudará a indicarle que no lea la primera línea
+                    $i=0;
+                    $arreglo = array(array());
+                    $arreglo_errores = array();
+                    //Recorremos el bucle para leer línea por línea
+                    foreach ($lineas as $linea_num => $linea)
+                        {
+                           //abrimos bucle
+                           /*si es diferente a 0 significa que no se encuentra en la primera línea
+                           (con los títulos de las columnas) y por lo tanto puede leerla*/
+                           if($i != 0)
+                                {
+                               //abrimos condición, solo entrará en la condición a partir de la segunda pasada del bucle.
+                               /* La funcion explode nos ayuda a delimitar los campos, por lo tanto irá
+                               leyendo hasta que encuentre un ; */
+                               $datos = explode(";",$linea);
+
+                               //Almacenamos los datos que vamos leyendo en una variable
+                              
+                               $num_documento = trim($datos[0]);
+                               $pri_nom = trim($datos[1]);
+                               $pri_ape = trim($datos[2]);
+                               $correo = trim($datos[3]);
+                               $sexo = trim($datos[4]);
+                               $fec_nacimiento = trim($datos[5]);
+                               $id_ubicacion = trim($datos[6]);
+                               $id_cargo = trim($datos[7]);
+
+                                $array[$i] = array(
+                                "num_documento" => $num_documento,
+                                "pri_nom" => $pri_nom,
+                                "pri_ape" => $pri_ape,
+                                "correo" => $correo,
+                                "sexo" => $sexo,
+                                "fec_nacimiento" => $fec_nacimiento,
+                                "id_ubicacion" => $id_ubicacion,
+                                "id_cargo" => $id_cargo,
+                                );
+                                
+                                $Personas->savePersonasArchivo($array[$i]);
+                                
+                           }
+
+                           /*Cuando pase la primera pasada se incrementará nuestro valor y a la siguiente pasada ya
+                           entraremos en la condición, de esta manera conseguimos que no lea la primera línea.*/
+                           $i++;
+                           //cerramos bucle
+                        }
+            }
+         executeEdit($values);
+
+	}
+        function executesavePersonas($values)
+        {
+            $Evaluador = new Evaluador;
+            $generar  = $Evaluador->generar($values); 
         }
         
          
