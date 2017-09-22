@@ -24,10 +24,10 @@
 			$columns[1] = 'descripcion';
 			$columns[2] = 'fec_apertura_evaluacion';
 			$columns[3] = 'fec_cierre_evaluacion';
-            $columns[4] = 'fec_apertura_odi';
-            $columns[5] = 'fec_cierre_odi';
-            $columns[6] = 'fec_apertura_competencia';
-            $columns[7] = 'fec_cierre_competencia';
+                        $columns[4] = 'fec_apertura_odi';
+                        $columns[5] = 'fec_cierre_odi';
+                        $columns[6] = 'fec_apertura_competencia';
+                        $columns[7] = 'fec_cierre_competencia';
             
 			$column_order = $columns[0];
 			$where = '1 = 1';

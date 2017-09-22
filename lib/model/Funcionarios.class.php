@@ -11,25 +11,24 @@
         *
         * @author LENOVO
         */
-        class Evaluacion {
-    
-                function saveProcesos($values){
-			 //print_r($values);die;
-                        $array = array(
-                            "nombres" => $values['nombres'],
-                            "apellidos" => $values['apellidos'],
-                            "sexo" => $values['sexo'],
-                            "fec_nac" => $values['fec_nac'],
-                            "doc_iden" => strtoupper($values['doc_iden']),
-                            "id_ubicacion" => $values['id_ubicacion'],
-                            "id_cargo" => $values['id_cargo'],
-                            "id_estatus" => $values['id_estatus']
-                            
+        class Funcionarios { 
+            
+            function saveFuncionarios($values){
+                $array = array(
+               
+                                "Cedula" => $values ['num_documento'],
+                                "Nombre" => $values['nombres'],
+                                "Apellido" => $values['apellidos'],
+                                "Correo" => $values['correo'],
+                                "sexo" => $values['sexo'],
+                                "fec_nac" => $values['fec_nac'],
+                                "id_ubicacion" => $values['id_ubicacion'],
+                                "id_cargo" => $values['id_cargo'], 
                         );
-			$ConnectionORM = new ConnectionORM();
-                        $q = $ConnectionORM->getConnect()->procesos()->insert($array);
-                        $values['id_proc'] = $ConnectionORM->getConnect()->procesos()->insert_id();
+                        $ConnectionORM = new ConnectionORM();
+                        $q = $ConnectionORM->getConnect()->personal()->insert($array);
+                        $values['id_persona'] = $ConnectionORM->getConnect()->personal()->insert_id();
 			return $values;	
-			
-		}
 }
+              
+        }

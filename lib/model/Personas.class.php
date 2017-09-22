@@ -11,19 +11,24 @@
  *
  * @author LENOVO
  */
-class Personal {
+class Personas {
     
 		public function __construct() 
 		{
 			
 		}
-		public function getPersonalList($values)
+		
+                public function getUsuariosList($values)
 		{	
 			$columns = array();
 			$columns[0] = 'id_persona';
-			$columns[1] = 'nombres';
-			$columns[2] = 'id_uicacion';
-                        $columns[3] = 'id_cargo';
+			$columns[1] = 'num_documento';
+			$columns[2] = 'pri_ape';
+                        $columns[3] = 'pri_nom';
+			$columns[4] = 'id_ubicacion';
+                        $columns[5] = 'id_cargo';
+			$columns[6] = 'id_estatus';
+            
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -37,20 +42,35 @@ class Personal {
 			}
 			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
 			{
-				$where.=" AND upper(nombres) like ('%".$values['columns'][1]['search']['value']."%')";
+				$where.=" AND upper(num_documento) like ('%".$values['columns'][1]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_ubicacion) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(pri_ape) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
-                        if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+                        if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_cargo) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(pri_nom) like ('%".$values['columns'][1]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}			
+			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			{
+				$where.=" AND upper(id_ubicacion) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
-				
+                        if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
+			{
+				$where.=" AND upper(id_cargo) like ('%".$values['columns'][1]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}			
+			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			{
+				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+			
 				
 			
 			
@@ -64,15 +84,16 @@ class Personal {
 			}
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->personal
+			$q = $ConnectionORM->getConnect()->personas
 			->select("*")
-			->order("$column_order $order")        
+			->order("$column_order $order") 
+                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = personas.id_estatus")
 			->where("$where")
 			->limit($limit,$offset);
 			//echo $q;die;
 			return $q; 			
 		}
-		public function getCountPersonalList($values)
+		public function getCountUsuariosList($values)
 		{	
 			$where = '1 = 1';
 			if(isset($values['columns'][0]['search']['value']) and $values['columns'][0]['search']['value']!='')
@@ -82,34 +103,54 @@ class Personal {
 			}
 			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
 			{
-				$where.=" AND upper(nombres) like ('%".$values['columns'][1]['search']['value']."%')";
+				$where.=" AND upper(num_documento) like ('%".$values['columns'][1]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_ubicacion) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(pri_ape) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}
-                        if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			}	
+                        if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_cargo) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(pri_nom) like ('%".$values['columns'][1]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}			
+			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			{
+				$where.=" AND upper(id_ubicacion) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
-			
+                        if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
+			{
+				$where.=" AND upper(id_cargo) like ('%".$values['columns'][1]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}			
+			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			{
+				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        
+				
+				
                         $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->personal
-			->select("count(*) as cuenta")	    
+			$q = $ConnectionORM->getConnect()->personas
+			->select("count(*) as cuenta")	
+                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = personas.id_estatus")
 			->where("$where")
 			->fetch();
 			return $q['cuenta']; 			
 		}
-		public function getPersonalById($values){
+		
+               public function getPersonasById($values){
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->personal
+			$q = $ConnectionORM->getConnect()->personas
 			->select("*")
-			->where("personal.id_persona=?",$values['id_persona'])
+			->where("personas.id_persona=?",$values['id_persona'])
 			->fetch();
-			return $q; 				
+			return $q; 
+                        
 			
 		}
 		function deleteUser($id_user){
@@ -119,50 +160,44 @@ class Personal {
 			
 			
 		}		
-		function savePersonal($values){
+		function savePersonas($values){
 			 
                         $array = array(
-                            "nombres" => $values['nombres'],
-                            "apellidos" => $values['apellidos'],
-                            "sexo" => $values['sexo'],
-                            "fec_nac" => $values['fec_nac'],
-                            "doc_iden" => strtoupper($values['doc_iden']),
-                            "id_ubicacion" => $values['id_ubicacion'],
-                            "id_cargo" => $values['id_cargo'],
-                            "id_estatus" => $values['id_estatus']
-                            
+                               "id_persona" => $values ['id_persona'],
+                                "num_documento" => $values ['num_documento'],
+                                "pri_ape" => $values['pri_ape'],
+                                "pri_nom" => $values['pri_nom'],
+                                "id_ubicacion" => $values['id_ubicacion'],
+                                "id_cargo" => $values['id_cargo'],
+                                "id_estatus" => $values['id_estatus'],
                         );
 			$ConnectionORM = new ConnectionORM();
-                        $q = $ConnectionORM->getConnect()->personal()->insert($array);
-                        
-			$values['id_persona'] = $ConnectionORM->getConnect()->personal()->insert_id();
-
-                        $array = array(
-                            "cod_expediente" => strtoupper($values['doc_iden']),
-                            "id_persona" => $values['id_persona'],
-                            "id_estatus" => $values['id_estatus'],
-                            "fec_creacion" => date('Y-m-d'),
-                            
-                        );
+                        $q = $ConnectionORM->getConnect()->personas()->insert($array);
+			$values['id_persona'] = $ConnectionORM->getConnect()->personas()->insert_id();
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->expedientes()->insert($array);                        
+			$q = $ConnectionORM->getConnect()->personas()->insert($array);                        
                         
                         
                         
 			return $values;	
 			
 		}
+		function savePersonasArchivo($values){
+			 //print_r($values); die;
+			$ConnectionORM = new ConnectionORM();
+                        $q = $ConnectionORM->getConnect()->personas()->insert($values);          
+			
+		}
 		function updatePersonal($values){
                        
                         $array = array(
-                            "nombres" => $values['nombres'],
-                            "apellidos" => $values['apellidos'],
-                            "sexo" => $values['sexo'],
-                            "fec_nac" => $values['fec_nac'],
-                            "id_ubicacion" => $values['id_ubicacion'],
-                            "id_cargo" => $values['id_cargo'],
-                            "id_estatus" => $values['id_estatus']
-                            
+                                "id_persona" => $values ['id_persona'],
+                                "num_documento" => $values ['num_documento'],
+                                "pri_nom" => $values['pri_nom'],
+                                "pri_ape" => $values['pri_ape'],
+                                "id_ubicacion" => $values['id_ubicacion'],
+                                "id_cargo" => $values['id_cargo'],
+                                "id_estatus" => $values['id_estatus'],
                         );
                         
 			$id_persona = $values['id_persona'];
@@ -255,16 +290,13 @@ class Personal {
 			$Aws->desactivarGruero($id_user);
 
 		}
-                 function executePersonas($values){
-                        
+                 
+                        function getPersonas($values){
+                       
                         $ConnectionORM = new ConnectionORM();
-                        $q = $ConnectionORM->getConnect()->Personal
-                        ->select("*")
-                        ->where("id_persona=?",$id_persona)
-                        ->order("id_ubicacion,pri_nom,pri_ape,id_nivel");
-                        
-                        var_dump($q);die;
-            
-           }
- 
+			$q = $ConnectionORM->getConnect()->Personas
+			->select("*");
+			return $q; 
+			
+		}
 }

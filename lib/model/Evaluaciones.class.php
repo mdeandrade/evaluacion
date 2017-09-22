@@ -29,12 +29,9 @@
                                 
                                 //echo $uprocesos['id_proc']."<br>";
                                $array = array(
-                                "id_personas" => $values['did_personas'],
-                                "id_ubicacion" => $values['id_ubicacion'],
+                                "id_personas" => $values['id_personas'],
+                                "id_ubicacion" => $values['id_ubicacion'],                           
                                 
-                                
-                                
-
                                 );
                                 $ConnectionORM = new ConnectionORM();
                                 $q = $ConnectionORM->getConnect()->procesos()->insert($array);//insert a tabla de usuarios

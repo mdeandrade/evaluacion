@@ -11,37 +11,34 @@
         *
         * @author LENOVO
         */
-        class Evaluacion {
-    
-                function generar($values){
-
-                            //select
-                            //recuerden usar el id_proc
+        class Evaluadores {
                 
-                            $ConnectionORM = new ConnectionORM();
-                            $q = $ConnectionORM->getConnect()->Procesos
-                            ->select("id_persona.personas")
-                            ->order("pri_ape, id_ubicaion")
-                            ->join("ubicaciones","INNER JOIN ubicaciones u on u.id_ubicacion = ubicaciones.id_ubicacion")
-                            ->where("id_proc=?",$values['id_proc']);
-                            
-                            foreach($q as $procesos):
-                                
-                                //echo $uprocesos['id_proc']."<br>";
-                               $array = array(
-                                "id_personas" => $values['did_personas'],
+                function getEvaluadores($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Personas
+			->select("*");
+			return $q; 
+			
+		}
+                
+                function saveEvaluadores($values){
+			 //print_r($values); die;
+			
+                        $array = array(
+               
+                                "id_persona" => $values['id_persona'],
                                 "id_ubicacion" => $values['id_ubicacion'],
-                                
-                                
-                                
-
-                                );
-                                $ConnectionORM = new ConnectionORM();
-                                $q = $ConnectionORM->getConnect()->procesos()->insert($array);//insert a tabla de usuarios
-                                $values['id_proc'] = $ConnectionORM->getConnect()->procesos()->insert_id();
-                            endforeach;
-                            //die;
-                            //insert
-
-            }
+                                 
+                        );
+			$ConnectionORM = new ConnectionORM();
+                        $q = $ConnectionORM->getConnect()->evaluadores()->insert($array);
+                        $values['id_evaluador'] = $ConnectionORM->getConnect()->evaluadores()->insert_id();
+			return $values;	
+                        
+                        
+			return $values;	
+			
+		}
+		
 }

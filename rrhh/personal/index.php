@@ -89,8 +89,7 @@ $values = array_merge($values,$_FILES);
 	}
 	function executeListJson($values)
 	{
-            //print_r($values);die;
-		$Personas= new Personas();
+            $Personas= new Personas();
 		$list_json = $Personas ->getPersonasList($values);
 		$list_json_cuenta = $Personas ->getCountPersonasList($values);
 		$array_json = array();
@@ -107,12 +106,12 @@ $values = array_merge($values,$_FILES);
 					"id_persona" => $id_persona,
 					"num_documento" => $list['num_documento'],
                                         "pri_ape" => $list['pri_ape'],
-                                        "pri_ape" =>$list['pri_nom'],
+                                        "pri_nom" =>$list['pri_nom'],
 					"nom_ubicacion" => $list['nom_ubicacion'],
                                         "nom_cargo" => $list['nom_cargo'],
                                         "nom_estatus" => $list['nom_estatus'],
 					"actions" =>
-                                        '<form method="POST" action = "'.full_url.'/rrhh/personal/index.php" >'
+                                       '<form method="POST" action = "'.full_url.'/rrhh/personal/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
                                        .'<input type="hidden" name="id_persona" value="'.$id_persona.'">  '
                                        .'<button class="btn btn-default btn-sm" title="Ver detalle" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
@@ -125,16 +124,15 @@ $values = array_merge($values,$_FILES);
 				$array_json['data'][] = array(
 					"id_persona" => null,
 					"num_documento" => null,
-                                        "nom_persona" => null,
-                                        "nom_ubicacion" => null,
-                                        "nom_cago" => null,
-					"nom_estatus" => null,
+					"pri_ape" => null,
+                                        "pri_nom" => null,
 					"actions" => null
 					);
 		}
 		echo json_encode($array_json);die;
+                    
 	}
-        
+                
        /* function executePersonas($values)
                  {
             $Evaluaciones = new Evaluaciones;

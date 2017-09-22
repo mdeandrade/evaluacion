@@ -17,7 +17,7 @@
 		{
 			
 		}
-               public function getProcesosList($values)
+               public function getUsuariosList($values)
 		{	
 			$columns = array();
 			$columns[0] = 'id_persona';
@@ -68,7 +68,7 @@
 			//echo $q;die;
 			return $q; 			
 		}
-		public function getCountProcesosList($values)
+		public function getCountUsuariosList($values)
 		{	
 			$where = '1 = 1';
 			if(isset($values['columns'][0]['search']['value']) and $values['columns'][0]['search']['value']!='')
@@ -97,13 +97,15 @@
 			return $q['cuenta']; 			
 		}
 		
-               public function getUserById($values){
+               public function getUsuariosById($values){
+                        
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios
 			->select("*")
-			->where("usuarios.id_persona=?",$values['id_persona'])
+			->where("usuarios.id_usuario=?",$values['id_usuario'])
 			->fetch();
-			return $q; 				
+			return $q; 
+                        
 			
 		}
 		function deleteUser($id_user){
@@ -117,11 +119,11 @@
 			 
                         $array = array(
                             "id_persona" => $values['id_persona'],
+                            "id_rol" => $values['id_rol'],
                             "nom_usuario" => $values['nom_usuario'],
-                            "id_estatus" => $values['id_estatus'],
                             "clave" => hash('sha256',$values['clave']),
-                            /*"perfiles" => $values['perfiles]*/
-                            
+                            "id_estatus" => $values['id_estatus'],
+   
                         );
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios()->insert($array);
@@ -132,10 +134,9 @@
 		function updateUser($values){
 
                         $array = array(
-                            'nom_usuario' => $values['nom_usuario'],
-                            'id_estatus' => $values['id_estatus'],
-                            'id_estatus' => $values['id_estatus'],
-                            
+                            "nom_usuario" => $values['nom_usuario'],
+                            "id_rol" => $values['id_rol'],
+                            "id_estatus" => $values['id_estatus'],
                         );
                         
 			if(isset($values['clave']) and $values['clave']!='')
@@ -345,6 +346,22 @@
 			return $q; 				
 			
 		}
+                function saveUsuarios($values){
+			 //print_r($values);die;
+                        $array = array(
+                            "id_persona" => $values['id_persona'],
+                            "id_rol" => $values['id_rol'],
+                            "nom_usuario" => $values['nom_usuario'],
+                            "clave" => hash('sha256',$values['clave']),
+                            "id_estatus" => $values['id_estatus'],
+                            
+                        );
+			$ConnectionORM = new ConnectionORM();
+                        $q = $ConnectionORM->getConnect()->procesos()->insert($array);
+                        $values['id_usuario'] = $ConnectionORM->getConnect()->usuarios()->insert_id();
+			return $values;	
+			
+		}
 		function updateUserOperator($values){
 			unset($values['PHPSESSID']);
 			unset($values['action'],$values['date_created']);
@@ -419,7 +436,14 @@
 			
 		}
                 
-                
+                function getPersonal($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Personas
+			->select("*");
+			return $q; 
+			
+		}
 		
 
 	}
