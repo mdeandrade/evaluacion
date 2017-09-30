@@ -12,6 +12,8 @@
         * @author LENOVO
         */
         class Evaluacion {
+            
+            
     
                 function generar($values){
 
@@ -23,6 +25,7 @@
                             ->select("id_persona.personas")
                             ->order("pri_ape, id_ubicaion")
                             ->join("ubicaciones","INNER JOIN ubicaciones u on u.id_ubicacion = ubicaciones.id_ubicacion")
+                            ->join("personas","INNER JOIN personas p on p.id_persona = personas.id_persona")
                             ->where("id_proc=?",$values['id_proc']);
                             
                             foreach($q as $procesos):
@@ -41,4 +44,21 @@
                             //insert
 
             }
+             function getCompetencias($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Competencias
+			->select("competencias");
+			return $q; 
+			
+		}
+                
+            /*function getDatos($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Competencias
+			->select("competencias");
+			return $q; 
+			
+		}*/
 }

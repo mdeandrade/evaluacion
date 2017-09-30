@@ -8,6 +8,7 @@
                     <th>ID</th>
                     <th>Nombre de usuario</th>
                     <th>Estatus</th>
+                    <th>Rol</th>
                     <th>Detalle</th>
                 </tr>
             </thead>
@@ -16,6 +17,7 @@
                     <th>ID</th>
                     <th>Descripción</th>
                     <th>Estatus</th>
+                    <th>Rol</th>
                     <th>Detalle</th>
 		</tr>
             </tfoot>
@@ -59,10 +61,11 @@ $(document).ready(function() {
             { "data": "id_usuario" },
             { "data": "nom_usuario"},
             { "data": "id_estatus" },
+            { "data": "nom_rol" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 3 ] }
+          { 'bSortable': false, 'aTargets': [ 4 ] }
        ]
     });
 $('#column_0').on ('keypress', function(e){
@@ -78,6 +81,11 @@ $('#column_1').on ('keypress', function(e){
 $('#column_2').on ('keypress', function(e){
     if(e.which == 13) {
         table.column(table.column(2)).search($(this).val()).draw();
+    }
+});
+$('#column_3').on ('keypress', function(e){
+    if(e.which == 13) {
+        table.column(table.column(3)).search($(this).val()).draw();
     }
 });
 

@@ -40,11 +40,11 @@
 				$where.=" AND id_proc = ".$values['columns'][0]['search']['value']."";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
-			/*if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
+			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
 			{
 				$where.=" AND upper(descripcion) like ('%".$values['columns'][1]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}*/			
+			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
 				$where.=" AND upper(fec_apertura_evaluacion) like ('%".$values['columns'][2]['search']['value']."%')";

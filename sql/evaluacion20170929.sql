@@ -59,19 +59,35 @@ CREATE TABLE `competencias` (
   PRIMARY KEY (`id_competencia`),
   KEY `id_person` (`id_persona`),
   CONSTRAINT `id_person` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 /*Data for the table `competencias` */
 
 insert  into `competencias`(`id_competencia`,`id_persona`,`fec_aplicacion`,`calificacion`,`competencias`,`peso_fijo`,`val_peso`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`,`revisado_por`) values 
-(1,NULL,NULL,NULL,'Compromiso de Trabajo establecer altos estándares de desempeño, abocarse al logro de metas ambiciosas y trabaja con empeño para lograrlas','7',NULL,NULL,NULL,NULL,NULL,NULL),
-(2,NULL,NULL,NULL,'Auto Desarrollo: mido la motivación para el mejoramiento continuo a través de estudios, cursos, lecturas y cualquier otra actividad individual u organizacional que aseguren su evolución personal y profesional','6',NULL,NULL,NULL,NULL,NULL,NULL),
-(3,NULL,NULL,NULL,'Creatividad e iniciativa: mido la capacidad del empleado para aportar y concretar ideas útiles y oportunas que permitan el mejoramiento continuo de los procesos, para alcanzar los objetivos establecidos','7',NULL,NULL,NULL,NULL,NULL,NULL),
-(4,NULL,NULL,NULL,'Comunicación: mide la habilidad para recibir, comprender y transmitir en forma oral y escrita ideas e información de manera que facilite la rápida comprensión, logrando una actitud positiva en cualquier situación de trabajo',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(5,NULL,NULL,NULL,'Adaptación a las normas de la organización: mide el grado en que el empleado cumple con las políticas, normas y procedimientos establecidos por el organismo en cuanto a: apariencia personal, puntualidad, asistencia y otras normativas',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(6,NULL,NULL,NULL,'Gestión de procesos: mide la capacidad que posee el empleado para planificar y dar seguimiento de las actividades emprendidas, enfatizando la consecución de los resultados con una adecuada administración de los recursos',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(7,NULL,NULL,NULL,'Capacidad de análisis y síntesis: mide la habilidad para identificar y jerarquizar los elementos, relaciones y principios que integran un sistema, situación o problema, formulando soluciones concretas y relevantes',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(8,NULL,NULL,NULL,'Trabajo en equipo: Mide la disposición a la unificación de esfuerzos con el resto de los empleados del área, en la consecución de las actividades y objetivos comunes',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+(1,NULL,NULL,NULL,'Compromiso de Trabajo: Establecer altos estándares de desempeño, abocarse al logro de metas ambiciosas y trabaja con empeño para lograrlas.','7',NULL,NULL,NULL,NULL,NULL,NULL),
+(2,NULL,NULL,NULL,'Auto Desarrollo: Mido la motivación para el mejoramiento continuo a través de estudios, cursos, lecturas y cualquier otra actividad individual u organizacional que aseguren su evolución personal y profesional.','6',NULL,NULL,NULL,NULL,NULL,NULL),
+(3,NULL,NULL,NULL,'Creatividad e iniciativa: Mide la capacidad del empleado para aportar y concretar ideas útiles y oportunas que permitan el mejoramiento continuo de los procesos, para alcanzar los objetivos establecidos.','7',NULL,NULL,NULL,NULL,NULL,NULL),
+(4,NULL,NULL,NULL,'Comunicación: Mide la habilidad para recibir, comprender y transmitir en forma oral y escrita ideas e información de manera que facilite la rápida comprensión, logrando una actitud positiva en cualquier situación de trabajo.','6',NULL,NULL,NULL,NULL,NULL,NULL),
+(5,NULL,NULL,NULL,'Adaptación a las normas de la organización: Mide el grado en que el empleado cumple con las políticas, normas y procedimientos establecidos por el organismo en cuanto a: apariencia personal, puntualidad, asistencia y otras normativas.','5',NULL,NULL,NULL,NULL,NULL,NULL),
+(6,NULL,NULL,NULL,'Gestión de procesos: Mide la capacidad que posee el empleado para planificar y dar seguimiento de las actividades emprendidas, enfatizando la consecución de los resultados con una adecuada administración de los recursos','6',NULL,NULL,NULL,NULL,NULL,NULL),
+(7,NULL,NULL,NULL,'Capacidad de análisis y síntesis: Mide la habilidad para identificar y jerarquizar los elementos, relaciones y principios que integran un sistema, situación o problema, formulando soluciones concretas y relevantes.','7',NULL,NULL,NULL,NULL,NULL,NULL),
+(8,NULL,NULL,NULL,'Trabajo en equipo: Mide la disposición a la unificación de esfuerzos con el resto de los empleados del área, en la consecución de las actividades y objetivos comunes','6',NULL,NULL,NULL,NULL,NULL,NULL),
+(9,NULL,NULL,NULL,'Calidad de trabajo: Realiza las tareas asignadas con exigencia, claridad y cuidado, a fin de evitar errores.','15',NULL,NULL,NULL,NULL,NULL,NULL),
+(10,NULL,NULL,NULL,'Calidad de trabajo: Volumen de trabajo capaz de ser realizado por el trabajador en su jornada normal de acuerdo a las exigencias del puesto de trabajo.','15',NULL,NULL,NULL,NULL,NULL,NULL),
+(11,NULL,NULL,NULL,'Adecuacón de las normas de la Institución: Mide el grado en el que el trabajdor cumple las políticas, normas y procedimientos establecidos por la Institución en cuanto a: apariencia personal, puntualidad, asistencias, limpieza y orden en el lugar de trabajo, entre otras.','10',NULL,NULL,NULL,NULL,NULL,NULL),
+(12,NULL,NULL,NULL,'Interes por el trabajo: Esmero y dedicación en la ejecución de las tareas asignadas.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(13,NULL,NULL,NULL,'Cooperación: Capacidad para trabajar con otros y colaborar en forma armoniosa con sus compañeros y supervisores, sin descuidar el cumplimiento de sus deberes.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(14,NULL,NULL,NULL,'Manejo de bienes y equipos: Cuidado en el manejo y manenimieno de los equipos, herramientas y maquinas de que le son asignadas al trabajador para realizar el trabajo.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(15,NULL,NULL,NULL,'Cortesía: Habilidad para tratar con respeto y cordialidad a compañeros y público en general.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(16,NULL,NULL,NULL,'Discreción: Habilidad para manejar con prudencia, ecuanimidad y precaución la información y los trabajos que le son encomendados.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(17,NULL,NULL,NULL,'Compromisos con valores organizacionales: Mide el grado de identificación y responsabilidad con los valores y cultura de la Institución. Atiende más a los intereses organizacionales que a los personales.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(18,NULL,NULL,NULL,'Autodesarrollo: Mide la motivación para el mejoramiento continuo a través de cursos, lectura y cualquier otra actividad individual u organizacional que asegure su evolución personal y profesional.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(19,NULL,NULL,NULL,'Calidad de servicio: Mide el grao den que los procesos de trabajo y las relaciones interpersonales reflejan el interes por satisfacer el requerimiento de los usuarios externos e internos ofreciendole un mejor servicio.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(20,NULL,NULL,NULL,'Comunicación: Mide la habilidad para recibir, compreder y trasmitir en forma oral y escrita ideas e información de manera que facilite la rápida comprensión, logrando una actitud positiva en cualquier situación de trabajo.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(21,NULL,NULL,NULL,'Responsabilidad sobre recursos: Mide el grado de responsabilidad del empleado por la conservación, uso y mantenimiento de los bienes materiales y euipos asignados a su áre, con la finalidad de optimizar su utilidad y beneficio.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(22,NULL,NULL,NULL,'Adecuación de las normas de la oranización: Mide el grado en el que el empleado cumple con las políticas, normas y procedimientos establecidos por la organización en cuanto a: apariencia personal, puntualidad, asistencia y otras normativas.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(23,NULL,NULL,NULL,'Relaciones interpersonales: Mide la habilidad de l evaluado para interactuar de forma cordial, amabre y colabradora con sus supeeriores, compañeros de trabajo y usuarios tranto externos como internos, con la finalidad de mejorar y mantener un ambiente de trabajo armonioso.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(24,NULL,NULL,NULL,'Precisión y rapidez: Mide la destreza para realizar la labor utilizando la menor cantidad de recursos y esfuerzos.',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `competencias_niveles` */
 
@@ -324,7 +340,7 @@ CREATE TABLE `personas` (
   CONSTRAINT `fk_id_estatu` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
   CONSTRAINT `id_cargo` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`),
   CONSTRAINT `id_ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 /*Data for the table `personas` */
 
@@ -364,7 +380,15 @@ insert  into `personas`(`id_proc`,`id_persona`,`pri_nom`,`seg_nom`,`pri_ape`,`se
 (NULL,33,'mirian',NULL,'carillo',NULL,NULL,'988777','femenino',NULL,'1984-01-05',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
 (NULL,34,'alicia',NULL,'morales',NULL,NULL,'554656','femenino',NULL,'1984-01-06',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,2),
 (NULL,35,'maria',NULL,'astudillo',NULL,NULL,'255677','femenino',NULL,'1984-01-07',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,2),
-(NULL,36,'nancy',NULL,'angulo',NULL,NULL,'2505360','femenino',NULL,'1984-01-08',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,2,NULL,NULL,NULL,NULL,2);
+(NULL,36,'nancy',NULL,'angulo',NULL,NULL,'2505360','femenino',NULL,'1984-01-08',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,2,NULL,NULL,NULL,NULL,2),
+(NULL,37,'nancy',NULL,'padilla',NULL,NULL,'24235345','femenino',NULL,'1984-01-01',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,38,'carlos',NULL,'angulo',NULL,NULL,'2505360','masculino',NULL,'1984-01-02',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,39,'josselline',NULL,'romero',NULL,NULL,'112543','femenino',NULL,'1984-01-03',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,40,'eduardo',NULL,'ugueto',NULL,NULL,'2543522','masculino',NULL,'1984-01-04',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,41,'mirian',NULL,'carillo',NULL,NULL,'988777','femenino',NULL,'1984-01-05',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,1),
+(NULL,42,'alicia',NULL,'morales',NULL,NULL,'554656','femenino',NULL,'1984-01-06',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,2),
+(NULL,43,'maria',NULL,'astudillo',NULL,NULL,'255677','femenino',NULL,'1984-01-07',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,1,NULL,NULL,NULL,NULL,2),
+(NULL,44,'nancy',NULL,'angulo',NULL,NULL,'2505360','femenino',NULL,'1984-01-08',NULL,'fldkjfdjikvs@gmail.com',NULL,NULL,2,NULL,NULL,NULL,NULL,2);
 
 /*Table structure for table `procesos` */
 
@@ -390,7 +414,7 @@ CREATE TABLE `procesos` (
   `actualizado_por` int(11) DEFAULT NULL,
   `fec_actualizado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_proc`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
 
 /*Data for the table `procesos` */
 
@@ -451,7 +475,18 @@ insert  into `procesos`(`id_proc`,`descripcion`,`fec_apertura_evaluacion`,`fec_c
 (77,'competencia','2017-08-29','2017-08-29',1,'2017-08-29','2017-08-29','2','2','2017-08-29','2017-08-29','3','3',NULL,NULL,NULL,NULL,NULL),
 (78,'cdsjfirehjflka','2017-08-29','2017-08-29',1,'2017-08-29','2017-08-29','2','2','2017-08-29','2017-08-29','2','2',NULL,NULL,NULL,NULL,NULL),
 (79,'dfreagterwgtw','2017-08-31','2017-08-31',1,'2017-08-31','2017-08-31','3','4','2017-08-31','2017-08-31','3','3',NULL,NULL,NULL,NULL,NULL),
-(80,'cfsdfffwrefwefew','2017-09-03','2017-09-03',1,'2017-09-03','2017-09-03','3','3','2017-09-03','2017-09-03','3','3',NULL,NULL,NULL,NULL,NULL);
+(80,'cfsdfffwrefwefew','2017-09-03','2017-09-03',1,'2017-09-03','2017-09-03','3','3','2017-09-03','2017-09-03','3','3',NULL,NULL,NULL,NULL,NULL),
+(81,'dsfsdgfdgfdg','0000-00-00','0000-00-00',1,'0000-00-00','0000-00-00','45','5','0000-00-00','0000-00-00','50','3',NULL,NULL,NULL,NULL,NULL),
+(82,'dsfsdgfdgfdg','0000-00-00','0000-00-00',1,'0000-00-00','0000-00-00','45','5','0000-00-00','0000-00-00','50','3',NULL,NULL,NULL,NULL,NULL),
+(83,'gffffffffffffffffffffffffffff','2017-08-25','2017-08-29',1,'2017-06-23','0000-00-00','34','5','2017-06-23','2017-06-22','23','2',NULL,NULL,NULL,NULL,NULL),
+(84,'gffffffffffffffffffffffffffff','2017-08-25','2017-08-29',1,'2017-06-23','0000-00-00','34','5','2017-06-23','2017-06-22','23','2',NULL,NULL,NULL,NULL,NULL),
+(85,'jdfkmnfjfwejfijewirfwei','0000-00-00','0000-00-00',1,'0000-00-00','0000-00-00','5','5','0000-00-00','0000-00-00','5','5',NULL,NULL,NULL,NULL,NULL),
+(86,'123456456qwerwer','0000-00-00','0000-00-00',1,'0000-00-00','0000-00-00','5','5','0000-00-00','0000-00-00','5','5',NULL,NULL,NULL,NULL,NULL),
+(87,'123456456qwerwer','0000-00-00','0000-00-00',1,'0000-00-00','0000-00-00','5','5','0000-00-00','0000-00-00','5','5',NULL,NULL,NULL,NULL,NULL),
+(88,'123456456qwerwer','0000-00-00','0000-00-00',1,'0000-00-00','0000-00-00','5','5','0000-00-00','0000-00-00','5','5',NULL,NULL,NULL,NULL,NULL),
+(89,'123456456qwerwer','0000-00-00','0000-00-00',1,'0000-00-00','0000-00-00','5','5','0000-00-00','0000-00-00','5','5',NULL,NULL,NULL,NULL,NULL),
+(90,'dsfsdgfdgfdgfgdgfg','2017-08-29','2017-08-25',1,'2017-08-25','2017-08-25','1','5','2017-08-29','2017-08-29','33','5',NULL,NULL,NULL,NULL,NULL),
+(91,'competencia','2017-08-26','2017-08-26',1,'2017-08-26','2017-08-26','3','3','2017-08-26','2017-08-26','5','5',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `rangos` */
 
@@ -466,6 +501,13 @@ CREATE TABLE `rangos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `rangos` */
+
+insert  into `rangos`(`val_rango`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+('Muy por deb',NULL,NULL,NULL,NULL),
+('Por debajo ',NULL,NULL,NULL,NULL),
+('Dentro de l',NULL,NULL,NULL,NULL),
+('Sobre lo es',NULL,NULL,NULL,NULL),
+('Excepcional',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `responsables_ubicacion` */
 

@@ -23,6 +23,7 @@
 			$columns[0] = 'id_persona';
 			$columns[1] = 'nom_usuario';
 			$columns[2] = 'id_estatus';
+                        $columns[3] = 'nom_rol';
             
 			$column_order = $columns[0];
 			$where = '1 = 1';
@@ -45,7 +46,11 @@
 				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			
+			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
+			{
+				$where.=" AND upper(nom_rol) like ('%".$values['columns'][3]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
 				
 			
 			
@@ -63,6 +68,7 @@
 			->select("*")
 			->order("$column_order $order") 
                         ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus")
+                        //->join("rol","INNER JOIN rol r on r.id_rol = usuarios.id_rol")
 			->where("$where")
 			->limit($limit,$offset);
 			//echo $q;die;
@@ -85,13 +91,19 @@
 			{
 				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}			
+			}
+                        if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
+			{
+				$where.=" AND upper(nom_rol) like ('%".$values['columns'][3]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+                        }
 				
 				
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios
 			->select("count(*) as cuenta")	
                         ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus")
+                        //->join("rol","INNER JOIN rol r on r.id_rol = usuarios.id_rol")
 			->where("$where")
 			->fetch();
 			return $q['cuenta']; 			

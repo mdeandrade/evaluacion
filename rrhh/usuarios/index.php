@@ -110,6 +110,7 @@ $values = array_merge($values,$_FILES);
 					"id_usuario" => $id_usuario,
 					"nom_usuario" => $list['nom_usuario'],
 					"id_estatus" => $list['id_estatus'],
+                                        "nom_rol" => $list['id_rol'],
 					"actions" =>
                                        '<form method="POST" action = "'.full_url.'/rrhh/usuarios/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '

@@ -50,24 +50,24 @@ class Personas {
 				$where.=" AND upper(pri_ape) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
-                        if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
+                        if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
 			{
-				$where.=" AND upper(pri_nom) like ('%".$values['columns'][1]['search']['value']."%')";
+				$where.=" AND upper(pri_nom) like ('%".$values['columns'][3]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			if(isset($values['columns'][4]['search']['value']) and $values['columns'][4]['search']['value']!='')
 			{
-				$where.=" AND upper(id_ubicacion) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(nom_ubicacion) like ('%".$values['columns'][4]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
-                        if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
+                        if(isset($values['columns'][5]['search']['value']) and $values['columns'][5]['search']['value']!='')
 			{
-				$where.=" AND upper(id_cargo) like ('%".$values['columns'][1]['search']['value']."%')";
+				$where.=" AND upper(nom_cargo) like ('%".$values['columns'][5]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			if(isset($values['columns'][6]['search']['value']) and $values['columns'][6]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][6]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
 			
@@ -111,24 +111,24 @@ class Personas {
 				$where.=" AND upper(pri_ape) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}	
-                        if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
+                        if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
 			{
-				$where.=" AND upper(pri_nom) like ('%".$values['columns'][1]['search']['value']."%')";
+				$where.=" AND upper(pri_nom) like ('%".$values['columns'][3]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			if(isset($values['columns'][4]['search']['value']) and $values['columns'][4]['search']['value']!='')
 			{
-				$where.=" AND upper(id_ubicacion) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(nom_ubicacion) like ('%".$values['columns'][4]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
-                        if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
+                        if(isset($values['columns'][5]['search']['value']) and $values['columns'][5]['search']['value']!='')
 			{
-				$where.=" AND upper(id_cargo) like ('%".$values['columns'][1]['search']['value']."%')";
+				$where.=" AND upper(nom_cargo) like ('%".$values['columns'][5]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
-			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			if(isset($values['columns'][6]['search']['value']) and $values['columns'][6]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][6]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
                         
