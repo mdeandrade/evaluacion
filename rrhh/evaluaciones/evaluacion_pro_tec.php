@@ -214,67 +214,69 @@
                                         <th style="text-align: center">Peso x Rago</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+<tbody>
                                     <tr>
                                         <td>1</td>
                                             <td><textarea class="form-control" name="odi" id="odi-1" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
-                                            <td><input type="number" name="peso0" min="1" max="10" placeholder="0" onChange="sumas();" class="peso2" ></td>
-                                            <td><input type="radio" name="rango1"id="inlineRadio1" value="1" onclick="operacion(1, 'peso0', 'pxr0')" checked></td>
-                                            <td><input type="radio" name="rango1"id="inlineRadio1" value="2"onclick="operacion(2, 'peso0', 'pxr0')"></td>
-                                            <td><input type="radio" name="rango1"id="inlineRadio1" value="3" onclick="operacion(3, 'peso0', 'pxr0')"></td>
-                                            <td><input type="radio" name="rango1"id="inlineRadio1" value="4" onclick="operacion(4, 'peso0', 'pxr0')"></td>
-                                            <td><input type="radio" name="rango1"id="inlineRadio1" value="5" onclick="operacion(5, 'peso0', 'pxr0')"></td>
-                                            <td><input type="text" name="pxr0" value="" readonly="" placeholder="0"></td>
+                                            <td><input type="number" name="peso1" min="5" max="25" placeholder="0" onChange="sumas();" class="peso2"></td>
+                                             <td><input type="radio" name="rango1"id="inlineRadio1" value="1" onclick="operacion(1, 'peso1', 'pxr1')" checked></td>
+                                            <td><input type="radio" name="rango1"id="inlineRadio1" value="2"onclick="operacion(2, 'peso1', 'pxr1')"></td>
+                                            <td><input type="radio" name="rango1"id="inlineRadio1" value="3" onclick="operacion(3, 'peso1', 'pxr1')"></td>
+                                            <td><input type="radio" name="rango1"id="inlineRadio1" value="4" onclick="operacion(4, 'peso1', 'pxr1')"></td>
+                                            <td><input type="radio" name="rango1"id="inlineRadio1" value="5" onclick="operacion(5, 'peso1', 'pxr1')"></td>
+                                            <td><input type="text" name="pxr1" value="" readonly="" placeholder="0"></td>
                                     </tr>
+                                    
                                     <tr>
                                         <td>2</td>
                                         <td><textarea class="form-control" name="odi" id="odi-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
-                                        <td><input type="number" name="peso1" min="1" max="10" placeholder="0" onChange="sumas();" class="peso2"></td>
-                                        <td><input type="radio" name="rango2"id="inlineRadio1" value="1" onclick="operacion(1, 'peso1', 'pxr1')" checked></td>
-                                        <td><input type="radio" name="rango2"id="inlineRadio1" value="2" onclick="operacion(2, 'peso1', 'pxr1')"></td>
-                                        <td><input type="radio" name="rango2"id="inlineRadio1" value="3" onclick="operacion(3, 'peso1', 'pxr1')"></td>
-                                        <td><input type="radio" name="rango2"id="inlineRadio1" value="4" onclick="operacion(4, 'peso1', 'pxr1')"></td>
-                                        <td><input type="radio" name="rango2"id="inlineRadio1" value="5" onclick="operacion(5, 'peso1', 'pxr1')"></td>
-                                        <td><input type="text" name="pxr1" value="" readonly="" placeholder="0"></td>
+                                        <td><input type="number" name="peso2" min="5" max="25" placeholder="0" onChange="sumas();" class="peso2"></td>
+                                         <td><input type="radio" name="rango2"id="inlineRadio1" value="1" onclick="operacion(1, 'peso2', 'pxr2')" checked></td>
+                                        <td><input type="radio" name="rango2"id="inlineRadio1" value="2" onclick="operacion(2, 'peso2', 'pxr2')"></td>
+                                        <td><input type="radio" name="rango2"id="inlineRadio1" value="3" onclick="operacion(3, 'peso2', 'pxr2')"></td>
+                                        <td><input type="radio" name="rango2"id="inlineRadio1" value="4" onclick="operacion(4, 'peso2', 'pxr2')"></td>
+                                        <td><input type="radio" name="rango2"id="inlineRadio1" value="5" onclick="operacion(5, 'peso2', 'pxr2')"></td>
+                                        <td><input type="text" name="pxr2" value="" readonly="" placeholder="0"></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
                                         <td><textarea class="form-control" name="odi" id="odi-3" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
-                                        <td><input type="number" name="peso2" min="1" max="10" placeholder="0" onChange="sumas();" class="peso2"></td>
-                                        <td><input type="radio" name="rango3"id="inlineRadio1" value="1"   onclick="operacion(1, 'peso2', 'pxr2')" checked></td>
-                                        <td><input type="radio" name="rango3"id="inlineRadio1" value="2"  onclick="operacion(2, 'peso2', 'pxr2')"></td>
-                                        <td><input type="radio" name="rango3"id="inlineRadio1" value="3"  onclick="operacion(3, 'peso2', 'pxr2')"></td>
-                                        <td><input type="radio" name="rango3"id="inlineRadio1" value="4"  onclick="operacion(4, 'peso2', 'pxr2')"></td>
-                                        <td><input type="radio" name="rango3"id="inlineRadio1" value="5"  onclick="operacion(5, 'peso2', 'pxr2')"></td>
-                                        <td><input type="text" name="pxr2" value="" readonly="" placeholder="0"></td>
+                                        <td><input type="number" name="peso3" min="5" max="25" placeholder="0" onChange="sumas();" class="peso2"></td>
+                                        <td><input type="radio" name="rango3"id="inlineRadio1" value="1"   onclick="operacion(1, 'peso3', 'pxr3')" checked></td>
+                                        <td><input type="radio" name="rango3"id="inlineRadio1" value="2"  onclick="operacion(2, 'peso3', 'pxr3')"></td>
+                                        <td><input type="radio" name="rango3"id="inlineRadio1" value="3"  onclick="operacion(3, 'peso3', 'pxr3')"></td>
+                                        <td><input type="radio" name="rango3"id="inlineRadio1" value="4"  onclick="operacion(4, 'peso3', 'pxr3')"></td>
+                                        <td><input type="radio" name="rango3"id="inlineRadio1" value="5"  onclick="operacion(5, 'peso3', 'pxr3')"></td>
+                                        <td><input type="text" name="pxr3" value="" readonly="" placeholder="0"></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
                                         <td><textarea class="form-control" name="odi" id="odi-4" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
-                                        <td><input type="number" name="peso3" min="1" max="10" placeholder="0" onChange="sumas();" class="peso2"></td>
-                                        <td><input type="radio" name="rango4"id="inlineRadio1" value="1"  onclick="operacion(1, 'peso3', 'pxr3')" checked></td>
-                                        <td><input type="radio" name="rango4"id="inlineRadio1" value="2" onclick="operacion(2, 'peso3', 'pxr3')"></td>
-                                        <td><input type="radio" name="rango4"id="inlineRadio1" value="3" onclick="operacion(3, 'peso3', 'pxr3')"></td>
-                                        <td><input type="radio" name="rango4"id="inlineRadio1" value="4" onclick="operacion(4, 'peso3', 'pxr3')"></td>
-                                        <td><input type="radio" name="rango4"id="inlineRadio1" value="5" onclick="operacion(5, 'peso3', 'pxr3')"></td>
-                                        <td><input type="text" name="pxr3" value="" readonly="" placeholder="0"></td>
+                                        <td><input type="number" name="peso4"  min="5" max="25"  min="1" max="7" placeholder="0" onChange="sumas();" class="peso2"></td>
+                                        <td><input type="radio" name="rango4"id="inlineRadio1" value="1"  onclick="operacion(1, 'peso4', 'pxr4')" checked></td>
+                                        <td><input type="radio" name="rango4"id="inlineRadio1" value="2" onclick="operacion(2, 'peso4', 'pxr4')"></td>
+                                        <td><input type="radio" name="rango4"id="inlineRadio1" value="3" onclick="operacion(3, 'peso4', 'pxr4')"></td>
+                                        <td><input type="radio" name="rango4"id="inlineRadio1" value="4" onclick="operacion(4, 'peso4', 'pxr4')"></td>
+                                        <td><input type="radio" name="rango4"id="inlineRadio1" value="5" onclick="operacion(5, 'peso4', 'pxr4')"></td>
+                                        <td><input type="text" name="pxr4" value="" readonly="" placeholder="0"></td>
                                     </tr>
                                     <tr>
                                         <td>5</td> 
                                         <td><textarea class="form-control" name="odi" id="odi-5" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
-                                        <td><input type="number" name="peso4" min="1" max="10" placeholder="0" onChange="sumas();" class="peso2"></td>
-                                        <td><input type="radio" name="rango5"id="inlineRadio1" value="1"  onclick="operacion(1, 'peso4', 'pxr4')" checked></td>
-                                        <td><input type="radio" name="rango5"id="inlineRadio1" value="2"  onclick="operacion(2, 'peso4', 'pxr4')"></td>
-                                        <td><input type="radio" name="rango5"id="inlineRadio1" value="3"  onclick="operacion(3, 'peso4', 'pxr4')"></td>
-                                        <td><input type="radio" name="rango5"id="inlineRadio1" value="4"  onclick="operacion(4, 'peso4', 'pxr4')"></td>
-                                        <td><input type="radio" name="rango5"id="inlineRadio1" value="5"  onclick="operacion(5, 'peso4', 'pxr4')" ></td>
-                                        <td><input type="text" name="pxr4" value="" readonly="" placeholder="0"></td>
+                                        <td><input type="number" name="peso5"  min="5" max="25" placeholder="0" onChange="sumas();" class="peso2"></td>
+                                        <td><input type="radio" name="rango5"id="inlineRadio1" value="1"  onclick="operacion(1, 'peso5', 'prx5')" checked></td>
+                                        <td><input type="radio" name="rango5"id="inlineRadio1" value="2"  onclick="operacion(2, 'peso5', 'prx5')"></td>
+                                        <td><input type="radio" name="rango5"id="inlineRadio1" value="3"  onclick="operacion(3, 'peso5', 'prx5')"></td>
+                                        <td><input type="radio" name="rango5"id="inlineRadio1" value="4"  onclick="operacion(4, 'peso5', 'prx5')"></td>
+                                        <td><input type="radio" name="rango5"id="inlineRadio1" value="5"  onclick="operacion(5, 'peso5', 'prx5')" ></td>
+                                        <td><input type="text" name="prx5" value="" readonly="" placeholder="0"></td>
                                     </tr>
+
  
                                     <tr>
                                         <td></td>
                                         <td align="right"></td>
-                                        <td><strong>Peso Total</strong><br><input type="text" min="50" max="50" name="total2" id="total2" value="" placeholder="50" min="50" max="50" readonly=""></td>
+                                        <td><strong>Peso Total</strong><br><input type="text" name="total2" id="total2" value="" placeholder="100" readonly=""></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -431,7 +433,7 @@
                                       <td><input type="radio" name="rango10" value="3"class="rango_pt"  onclick="operacion(3, 'peso10', 'pxr10')"></td>
                                       <td><input type="radio" name="rango10" value="4" class="rango_pt" onclick="operacion(4, 'peso10', 'pxr10')"></td>
                                       <td><input type="radio" name="rango10" value="5"class="rango_pt"  onclick="operacion(5, 'peso10', 'pxr10')"></td>
-                                      <td><input type="text" name="pxr10" value="" readonly="" placeholder="0" nChange="sum();" class=""></td>
+                                      <td><input type="text" name="pxr10" value="" readonly="" placeholder="0"></td>
                                   </tr>
                                   <tr>
                                       <td>7</td>
@@ -458,13 +460,13 @@
                                   <tr>
                                       <td></td>
                                       <td align="right"></td>
-                                      <td><strong>Peso Total</strong><br><input type="text" min="50" max="50" name="total1" id="totalc" value="" placeholder="50"readonly=""></td>
+                                      <td><strong>Peso Total</strong><br><input type="text"  name="totalc" id="totalc" value="" placeholder="50"readonly=""></td>
                                       <td></td>
                                       <td></td>
                                       <td></td>
                                       <td></td>
                                       <td></td>
-                                      <td><strong>Total Peso x Rango</strong><br><input type="text" name=""  id="totalpxr" value="" placeholder="00" readonly=""></td>
+                                      <td><strong>Total Peso x Rango</strong><br><input type="text" name=""   value="" placeholder="00" readonly=""></td>
                                             </tr>
                             </tbody>
                         </table>
@@ -590,25 +592,17 @@
     <br>
     <br>-->
    
-<script>  
- function sumas() {
-      var add = 0;
+ <script>   
+function sumas() {
+  var add = 0;
       $('.peso2').each(function() {
           if (!isNaN($(this).val())) {
               add += Number($(this).val());
           }
       });
       $('#total2').val(add);
-  
-          var add = 0;
-      $('.rango_pt_o').each(function() {
-          if (!isNaN($(this).val())) {
-              add += Number($(this).val());
-          }
-      });
-      $('#totalpxr_o').val(add);
-  }
-  function sum() {
+  };
+    function sum() {
         var add = 0;
       $('.pesoc').each(function() {
           if (!isNaN($(this).val())) {
@@ -616,9 +610,8 @@
           }
       });
       $('#totalc').val(add);
-  });
-
-    function operacion(a, b, c){
+  }
+        function operacion(a, b, c){
         
         b = $("[name='"+b+"']").val();
         var res = b*a;
@@ -630,4 +623,4 @@
     
     
 
-        </script>
+</script>        

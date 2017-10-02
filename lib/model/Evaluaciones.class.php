@@ -27,7 +27,7 @@
                             ->join("ubicaciones","INNER JOIN ubicaciones u on u.id_ubicacion = ubicaciones.id_ubicacion")
                             ->join("personas","INNER JOIN personas p on p.id_persona = personas.id_persona")
                             ->where("id_proc=?",$values['id_proc']);
-                            
+                           
                             foreach($q as $procesos):
                                 
                                 //echo $uprocesos['id_proc']."<br>";
@@ -53,12 +53,14 @@
 			
 		}
                 
-            /*function getDatos($values){
+            function getDatos($values){
                        
                         $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->Competencias
-			->select("competencias");
+			$q = $ConnectionORM->getConnect()->Personas
+			->select("*")
+                        ->where("id_persona", $values)
+                        ->fetch();
 			return $q; 
 			
-		}*/
+		}
 }

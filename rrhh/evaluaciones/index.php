@@ -25,11 +25,8 @@ $values = array_merge($values,$_FILES);
                 case "update":
 			executeUpdate($values);
 		break;
-		/*case "list_json":
-			executeListJson($values);
-		break*/
-		case "generar_evaluaciones":
-			executeGenerarEvaluciones($values);
+		case "get":
+			executeGetDatos($values);
 		break;
                 case "upload":
 			executeUploadPersonas($values);
@@ -101,59 +98,29 @@ $values = array_merge($values,$_FILES);
 
 
 	}
-	/*function executeListJson($values)
-	{
-		$Evaluciones= new Evaluciones();
-		$list_json = $Evaluciones ->getEvalucionesList($values);
-		$list_json_cuenta = $Evaluciones ->getCountEvalucionesList($values);
-		$array_json = array();
-		$array_json['recordsTotal'] = $list_json_cuenta;
-		$array_json['recordsFiltered'] = $list_json_cuenta;
-		if(count($list_json)>0)
-		{
-			foreach ($list_json as $list)
-			{
-				$id_proc = $list['id_proc'];
-				$array_json['data'][] = array(
-					"id_proc" => $id_proc,
-					"descripcion" => $list['descripcion'],
-					"fec_apertura_evaluacion" => $list['fec_apertura_evaluacion'],
-                                        "fec_cierre_evaluacion" => $list['fec_cierre_evaluacion'],
-                                        "fec_apertura_odi" => $list['fec_apertura_odi'],
-                                        "fec_cierre_odi" => $list['fec_cierre_odi'],
-                                        "fec_apertura_competencia" => $list['fec_apertura_competencia'],
-                                        "fec_cierre_competencia" => $list['fec_cierre_competencia'],
-					"actions" =>
-                                       '<form method="POST" action = "'.full_url.'/rrhh/procesos/index.php" >'
-                                       .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id_proc" value="'.$id_proc.'">  '
-                                       .'<button class="btn btn-default btn-sm" title="Ver detalle" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
-                                        .'</form>'
-					);
-			}
-		}else{
-			$array_json['recordsTotal'] = 0;
-			$array_json['recordsFiltered'] = 0;
-				$array_json['data'][] = array(
-					"id_proc" => null,
-					"descripcion" => null,
-					"nom_estatus" => null,
-                                        "nom_estatus" => null,
-                                        "nom_estatus" => null,
-                                        "nom_estatus" => null,
-                                        "nom_estatus" => null,
-                                        "nom_estatus" => null,
-					"actions" => null
-					);
-		}
-		echo json_encode($array_json);die;
-    }*/
-    
-        function executeGenerarEvaluciones($values)
+	
+        function executeGetDatos($values)
         {
+            
+            $Evaluacion = new Evaluacion();
+            $id_pevaluacion = $Evaluacion->getDatos($values);
+            
 
-            $Evaluaciones = new Evaluaciones;
-            $generar  = $Evaluaciones->generar($values);
+            
+            echo '<tr id="s0"><td align="left">Apellidos y Nombres 
+                                        <input type="text" class="form-control" name="" value="'.$id_pevaluacion["pri_ape"].' '.$id_pevaluacion["pri_nom"].'">
+                                    </td></tr>';
+            echo '<tr id="s1"><td align="left">Título de Cargo
+                                        <input type="text" class="form-control" name="" value="'.$id_pevaluacion["id_cargo"].'">
+                                    </td></tr>';
+            echo '<tr id="s2"><td align="left">Fecha de Ingreso
+                                        <input type="text" class="form-control" name="" value="'.$id_pevaluacion["fec_ingreso"].'">
+                                    </td></tr>';
+            echo '<tr id="s3"><td align="left">Ubicación Administrativa
+                                        <input type="text" class="form-control" name="" value="'.$id_pevaluacion["id_ubicacion"].'">
+                                    </td></tr>';
+          
+         
 
         }
          function executeUploadPersonas($values)

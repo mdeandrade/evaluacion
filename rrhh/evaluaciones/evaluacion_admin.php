@@ -39,12 +39,13 @@
                 <div class="panel-body">
                     <div class="col-md-4">
 			<h4>1. DATOS DEL EVALUADO	</h4>
-                            <table class="table table-condensed table-bordered table-hover">
+                            <table class="table table-condensed table-bordered table-hover" id="idSalida">
                                  <tr>
                                     <td align="left">Cédula de Identidad
-                                        <select class="form-control" name="id_personal_evaluacion" value="<?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']!='') echo $values['id_personal_evaluacion'];?>" id="exampleInputEmail1" >
+                                        <select onchange="cargar()" class="form-control" name="id_personal_evaluacion"  id="id_pevaluacion" >
                                             <option value="" >Seleccione...</option>
                                                 <?php if(isset($lista_personas) and count($lista_personas)>0):?>
+                                            
                                                     <?php foreach($lista_personas as $personas):?>
                                                         <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
                                                     <?php endforeach;?>
@@ -52,38 +53,7 @@
                                         </select>                                    
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td align="left">Apellidos y Nombres
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['']) and $values['']!='') echo $values[''];?>" <?php echo strtoupper($id_persona ['pri_nom']);?> <?php echo strtoupper($id_persona ['pri_ape']);?>id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['']) and $errors['']!=''):?>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td align="left">Título de Cargo
-                                        <input type="text" class="form-control" name="nom_cargo" value="<?php if(isset($values['nom_cargo']) and $values['nom_cargo']!='nom_cargo') echo $values['nom_cargo'];?>" <?php echo strtoupper($cargo['cargo']);?> id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_cargo']) and $errors['nom_cargo']!='nom_cargo'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_cargo'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Fecha de Ingreso
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['']) and $values['']!='') echo $values[''];?>" <?php echo strtoupper($id_persona ['fec_ingreso']);?> id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['']) and $errors['']!=''):?>
-                                                <div class="alert alert-danger"><?php echo $errors[''];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Ubicación Administrativa
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['nom_ubicacion']) and $values['nom_ubicacion']!='nom_ubicacion') echo $values['nom_ubicacion'];?>" <?php echo strtoupper($ubicacion ['nom_ubicacion']);?> id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_ubicacion']) and $errors['nom_ubicacion']!='nom_ubicacion'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_ubicacion'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
+                                
                             </table>
                     </div>
                     <div class="col-md-4">
@@ -291,7 +261,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><strong>Total Peso x Rango</strong><br><input type="text" name="" value="" readonly="" placeholder="0"></td>
+                                        <td><strong>Total Peso x Rango</strong><br><input type="text" name="pesoxRango" value="" readonly="" placeholder="0"></td>
                                     </tr>
                                 </tbody>
                                                         
@@ -602,6 +572,42 @@
     <br>
     <br>-->
     <script>   
+        
+        // datos ajax 
+        function cargar(){
+            
+            // url que recibe los datos
+            var url = "<?php echo full_url."/rrhh/evaluaciones/index.php?action=get"?>";
+            //var url = "../index.php?action=get";
+    $.ajax({
+        type: "POST",
+        url:url,
+        data: {
+            // nombre en el post : valor a enviar
+            ci: $("#id_pevaluacion").val(),
+        },
+        success: function(data){
+            // cuando el controlador responda, los datos que envia los va a poner
+            // en el div que tenga este id
+            // 
+           $('#s0, #s1, #s2, #s3').remove();  
+            $('#idSalida tr:last').after(data);
+       },
+       error: function (xhr, ajaxOptions, thrownError) {
+           alert(xhr.status+" "+thrownError+"\n\n","Error al enviar/recibir los datos...");
+       }
+   });
+
+        }
+    
+        
+        
+        
+        
+        
+        
+        
+        
 function suma() {
   var add = 0;
       $('.peso1').each(function() {
@@ -629,7 +635,31 @@ function suma() {
         
         $("[name='"+c+"']").val(res);
     }
-    
-    
 
+// declarar array..
+/*var datos = [];
+
+// declarar incremento..
+var i = 0;
+ 
+// mientras pesoxRango0 sea diferente a nulo, hacer....
+// mientras pesoxRango1 sea diferente a nulo, hacer....
+// mientras pesoxRango2 sea diferente a nulo, hacer....
+while( $("[name='pesoxRango"+i+"']").val() != null ){
+
+  // obtener el value del elemento...
+  var a = $("[name='pesoxRango"+i+"']").val();
+  
+  // subir el value del pesoxRango al array...
+  datos.push(a);
+}
+
+// sumar array....
+sum = datos.reduce(function(a, b) { return a + b; }, 0);
+
+
+// poner la suma total en el input total
+$("[name='pesoxRangoTotal']").val(sum);
+       
+*/
 </script>        
