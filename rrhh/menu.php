@@ -55,7 +55,15 @@
           </ul>
         </li>
       </ul>
-      <!--<ul class="nav navbar-nav">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Evaluaciones <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+              <li><a href="<?php echo full_url?>/rrhh/evaluaciones/index.php?action=index">Evaluaciones</a></li>
+          </ul>
+        </li>
+      </ul>
+<!--<ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#"" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> Niveles <span class="caret"></span></a>
            <ul class="dropdown-menu">

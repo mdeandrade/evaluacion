@@ -2,7 +2,32 @@
   <h1 class="text-center">Instrumento de Evaluación de Eficiencia al Personal Obrero</h1>
 </div>
 
-<!--Titulos-->
+<!-- contenido -->
+
+<!-- Datos de identificación -->
+        <div class="row">
+            <!--<div id="info10" class="col-xs-12 well oculto">-->
+              <p>DATOS DE IDENTIFICACIÓN </p>
+                 <div class="panel-body">
+                    <div class="col-lg-12">
+                        <h4> DATOS DEL EVALUADO	</h4>
+                            <table class="table table-condensed table-bordered table-hover" id="idsalida">
+                                <th align="left">Cédula de Identidad
+                                        <select onchange="cargar()" class="form-control" name="id_personal_evaluacion"  id="id_oevaluacion" >
+                                            <option value="" >Seleccione...</option>
+                                                <?php if(isset($lista_personas) and count($lista_personas)>0):?>
+                                            
+                                                    <?php foreach($lista_personas as $personas):?>
+                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
+                                                    <?php endforeach;?>
+                                                <?php endif;?>
+                                        </select>                                    
+                                </th>
+                            </table>
+                    </div>
+                    </div>
+                    </div
+                    <!--Titulos-->
     <div class="row">
         <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 well">
             <a href="#info10" class=" inf"><strong>Datos de identificación</strong></a>
@@ -15,59 +40,6 @@
         </div>
     </div>
 
-<!-- contenido -->
-
-<!-- Datos de identificación -->
-        <div class="row">
-            <!--<div id="info10" class="col-xs-12 well oculto">-->
-              <p>DATOS DE IDENTIFICACIÓN </p>
-                 <div class="panel-body">
-                    <div class="col-md-12">
-                        <h4> DATOS DEL EVALUADO	</h4>
-                            <table class="table table-condensed table-bordered table-hover">
-                                <tr>
-                                    <td align="left">Cédula de Identidad
-                                        <select class="form-control" name="id_personal_evaluacion" value="<?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']!='') echo $values['id_personal_evaluacion'];?>" id="exampleInputEmail1" >
-                                            <option value="" >Seleccione...</option>
-                                                <?php if(isset($lista_personas) and count($lista_personas)>0):?>
-                                                    <?php foreach($lista_personas as $personas):?>
-                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
-                                                    <?php endforeach;?>
-                                                <?php endif;?>
-                                        </select>
-                                    </td>
-
-                                    <td align="left">Apellidos y Nombres
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['']) and $values['']!='') echo $values[''];?>" <?php echo strtoupper($id_persona ['pri_nom']);?> <?php echo strtoupper($id_persona ['pri_ape']);?>id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['descripcion']) and $errors['']!=''):?>
-                                            <?php endif;?>
-                                    </td>
-
-                                    <td align="left">Título de Cargo
-                                        <input type="text" class="form-control" name="nom_cargo" value="<?php if(isset($values['nom_cargo']) and $values['nom_cargo']!='nom_cargo') echo $values['nom_cargo'];?>" <?php echo strtoupper($cargo['cargo']);?> id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_cargo']) and $errors['nom_cargo']!='nom_cargo'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_cargo'];?></div>
-                                            <?php endif;?>
-                                    </td>
-
-                                    <td align="left">Fecha de Ingreso
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['']) and $values['']!='') echo $values[''];?>" <?php echo strtoupper($id_persona ['fec_ingreso']);?> id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['descripcion']) and $errors['']!=''):?>
-                                                <div class="alert alert-danger"><?php echo $errors[''];?></div>
-                                            <?php endif;?>
-                                    </td>
-
-                                    <td align="left">Ubicación Administrativa
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['nom_ubicacion']) and $values['nom_ubicacion']!='nom_ubicacion') echo $values['nom_ubicacion'];?>" <?php echo strtoupper($ubicacion ['nom_ubicacion']);?> id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_ubicacion']) and $errors['nom_ubicacion']!='nom_ubicacion'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_ubicacion'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                            </table>
-                    </div>
-                    </div>
-                    </div>
  <div id="info11" class="col-xs-12 well oculto">
                 <p>FACTORES A EVALUAR</p>
                     <div class="panel-body">
@@ -213,7 +185,7 @@
                                         </div>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-">
                                 <div class="form-group" style="display: block;">
                                     <label class="control-label" for="field20">Comentarios del evaluado</label>
                                         <div class="controls">
@@ -223,7 +195,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <!--<div class="col-md-3">
                                 <div class="form-group" rel="popover" data-trigger="hover" data-content="Fecha en la que se realiz? la evaluaci?n." data-original-title="">
                                     <label class="control-label" for="field16">Fecha de notificación<span class="req"> *</span></label>
                                         <div class="controls">
@@ -235,7 +207,7 @@
                                             </div>
                                         </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
 
@@ -244,6 +216,33 @@
     <br>
     <br>-->
   <script>
+      // datos ajax 
+        function cargar(){
+            
+            // url que recibe los datos
+            var url = "<?php echo full_url."/rrhh/evaluaciones/index.php?action=extraer"?>";
+            //var url = "../index.php?action=get";
+    $.ajax({
+        type: "POST",
+        url:url,
+        data: {
+            // nombre en el post : valor a enviar
+            ci: $("#id_oevaluacion").val(),
+        },
+        success: function(data){
+            // cuando el controlador responda, los datos que envia los va a poner
+            // en el div que tenga este id
+            // 
+           $('#s31, #s32, #s33, #s34').remove();  
+            $('#idsalida tr:last').after(data);
+       },
+       error: function (xhr, ajaxOptions, thrownError) {
+           alert(xhr.status+" "+thrownError+"\n\n","Error al enviar/recibir los datos...");
+       }
+   });
+
+        }
+      
  function sumar() {
       var add = 0;
       $('.peso').each(function() {

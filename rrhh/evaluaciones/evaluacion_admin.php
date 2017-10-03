@@ -42,7 +42,7 @@
                             <table class="table table-condensed table-bordered table-hover" id="idSalida">
                                  <tr>
                                     <td align="left">Cédula de Identidad
-                                        <select onchange="cargar()" class="form-control" name="id_personal_evaluacion"  id="id_pevaluacion" >
+                                        <select onchange="charge()" class="form-control" name="id_personal_evaluacion"  id="id_pevaluacion" >
                                             <option value="" >Seleccione...</option>
                                                 <?php if(isset($lista_personas) and count($lista_personas)>0):?>
                                             
@@ -238,7 +238,7 @@
                                         <td><input type="radio" name="rango4"id="inlineRadio1" value="3" onclick="operacion1(3, 'peso16', 'pxr16')"></td>
                                         <td><input type="radio" name="rango4"id="inlineRadio1" value="4" onclick="operacion1(4, 'peso16', 'pxr16')"></td>
                                         <td><input type="radio" name="rango4"id="inlineRadio1" value="5" onclick="operacion1(5, 'peso16', 'pxr16')"></td>
-                                        <td><input type="text" name="pxr16" value="" readonly="" placeholder="0"></td>
+                                        <td><input type="text" name="pxr16" value="" readonly="" placeholder="0" ></td>
                                     </tr>
                                     <tr>
                                         <td>5</td> 
@@ -249,7 +249,7 @@
                                         <td><input type="radio" name="rango5"id="inlineRadio1" value="3"  onclick="operacion1(3, 'peso17', 'pxr17')"></td>
                                         <td><input type="radio" name="rango5"id="inlineRadio1" value="4"  onclick="operacion1(4, 'peso17', 'pxr17')"></td>
                                         <td><input type="radio" name="rango5"id="inlineRadio1" value="5"  onclick="operacion1(5, 'peso17', 'pxr17')" ></td>
-                                        <td><input type="text" name="pxr17" value="" readonly="" placeholder="0"></td>
+                                        <td><input type="text" name="pxr17" value="" readonly="" placeholder="0" onchange="operacionpr()"></td>
                                     </tr>
  
                                     <tr>
@@ -274,7 +274,7 @@
                                     <div class="col-md-6"></div>
                                     <div class="col-md-6">                                        <div class="form-group"  data-content="Total obtenido correspondiente a la sumatoria peso x rango."  style="display: block;">
                                             <label>Calificación (1ERA FASE)<span class="req"> *</span></label>
-                                            <input type="text"  name="total1" id="total1" value="" placeholder="100" min="100" max="100" readonly="">
+                                            <input type="text"  name="pesoxrango" id="pesoxrango" value="" placeholder="100" min="100" max="100" readonly="">
                                                     <span id="errId1" class="error"></span>
                                         </div>
                                     </div>
@@ -550,7 +550,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <!--<div class="col-md-3">
                                 <div class="form-group" rel="popover" data-trigger="hover" data-content="Fecha en la que se realiz? la evaluaci?n." data-original-title="">
                                     <label class="control-label" for="field16">Fecha de notificación<span class="req"> *</span></label>
                                         <div class="controls">
@@ -562,7 +562,7 @@
                                             </div>
                                         </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
 
@@ -574,7 +574,7 @@
     <script>   
         
         // datos ajax 
-        function cargar(){
+        function charge(){
             
             // url que recibe los datos
             var url = "<?php echo full_url."/rrhh/evaluaciones/index.php?action=get"?>";
@@ -600,13 +600,7 @@
 
         }
     
-        
-        
-        
-        
-        
-        
-        
+     
         
 function suma() {
   var add = 0;
@@ -634,24 +628,33 @@ function suma() {
         
         
         $("[name='"+c+"']").val(res);
+        
+        
+        // llamar operacion sumar p x r 
+        operacionpr();
     }
 
+
+
+function operacionpr(){
 // declarar array..
-/*var datos = [];
+var datos = [];
 
 // declarar incremento..
-var i = 0;
+var i = 13;
  
 // mientras pesoxRango0 sea diferente a nulo, hacer....
 // mientras pesoxRango1 sea diferente a nulo, hacer....
 // mientras pesoxRango2 sea diferente a nulo, hacer....
-while( $("[name='pesoxRango"+i+"']").val() != null ){
+while( i != 18 ){
 
   // obtener el value del elemento...
-  var a = $("[name='pesoxRango"+i+"']").val();
+  var a = $("[name='pxr"+i+"']").val();
+   console.log("[name='pxr"+i+"']");
   
   // subir el value del pesoxRango al array...
-  datos.push(a);
+  datos.push(parseInt(a));
+  i++;
 }
 
 // sumar array....
@@ -659,7 +662,10 @@ sum = datos.reduce(function(a, b) { return a + b; }, 0);
 
 
 // poner la suma total en el input total
-$("[name='pesoxRangoTotal']").val(sum);
-       
-*/
+$("[name='pesoxRango']").val(sum);
+
+console.log(sum);
+
+
+}
 </script>        

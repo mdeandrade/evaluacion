@@ -59,7 +59,7 @@ CREATE TABLE `competencias` (
   PRIMARY KEY (`id_competencia`),
   KEY `id_person` (`id_persona`),
   CONSTRAINT `id_person` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 /*Data for the table `competencias` */
 
@@ -79,15 +79,7 @@ insert  into `competencias`(`id_competencia`,`id_persona`,`fec_aplicacion`,`cali
 (13,NULL,NULL,NULL,'Cooperación: Capacidad para trabajar con otros y colaborar en forma armoniosa con sus compañeros y supervisores, sin descuidar el cumplimiento de sus deberes.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (14,NULL,NULL,NULL,'Manejo de bienes y equipos: Cuidado en el manejo y manenimieno de los equipos, herramientas y maquinas de que le son asignadas al trabajador para realizar el trabajo.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (15,NULL,NULL,NULL,'Cortesía: Habilidad para tratar con respeto y cordialidad a compañeros y público en general.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(16,NULL,NULL,NULL,'Discreción: Habilidad para manejar con prudencia, ecuanimidad y precaución la información y los trabajos que le son encomendados.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(17,NULL,NULL,NULL,'Compromisos con valores organizacionales: Mide el grado de identificación y responsabilidad con los valores y cultura de la Institución. Atiende más a los intereses organizacionales que a los personales.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(18,NULL,NULL,NULL,'Autodesarrollo: Mide la motivación para el mejoramiento continuo a través de cursos, lectura y cualquier otra actividad individual u organizacional que asegure su evolución personal y profesional.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(19,NULL,NULL,NULL,'Calidad de servicio: Mide el grao den que los procesos de trabajo y las relaciones interpersonales reflejan el interes por satisfacer el requerimiento de los usuarios externos e internos ofreciendole un mejor servicio.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(20,NULL,NULL,NULL,'Comunicación: Mide la habilidad para recibir, compreder y trasmitir en forma oral y escrita ideas e información de manera que facilite la rápida comprensión, logrando una actitud positiva en cualquier situación de trabajo.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(21,NULL,NULL,NULL,'Responsabilidad sobre recursos: Mide el grado de responsabilidad del empleado por la conservación, uso y mantenimiento de los bienes materiales y euipos asignados a su áre, con la finalidad de optimizar su utilidad y beneficio.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(22,NULL,NULL,NULL,'Adecuación de las normas de la oranización: Mide el grado en el que el empleado cumple con las políticas, normas y procedimientos establecidos por la organización en cuanto a: apariencia personal, puntualidad, asistencia y otras normativas.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(23,NULL,NULL,NULL,'Relaciones interpersonales: Mide la habilidad de l evaluado para interactuar de forma cordial, amabre y colabradora con sus supeeriores, compañeros de trabajo y usuarios tranto externos como internos, con la finalidad de mejorar y mantener un ambiente de trabajo armonioso.',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(24,NULL,NULL,NULL,'Precisión y rapidez: Mide la destreza para realizar la labor utilizando la menor cantidad de recursos y esfuerzos.',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+(16,NULL,NULL,NULL,'Discreción: Habilidad para manejar con prudencia, ecuanimidad y precaución la información y los trabajos que le son encomendados.',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `competencias_niveles` */
 
@@ -502,13 +494,6 @@ CREATE TABLE `rangos` (
 
 /*Data for the table `rangos` */
 
-insert  into `rangos`(`val_rango`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
-('Muy por deb',NULL,NULL,NULL,NULL),
-('Por debajo ',NULL,NULL,NULL,NULL),
-('Dentro de l',NULL,NULL,NULL,NULL),
-('Sobre lo es',NULL,NULL,NULL,NULL),
-('Excepcional',NULL,NULL,NULL,NULL);
-
 /*Table structure for table `responsables_ubicacion` */
 
 DROP TABLE IF EXISTS `responsables_ubicacion`;
@@ -551,7 +536,7 @@ CREATE TABLE `roles` (
   PRIMARY KEY (`id_rol`),
   KEY `id_esta` (`id_estatus`),
   CONSTRAINT `id_esta` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `roles` */
 
@@ -559,7 +544,8 @@ insert  into `roles`(`id_rol`,`nom_rol`,`id_estatus`,`creado_por`,`fec_creado`,`
 (1,'Administrador',1,NULL,NULL,NULL,NULL),
 (2,'Evaluador',1,NULL,NULL,NULL,NULL),
 (3,'Evaluado',1,NULL,NULL,NULL,NULL),
-(4,'Contralor',1,NULL,NULL,NULL,NULL);
+(4,'Contralor',1,NULL,NULL,NULL,NULL),
+(5,'RRHH',1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `ubicaciones` */
 
@@ -619,7 +605,7 @@ CREATE TABLE `usuarios` (
 insert  into `usuarios`(`id_usuario`,`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`id_rol`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
 (1,0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',1,NULL,NULL,NULL,NULL),
 (2,1,'carlos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','2',2,NULL,NULL,NULL,NULL),
-(3,2,'josselline','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',3,NULL,NULL,NULL,NULL),
+(3,2,'josselline','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',5,NULL,NULL,NULL,NULL),
 (4,3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',4,NULL,NULL,NULL,NULL),
 (5,4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1',1,NULL,NULL,NULL,NULL);
 

@@ -28,6 +28,12 @@ $values = array_merge($values,$_FILES);
 		case "get":
 			executeGetDatos($values);
 		break;
+                case "extract":
+			executeExtractDatospt($values);
+		break;
+                case "extraer":
+			executeExtraerDatos($values);
+		break;
                 case "upload":
 			executeUploadPersonas($values);
 		break;
@@ -104,25 +110,61 @@ $values = array_merge($values,$_FILES);
             
             $Evaluacion = new Evaluacion();
             $id_pevaluacion = $Evaluacion->getDatos($values);
-            
-
-            
+    
             echo '<tr id="s0"><td align="left">Apellidos y Nombres 
-                                        <input type="text" class="form-control" name="" value="'.$id_pevaluacion["pri_ape"].' '.$id_pevaluacion["pri_nom"].'">
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_pevaluacion["pri_ape"].' '.$id_pevaluacion["pri_nom"].'">
                                     </td></tr>';
             echo '<tr id="s1"><td align="left">Título de Cargo
-                                        <input type="text" class="form-control" name="" value="'.$id_pevaluacion["id_cargo"].'">
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_pevaluacion["id_cargo"].'">
                                     </td></tr>';
             echo '<tr id="s2"><td align="left">Fecha de Ingreso
-                                        <input type="text" class="form-control" name="" value="'.$id_pevaluacion["fec_ingreso"].'">
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_pevaluacion["fec_ingreso"].'">
                                     </td></tr>';
             echo '<tr id="s3"><td align="left">Ubicación Administrativa
-                                        <input type="text" class="form-control" name="" value="'.$id_pevaluacion["id_ubicacion"].'">
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_pevaluacion["id_ubicacion"].'">
                                     </td></tr>';
           
-         
-
         }
+        
+        function executeExtractDatospt($values){
+            
+            $Evaluacion = new Evaluacion();
+            $id_ptevaluacion = $Evaluacion->extractDatospt($values);
+            
+            echo '<tr id="s12"><td align="left">Apellidos y Nombres 
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_ptevaluacion["pri_ape"].' '.$id_ptevaluacion["pri_nom"].'">
+                                    </td></tr>';
+            echo '<tr id="s13"><td align="left">Título de Cargo
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_ptevaluacion["id_cargo"].'">
+                                    </td></tr>';
+            echo '<tr id="s14"><td align="left">Fecha de Ingreso
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_ptevaluacion["fec_ingreso"].'">
+                                    </td></tr>';
+            echo '<tr id="s15"><td align="left">Ubicación Administrativa
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_ptevaluacion["id_ubicacion"].'">
+                                    </td></tr>';
+        }
+        
+        function executeExtraerDatos($values){
+            
+            $Evaluacion = new Evaluacion();
+            $id_oevaluacion = $Evaluacion->extraerDatos($values);
+            
+            echo '<th id="s31" align="left">Apellidos y Nombres 
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_oevaluacion["pri_ape"].' '.$id_oevaluacion["pri_nom"].'">
+                                    </th>';
+            echo '<th id="s32" align="left">Título de Cargo
+                                        <input type="text" readonly  class="form-control" name="" value="'.$id_oevaluacion["id_cargo"].'">
+                                    </th>';
+            echo '<th id="s33" align="left">Fecha de Ingreso
+                                        <input type="text" readonly  class="form-control" name="" value="'.$id_oevaluacion["fec_ingreso"].'">
+                                   </th>';
+            echo '<th id="s34" align="left">Ubicación Administrativa
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_oevaluacion["id_ubicacion"].'">
+                                    </th>';
+            
+        }
+        
          function executeUploadPersonas($values)
         {
             $Personas = new Personas();

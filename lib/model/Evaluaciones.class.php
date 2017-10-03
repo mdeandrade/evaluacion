@@ -63,4 +63,26 @@
 			return $q; 
 			
 		}
+            
+            function extractDatospt($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Personas
+			->select("*")
+                        ->where("id_persona", $values)
+                        ->fetch();
+			return $q; 
+			
+		}
+            
+            function extraerDatos($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Personas
+			->select("*")
+                        ->where("id_persona", $values)
+                        ->fetch();
+			return $q; 
+			
+		}
 }

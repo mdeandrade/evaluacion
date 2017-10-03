@@ -29,12 +29,13 @@
                 <div class="panel-body">
                     <div class="col-md-4">
 			<h4>1. DATOS DEL EVALUADO	</h4>
-                            <table class="table table-condensed table-bordered table-hover">
+                            <table class="table table-condensed table-bordered table-hover" id="idS">
                                  <tr>
                                     <td align="left">Cédula de Identidad
-                                        <select class="form-control" name="id_personal_evaluacion" value="<?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']!='') echo $values['id_personal_evaluacion'];?>" id="exampleInputEmail1" >
+                                        <select onchange="carga()" class="form-control" name="id_personal_evaluacion"  id="id_ptevaluacion" >
                                             <option value="" >Seleccione...</option>
                                                 <?php if(isset($lista_personas) and count($lista_personas)>0):?>
+                                            
                                                     <?php foreach($lista_personas as $personas):?>
                                                         <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
                                                     <?php endforeach;?>
@@ -42,38 +43,7 @@
                                         </select>                                    
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td align="left">Apellidos y Nombres
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['']) and $values['']!='') echo $values[''];?>" <?php echo strtoupper($id_persona ['pri_nom']);?> <?php echo strtoupper($id_persona ['pri_ape']);?>id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['']) and $errors['']!=''):?>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td align="left">Título de Cargo
-                                        <input type="text" class="form-control" name="nom_cargo" value="<?php if(isset($values['nom_cargo']) and $values['nom_cargo']!='nom_cargo') echo $values['nom_cargo'];?>" <?php echo strtoupper($cargo['cargo']);?> id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_cargo']) and $errors['nom_cargo']!='nom_cargo'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_cargo'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Fecha de Ingreso
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['']) and $values['']!='') echo $values[''];?>" <?php echo strtoupper($id_persona ['fec_ingreso']);?> id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['']) and $errors['']!=''):?>
-                                                <div class="alert alert-danger"><?php echo $errors[''];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Ubicación Administrativa
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['nom_ubicacion']) and $values['nom_ubicacion']!='nom_ubicacion') echo $values['nom_ubicacion'];?>" <?php echo strtoupper($ubicacion ['nom_ubicacion']);?> id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_ubicacion']) and $errors['nom_ubicacion']!='nom_ubicacion'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_ubicacion'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
+                                
                             </table>
                     </div>
                     <div class="col-md-4">
@@ -372,13 +342,13 @@
                                   <tr>
                                       <td>1</td>
                                       <td><textarea class="form-control" name="competencia" id="competencia-1" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
-                                      <td><input type="hidden" name="peso5" value="7" onChange="sum();" class="pesoc" readonly><strong>7</strong></td>
-                                      <td><input type="radio" name="rango5" class="rango_pt" value="1" checked="" onclick="operacion(1, 'peso5', 'pxr5')"></td>
-                                      <td><input type="radio" name="rango5" class="rango_pt" value="2" onclick="operacion(2, 'peso5', 'pxr5')"></td>
-                                      <td><input type="radio" name="rango5" class="rango_pt" value="3" onclick="operacion(3, 'peso5', 'pxr5')"></td>
-                                      <td><input type="radio" name="rango5" class="rango_pt" value="4" onclick="operacion(4, 'peso5', 'pxr5')"></td>
-                                      <td><input type="radio" name="rango5" class="rango_pt" value="5" onclick="operacion(5, 'peso5', 'pxr5')"></td>
-                                      <td><input type="text" name="pxr5" value="" readonly="" placeholder="0"></td>
+                                      <td><input type="hidden" name="peso20" value="7" onChange="sum();" class="pesoc" readonly><strong>7</strong></td>
+                                      <td><input type="radio" name="rango5" class="rango_pt" value="1" checked="" onclick="operacion(1, 'peso20', 'pxr20')"></td>
+                                      <td><input type="radio" name="rango5" class="rango_pt" value="2" onclick="operacion(2, 'peso20', 'pxr20')"></td>
+                                      <td><input type="radio" name="rango5" class="rango_pt" value="3" onclick="operacion(3, 'peso20', 'pxr20')"></td>
+                                      <td><input type="radio" name="rango5" class="rango_pt" value="4" onclick="operacion(4, 'peso20', 'pxr20')"></td>
+                                      <td><input type="radio" name="rango5" class="rango_pt" value="5" onclick="operacion(5, 'peso20', 'pxr20')"></td>
+                                      <td><input type="text" name="pxr20" value="" readonly="" placeholder="0"></td>
                                   </tr>
                                   <tr>
                                       <td>2</td>
@@ -559,7 +529,7 @@
                                         </div>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <div class="form-group" style="display: block;">
                                     <label class="control-label" for="field20">Comentarios del evaluado</label>
                                         <div class="controls">
@@ -569,19 +539,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <!--<div class="col-md-3">
                                 <div class="form-group" rel="popover" data-trigger="hover" data-content="Fecha en la que se realiz? la evaluaci?n." data-original-title="">
                                     <label class="control-label" for="field16">Fecha de notificación<span class="req"> *</span></label>
                                         <div class="controls">
                                             <div class='input-group date' id='notificacion'>
-                                                <input type='text' class="form-control" placeholder="YYYY/MM/DD" />
+                                                <input type='text' class="form-control"  />
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
                                             </div>
                                         </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     </div>
@@ -592,7 +562,38 @@
     <br>
     <br>-->
    
- <script>   
+ <script> 
+ // datos ajax 
+        function carga(){
+            
+            // url que recibe los datos
+            var url = "<?php echo full_url."/rrhh/evaluaciones/index.php?action=extract"?>";
+            //var url = "../index.php?action=get";
+    $.ajax({
+        type: "POST",
+        url:url,
+        data: {
+            // nombre en el post : valor a enviar
+            ci: $("#id_ptevaluacion").val(),
+        },
+        success: function(data){
+            // cuando el controlador responda, los datos que envia los va a poner
+            // en el div que tenga este id
+            // 
+           $('#s12, #s13, #s14, #s15').remove();  
+            $('#idS tr:last').after(data);
+       },
+       error: function (xhr, ajaxOptions, thrownError) {
+           alert(xhr.status+" "+thrownError+"\n\n","Error al enviar/recibir los datos...");
+       }
+   });
+
+        }
+        
+        
+        
+        
+        
 function sumas() {
   var add = 0;
       $('.peso2').each(function() {

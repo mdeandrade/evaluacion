@@ -65,6 +65,12 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Login.class.php');
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Procesos.class.php');
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Funcionarios.class.php');
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Usuarios.class.php');
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Personas.class.php');
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Ubicaciones.class.php');
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Evaluadores.class.php');
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Evaluaciones.class.php');
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Roles.class.php');
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Rangos.class.php');
 /*validation class*/
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendor/GUMP/gump.class.php");
 

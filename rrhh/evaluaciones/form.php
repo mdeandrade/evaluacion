@@ -9,16 +9,16 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#evaluacion_admin" aria-controls="evaluacion_admin" role="tab" data-toggle="tab">Nivel Administrativo</a></li>
-    <li role="presentation"><a href="#evaluacion_pro_tec" aria-controls="evaluacion_pro_tec" role="tab" data-toggle="tab">Nivel Profesional y Técnico</a></li>
     <li role="presentation"><a href="#evaluacion_obrero" aria-controls="evaluacion_obrero" role="tab" data-toggle="tab">Personal Obrero</a></li>
+    <li role="presentation"><a href="#evaluacion_pro_tec" aria-controls="evaluacion_pro_tec" role="tab" data-toggle="tab">Nivel Profesional y Técnico</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="evaluacion_admin"><?php require('evaluacion_admin.php');?></div>
-    <div role="tabpanel" class="tab-pane" id="evaluacion_pro_tec"><?php require('evaluacion_pro_tec.php');?></div>
     <div role="tabpanel" class="tab-pane" id="evaluacion_obrero"><?php require('evaluacion_obrero.php');?></div>
-       
+    <div role="tabpanel" class="tab-pane" id="evaluacion_pro_tec"><?php require('evaluacion_pro_tec.php');?></div>
+    
   </div>
 
 </div>
