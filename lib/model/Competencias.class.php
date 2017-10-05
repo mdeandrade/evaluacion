@@ -182,4 +182,13 @@
 			
 		}
 		
+                function getCompetencia($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Competencias
+			->select("competencia");
+			return $q; 
+			
+		}
+               
 }

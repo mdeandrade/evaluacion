@@ -85,4 +85,13 @@
 			return $q; 
 			
 		}
+            
+             function executeCargarDatos($values){
+                    $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Competencias
+			->select("*")
+                        ->where("id_competencia", 1)
+                        ->fetch();
+			return $q; 
+                }
 }
