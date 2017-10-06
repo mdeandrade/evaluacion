@@ -48,76 +48,40 @@
                     </div>
                     <div class="col-md-4">
                         <h4>2. DATOS DEL EVALUADOR	</h4>
-                            <table class="table table-condensed table-bordered table-hover">
+                            <table class="table table-condensed table-bordered table-hover" id="idexit">
                                  <tr>
                                     <td align="left">Cédula de Identidad
-                                        <input type="text" class="form-control" name="num_documento" value="<?php if(isset($values['num_documento' ]) and $values['num_documento']!='num_documento') echo $values['num_documento'];?>" id="exampleInputEmail1" placeholder="">
-                                            <?php if(isset($errors['num_documento']) and $errors['num_documento']!='num_documento'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['num_documento'];?></div>
-                                            <?php endif;?>
+                                        <select onchange="evaluador()" class="form-control" name="id_personal_evaluacion"  id="id_evaluadorpt">
+                                            <option value="" >Seleccione...</option>
+                                                <?php if(isset($lista_personas) and count($lista_personas)>0):?>
+                                            
+                                                    <?php foreach($lista_personas as $personas):?>
+                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
+                                                    <?php endforeach;?>
+                                                <?php endif;?>
+                                        </select>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td align="left">Apellidos y Nombres
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['']) and $values['']!='') echo $values[''];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['descripcion']) and $errors['']!=''):?>
-                                                <div class="alert alert-danger"><?php echo $errors[''];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td align="left">Título de Cargo
-                                        <input type="text" class="form-control" name="nom_cargo" value="<?php if(isset($values['nom_cargo']) and $values['nom_cargo']!='nom_cargo') echo $values['nom_cargo'];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_cargo']) and $errors['nom_cargo']!='nom_cargo'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_cargo'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Ubicación Administrativa
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['nom_ubicacion']) and $values['nom_ubicacion']!='nom_ubicacion') echo $values['nom_ubicacion'];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_ubicacion']) and $errors['nom_ubicacion']!='nom_ubicacion'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_ubicacion'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
+                                
                             </table>
                     </div>
                     <div class="col-md-4">
                         <h4>3. DATOS DEL SUPERVISOR DEL EVALUADOR	</h4>
-                            <table class="table table-condensed table-bordered table-hover">
+                            <table class="table table-condensed table-bordered table-hover" id="idsalida">
                                 <tr>
                                     <td align="left">Cédula de Identidad
-                                        <input type="text" class="form-control" name="num_documento" value="<?php if(isset($values['num_documento' ]) and $values['num_documento']!='num_documento') echo $values['num_documento'];?>" id="exampleInputEmail1" placeholder="" >
-                                            <?php if(isset($errors['num_documento']) and $errors['num_documento']!='num_documento'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['num_documento'];?></div>
-                                            <?php endif;?>
+                                        <select onchange="supervisor()" class="form-control" name="id_personal_evaluacion"  id="id_supervisorpt">
+                                            <option value="" >Seleccione...</option>
+                                                <?php if(isset($lista_personas) and count($lista_personas)>0):?>
+                                            
+                                                    <?php foreach($lista_personas as $personas):?>
+                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
+                                                    <?php endforeach;?>
+                                                <?php endif;?>
+                                        </select>
                                     </td>
                                 </tr>                                <tr>
-                                    <td align="left">Apellidos y Nombres
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['']) and $values['']!='') echo $values[''];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['descripcion']) and $errors['']!=''):?>
-                                                <div class="alert alert-danger"><?php echo $errors[''];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Título de Cargo
-                                        <input type="text" class="form-control" name="nom_cargo" value="<?php if(isset($values['nom_cargo']) and $values['nom_cargo']!='nom_cargo') echo $values['nom_cargo'];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_cargo']) and $errors['nom_cargo']!='nom_cargo'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_cargo'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Ubicación Administrativa
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['nom_ubicacion']) and $values['nom_ubicacion']!='nom_ubicacion') echo $values['nom_ubicacion'];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_ubicacion']) and $errors['nom_ubicacion']!='nom_ubicacion'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_ubicacion'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
+                                    
                             </table>
                     </div>
                 </div>
@@ -252,7 +216,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><strong>Total Peso x Rango</strong><br><input type="text" name="pesoxRango2" value="" readonly="" placeholder="00"></td>
+                                        <td><strong>Total Peso x Rango</strong><br><input type="text"  onchange="operacionpt()" name="pesoxRango2" value="" readonly="" placeholder="00"></td>
                                     </tr>
                                 </tbody>
                                                         
@@ -466,7 +430,7 @@
                                     <div  class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                         <div class="form-group" rel="popover" data-trigger="hover" data-content="Total obtenido correspondiente a la sumatoria peso x rango." data-original-title="" style="display: block;">
                                             <label >Total puntaje (1ERA FASE + 2DA FASE)<span class="req"> *</span></label>
-                                            <input readonly="" id="suma_total" type="text" name="total_fases1" class="form-control k-textbox" data-role="text" placeholder="0"  required="required" >
+                                            <input readonly="" id="suma_total" type="text" name="totalFases02" class="form-control k-textbox" data-role="text" placeholder="0"  required="required" >
                                                     <span id="" class="error"></span>
                                         </div>
                                     </div>
@@ -590,7 +554,58 @@
 
         }
         
+// datos ajax 
+        function evaluador(){
+            
+            // url que recibe los datos
+            var url = "<?php echo full_url."/rrhh/evaluaciones/index.php?action=d"?>";
+            //var url = "../index.php?action=get";
+    $.ajax({
+        type: "POST",
+        url:url,
+        data: {
+            // nombre en el post : valor a enviar
+            cedula: $("#id_evaluadorpt").val(),
+        },
+        success: function(data){
+            // cuando el controlador responda, los datos que envia los va a poner
+            // en el div que tenga este id
+            // 
+           $('#s16, #s17, #s18, #s719').remove();  
+            $('#idexit tr:last').after(data);
+       },
+       error: function (xhr, ajaxOptions, thrownError) {
+           alert(xhr.status+" "+thrownError+"\n\n","Error al enviar/recibir los datos...");
+       }
+   });
+
+        }
         
+       /* function supervisor(){
+            
+            // url que recibe los datos
+            var url = "<?php echo full_url."/rrhh/evaluaciones/index.php?action=datpt"?>";
+            //var url = "../index.php?action=get";
+    $.ajax({
+        type: "POST",
+        url:url,
+        data: {
+            // nombre en el post : valor a enviar
+            cedula: $("#id_supervisorpt").val(),
+        },
+        success: function(data){
+            // cuando el controlador responda, los datos que envia los va a poner
+            // en el div que tenga este id
+            // 
+           $('#s20, #s21, #s22, #s23').remove();  
+            $('#idsalida tr:last').after(data);
+       },
+       error: function (xhr, ajaxOptions, thrownError) {
+           alert(xhr.status+" "+thrownError+"\n\n","Error al enviar/recibir los datos...");
+       }
+   });
+
+        }    */    
         
         
         
@@ -684,5 +699,31 @@ sum = datos.reduce(function(a, b) { return a + b; }, 0);
 $("[name='pesoxRango3']").val(sum);
 
 console.log(sum);
+
+var i =2;
+ 
+// mientras pesoxRango0 sea diferente a nulo, hacer....
+// mientras pesoxRango1 sea diferente a nulo, hacer....
+// mientras pesoxRango2 sea diferente a nulo, hacer....
+while( i != 3 ){
+
+  // obtener el value del elemento...
+  var a = $("[name='pesoxRango"+i+"']").val();
+   console.log("[name='pesoxRango"+i+"']");
+  
+  // subir el value del pesoxRango al array...
+  datos.push(parseInt(a));
+  i++;
 }
+
+// sumar array....
+sum = datos.reduce(function(a, b) { return a + b; }, 0);
+
+
+// poner la suma total en el input total
+$("[name='totalFases02']").val(sum);
+
+console.log(sum);
+};
+
 </script>        

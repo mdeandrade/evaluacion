@@ -3,8 +3,6 @@
             $lista_personas = $Personas->getPersonas($values);
             $Rangos = new Rangos();
             $lista_rangos = $Rangos->getRangos($values);
-            $Competencias = new Competencia();
-            $list_competencia = $Competencias->getCompetencia($values);
             /*$Evaluaciones = new Evaluaciones();
             $Competencias = $Competencias->getCompetencias($values);*/
 ?>
@@ -60,76 +58,40 @@
                     </div>
                     <div class="col-md-4">
                         <h4>2. DATOS DEL EVALUADOR	</h4>
-                            <table class="table table-condensed table-bordered table-hover">
+                            <table class="table table-condensed table-bordered table-hover" id="idExit">
                                  <tr>
                                     <td align="left">Cédula de Identidad
-                                        <input type="text" class="form-control" name="num_documento" value="<?php if(isset($values['num_documento' ]) and $values['num_documento']!='num_documento') echo $values['num_documento'];?>" id="exampleInputEmail1" placeholder="">
-                                            <?php if(isset($errors['num_documento']) and $errors['num_documento']!='num_documento'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['num_documento'];?></div>
-                                            <?php endif;?>
+                                        <select onchange="datose()" class="form-control" name="id_personal_evaluacion"  id="id_pevaluador" >
+                                            <option value="" >Seleccione...</option>
+                                                <?php if(isset($lista_personas) and count($lista_personas)>0):?>
+                                            
+                                                    <?php foreach($lista_personas as $personas):?>
+                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
+                                                    <?php endforeach;?>
+                                                <?php endif;?>
+                                        </select>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td align="left">Apellidos y Nombres
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['']) and $values['']!='') echo $values[''];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['descripcion']) and $errors['']!=''):?>
-                                                <div class="alert alert-danger"><?php echo $errors[''];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td align="left">Título de Cargo
-                                        <input type="text" class="form-control" name="nom_cargo" value="<?php if(isset($values['nom_cargo']) and $values['nom_cargo']!='nom_cargo') echo $values['nom_cargo'];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_cargo']) and $errors['nom_cargo']!='nom_cargo'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_cargo'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Ubicación Administrativa
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['nom_ubicacion']) and $values['nom_ubicacion']!='nom_ubicacion') echo $values['nom_ubicacion'];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_ubicacion']) and $errors['nom_ubicacion']!='nom_ubicacion'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_ubicacion'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
+                                
                             </table>
                     </div>
                     <div class="col-md-4">
                         <h4>3. DATOS DEL SUPERVISOR DEL EVALUADOR	</h4>
-                            <table class="table table-condensed table-bordered table-hover">
+                            <table class="table table-condensed table-bordered table-hover" id="idE">
                                 <tr>
                                     <td align="left">Cédula de Identidad
-                                        <input type="text" class="form-control" name="num_documento" value="<?php if(isset($values['num_documento' ]) and $values['num_documento']!='num_documento') echo $values['num_documento'];?>" id="exampleInputEmail1" placeholder="" >
-                                            <?php if(isset($errors['num_documento']) and $errors['num_documento']!='num_documento'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['num_documento'];?></div>
-                                            <?php endif;?>
+                                        <select onchange="dato()" class="form-control" name="id_personal_evaluacion"  id="id_sevaluador" >
+                                            <option value="" >Seleccione...</option>
+                                                <?php if(isset($lista_personas) and count($lista_personas)>0):?>
+                                            
+                                                    <?php foreach($lista_personas as $personas):?>
+                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
+                                                    <?php endforeach;?>
+                                                <?php endif;?>
+                                        </select>
                                     </td>
                                 </tr>                                <tr>
-                                    <td align="left">Apellidos y Nombres
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['']) and $values['']!='') echo $values[''];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['descripcion']) and $errors['']!=''):?>
-                                                <div class="alert alert-danger"><?php echo $errors[''];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Título de Cargo
-                                        <input type="text" class="form-control" name="nom_cargo" value="<?php if(isset($values['nom_cargo']) and $values['nom_cargo']!='nom_cargo') echo $values['nom_cargo'];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_cargo']) and $errors['nom_cargo']!='nom_cargo'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_cargo'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Ubicación Administrativa
-                                        <input type="text" class="form-control" name="" value="<?php if(isset($values['nom_ubicacion']) and $values['nom_ubicacion']!='nom_ubicacion') echo $values['nom_ubicacion'];?>" id="exampleInputEmail1" placeholder="" readonly="">
-                                            <?php if(isset($errors['nom_ubicacion']) and $errors['nom_ubicacion']!='nom_ubicacion'):?>
-                                                <div class="alert alert-danger"><?php echo $errors['nom_ubicacion'];?></div>
-                                            <?php endif;?>
-                                    </td>
-                                </tr>
+                                    
                             </table>
                     </div>
                 </div>
@@ -263,7 +225,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><strong>Total Peso x Rango</strong><br><input type="text" name="pesoxRango0" value="" readonly="" id="pesoxrango" placeholder="250"></td>
+                                        <td><strong>Total Peso x Rango</strong><br><input type="text" name="pesoxRango0" onchange="operacionpr()" value="" readonly="" id="pesoxrango" placeholder="250"></td>
                                     </tr>
                                 </tbody>
                                                         
@@ -274,7 +236,7 @@
                                  <div  class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group" rel="popover" data-trigger="hover" data-content="Total obtenido correspondiente a la sumatoria peso x rango." data-original-title="" style="display: block;">
                                         <label class="control-label">Calificación (1ERA FASE)<span class="req"> *</span></label>
-                                            <input readonly id="fase_uno" name="pesoxRango0" type="text" class="form-control k-textbox" data-role="text" placeholder="0"  required="required" >
+                                            <input readonly id="fase_uno" name="pesoxRango0"  type="text" class="form-control k-textbox" data-role="text" placeholder="0"  required="required" >
                                                 <span id="errId1" class="error"></span>
                                     </div>
                                 </div>
@@ -346,12 +308,7 @@
                             <tbody>
                                   <tr>
                                       <td>1</td>
-                                      <td><input type="hidden" name="competencias" value="<?php echo $competencias['competencias'];?>" ></td>
-                                            <?php if(isset($list_competencia) and count($list_competencia)>0):?>
-                                                <?php foreach($list_competencia as $competencia):?>
-                                                    <option value="<?php echo $competencias['id_competencia'];?>" <?php if(isset($values['competencias']) and $values['competencias']== $competencia['id_competencia']) ;?>><?php echo strtoupper($competencia['competencias']);?> </option>
-                                                <?php endforeach;?>
-                                            <?php endif;?>
+                                      <td><input type="hidden" name="competencia" value="<?php echo $evaluador['id_competencia'];?>" <?php if(isset($values['id_ubicacion_evaluador']) and $values['id_ubicacion_evaluador']== $ubicacion['id_ubicacion']) echo "selected='selected'";?>><?php echo strtoupper($ubicacion['nom_ubicacion']);?>  ></td>
                                       <td><input type="hidden" name="peso19" value="7" onChange="sum1();" class="pesoc1" readonly><strong>7</strong></td>
                                       <td><input type="radio" name="rango5" class="rango_pt" value="1" checked="" onclick="operacion1(1, 'peso19', 'pxr19')"></td>
                                       <td><input type="radio" name="rango5" class="rango_pt" value="2" onclick="operacion1(2, 'peso19', 'pxr19')"></td>
@@ -447,7 +404,7 @@
                                       <td></td>
                                       <td></td>
                                       <td align="right"></td>
-                                      <td><strong>Total Peso x Rango</strong><br><input type="text" name="pesoxRango1" id="" value="" placeholder="250" readonly=""></td>
+                                      <td><strong>Total Peso x Rango</strong><br><input type="text" name="pesoxRango1" onchange="operacionpr()"  id="" value="" placeholder="250" readonly=""></td>
                                       </tr>
                             </tbody>
                         </table>
@@ -461,14 +418,14 @@
                                 <div  class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
                                     <div class="form-group" rel="popover" data-trigger="hover" data-content="Total obtenido correspondiente a la sumatoria peso x rango." data-original-title="" style="display: block;">
                                         <label class="control-label">Calificación (1ERA FASE)<span class="req"> *</span></label>
-                                            <input readonly id="fase_uno" name="pesoxRango0" type="text" class="form-control k-textbox" data-role="text" placeholder="0"  required="required" >
+                                            <input readonly id="fase_uno" name="pesoxRango0" type="text"  class="form-control k-textbox" data-role="text" placeholder="0"  required="required" >
                                                 <span id="errId1" class="error"></span>
                                     </div>
                                 </div>
                                 <div  class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
                                     <div class="form-group" rel="popover" data-trigger="hover" data-content="Total obtenido correspondiente a la sumatoria peso x rango." data-original-title="" style="display: block;">
                                         <label class="control-label ">Calificación (2DA FASE)<span class="req"> *</span></label>
-                                        <input readonly="" id="fase_dos" name="pesoxRango1" type="text" class="form-control k-textbox" data-role="text" placeholder="0"  required="required" >
+                                        <input readonly="" id="fase_dos" name="pesoxRango1" type="text"  class="form-control k-textbox" data-role="text" placeholder="0"  required="required" >
                                                 <span id="errId1" class="error"></span>
                                     </div>
                                 </div>
@@ -479,7 +436,7 @@
                                     <div  class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                         <div class="form-group" rel="popover" data-trigger="hover" data-content="Total obtenido correspondiente a la sumatoria peso x rango." data-original-title="" style="display: block;">
                                             <label >Total puntaje (1ERA FASE + 2DA FASE)<span class="req"> *</span></label>
-                                            <input readonly="" id="suma_total" type="text" class="form-control k-textbox" data-role="text" placeholder="0"  required="required" name="totalFases0" >
+                                            <input readonly="" id="suma_total" type="text"  class="form-control k-textbox" data-role="text" placeholder="0"  required="required" name="totalFases01" >
                                                     <span id="" class="error"></span>
                                         </div>
                                     </div>
@@ -595,6 +552,59 @@
             // 
            $('#s0, #s1, #s2, #s3').remove();  
             $('#idSalida tr:last').after(data);
+       },
+       error: function (xhr, ajaxOptions, thrownError) {
+           alert(xhr.status+" "+thrownError+"\n\n","Error al enviar/recibir los datos...");
+       }
+   });
+
+        }
+        
+        // datos ajax 
+        function datose(){
+            
+            // url que recibe los datos
+            var url = "<?php echo full_url."/rrhh/evaluaciones/index.php?action=datos"?>";
+            //var url = "../index.php?action=get";
+    $.ajax({
+        type: "POST",
+        url:url,
+        data: {
+            // nombre en el post : valor a enviar
+            cedula: $("#id_sevaluador").val(),
+        },
+        success: function(data){
+            // cuando el controlador responda, los datos que envia los va a poner
+            // en el div que tenga este id
+            // 
+           $('#s4, #s5, #s6, #s7').remove();  
+            $('#idExit tr:last').after(data);
+       },
+       error: function (xhr, ajaxOptions, thrownError) {
+           alert(xhr.status+" "+thrownError+"\n\n","Error al enviar/recibir los datos...");
+       }
+   });
+
+        }
+        
+        function dato(){
+            
+            // url que recibe los datos
+            var url = "<?php echo full_url."/rrhh/evaluaciones/index.php?action=dato"?>";
+            //var url = "../index.php?action=get";
+    $.ajax({
+        type: "POST",
+        url:url,
+        data: {
+            // nombre en el post : valor a enviar
+            cedula: $("#id_sevaluador").val(),
+        },
+        success: function(data){
+            // cuando el controlador responda, los datos que envia los va a poner
+            // en el div que tenga este id
+            // 
+           $('#s8, #s9, #s10, #s11').remove();  
+            $('#idE tr:last').after(data);
        },
        error: function (xhr, ajaxOptions, thrownError) {
            alert(xhr.status+" "+thrownError+"\n\n","Error al enviar/recibir los datos...");
@@ -726,5 +736,31 @@ sum = datos.reduce(function(a, b) { return a + b; }, 0);
 $("[name='pesoxRango1']").val(sum);
 
 console.log(sum);
+
+var i = 0;
+ 
+// mientras pesoxRango0 sea diferente a nulo, hacer....
+// mientras pesoxRango1 sea diferente a nulo, hacer....
+// mientras pesoxRango2 sea diferente a nulo, hacer....
+while( i != 1 ){
+
+  // obtener el value del elemento...
+  var a = $("[name='pesoxRango"+i+"']").val();
+   console.log("[name='pesoxRango"+i+"']");
+  
+  // subir el value del pesoxRango al array...
+  datos.push(parseInt(a));
+  i++;
+}
+
+// sumar array....
+sum = datos.reduce(function(a, b) { return a + b; }, 0);
+
+
+// poner la suma total en el input total
+$("[name='totalFases01']").val(sum);
+
+console.logase(sum);
 };
+
 </script>        

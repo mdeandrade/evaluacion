@@ -76,7 +76,7 @@
 			"minlength" => 8,
 			"maxlength" => 20,
 			"type" => "date",
-			"label" => "Fecha apertura para las comptencia",
+			"label" => "Fecha de apertura para las comptencia",
 			"required" => true
 		);
 		$validator_values['fec_cierre_competencia'] = array(
@@ -84,7 +84,7 @@
 			"minlength" => 8,
 			"maxlength" => 20,
 			"type" => "date",
-			"label" => "Fecha cierre para las comptencia",
+			"label" => "Fecha de cierre para las comptencia",
 			"required" => true
 		);
 		$validator_values['peso_competencia'] = array(

@@ -61,14 +61,14 @@
                                             <td><textarea class="form-control" name="factor" id="factor-1" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                             <td><input type="hidden" id="peso1"  name="peso27" min="1" max="15" placeholder="0" value="15" onChange="sumar();" class="peso"><strong>15</strong></td>
                                             <td><input type="number" name="puntaje1"id="inlineRadio1" value="" placeholder="0" onChange="sum_p();" class="puntaje"></td>
-                                            <td><textarea class="form-control" name="comentario" id="comentario-1" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                            <td><textarea class="form-control" name="comentario" min="0" max="" id="comentario-1" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
                                         <td><textarea class="form-control" name="factor" id="factor-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                         <td><input type="hidden"  id="peso2" name="peso28" min="1" max="15" value="15" placeholder="0" onChange="sumar();" class="peso"><strong>15</strong></td>
                                         <td><input type="number" name="puntaje2"id="inlineRadio1" value="" placeholder="0" onChange="sum_p();" class="puntaje"></td>
-                                        <td><textarea class="form-control" name="comentario" id="comentario-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" name="comentario" min="0" max="" id="comentario-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
@@ -82,42 +82,42 @@
                                         <td><textarea class="form-control" name="factor" id="factor-4" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                         <td><input type="number" id="peso4"  name="peso30" min="1" max="15" placeholder="0" onChange="sumar();" class="peso"></td>
                                         <td><input type="number" name="puntaje4"id="inlineRadio1" value="" placeholder="0" onChange="sum_p();" class="puntaje"></td>
-                                        <td><textarea class="form-control" name="comentario" id="comentario-4" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" name="comentario" min="0" max="" id="comentario-4" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>5</td>
                                         <td><textarea class="form-control" name="factor" id="factor-5" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                         <td><input type="number"  id="peso" name="peso31" min="1" max="15" placeholder="0" onChange="sumar();" class="peso"></td>
                                         <td><input type="number" name="puntaje5"id="inlineRadio1" value="" placeholder="0" onChange="sum_p();" class="puntaje"></td>
-                                        <td><textarea class="form-control" name="comentario" id="comentario-5" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" name="comentario" min="0" max="" id="comentario-5" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>6</td>
                                         <td><textarea class="form-control" name="factor" id="factor-6" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                         <td><input type="number"  id="peso6" name="peso32" min="1" max="15" placeholder="0" onChange="sumar();" class="peso"></td>
                                         <td><input type="number" name="puntaje6"id="inlineRadio1" value="" placeholder="0" onChange="sum_p();" class="puntaje"></td>
-                                        <td><textarea class="form-control" name="comentario" id="comentario-6" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" name="comentario" min="0" max="" id="comentario-6" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>7</td>
                                         <td><textarea class="form-control" name="factor" id="factor-7" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                         <td><input type="number" id="peso7"  name="peso33" min="1" max="15" placeholder="0" onChange="sumar();" class="peso" ></td>
                                         <td><input type="number" name="puntaje7"id="inlineRadio1" value="" placeholder="0" onChange="sum_p();" class="puntaje"></td>
-                                        <td><textarea class="form-control" name="comentario" id="comentario-7" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" name="comentario" min="0" max="" id="comentario-7" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>8</td>
                                         <td><textarea class="form-control" name="factor" id="factor-8" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                         <td><input type="number" id="peso8"  name="peso34" min="1" max="15" placeholder="0" onChange="sumar();" class="peso"></td>
                                         <td><input type="number" name="puntaje8"id="inlineRadio1" value="" placeholder="0" onChange="sum_p();" class="puntaje"></td>
-                                        <td><textarea class="form-control" name="comentario" id="comentario-8" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" name="comentario"  min="0" max="" id="comentario-8" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
 
                                     </tr>
                                     <tr>
                                         <td></td>
                                         <td align="right"><strong>Total Puntaje</strong></td>
                                         <td> <input type="text" name="total" id="total" value="" placeholder="100" min="100" max="100" readonly=""></td>
-                                        <td><input type="text" name="total_p" id="total_p" value="" placeholder="100" min="100" max="100" readonly=""></td>
+                                        <td><input type="text" name="total_p" id="total_p" value="" placeholder="100" min="20" max="100" readonly=""></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>

@@ -44,7 +44,7 @@
                             //insert
 
             }
-             function getCompetencias($values){
+                function getCompetencias($values){
                        
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->Competencias
@@ -53,7 +53,51 @@
 			
 		}
                 
-            function getDatos($values){
+                function getDatos($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Personas
+			->select("*")
+                        ->where("id_persona", $values)
+                        ->fetch();
+			return $q; 
+			
+		}
+                
+                function datosEvaluador($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Personas
+			->select("*")
+                        ->where("id_persona", $values)
+                        ->fetch();
+			return $q; 
+			
+		}
+                
+                function datoSupervisor($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Personas
+			->select("*")
+                        ->where("id_persona", $values)
+                        ->fetch();
+			return $q; 
+			
+		}
+                
+                function dEvaluadorpt($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Personas
+			->select("*")
+                        ->where("id_persona", $values)
+                        ->fetch();
+			return $q; 
+			
+		}
+                
+                function datSupervisorpt($values){
                        
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->Personas
@@ -64,7 +108,7 @@
 			
 		}
             
-            function extractDatospt($values){
+                function extractDatospt($values){
                        
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->Personas
@@ -75,7 +119,7 @@
 			
 		}
             
-            function extraerDatos($values){
+                function extraerDatos($values){
                        
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->Personas
@@ -85,11 +129,11 @@
 			return $q; 
 			
 		}
-            
-             function executeCargarDatos($values){
+           
+                function executeCargarDatos($values){
                     $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->Competencias
-			->select("*")
+			->select("competencia")
                         ->where("id_competencia", 1)
                         ->fetch();
 			return $q; 

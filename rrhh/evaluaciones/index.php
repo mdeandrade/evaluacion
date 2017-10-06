@@ -28,6 +28,18 @@ $values = array_merge($values,$_FILES);
 		case "get":
 			executeGetDatos($values);
 		break;
+                case "datos":
+			executedatosEvaluador($values);
+		break;
+                case "dato":
+			executedatoSupervisor($values);
+		break;
+                case "d":
+			executedEvaluadorpt($values);
+		break;
+                case "dat":
+			executedatSupervisorpt($values);
+		break;
                 case "extract":
 			executeExtractDatospt($values);
 		break;
@@ -126,6 +138,89 @@ $values = array_merge($values,$_FILES);
           
         }
         
+        function executeDatosEvaluador($values)
+        {
+            
+            $Evaluacion = new Evaluacion();
+            $id_pevaluador = $Evaluacion->datosEvaluador($values);
+    
+            echo '<tr id="s4"><td align="left">Apellidos y Nombres 
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_pevaluador["pri_ape"].' '.$id_pevaluador["pri_nom"].'">
+                                    </td></tr>';
+            echo '<tr id="s5"><td align="left">Título de Cargo
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_pevaluador["id_cargo"].'">
+                                    </td></tr>';
+            echo '<tr id="s6"><td align="left">Fecha de Ingreso
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_pevaluador["fec_ingreso"].'">
+                                    </td></tr>';
+            echo '<tr id="s7"><td align="left">Ubicación Administrativa
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_pevaluador["id_ubicacion"].'">
+                                    </td></tr>';
+          
+        }
+        
+        function executeDatoSupervisor($values)
+        {
+            
+            $Evaluacion = new Evaluacion();
+            $id_sevaluador = $Evaluacion->datoSupervisor($values);
+    
+            echo '<tr id="s8"><td align="left">Apellidos y Nombres 
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_sevaluador["pri_ape"].' '.$id_sevaluador["pri_nom"].'">
+                                    </td></tr>';
+            echo '<tr id="s9"><td align="left">Título de Cargo
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_sevaluador["id_cargo"].'">
+                                    </td></tr>';
+            echo '<tr id="s10"><td align="left">Fecha de Ingreso
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_sevaluador["fec_ingreso"].'">
+                                    </td></tr>';
+            echo '<tr id="s11"><td align="left">Ubicación Administrativa
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_sevaluador["id_ubicacion"].'">
+                                    </td></tr>';
+          
+        }
+        
+        function executeDEvaluadorpt($values)
+        {
+            
+            $Evaluacion = new Evaluacion();
+            $id_evaluadorpt = $Evaluacion->dEvaluadorpt($values);
+    
+            echo '<tr id="s16"><td align="left">Apellidos y Nombres 
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_evaluadorpt["pri_ape"].' '.$id_evaluadorpt["pri_nom"].'">
+                                    </td></tr>';
+            echo '<tr id="s17"><td align="left">Título de Cargo
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_evaluadorpt["id_cargo"].'">
+                                    </td></tr>';
+            echo '<tr id="s18"><td align="left">Fecha de Ingreso
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_evaluadorpt["fec_ingreso"].'">
+                                    </td></tr>';
+            echo '<tr id="s19"><td align="left">Ubicación Administrativa
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_evaluadorpt["id_ubicacion"].'">
+                                    </td></tr>';
+          
+        }
+        
+        function executeDatSupervisorpt($values)
+        {
+            
+            $Evaluacion = new Evaluacion();
+            $id_supervisorpt = $Evaluacion->dEvaluadorpt($values);
+    
+            echo '<tr id="s16"><td align="left">Apellidos y Nombres 
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_supervisorpt["pri_ape"].' '.$id_supervisorpt["pri_nom"].'">
+                                    </td></tr>';
+            echo '<tr id="s17"><td align="left">Título de Cargo
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_supervisorpt["id_cargo"].'">
+                                    </td></tr>';
+            echo '<tr id="s18"><td align="left">Fecha de Ingreso
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_supervisorpt["fec_ingreso"].'">
+                                    </td></tr>';
+            echo '<tr id="s19"><td align="left">Ubicación Administrativa
+                                        <input type="text" readonly class="form-control" name="" value="'.$id_supervisorpt["id_ubicacion"].'">
+                                    </td></tr>';
+        }
+
         function executeExtractDatospt($values){
             
             $Evaluacion = new Evaluacion();

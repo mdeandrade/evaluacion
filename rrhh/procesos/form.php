@@ -12,7 +12,7 @@
     <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
     <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
     <li role="presentation"><a href="#evaluadores" aria-controls="evaluadores" role="tab" data-toggle="tab">Evaluadores</a></li>
-    <li role="presentation"><a href="#evaluaciones" aria-controls="evaluaciones" role="tab" data-toggle="tab">Evaluaciones</a></li>
+
     <?php endif;?>
   </ul>
 
@@ -22,7 +22,8 @@
     <div role="tabpanel" class="tab-pane" id="funcionarios"><?php require('funcionarios.php');?></div>
     <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
     <div role="tabpanel" class="tab-pane" id="evaluadores"><?php require('evaluadores.php');?></div>
-    <div role="tabpanel" class="tab-pane" id="evaluaciones"><?php require('evaluaciones.php');?></div>
+
+
     <?php endif;?>
   </div>
 
@@ -30,6 +31,7 @@
            <!--<button type="submit" id="guardar" class="btn btn-success">Guardar</button>-->
 
     <a class="btn btn-default" href="<?php echo full_url?>/rrhh/procesos/index.php?action=Index">Regresar</a>
+    
     <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
     <a class="btn btn-primary" href="index.php?action=generar_evaluaciones&id_proc=<?php echo $values['id_proc']?>">Inicio</a>
     <button type="submit" class="btn btn-danger">Culminar</button>
@@ -45,7 +47,7 @@
                 var rango_1= $('#rango_1').val();
                 alert(rango_1);
                 return false;
-            });*/
+            });
     $('#guardar').click(function(){
             var rango_1= $('#rango_1').val();
             var rango_1 = 5;
@@ -64,7 +66,7 @@
                 bootbox.alert("El valor del rango debe ser menor a 5.");
                 return false;
             }
-        });
+        */
             
 $(document).ready(function(){
     $(".rango1").change(function(){
@@ -159,4 +161,28 @@ $(".oculto").hide();
       }
 });
 });
+       var rango1=false;
+var rango2=false;
+ 
+function CheckunCheck(obj){
+var checked=false;
+switch (obj.id){
+case "radio_1":
+    rango1=!rango;
+    checked=rango1;
+break;
+case "rango2":
+    rango2=!rango2;
+    checked=rango2;
+break;
+}
+obj.checked=checked;
+}
+function Suma(isChecked, myValue)
+{
+    tot = parseInt(document.form1.total1.value);
+    myValue = parseInt(myValue);
+    if (isChecked.checked) document.form1.total1.value = tot * myValue;
+    else document.form1.total1.value = tot - myValue;
+}
 </script>

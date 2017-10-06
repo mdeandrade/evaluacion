@@ -186,7 +186,8 @@
                        
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->Competencias
-			->select("competencia");
+			->select("competencias")
+                        -> where ("id_compentencia", 1);
 			return $q; 
 			
 		}
