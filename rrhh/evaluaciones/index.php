@@ -205,18 +205,18 @@ $values = array_merge($values,$_FILES);
         {
             
             $Evaluacion = new Evaluacion();
-            $id_supervisorpt = $Evaluacion->dEvaluadorpt($values);
+            $id_supervisorpt = $Evaluacion->datSupervisorpt($values);
     
-            echo '<tr id="s16"><td align="left">Apellidos y Nombres 
+            echo '<tr id="s20"><td align="left">Apellidos y Nombres 
                                         <input type="text" readonly class="form-control" name="" value="'.$id_supervisorpt["pri_ape"].' '.$id_supervisorpt["pri_nom"].'">
                                     </td></tr>';
-            echo '<tr id="s17"><td align="left">Título de Cargo
+            echo '<tr id="s21"><td align="left">Título de Cargo
                                         <input type="text" readonly class="form-control" name="" value="'.$id_supervisorpt["id_cargo"].'">
                                     </td></tr>';
-            echo '<tr id="s18"><td align="left">Fecha de Ingreso
+            echo '<tr id="s22"><td align="left">Fecha de Ingreso
                                         <input type="text" readonly class="form-control" name="" value="'.$id_supervisorpt["fec_ingreso"].'">
                                     </td></tr>';
-            echo '<tr id="s19"><td align="left">Ubicación Administrativa
+            echo '<tr id="s23"><td align="left">Ubicación Administrativa
                                         <input type="text" readonly class="form-control" name="" value="'.$id_supervisorpt["id_ubicacion"].'">
                                     </td></tr>';
         }

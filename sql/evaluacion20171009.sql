@@ -238,6 +238,18 @@ CREATE TABLE `menu` (
 
 /*Data for the table `menu` */
 
+insert  into `menu`(`id menu`,`id_menu_padre`,`nom_menu`,`orden`,`url`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(0,0,'menu',NULL,'menu.php',1,NULL,NULL,NULL,NULL),
+(1,0,'menu_1',NULL,'menu_1.php',1,NULL,NULL,NULL,NULL),
+(2,0,'usuarios',NULL,'usuarios.php',1,NULL,NULL,NULL,NULL),
+(3,0,'procesos',NULL,'procesos.php',1,NULL,NULL,NULL,NULL),
+(4,0,'personal',NULL,'personal.php',1,NULL,NULL,NULL,NULL),
+(5,0,'evaluaciones',NULL,'evaluaciones.php',1,NULL,NULL,NULL,NULL),
+(6,5,'administrativo',NULL,'evaluacion_admin.php',1,NULL,NULL,NULL,NULL),
+(7,5,'profecional',NULL,'evaluacion_pro_tec.php',1,NULL,NULL,NULL,NULL),
+(8,5,'obrero',NULL,'evaluacion_obrero.php',1,NULL,NULL,NULL,NULL),
+(9,0,'estadisticas',NULL,'estadisticas.php',1,NULL,NULL,NULL,NULL);
+
 /*Table structure for table `menu_rol` */
 
 DROP TABLE IF EXISTS `menu_rol`;
@@ -259,6 +271,14 @@ CREATE TABLE `menu_rol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `menu_rol` */
+
+insert  into `menu_rol`(`id_menu`,`id_rol`,`id_estatus`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
+(0,1,1,NULL,NULL,NULL,NULL),
+(1,3,1,NULL,NULL,NULL,NULL),
+(3,5,1,NULL,NULL,NULL,NULL),
+(4,2,1,NULL,NULL,NULL,NULL),
+(5,2,1,NULL,NULL,NULL,NULL),
+(9,5,1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `niveles` */
 
@@ -605,7 +625,7 @@ CREATE TABLE `usuarios` (
 insert  into `usuarios`(`id_usuario`,`id_persona`,`nom_usuario`,`clave`,`id_estatus`,`id_rol`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`) values 
 (1,0,'gitsell','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',1,NULL,NULL,NULL,NULL),
 (2,1,'carlos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','2',2,NULL,NULL,NULL,NULL),
-(3,2,'josselline','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',5,NULL,NULL,NULL,NULL),
+(3,2,'josselline','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','1',3,NULL,NULL,NULL,NULL),
 (4,3,'adm1','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','2',4,NULL,NULL,NULL,NULL),
 (5,4,'adm2','8ae3d49d125e001c396b240913acf7af4adac02553a29bf58efa0925f60db86d','1',1,NULL,NULL,NULL,NULL);
 
@@ -627,9 +647,14 @@ CREATE TABLE `usuarios_roles` (
   CONSTRAINT `fk_estatus` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
   CONSTRAINT `fk_persona` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`),
   CONSTRAINT `fk_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `usuarios_roles` */
+
+insert  into `usuarios_roles`(`id_persona`,`id_rol`,`creado_por`,`fec_creado`,`actualizado_por`,`fec_actualizado`,`id_estatus`) values 
+(1,3,NULL,NULL,NULL,NULL,1),
+(2,2,NULL,NULL,NULL,NULL,1),
+(4,4,NULL,NULL,NULL,NULL,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

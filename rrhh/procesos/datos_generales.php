@@ -156,6 +156,6 @@
     </div>
 </div>
 <br>
-<button type="submit" id="guardar" class="btn btn-success">Siguiente</button>
+
 <br>
 <br>

@@ -67,8 +67,8 @@
                     </div>
                     <div class="col-md-4">
                         <h4>3. DATOS DEL SUPERVISOR DEL EVALUADOR	</h4>
-                            <table class="table table-condensed table-bordered table-hover" id="idsalida">
-                                <tr>
+                            <table class="table table-condensed table-bordered table-hover" id="idsld">
+                                 <tr>
                                     <td align="left">Cédula de Identidad
                                         <select onchange="supervisor()" class="form-control" name="id_personal_evaluacion"  id="id_supervisorpt">
                                             <option value="" >Seleccione...</option>
@@ -80,8 +80,8 @@
                                                 <?php endif;?>
                                         </select>
                                     </td>
-                                </tr>                                <tr>
-                                    
+                                </tr>
+                                
                             </table>
                     </div>
                 </div>
@@ -571,7 +571,7 @@
             // cuando el controlador responda, los datos que envia los va a poner
             // en el div que tenga este id
             // 
-           $('#s16, #s17, #s18, #s719').remove();  
+           $('#s16, #s17, #s18, #s19').remove();  
             $('#idexit tr:last').after(data);
        },
        error: function (xhr, ajaxOptions, thrownError) {
@@ -581,10 +581,10 @@
 
         }
         
-       /* function supervisor(){
+       function supervisor(){
             
             // url que recibe los datos
-            var url = "<?php echo full_url."/rrhh/evaluaciones/index.php?action=datpt"?>";
+            var url = "<?php echo full_url."/rrhh/evaluaciones/index.php?action=dat"?>";
             //var url = "../index.php?action=get";
     $.ajax({
         type: "POST",
@@ -598,15 +598,14 @@
             // en el div que tenga este id
             // 
            $('#s20, #s21, #s22, #s23').remove();  
-            $('#idsalida tr:last').after(data);
+            $('#idsld tr:last').after(data);
        },
        error: function (xhr, ajaxOptions, thrownError) {
            alert(xhr.status+" "+thrownError+"\n\n","Error al enviar/recibir los datos...");
        }
    });
 
-        }    */    
-        
+        }
         
         
 function sumas() {
