@@ -23,7 +23,7 @@
             </tfoot>
 	</table>
 
-        <a class="btn btn-success"  href="<?php echo full_url."/rrhh/usuarios/index.php?action=new"?>"> Agregar</a>
+        <a class="btn btn-success"  href="<?php echo full_url."/rrhh/personal/index.php?action=new"?>"> Agregar</a>
 
 </div>
 

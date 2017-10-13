@@ -30,7 +30,7 @@ body {
                                       <div align='center' class="visible-sm visible-xs">
                                          <!--<img src="<?php echo full_url;?>/web/img/g190.png" class="img-responsive" width="100"> -->
                                       </div>
-                                        <form name="" id="" novalidate action="<?php echo full_url;?>/rrhh/index.php" method="POST">
+                                        <form name="" id="login" novalidate action="<?php echo full_url;?>/rrhh/index.php" method="POST">
 
                                 <input type="hidden" name="action" value="acceso"/>
 			                    <div class="control-group form-group">
@@ -82,8 +82,9 @@ body {
                                                                 <a class="btn btn-link" href="<?php echo full_url;?>/rrhh/registrarse.php"> ¡Recuperación de clave!</a>
 								<hr>
                                                             </div> -->
-
-							</div>
+                                        </form>
+                                  </div>
+                                     
 			                    <!-- For success/fail messages -->
 
 			                    <?php if(isset($values['message']) and $values['message']!=''):?>
@@ -92,8 +93,47 @@ body {
 												$('.modal-body').html('<div class="alert alert-success" role="alert"><?php echo $values['message']?></div>');
 												$('#myModal').modal('show');
 												});
+                                                                                                  
+                                                                                 jQuery(document).on('submit', '#login', function(event){
+                                                                                 event.preventDefault();
+
+                                                                                 jQuery.ajax({
+                                                                                     url:'<?php echo full_url;?>/rrhh/login.php',
+                                                                                     type:'POST',
+                                                                                     dataType:'json',
+                                                                                     data: $(this).serialize(),
+                                                                                     beforeSend:function(){
+                                                                                         $('.btn btn-success').val('Validando...');
+                                                                                      }
+
+                                                                             })
+                                                                                     .done(function (respuesta){
+                                                                                         console.log(respuesta);
+                                                                                 if(respuest.error){
+                                                                                     if(respuesta.rol = '1'){
+                                                                                         location.href = '<?php echo full_url;?>/rrhh/menu.php';
+                                                                                     }
+                                                                                     else if(respueta.rol = '3'){
+                                                                                         location.href = '<?php echo full_url;?>/rrhh/menu_1.php';
+                                                                                     }
+                                                                                     else {
+                                                                                         $('.error').slideDown('slow');
+                                                                                         setTimeout(function(){
+                                                                                             $('.error').slideUp('slow');
+                                                                                         },3000);
+                                                                                         $('.btn btn-success').val('Conectar')
+                                                                                     }
+                                                                            })
+                                                                                    .fail(function(resp){
+                                                                                        console.log(resp.responseText);
+                                                                                    })
+                                                                                        .always(funtion(){
+                                                                                            console.log("complete");
+                                                                                    });
+                                                                                    });
 
 
+                                                                                               
 											</script>
 
 			                    <?php endif;?>

@@ -26,7 +26,8 @@
                         ->select('*')
 			->where('upper(nom_usuario) =?',strtoupper($user))
 			->and('clave =?',hash('sha256', $password))
-                        ->and('id_estatus=?',1);	
+                        ->and('id_estatus=?',1)
+                        ->and('id_estatus=?', $values['id_proc']);	
 			$ConnectionORM->close();	
 			
 			

@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-lg-3 ">
                     <label for="exampleInputEmail1">Inicio del poceso</label><small class="text-danger">(*)</small>
-                        <div class='input-group date'  id='fec_apertura'>
+                        <div class='input-group date'  onchange="ValidDate(this)" id='fec_apertura'>
                             <input type='text' class="form-control" name="fec_apertura_evaluacion" value="<?php if(isset($values['fec_apertura_evaluacion']) and $values['fec_apertura_evaluacion']!='') echo $values['fec_apertura_evaluacion'];?>" id="exampleInputEmail1" placeholder="YYYY/MM/DD" />
                                 <?php if(isset($errors['fec_apertura_evaluacion']) and $errors['fec_apertura_evaluacion']!=''):?>
                                     <div class="alert alert-danger"><?php echo $errors['fec_apertura_evaluacion'];?></div>

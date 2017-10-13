@@ -1,6 +1,5 @@
 <?php include('../../view_header_app.php')?>
 <?php include('../menu.php')?>
-
           <br>
         <div class="container">
         <div class="form-group"><h4>Estatus: </h4>
@@ -19,11 +18,12 @@
                     <th style="text-align: center">Peso x Rango</th>
                 </tr>
             </thead>
+
             <tbody>
                 <tr>
                     <td>1</td>
                     <td><input type="text" name="competencia" style="width: 100%"></td>
-                    <td><input type="hidden" name="peso1" value="7"></td>
+                    <td><input type="hidden" name="peso1" value="7">7</td>
                     <td><input type="radio" name="rango1" class="rango1" value="1"></td>
                     <td><input type="radio" name="rango1" class="rango1" value="2"></td>
                     <td><input type="radio" name="rango1" class="rango1" value="3"></td>
@@ -33,7 +33,7 @@
                 <tr>
                     <td>2</td>
                     <td><input type="text" name="competencia" style="width: 100%"></td>
-                    <td><input type="hidden" name="peso2" value="6"></td>
+                    <td><input type="hidden" name="peso2" value="6">6</td>
                     <td><input type="radio" name="rango2" value="1"></td>
                     <td><input type="radio" name="rango2" value="2"></td>
                     <td><input type="radio" name="rango2" value="3"></td>
@@ -43,7 +43,7 @@
                 <tr>
                      <td>3</td>
                      <td><input type="text" name="competencia" style="width: 100%"><br></td>
-                     <td><input type="hidden" name="peso3" value="7"></td>
+                     <td><input type="hidden" name="peso3" value="7">7</td>
                      <td><input type="radio" name="rango3" value="1"></td>
                      <td><input type="radio" name="rango3" value="2"></td>
                      <td><input type="radio" name="rango3" value="3"></td>
@@ -109,3 +109,4 @@
         <a class="btn btn-default" href="<?php echo full_url?>/rrhh/index.php?action=bienvenida">Regresar</a>
         <button type="submit" class="btn btn-success">Aceptar</button>
       </div> 
+<?php include('../../view_footer_solicitud.php')?>

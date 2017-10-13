@@ -1,7 +1,7 @@
 <?php include('../../view_header_app.php')?>
 <?php include('../menu.php')?>
 <div class="container-fluid">
-	<h1 class="text-center big_title">Listado de Usuarios</h1>
+	<h1 class="text-center big_title">Listado de Personal</h1>
 	<table id="example" class="table table-striped  table-responsive" width="100%" cellspacing="0">
             <thead>
 		<tr>
@@ -62,7 +62,7 @@ $(document).ready(function() {
                 "url": "<?php echo full_url."/web/js/"?>datatables.spanish.lang"
         },
         "columns": [
-             { "data": "id_persona" },
+            { "data": "id_persona" },
             { "data": "num_documento"},
             { "data": "pri_ape"},
             { "data": "pri_nom"},
@@ -92,22 +92,22 @@ $('#column_2').on ('keypress', function(e){
 });
 $('#column_3').on ('keypress', function(e){
     if(e.which == 13) {
-        table.column(table.column(0)).search($(this).val()).draw();
+        table.column(table.column(3)).search($(this).val()).draw();
     }
 });
 $('#column_4').on ('keypress', function(e){
     if(e.which == 13) {
-        table.column(table.column(0)).search($(this).val()).draw();
+        table.column(table.column(4)).search($(this).val()).draw();
     }
 });
 $('#column_5').on ('keypress', function(e){
     if(e.which == 13) {
-        table.column(table.column(0)).search($(this).val()).draw();
+        table.column(table.column(5)).search($(this).val()).draw();
     }
 });
 $('#column_6').on ('keypress', function(e){
     if(e.which == 13) {
-        table.column(table.column(0)).search($(this).val()).draw();
+        table.column(table.column(6)).search($(this).val()).draw();
     }
 });
 

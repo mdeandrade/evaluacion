@@ -33,7 +33,7 @@ $values = $_REQUEST;
 		executeBienvenida();
 	}else{
 		session_destroy();
-		unset($_SESSION['id_usuario'],$_SESSION['nombres'],$_SESSION['apellidos'],$_SESSION['usuario']);
+		unset($_SESSION['id_usuario'],$_SESSION['pri_nom'],$_SESSION['pri_ape'],$_SESSION['usuario']);
 		require('login.php');
 	}	
 		
@@ -57,7 +57,7 @@ $values = $_REQUEST;
                        
 			$_SESSION['id_persona'] = $q[0]['id_persona'];
 			$_SESSION['nom_usuario'] = $q[0]['nom_usuario'];
-                        /*$_SESSION['id_rol'] = $q[0]['id_rol'];*/
+                        //$_SESSION['id_rol'] = $q[0]['id_rol'];
 			executeBienvenida($values);
 		}
 		else

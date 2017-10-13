@@ -107,9 +107,9 @@ $values = array_merge($values,$_FILES);
 					"num_documento" => $list['num_documento'],
                                         "pri_ape" => $list['pri_ape'],
                                         "pri_nom" =>$list['pri_nom'],
-					"nom_ubicacion" => $list['nom_ubicacion'],
-                                        "nom_cargo" => $list['nom_cargo'],
-                                        "nom_estatus" => $list['nom_estatus'],
+					"nom_ubicacion" => $list['id_ubicacion'],
+                                        "nom_cargo" => $list['id_cargo'],
+                                        "nom_estatus" => $list['id_estatus'],
 					"actions" =>
                                        '<form method="POST" action = "'.full_url.'/rrhh/personal/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '

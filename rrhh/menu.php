@@ -73,10 +73,10 @@
       </ul>-->
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Estadísticas <span class="caret"></span></a>
-           <ul class="dropdown-menu">
+                    <a class="dropdown-toggle" href="<?php echo full_url?>/rrhh/estadisticas/index.php?action=index" role="button" aria-haspopup="true"><i class="fa fa-tasks"></i>Estadísticas</a>
+           <!--<ul class="dropdown-menu">
               <li><a href="<?php echo full_url?>/rrhh/estadisticas/index.php?action=index"></a></li>
-          </ul>
+          </ul>-->
         </li>
       </ul>
 

@@ -1,5 +1,7 @@
 <?php include("../../autoload.php");?>	
 <?php include('../../view_header_app.php')?>
+<br>
+
 <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="container">
 		<div class="row">
@@ -10,7 +12,7 @@
 			
 			</p>
 			<p class="text-center">
-				<a class="btn btn-default" href="<?php echo full_url?>/rrhh/index.php">Login</a>
+				<a class="btn btn-default" href="<?php echo full_url?>/rrhh/index.php">Ingresar</a>
 			
 			</p>			
 
