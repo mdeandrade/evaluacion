@@ -41,14 +41,14 @@ $values = $_REQUEST;
 	
 	}
 	function executeBienvenida($values = null){
-	
+    
 	require('bienvenida.php');
 	}
 	function executeAcceso($values = null)
 	{
               
 		$Login = new Login();
-		$q = $Login->GetLogin($values["nom_usuario"],$values["clave"]);
+		$q = $Login->GetLogin($values["nom_usuario"],$values["clave"],$values["id_rol"]);
                
 		//echo $q;die;
                 //print_r($values);
@@ -57,7 +57,7 @@ $values = $_REQUEST;
                        
 			$_SESSION['id_persona'] = $q[0]['id_persona'];
 			$_SESSION['nom_usuario'] = $q[0]['nom_usuario'];
-                        //$_SESSION['id_rol'] = $q[0]['id_rol'];
+                        $_SESSION['id_rol'] = $q[0]['id_rol'];
 			executeBienvenida($values);
 		}
 		else

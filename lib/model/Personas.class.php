@@ -214,82 +214,8 @@ class Personas {
                         return $q;
 			
 		}
-		function updateUserData($values){
-			unset($values['PHPSESSID']);
-			unset($values['action'],$values['date_created']);
-                        $values['date_updated'] = new NotORM_Literal("NOW()");
-			$id_users = $values['id_users'];
-			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->users_data("id_users", $id_users)->update($values);
-			
-			return $q;
-			
-		}
-		function activeUserMasterCompany($id_company){		
-			$ConnectionORM = new ConnectionORM();
-			$status = 1;
-			$date_updated = new NotORM_Literal("NOW()");
-			//obtengo el usuario master
-			$q = $ConnectionORM->getConnect()->users_company
-			->select("id_user")->where("id_company=?",$id_company)->fetch();			
-			$id_user =  $q['id_user'];
-			
-			//obtengo datos de la compañia
-			$q = $ConnectionORM->getConnect()->company
-			->select("*")->where("id=?",$id_company)->fetch();			
-			$rif =  $q['rif'];			
-
-			//actualizo el status del usuario master a 1 activo
-			$q = $ConnectionORM->getConnect()->users("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
-
-			//actualizo el status de la permisologia master a 1 activo
-			$q = $ConnectionORM->getConnect()->users_perms("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
-			
-			//actualizo el users_company  a 1 activo
-			$q = $ConnectionORM->getConnect()->users_company->where("id_user=?", $id_user)->and("id_company=?", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated));
-			
-			//actualizo el status de la compañia a 1 activo
-			$q = $ConnectionORM->getConnect()->company->where("id", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated));			
-			
-			//actualizo el status de la company_validation_ve a 1 activo
-			$q = $ConnectionORM->getConnect()->company_validation_ve->where("rif", $rif)->update(array('status'=>$status,'validate'=>$status));			
-
-                        //actualizo el status de los arcivos a 1 activo
-			$q = $ConnectionORM->getConnect()->company_files->where("id_company", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated,'validate'=>$status));			
 		
-			/*$Aws = new Aws();
-			$Aws->activarGruero($id_user);*/
-		}
-		function inactiveUserMasterCompany($id_company){		
-			$ConnectionORM = new ConnectionORM();
-			$status = 0;
-			$date_updated = new NotORM_Literal("NOW()");
-			//obtengo el usuario master
-			$q = $ConnectionORM->getConnect()->users_company
-			->select("id_user")->where("id_company=?",$id_company)->fetch();			
-			$id_user =  $q['id_user'];
-			
-			//obtengo datos de la compañia
-			$q = $ConnectionORM->getConnect()->company
-			->select("*")->where("id=?",$id_company)->fetch();			
-			$rif =  $q['rif'];			
-
-			//actualizo el status del usuario master a 1 activo
-			$q = $ConnectionORM->getConnect()->users("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
-
-			//actualizo el status de la permisologia master a 1 activo
-			$q = $ConnectionORM->getConnect()->users_perms("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
-			
-			//actualizo el users_company  a 1 activo
-			$q = $ConnectionORM->getConnect()->users_company->where("id_user=?", $id_user)->and("id_company=?", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated));
-			
-			//actualizo el status de la compañia a 1 activo
-			$q = $ConnectionORM->getConnect()->company->where("id", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated));			
-			
-			$Aws = new Aws();
-			$Aws->desactivarGruero($id_user);
-
-		}
+		
                  
                         function getPersonas($values){
                        

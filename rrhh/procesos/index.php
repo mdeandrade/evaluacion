@@ -196,8 +196,9 @@ $values = array_merge($values,$_FILES);
                                $correo = trim($datos[3]);
                                $sexo = trim($datos[4]);
                                $fec_nacimiento = trim($datos[5]);
-                               $id_ubicacion = trim($datos[6]);
-                               $id_cargo = trim($datos[7]);
+                               $fec_ingreso = trim($datos[6]);
+                               $id_ubicacion = trim($datos[7]);
+                               $id_cargo = trim($datos[8]);
 
                                 $array[$i] = array(
                                 "num_documento" => $num_documento,
@@ -206,6 +207,7 @@ $values = array_merge($values,$_FILES);
                                 "correo" => $correo,
                                 "sexo" => $sexo,
                                 "fec_nacimiento" => $fec_nacimiento,
+                                "fec_ingreso" => $fec_ingreso,
                                 "id_ubicacion" => $id_ubicacion,
                                 "id_cargo" => $id_cargo,
                                 );

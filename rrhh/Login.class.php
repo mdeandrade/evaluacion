@@ -20,17 +20,17 @@
 		public function GetLogin($user,$password)
 		{	
                         
-			echo $user."---".$password;
+			//echo $user."---".$password;
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios
                         ->select('*')
 			->where('upper(nom_usuario) =?',strtoupper($user))
 			->and('clave =?',hash('sha256', $password))
                         ->and('id_estatus=?',1)
-                        ->and('id_estatus=?', $values['id_proc']);	
+                        ->and('id_rol=?', $values['id_rol']);	
 			$ConnectionORM->close();	
 			
-			
+		//echo '<pre>'; var_dump($q); die;	
 		return $q;
 		}		
 	}
