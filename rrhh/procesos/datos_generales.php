@@ -50,8 +50,8 @@
                 <div class="col-lg-2">
                     <label for="exampleInputEmail1">Estatus</label><small class="text-danger">(*)</small>
                         <select class="form-control" name="id_estatus" value="<?php if(isset($values['id_estatus']) and $values['id_estatus']!='') echo $values['id_estatus'];?>" id="exampleInputEmail1" placeholder="Estatus">
-                            <option value="1" <?php if(isset($values['id_estatus']) and $values['id_estatus']=='1') echo "selected='selected'";?>>Activo</option>
-                            <option value="0" <?php if(isset($values['id_estatus']) and $values['id_estatus']=='0') echo "selected='selected'";?>>Desactivado</option>
+                            <option value="3" <?php if(isset($values['id_estatus']) and $values['id_estatus']=='3') echo "selected='selected'";?>>Activo</option>
+                            <option value="4" <?php if(isset($values['id_estatus']) and $values['id_estatus']=='4') echo "selected='selected'";?>>Desactivado</option>
                         </select>
                 </div>
                 <br>

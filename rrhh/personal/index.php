@@ -52,8 +52,8 @@ $values = array_merge($values,$_FILES);
 		executeNew($values,$errors);die;
             }else{
                 //print_r($values);die;
-                $id_persona = new Personal();
-                $values = $id_persona->savePersonal($values);
+                $id_persona = new Personas();
+                $values = $id_persona->savePersonas($values);
                
                 executeEdit($values);
             }
@@ -62,8 +62,8 @@ $values = array_merge($values,$_FILES);
 	function executeEdit($values = null,$errors = null,$msg = null)
 	{
 		//print_r($values);die;
-		$id_persona = new Personal();
-		$values = $id_persona->getPersonalById($values);
+		$id_persona = new Personas();
+		$values = $id_persona->getPersonasById($values);
 		$values['action'] = 'update';
                 $values['msg'] = $msg;
 		
@@ -78,7 +78,7 @@ $values = array_merge($values,$_FILES);
 		executeEdit($values,$errors);die;
             }else{
                
-                $id_persona = new Personal();
+                $id_persona = new Personas();
                 $id_persona ->updatePersonal($values);
                 $msg = "Actualizado correctamente";
                 //print_r($values);die;
@@ -107,9 +107,9 @@ $values = array_merge($values,$_FILES);
 					"num_documento" => $list['num_documento'],
                                         "pri_ape" => $list['pri_ape'],
                                         "pri_nom" =>$list['pri_nom'],
-					"nom_ubicacion" => $list['id_ubicacion'],
-                                        "nom_cargo" => $list['id_cargo'],
-                                        "nom_estatus" => $list['id_estatus'],
+					"nom_ubicacion" => $list['nom_ubicacion'],
+                                        "nom_cargo" => $list['nom_cargo'],
+                                        "nom_estatus" => $list['nom_estatus'],
 					"actions" =>
                                        '<form method="POST" action = "'.full_url.'/rrhh/personal/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
@@ -126,7 +126,10 @@ $values = array_merge($values,$_FILES);
 					"num_documento" => null,
 					"pri_ape" => null,
                                         "pri_nom" => null,
-					"actions" => null
+                                        "nom_ubicacion" => null,
+					"nom_cargo" => null,
+					"nom_estatus" => null,
+                        		"actions" => null
 					);
 		}
 		echo json_encode($array_json);die;

@@ -6,6 +6,7 @@
             <thead>
                 <tr>
                     <th>Número de proceso</th>
+                    <th>Estatus</th>
                     <th>Descripción</th>
                     <th>Inicio del proceso</th>
                     <th>Fin del proceso</th>
@@ -19,6 +20,7 @@
             <tfoot>
 		<tr>
                     <th>Número de proceso</th>
+                    <th>Estatus</th>
                     <th>Descripción</th>
                     <th>Fecha desde</th>
                     <th>Fecha hasta</th>
@@ -67,6 +69,7 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "id_proc" },
+            { "data": "nom_estatus" },
             { "data": "descripcion"},
             { "data": "fec_apertura_evaluacion" },
             { "data": "fec_cierre_evaluacion" },

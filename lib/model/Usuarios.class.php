@@ -20,10 +20,10 @@
                public function getUsuariosList($values)
 		{	
 			$columns = array();
-			$columns[0] = 'id_persona';
+			$columns[0] = 'id_usuario';
 			$columns[1] = 'nom_usuario';
 			$columns[2] = 'id_estatus';
-                        $columns[3] = 'nom_rol';
+                        $columns[3] = 'id_rol';
             
 			$column_order = $columns[0];
 			$where = '1 = 1';
@@ -33,7 +33,7 @@
 			
 			if(isset($values['columns'][0]['search']['value']) and $values['columns'][0]['search']['value']!='')
 			{
-				$where.=" AND id_persona = ".$values['columns'][0]['search']['value']."";
+				$where.=" AND id_usuario = ".$values['columns'][0]['search']['value']."";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
 			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
@@ -65,10 +65,10 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios
-			->select("*")
+			->select("*,nom_estatus, nom_rol")
 			->order("$column_order $order") 
                         ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus")
-                        //->join("rol","INNER JOIN rol r on r.id_rol = usuarios.id_rol")
+                        ->join("roles","INNER JOIN roles r on r.id_rol = usuarios.id_rol")
 			->where("$where")
 			->limit($limit,$offset);
 			//echo $q;die;
@@ -79,7 +79,7 @@
 			$where = '1 = 1';
 			if(isset($values['columns'][0]['search']['value']) and $values['columns'][0]['search']['value']!='')
 			{
-				$where.=" AND id_persona = ".$values['columns'][0]['search']['value']."";
+				$where.=" AND id_usuario = ".$values['columns'][0]['search']['value']."";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
 			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
@@ -103,7 +103,7 @@
 			$q = $ConnectionORM->getConnect()->usuarios
 			->select("count(*) as cuenta")	
                         ->join("estatus","INNER JOIN estatus e on e.id_estatus = usuarios.id_estatus")
-                        //->join("rol","INNER JOIN rol r on r.id_rol = usuarios.id_rol")
+                        ->join("roles","INNER JOIN roles r on r.id_rol = usuarios.id_rol")
 			->where("$where")
 			->fetch();
 			return $q['cuenta']; 			
@@ -130,7 +130,7 @@
 		function saveUser($values){
 			 
                         $array = array(
-                            "id_persona" => $values['id_persona'],
+                            "id_usuario" => $values['id_usuario'],
                             "id_rol" => $values['id_rol'],
                             "nom_usuario" => $values['nom_usuario'],
                             "clave" => hash('sha256',$values['clave']),

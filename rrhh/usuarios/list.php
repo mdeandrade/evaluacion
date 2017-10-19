@@ -60,7 +60,7 @@ $(document).ready(function() {
         "columns": [
             { "data": "id_usuario" },
             { "data": "nom_usuario"},
-            { "data": "id_estatus" },
+            { "data": "nom_estatus" },
             { "data": "nom_rol" },
             { "data": "actions" }
         ],

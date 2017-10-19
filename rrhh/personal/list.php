@@ -7,7 +7,8 @@
 		<tr>
                     <th>ID</th>
                     <th>Número de documento</th>
-                    <th>Empleados</th>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
                     <th>Ubicación</th>
                     <th>Cargo</th>
                     <th>Estatus</th>
@@ -18,7 +19,8 @@
 		<tr>
                     <th>ID</th>
                     <th>Número de documento</th>
-                    <th>Empleados</th>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
                     <th>Ubicación</th>
                     <th>Cargo</th>
                     <th>Estatus</th>
@@ -66,9 +68,9 @@ $(document).ready(function() {
             { "data": "num_documento"},
             { "data": "pri_ape"},
             { "data": "pri_nom"},
-            { "data": "id_ubicacion" },
-            { "data": "id_cargo" },
-            { "data": "id_estatus" },
+            { "data": "nom_ubicacion" },
+            { "data": "nom_cargo" },
+            { "data": "nom_estatus" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [

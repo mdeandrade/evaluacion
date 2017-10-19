@@ -21,13 +21,14 @@
 		{	
 			$columns = array();
 			$columns[0] = 'id_proc';
-			$columns[1] = 'descripcion';
-			$columns[2] = 'fec_apertura_evaluacion';
-			$columns[3] = 'fec_cierre_evaluacion';
-                        $columns[4] = 'fec_apertura_odi';
-                        $columns[5] = 'fec_cierre_odi';
-                        $columns[6] = 'fec_apertura_competencia';
-                        $columns[7] = 'fec_cierre_competencia';
+                        $columns[1] = 'nom_estatus';
+			$columns[2] = 'descripcion';
+			$columns[3] = 'fec_apertura_evaluacion';
+			$columns[4] = 'fec_cierre_evaluacion';
+                        $columns[5] = 'fec_apertura_odi';
+                        $columns[6] = 'fec_cierre_odi';
+                        $columns[7] = 'fec_apertura_competencia';
+                        $columns[8] = 'fec_cierre_competencia';
             
 			$column_order = $columns[0];
 			$where = '1 = 1';
@@ -42,37 +43,42 @@
 			}
 			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
 			{
-				$where.=" AND upper(descripcion) like ('%".$values['columns'][1]['search']['value']."%')";
+				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][1]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}			
-			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			}
+                        if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(fec_apertura_evaluacion) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(descripcion) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
 			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
 			{
-				$where.=" AND upper(fec_cierre_evaluacion) like ('%".$values['columns'][3]['search']['value']."%')";
+				$where.=" AND upper(fec_apertura_evaluacion) like ('%".$values['columns'][3]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}
-                        if(isset($values['columns'][4]['search']['value']) and $values['columns'][4]['search']['value']!='')
+			}			
+			if(isset($values['columns'][4]['search']['value']) and $values['columns'][4]['search']['value']!='')
 			{
-				$where.=" AND upper(fec_apertura_odi) like ('%".$values['columns'][4]['search']['value']."%')";
+				$where.=" AND upper(fec_cierre_evaluacion) like ('%".$values['columns'][4]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
                         if(isset($values['columns'][5]['search']['value']) and $values['columns'][5]['search']['value']!='')
 			{
-				$where.=" AND upper(fec_cierre_odi) like ('%".$values['columns'][5]['search']['value']."%')";
+				$where.=" AND upper(fec_apertura_odi) like ('%".$values['columns'][5]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
                         if(isset($values['columns'][6]['search']['value']) and $values['columns'][6]['search']['value']!='')
 			{
-				$where.=" AND upper(fec_apertura_competencia) like ('%".$values['columns'][6]['search']['value']."%')";
+				$where.=" AND upper(fec_cierre_odi) like ('%".$values['columns'][6]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
                         if(isset($values['columns'][7]['search']['value']) and $values['columns'][7]['search']['value']!='')
 			{
-				$where.=" AND upper(fec_cierre_competencia) like ('%".$values['columns'][7]['search']['value']."%')";
+				$where.=" AND upper(fec_apertura_competencia) like ('%".$values['columns'][7]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][8]['search']['value']) and $values['columns'][8]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_cierre_competencia) like ('%".$values['columns'][8]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
 				
@@ -89,8 +95,9 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->procesos
-			->select("*")
-			->order("$column_order $order")      
+			->select("*, nom_estatus")
+			->order("$column_order $order")
+                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = procesos.id_estatus_proc")
 			->where("$where")
 			->limit($limit,$offset);
 			//echo $q;die;
@@ -106,23 +113,49 @@
 			}
 			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
 			{
-				$where.=" AND upper(descripcion) like ('%".$values['columns'][1]['search']['value']."%')";
+				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][1]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}			
-			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
+			}
+                        if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(fec_apertura_evaluacion) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(descripcion) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
 			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
 			{
-				$where.=" AND upper(fec_cierre_evaluacion) like ('%".$values['columns'][3]['search']['value']."%')";
+				$where.=" AND upper(fec_apertura_evaluacion) like ('%".$values['columns'][3]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}	
+			}			
+			if(isset($values['columns'][4]['search']['value']) and $values['columns'][4]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_cierre_evaluacion) like ('%".$values['columns'][4]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][5]['search']['value']) and $values['columns'][5]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_apertura_odi) like ('%".$values['columns'][5]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][6]['search']['value']) and $values['columns'][6]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_cierre_odi) like ('%".$values['columns'][6]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][7]['search']['value']) and $values['columns'][7]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_apertura_competencia) like ('%".$values['columns'][7]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
+                        if(isset($values['columns'][8]['search']['value']) and $values['columns'][8]['search']['value']!='')
+			{
+				$where.=" AND upper(fec_cierre_competencia) like ('%".$values['columns'][8]['search']['value']."%')";
+				//echo $values['columns'][0]['search']['value'];die;
+			}
 				
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->procesos
 			->select("count(*) as cuenta")	
+                        //->join("estatus","INNER JOIN estatus e on e.id_estatus = procesos.id_estatus")
 			->where("$where")
 			->fetch();
 			return $q['cuenta']; 			
