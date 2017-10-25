@@ -25,9 +25,11 @@
         <div class="col-lg-3  col-md-3  col-sm-12 col-xs-12 well">
                 <a href="#info9" class=" inf"><strong>Evaluación de competencias (2DA FASE)</strong></a>
         </div>
+        <?php if (($rol==2)||($rol==3)){ ?>
                 <div class="col-lg-3  col-md-3  col-sm-12 col-xs-12 well">
                 <a href="#info14" class=" inf"><strong>Comentarios</strong></a>
         </div>
+         <?php } ?>
     </div>
 <!-- contenido -->
 
@@ -38,16 +40,16 @@
               <p>DATOS DE IDENTIFICACIÓN </p>
                 <div class="panel-body">
                     <div class="col-md-4">
-			<h4>1. DATOS DEL EVALUADO	</h4>
+                            <h4>1. DATOS DEL EVALUADO	</h4>
                             <table class="table table-condensed table-bordered table-hover" id="idSalida">
                                  <tr>
-                                    <td align="left">Cédula de Identidad
+                                    <td align="left">Apellidos y Nombres
                                         <select onchange="charge()" class="form-control" name="id_personal_evaluacion"  id="id_pevaluacion" >
                                             <option value="" >Seleccione...</option>
                                                 <?php if(isset($lista_personas) and count($lista_personas)>0):?>
                                             
                                                     <?php foreach($lista_personas as $personas):?>
-                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
+                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['pri_ape']);?> <?php echo strtoupper($personas['pri_nom']);?> </option>
                                                     <?php endforeach;?>
                                                 <?php endif;?>
                                         </select>                                    
@@ -60,13 +62,13 @@
                         <h4>2. DATOS DEL EVALUADOR	</h4>
                             <table class="table table-condensed table-bordered table-hover" id="idExit">
                                  <tr>
-                                    <td align="left">Cédula de Identidad
+                                    <td align="left">Apellidos y Nombres
                                         <select onchange="datose()" class="form-control" name="id_personal_evaluacion"  id="id_pevaluador" >
                                             <option value="" >Seleccione...</option>
                                                 <?php if(isset($lista_personas) and count($lista_personas)>0):?>
                                             
                                                     <?php foreach($lista_personas as $personas):?>
-                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
+                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['pri_ape']);?> <?php echo strtoupper($personas['pri_nom']);?> </option>
                                                     <?php endforeach;?>
                                                 <?php endif;?>
                                         </select>
@@ -79,13 +81,13 @@
                         <h4>3. DATOS DEL SUPERVISOR DEL EVALUADOR	</h4>
                             <table class="table table-condensed table-bordered table-hover" id="idE">
                                 <tr>
-                                    <td align="left">Cédula de Identidad
+                                    <td align="left">Apellidos y Nombres
                                         <select onchange="dato()" class="form-control" name="id_personal_evaluacion"  id="id_sevaluador" >
                                             <option value="" >Seleccione...</option>
                                                 <?php if(isset($lista_personas) and count($lista_personas)>0):?>
                                             
                                                     <?php foreach($lista_personas as $personas):?>
-                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
+                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['pri_ape']);?> <?php echo strtoupper($personas['pri_nom']);?> </option>
                                                     <?php endforeach;?>
                                                 <?php endif;?>
                                         </select>
@@ -102,7 +104,7 @@
                   <div class="panel-body">
                     <div class="col-md-12">
                         <h4> DATOS DEL EVALUADO	</h4>
-                            <table class="table table-condensed table-bordered table-hover">
+                            <table class="table table-condensed table-bordered table-hover" id="id_pevaluacion" onchange="charge()">
                                 <tr>
                                     <td align="left">Cédula de Identidad
                                         <input type="text" class="form-control" name="num_documento" value="<?php if(isset($values['num_documento' ]) and $values['num_documento']!='num_documento') echo $values['num_documento'];?>" <?php echo strtoupper($id_persona ['num_documento']);?> id="exampleInputEmail1" placeholder="" readonly="">
@@ -308,7 +310,7 @@
                             <tbody>
                                   <tr>
                                       <td>1</td>
-                                      <td><input type="hidden" name="competencia" value="<?php echo $evaluador['id_competencia'];?>" ></td>
+                                      <td><input type="text" name="competencia" readonly value="<?php echo $evaluador['id_competencia'];?>" ></td>
                                       <td><input type="hidden" name="peso19" value="7" onChange="sum1();" class="pesoc1" readonly><strong>7</strong></td>
                                       <td><input type="radio" name="rango5" class="rango_pt" value="1" checked="" onclick="operacion1(1, 'peso19', 'pxr19')"></td>
                                       <td><input type="radio" name="rango5" class="rango_pt" value="2" onclick="operacion1(2, 'peso19', 'pxr19')"></td>
@@ -319,7 +321,7 @@
                                   </tr>
                                   <tr>
                                       <td>2</td>
-                                      <td><textarea class="form-control" name="competencia" id="competencia-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                      <td><textarea readonly class="form-control" name="competencia" id="competencia-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                       <td><input type="hidden" name="peso20" value="6" min="1" max="7" readonly onChange="sum1();" class="pesoc1"><strong>6</strong></td>
                                       <td><input type="radio" name="rango6" value="1" checked="" class="rango_pt" onclick="operacion1(1, 'peso20', 'pxr20')"></td>
                                       <td><input type="radio" name="rango6" value="2" class="rango_pt" onclick="operacion1(2, 'peso20', 'pxr20')"></td>
@@ -454,21 +456,25 @@
                         <br>
                         <br>
 <!-- COMENTARIOS-->
+ <?php if (($rol==2)||($rol==3)){ ?>
             <div id="info14" class="col-xs-12 well oculto">
                
                 <p>COMENTARIOS</p>
+                <?php if (($rol==2)){ ?>
                     <div class="panel-body">
                   <div class="form-group col-lg-12" style="display: block;">
                                         <label class="control-label" for="field20">Comentarios del supervisor</label>
                                         <div class="controls">
-                                            <textarea class="form-control" name="textarea" id="textarea-input" maxlength="200"></textarea>
+                                            <textarea class="form-control" name="textarea" id="textarea-input"></textarea>
                                             <span class="help-block">El supervisor podrá expresar cualquier observación adicional que considere pertinente sobre el evaluado.</span>
                                             <span id="errId2" class="error"></span>
                                         </div>
                     </div>
                     </div>
+                 <?php } ?>
                         <br>
                         <br>
+                        <?php if (($rol==3)){ ?>
                         <div class="container">
                             <div class="col-md-4">
                                 <div class="form-group" rel="popover" data-trigger="hover" data-content="Indicar su acuerdo o no con los resultados de su evaluación." style="display: block;">
@@ -498,7 +504,7 @@
                                 <div class="form-group" style="display: block;">
                                     <label class="control-label" for="field20">Comentarios del evaluado</label>
                                         <div class="controls">
-                                            <textarea class="form-control" name="textarea" maxlength="200"></textarea>
+                                            <textarea class="form-control" name="textarea"></textarea>
                                                 <span class="help-block">El evaluado podrá expresar cualquier observación adicional que considere pertinente sobre su evaluación.</span>
                                                 <span id="errId2" class="error"></span>
                                     </div>
@@ -518,7 +524,9 @@
                                 </div>
                             </div>-->
                         </div>
+                        <?php } ?>
                     </div>
+<?php } ?>
 
 
     <!--<br>
@@ -538,7 +546,7 @@
         url:url,
         data: {
             // nombre en el post : valor a enviar
-            ci: $("#id_pevaluacion").val(),
+            nombre: $("#id_pevaluacion").val(),
         },
         success: function(data){
             // cuando el controlador responda, los datos que envia los va a poner
@@ -565,7 +573,7 @@
         url:url,
         data: {
             // nombre en el post : valor a enviar
-            cedula: $("#id_sevaluador").val(),
+            nom2: $("#id_pevaluador").val(),
         },
         success: function(data){
             // cuando el controlador responda, los datos que envia los va a poner
@@ -591,7 +599,7 @@
         url:url,
         data: {
             // nombre en el post : valor a enviar
-            cedula: $("#id_sevaluador").val(),
+            nom3: $("#id_sevaluador").val(),
         },
         success: function(data){
             // cuando el controlador responda, los datos que envia los va a poner

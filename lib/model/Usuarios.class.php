@@ -120,21 +120,22 @@
                         
 			
 		}
-		function deleteUser($id_user){
+		function deleteUsuarios($id_user){
 			unset($values['action']);
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->users("id_persona", $id_persona)->delete();
+			$q = $ConnectionORM->getConnect()->usuarios("id_usuario", $id_usuario)->delete();
 			
 			
 		}		
-		function saveUser($values){
+		function saveUsuarios($values){
 			 
                         $array = array(
                             "id_usuario" => $values['id_usuario'],
-                            "id_rol" => $values['id_rol'],
+                            "id_persona" => $values['id_persona'],
                             "nom_usuario" => $values['nom_usuario'],
-                            "clave" => hash('sha256',$values['clave']),
                             "id_estatus" => $values['id_estatus'],
+                            "clave" => hash('sha256',$values['clave']),
+                            "id_rol" => $values['id_rol'],
    
                         );
 			$ConnectionORM = new ConnectionORM();
@@ -143,12 +144,12 @@
 			return $values;	
 			
 		}
-		function updateUser($values){
+		function updateUsuarios($values){
 
                         $array = array(
                             "nom_usuario" => $values['nom_usuario'],
-                            "id_rol" => $values['id_rol'],
                             "id_estatus" => $values['id_estatus'],
+                            "id_rol" => $values['id_rol'],
                         );
                         
 			if(isset($values['clave']) and $values['clave']!='')
@@ -166,9 +167,9 @@
 			unset($values['PHPSESSID']);
 			unset($values['action'],$values['date_created']);
                         $values['date_updated'] = new NotORM_Literal("NOW()");
-			$id_users = $values['id_users'];
+			$id_usuario = $values['id_usuario'];
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->users_data("id_users", $id_users)->update($values);
+			$q = $ConnectionORM->getConnect()->usuario_data("id_usuario", $id_usaurio)->update($values);
 			
 			return $q;
 			
@@ -178,7 +179,7 @@
 			$status = 1;
 			$date_updated = new NotORM_Literal("NOW()");
 			//obtengo el usuario master
-			$q = $ConnectionORM->getConnect()->users_company
+			$q = $ConnectionORM->getConnect()->usuario_company
 			->select("id_user")->where("id_company=?",$id_company)->fetch();			
 			$id_user =  $q['id_user'];
 			
@@ -188,13 +189,13 @@
 			$rif =  $q['rif'];			
 
 			//actualizo el status del usuario master a 1 activo
-			$q = $ConnectionORM->getConnect()->users("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
+			$q = $ConnectionORM->getConnect()->usuario("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
 
 			//actualizo el status de la permisologia master a 1 activo
-			$q = $ConnectionORM->getConnect()->users_perms("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
+			$q = $ConnectionORM->getConnect()->usuario_perms("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
 			
-			//actualizo el users_company  a 1 activo
-			$q = $ConnectionORM->getConnect()->users_company->where("id_user=?", $id_user)->and("id_company=?", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated));
+			//actualizo el usuario_company  a 1 activo
+			$q = $ConnectionORM->getConnect()->usuario_company->where("id_user=?", $id_user)->and("id_company=?", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated));
 			
 			//actualizo el status de la compañia a 1 activo
 			$q = $ConnectionORM->getConnect()->company->where("id", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated));			
@@ -213,7 +214,7 @@
 			$status = 0;
 			$date_updated = new NotORM_Literal("NOW()");
 			//obtengo el usuario master
-			$q = $ConnectionORM->getConnect()->users_company
+			$q = $ConnectionORM->getConnect()->usuario_company
 			->select("id_user")->where("id_company=?",$id_company)->fetch();			
 			$id_user =  $q['id_user'];
 			
@@ -223,13 +224,13 @@
 			$rif =  $q['rif'];			
 
 			//actualizo el status del usuario master a 1 activo
-			$q = $ConnectionORM->getConnect()->users("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
+			$q = $ConnectionORM->getConnect()->usuario("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
 
 			//actualizo el status de la permisologia master a 1 activo
-			$q = $ConnectionORM->getConnect()->users_perms("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
+			$q = $ConnectionORM->getConnect()->usuario_perms("id_user", $id_user)->update(array('status'=>$status,'date_updated'=>$date_updated));
 			
-			//actualizo el users_company  a 1 activo
-			$q = $ConnectionORM->getConnect()->users_company->where("id_user=?", $id_user)->and("id_company=?", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated));
+			//actualizo el usuario_company  a 1 activo
+			$q = $ConnectionORM->getConnect()->usuario_company->where("id_user=?", $id_user)->and("id_company=?", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated));
 			
 			//actualizo el status de la compañia a 1 activo
 			$q = $ConnectionORM->getConnect()->company->where("id", $id_company)->update(array('status'=>$status,'date_updated'=>$date_updated));			
@@ -268,19 +269,19 @@
 			}
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->users
-			->select("DISTINCT users.*,hoist.registration_plate, DATE_FORMAT(users.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(users.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated,first_name, first_last_name")
-			->join("users_company","INNER JOIN users_company on users_company.id_user = users.id_user")
-			->join("users_perms","INNER JOIN users_perms on users_perms.id_user = users.id_user")
-			->join("users_data","INNER JOIN users_data on users_data.id_users = users.id_user")
-			->join("users_hoist_company","LEFT JOIN users_hoist_company on users_hoist_company.id_user = users.id_user")
-			->join("hoist","LEFT JOIN hoist on hoist.id = users_hoist_company.id_hoist ")
+			$q = $ConnectionORM->getConnect()->usuario
+			->select("DISTINCT usuario.*,hoist.registration_plate, DATE_FORMAT(usuario.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(usuario.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated,first_name, first_last_name")
+			->join("usuario_company","INNER JOIN usuario_company on usuario_company.id_user = usuario.id_user")
+			->join("usuario_perms","INNER JOIN usuario_perms on usuario_perms.id_user = usuario.id_user")
+			->join("usuario_data","INNER JOIN usuario_data on usuario_data.id_usuario = usuario.id_user")
+			->join("usuario_hoist_company","LEFT JOIN usuario_hoist_company on usuario_hoist_company.id_user = usuario.id_user")
+			->join("hoist","LEFT JOIN hoist on hoist.id = usuario_hoist_company.id_hoist ")
 			->order("$column_order $order")
 			->where("$where")
-			->and("users_company.id_company =?",$values["company"])
-			//->and("users_perms.id_perms =?",4)
-                        ->and("users_company.status =1")
-                        //->and("users.status =1")
+			->and("usuario_company.id_company =?",$values["company"])
+			//->and("usuario_perms.id_perms =?",4)
+                        ->and("usuario_company.status =1")
+                        //->and("usuario.status =1")
 			->limit($limit,$offset);
 			return $q; 			
 		}
@@ -293,13 +294,13 @@
 				$where = "upper(login) like upper('%$str%') ";
 			}
             $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->users
+			$q = $ConnectionORM->getConnect()->usuario
 			->select("count(*) as cuenta")
-			->join("users_company","INNER JOIN users_company on users_company.id_user = users.id_user")
-			->join("users_perms","INNER JOIN users_perms on users_perms.id_user = users.id_user")
+			->join("usuario_company","INNER JOIN usuario_company on usuario_company.id_user = usuario.id_user")
+			->join("usuario_perms","INNER JOIN usuario_perms on usuario_perms.id_user = usuario.id_user")
 			->where("$where")
-			->and("users_company.id_company =?",$values["company"])
-			//->and("users_perms.id_perms =?",4)
+			->and("usuario_company.id_company =?",$values["company"])
+			//->and("usuario_perms.id_perms =?",4)
 			->fetch();
 			return $q['cuenta']; 			
 		}
@@ -313,8 +314,8 @@
 			$user["date_updated"] = date("Y-m-d H:i:s");
 			unset($values['action']);
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->users()->insert($user);
-			$values['id_user'] = $ConnectionORM->getConnect()->users()->insert_id();
+			$q = $ConnectionORM->getConnect()->usuario()->insert($user);
+			$values['id_user'] = $ConnectionORM->getConnect()->usuario()->insert_id();
 			
 			$userData = array("first_name"=>$values["first_name"],
 							  "second_name"=>$values["second_name"],
@@ -324,7 +325,7 @@
 							  "nationality"=>$values["nationality"],
 							  "document"=>$values["document"],
 							  "phone"=>$values["phone"],
-							  "id_users" => $values['id_user'],
+							  "id_usuario" => $values['id_user'],
 							  //"certificado_file" => $values['certificado_file'],
 							  "document_file" => $values['document_file']);
 			$userData['date_created'] = date("Y-m-d H:i:s");
@@ -335,45 +336,30 @@
 			$userCompany = array("id_company" => $_SESSION["id_company"],
 								 "id_user" => $values['id_user']);
 			
-			$usershoistcompany = array("id_company" => $_SESSION["id_company"],
+			$usuariohoistcompany = array("id_company" => $_SESSION["id_company"],
 										"id_user" => $values['id_user'],
 										 "id_hoist" => $values['id_hoist']);
 			
-			$q = $ConnectionORM->getConnect()->users_data()->insert($userData);
-			$q = $ConnectionORM->getConnect()->users_perms()->insert($userPerms);
-			$q = $ConnectionORM->getConnect()->users_company()->insert($userCompany);
-			//$q = $ConnectionORM->getConnect()->users_hoist_company()->insert($usershoistcompany);
+			$q = $ConnectionORM->getConnect()->usuario_data()->insert($userData);
+			$q = $ConnectionORM->getConnect()->usuario_perms()->insert($userPerms);
+			$q = $ConnectionORM->getConnect()->usuario_company()->insert($userCompany);
+			//$q = $ConnectionORM->getConnect()->usuario_hoist_company()->insert($usuariohoistcompany);
 			return $values;	
 			
 		}
 		public function getUserOperatorById($values){
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->users
-			->select("*, DATE_FORMAT(users.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(users.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated,hoist.id AS id_hoist, users.status as status,users.id_user")
-			->join("users_data","INNER JOIN users_data on users_data.id_users = users.id_user")	
-			->join("users_hoist_company","LEFT JOIN users_hoist_company on users_hoist_company.id_user = users.id_user")
-			->join("hoist","LEFT JOIN hoist on hoist.id = users_hoist_company.id_hoist")	
-			->where("users.id_user=?",$values['id_user'])			
+			$q = $ConnectionORM->getConnect()->usuario
+			->select("*, DATE_FORMAT(usuario.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(usuario.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated,hoist.id AS id_hoist, usuario.status as status,usuario.id_user")
+			->join("usuario_data","INNER JOIN usuario_data on usuario_data.id_usuario = usuario.id_user")	
+			->join("usuario_hoist_company","LEFT JOIN usuario_hoist_company on usuario_hoist_company.id_user = usuario.id_user")
+			->join("hoist","LEFT JOIN hoist on hoist.id = usuario_hoist_company.id_hoist")	
+			->where("usuario.id_user=?",$values['id_user'])			
 			->fetch();
 			return $q; 				
 			
 		}
-                function saveUsuarios($values){
-			 //print_r($values);die;
-                        $array = array(
-                            "id_persona" => $values['id_persona'],
-                            "id_rol" => $values['id_rol'],
-                            "nom_usuario" => $values['nom_usuario'],
-                            "clave" => hash('sha256',$values['clave']),
-                            "id_estatus" => $values['id_estatus'],
-                            
-                        );
-			$ConnectionORM = new ConnectionORM();
-                        $q = $ConnectionORM->getConnect()->procesos()->insert($array);
-                        $values['id_usuario'] = $ConnectionORM->getConnect()->usuarios()->insert_id();
-			return $values;	
-			
-		}
+
 		function updateUserOperator($values){
 			unset($values['PHPSESSID']);
 			unset($values['action'],$values['date_created']);
@@ -388,7 +374,7 @@
 			$userData['date_updated'] = date("Y-m-d H:i:s");
 			
 			
-			$q = $ConnectionORM->getConnect()->users("id_user", $id_user)->update($userData);
+			$q = $ConnectionORM->getConnect()->usuario("id_user", $id_user)->update($userData);
 			return $q;
 			
 		}
@@ -423,15 +409,15 @@
 		}
 		function getLogin($values){
 			$ConnectionORM = new ConnectionORM();			
-			$where = "upper(users.login) = '".strtoupper($values['login'])."'";
-			$where.= " and users.password = '".hash("sha256",$values['password'])."'";
-			$where.= " and users.status = 1";
-			$where.= " and users_perms.status = 1";
-			$where.= " and users_perms.id_perms = 2";
-			$q = $ConnectionORM->getConnect()->users
-			->select("*,users_perms.id_perms")
-			->join("users_data","INNER JOIN users_data on users_data.id_users = users.id_user")
-			->join("users_perms","INNER JOIN users_perms on users_perms.id_user = users.id_user")
+			$where = "upper(usuario.login) = '".strtoupper($values['login'])."'";
+			$where.= " and usuario.password = '".hash("sha256",$values['password'])."'";
+			$where.= " and usuario.status = 1";
+			$where.= " and usuario_perms.status = 1";
+			$where.= " and usuario_perms.id_perms = 2";
+			$q = $ConnectionORM->getConnect()->usuario
+			->select("*,usuario_perms.id_perms")
+			->join("usuario_data","INNER JOIN usuario_data on usuario_data.id_usuario = usuario.id_user")
+			->join("usuario_perms","INNER JOIN usuario_perms on usuario_perms.id_user = usuario.id_user")
 			->where("$where")
 			->fetch();
 			return $q; 				
@@ -440,10 +426,10 @@
 		}
 		public function getUserModifById($values){
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->users
-			->select("*, DATE_FORMAT(users.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(users.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
-			->join("users_perms","INNER JOIN users_perms on users_perms.id_user = users.id_user")		
-			->where("users.id_user=?",$values['id_user'])->fetch();
+			$q = $ConnectionORM->getConnect()->usuario
+			->select("*, DATE_FORMAT(usuario.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(usuario.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->join("usuario_perms","INNER JOIN usuario_perms on usuario_perms.id_user = usuario.id_user")		
+			->where("usuario.id_user=?",$values['id_user'])->fetch();
 			return $q; 				
 			
 		}

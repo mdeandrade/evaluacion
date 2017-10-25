@@ -88,9 +88,7 @@
             </tr>
             </tbody>
 
-            </table>
-          </div>
-          </div>
+</table>
           <div class="col-sm-12 col-sm-12">
             
             <button type="submit" class="btn btn-success">Guardar</button>

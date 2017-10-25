@@ -12,13 +12,13 @@
                     <div class="col-lg-12">
                         <h4> DATOS DEL EVALUADO	</h4>
                             <table class="table table-condensed table-bordered table-hover" id="idsalida">
-                                <th align="left">Cédula de Identidad
+                                <th align="left">Apellidos y Nombres
                                         <select onchange="cargar()" class="form-control" name="id_personal_evaluacion"  id="id_oevaluacion" >
                                             <option value="" >Seleccione...</option>
                                                 <?php if(isset($lista_personas) and count($lista_personas)>0):?>
                                             
                                                     <?php foreach($lista_personas as $personas):?>
-                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['num_documento']);?> </option>
+                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['pri_ape']);?><?php echo strtoupper($personas['pri_nom']);?> </option>
                                                     <?php endforeach;?>
                                                 <?php endif;?>
                                         </select>                                    
@@ -26,7 +26,7 @@
                             </table>
                     </div>
                     </div>
-                    </div
+</div>
                     <!--Titulos-->
     <div class="row">
         <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 well">
@@ -35,9 +35,11 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 well">
             <a href="#info11" class=" inf"><strong>Factores a evaluar</strong></a>
         </div>
+        <?php if (($rol==2)||($rol==3)){ ?>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 well">
                 <a href="#info12" class=" inf"><strong>Comentarios</strong></a>
         </div>
+        <?php } ?>
     </div>
 
  <div id="info11" class="col-xs-12 well oculto">
@@ -145,21 +147,25 @@
                         </div>
 
 <!-- COMENTARIOS-->
+<?php if (($rol==2)||($rol==3)){ ?>
             <div id="info12" class="col-xs-12 well oculto">
                
                 <p>COMENTARIOS</p>
+                <?php if (($rol==2)){ ?>
                     <div class="panel-body">
                   <div class="form-group col-lg-12" style="display: block;">
                                         <label class="control-label" for="field20">Comentarios del supervisor</label>
                                         <div class="controls">
-                                            <textarea class="form-control" name="textarea" id="textarea-input" maxlength="200"></textarea>
+                                            <textarea class="form-control" name="textarea" id="textarea-input"></textarea>
                                             <span class="help-block">El supervisor podrá expresar cualquier observación adicional que considere pertinente sobre el evaluado.</span>
                                             <span id="errId2" class="error"></span>
                                         </div>
                     </div>
                     </div>
+                <?php } ?>
                         <br>
                         <br>
+                        <?php if (($rol==3)){ ?>
                         <div class="container">
                             <div class="col-md-4">
                                 <div class="form-group" rel="popover" data-trigger="hover" data-content="Indicar su acuerdo o no con los resultados de su evaluación." style="display: block;">
@@ -189,7 +195,7 @@
                                 <div class="form-group" style="display: block;">
                                     <label class="control-label" for="field20">Comentarios del evaluado</label>
                                         <div class="controls">
-                                            <textarea class="form-control" name="textarea" maxlength="200"></textarea>
+                                            <textarea class="form-control" name="textarea"></textarea>
                                                 <span class="help-block">El evaluado podrá expresar cualquier observación adicional que considere pertinente sobre su evaluación.</span>
                                                 <span id="errId2" class="error"></span>
                                     </div>
@@ -209,7 +215,9 @@
                                 </div>
                             </div>-->
                         </div>
+                        <?php } ?>
                     </div>
+<?php } ?>
 
     <!--<br>
     <button type="submit" id="guardar" class="btn btn-success">Guardar</button>

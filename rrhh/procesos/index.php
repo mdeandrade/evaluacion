@@ -136,14 +136,15 @@ $values = array_merge($values,$_FILES);
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
 				$array_json['data'][] = array(
-					"id_proc" => null,
+                    "id_proc" => null,
 					"nom_estatus" => null,
 					"descripcion" => null,
-                                        "nom_estatus" => null,
-                                        "nom_estatus" => null,
-                                        "nom_estatus" => null,
-                                        "nom_estatus" => null,
-                                        "nom_estatus" => null,
+                                        "fec_cierre_odi" => null,
+                                        "fec_apertura_evaluacion" => null,
+                                        "fec_cierre_evaluacion" => null,
+                                        "fec_apertura_odi" => null,
+                                        "fec_apertura_competencia" => null,
+                                        "fec_cierre_competencia" => null,
 					"actions" => null
 					);
 		}

@@ -33,7 +33,7 @@
             </tfoot>
 	</table>
 
-        <a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"> Agregar</a>
+       <?php if (($rol==5)){ ?> <a class="btn btn-success"  href="<?php echo full_url."/rrhh/procesos/index.php?action=new"?>"> Agregar</a><?php } ?>
 
 </div>
 

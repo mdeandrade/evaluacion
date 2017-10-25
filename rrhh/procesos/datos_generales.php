@@ -66,7 +66,7 @@
                 <div class="col-lg-3">
                     <label for="exampleInputEmail1">Fecha de apertura para asignar ODI</label><small class="text-danger">(*)</small>
                         <div class='input-group date' id='fec_apertura_odi'>
-                            <input type='text' class="form-control" id="fec_apertura_odi" name="fec_apertura_odi" value="<?php if(isset($values['fec_apertura_odi']) and $values['fec_apertura_odi']!='') echo $values['fec_apertura_odi'];?>" id="exampleInputEmail1" placeholder="YYYY/MM/DD">
+                            <input type='text' class="form-control" id="fec_apertura_odi" name="fec_apertura_odi" value="<?php if(isset($values['fec_apertura_odi']) and $values['fec_apertura_odi']!='') echo $values['fec_apertura_odi'];?>" placeholder="YYYY/MM/DD">
                                 <?php if(isset($errors['fec_apertura_odi']) and $errors['fec_apertura_odi']!=''):?>
                                     <div class="alert alert-danger"><?php echo $errors['fec_apertura_odi'];?></div>
                                 <?php endif;?>
@@ -78,7 +78,7 @@
                 <div class="col-lg-3  ">
                     <label for="exampleInputEmail1">Fecha de cierre para asignar ODI</label><small class="text-danger">(*)</small>
                         <div class='input-group date' id='fec_cierre_odi' >
-                            <input type='text' class="form-control" id="fec_cierre_odi" name="fec_cierre_odi" value="<?php if(isset($values['fec_cierre_odi']) and $values['fec_cierre_odi']!='') echo $values['fec_cierre_odi'];?>" id="exampleInputEmail1" placeholder="YYYY/MM/DD">
+                            <input type='text' class="form-control" id="fec_cierre_odi" name="fec_cierre_odi" value="<?php if(isset($values['fec_cierre_odi']) and $values['fec_cierre_odi']!='') echo $values['fec_cierre_odi'];?>" placeholder="YYYY/MM/DD">
                                 <?php if(isset($errors['fec_cierre_odi']) and $errors['fec_cierre_odi']!=''):?>
                                     <div class="alert alert-danger"><?php echo $errors['fec_cierre_odi'];?></div>
                                 <?php endif;?>
@@ -125,7 +125,7 @@
                 <div class="col-lg-3">
                     <label for="exampleInputEmail1">Cierre del proceso de evaluación</label><small class="text-danger">(*)</small>
                         <div class='input-group date' id='fec_cierre_competencia'>
-                            <input type='text' class="form-control" name="fec_cierre_competencia" id="fec_cierre_competencia" value="<?php if(isset($values['fec_cierre_competencia']) and $values['fec_cierre_competencia']!='') echo $values['fec_cierre_competencia'];?>" id="exampleInputEmail1" placeholder="YYYY/MM/DD">
+                            <input type='text' class="form-control" name="fec_cierre_competencia" id="fec_cierre_competencia" value="<?php if(isset($values['fec_cierre_competencia']) and $values['fec_cierre_competencia']!='') echo $values['fec_cierre_competencia'];?>"  placeholder="YYYY/MM/DD">
                                 <?php if(isset($errors['fec_cierre_competencia']) and $errors['fec_cierre_competencia']!=''):?>
                                     <div class="alert alert-danger"><?php echo $errors['fec_cierre_competencia'];?></div>
                                 <?php endif;?>

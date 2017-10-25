@@ -44,7 +44,7 @@ $values = array_merge($values,$_FILES);
 	}
 
         
-	/*function executeAdd($values = null,$errors = array())
+	function executeAdd($values = null,$errors = array())
 	{
            
             $errors = validate($values,$_FILES);
@@ -125,4 +125,4 @@ $values = array_merge($values,$_FILES);
 		}
 		echo json_encode($array_json);die;
 		
-	}*/
+	}

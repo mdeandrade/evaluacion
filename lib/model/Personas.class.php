@@ -85,7 +85,7 @@ class Personas {
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->personas
-			->select("*,nom_ubicacion")
+			->select("*,nom_ubicacion,nom_cargo")
 			->order("$column_order $order") 
 			->join("ubicaciones","INNER JOIN ubicaciones u on u.id_ubicacion = personas.id_ubicacion")
                         ->join("cargos","INNER JOIN cargos c on c.id_cargo = personas.id_cargo")
@@ -140,7 +140,7 @@ class Personas {
 			$q = $ConnectionORM->getConnect()->personas
 			->select("count(*) as cuenta")	
 			->join("ubicaciones","INNER JOIN ubicaciones u on u.id_ubicacion = personas.id_ubicacion")
-                        //->join("cargos","INNER JOIN cargos c on c.id_cargo = personas.id_cargo")
+                        ->join("cargos","INNER JOIN cargos c on c.id_cargo = personas.id_cargo")
                         ->join("estatus","INNER JOIN estatus e on e.id_estatus = personas.id_estatus")
                         ->where("$where")
 			->fetch();
@@ -170,19 +170,24 @@ class Personas {
                                "id_persona" => $values ['id_persona'],
                                 "num_documento" => $values ['num_documento'],
                                 "pri_ape" => $values['pri_ape'],
+                                "seg_ape" => $values['seg_ape'],
                                 "pri_nom" => $values['pri_nom'],
+                                "seg_nom" => $values['seg_nom'],
+                                "sexo" => $values['sexo'],
+                                "edo_civil" => $values['edo_civil'],
+                                "correo" => $values['correo'],
                                 "nom_ubicacion" => $values['id_ubicacion'],
                                 "nom_cargo" => $values['id_cargo'],
                                 "nom_estatus" => $values['id_estatus'],
+                                "fec_nacimiento" => $values['fec_nacimiento'],
+                                "fec_ingreso" => $values['fec_ingreso'],
+                                                     
+
                         );
 			$ConnectionORM = new ConnectionORM();
                         $q = $ConnectionORM->getConnect()->personas()->insert($array);
 			$values['id_persona'] = $ConnectionORM->getConnect()->personas()->insert_id();
-			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->personas()->insert($array);                        
-                        
-                        
-                        
+			                       
 			return $values;	
 			
 		}
@@ -197,11 +202,19 @@ class Personas {
                         $array = array(
                                 "id_persona" => $values ['id_persona'],
                                 "num_documento" => $values ['num_documento'],
-                                "pri_nom" => $values['pri_nom'],
                                 "pri_ape" => $values['pri_ape'],
+                                "seg_ape" => $values['seg_ape'],
+                                "pri_nom" => $values['pri_nom'],
+                                "seg_nom" => $values['seg_nom'],
+                                "sexo" => $values['sexo'],
+                                "edo_civil" => $values['edo_civil'],
+                                "correo" => $values['correo'],
                                 "nom_ubicacion" => $values['id_ubicacion'],
                                 "nom_cargo" => $values['id_cargo'],
                                 "nom_estatus" => $values['id_estatus'],
+                                "fec_nacimiento" => $values['fec_nacimiento'],
+                                "fec_ingreso" => $values['fec_ingreso'],
+                                
                         );
                         
 			$id_persona = $values['id_persona'];
@@ -209,8 +222,10 @@ class Personas {
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->personas("id_persona", $id_persona)->update($array);
                         $array = array(
-                            "id_estatus" => $values['id_estatus']
-                            
+                            "nom_estatus" => $values['id_estatus'],
+                            "nom_cargo" => $values['id_cargo'],
+                            "nom_ubicacion" => $values['id_ubicacion']
+
                         );
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->usuarios("id_persona", $id_persona)->update($array);

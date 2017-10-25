@@ -22,7 +22,7 @@
 			$columns = array();
 			$columns[0] = 'id_persona';
 			$columns[1] = 'nombres';
-			$columns[2] = 'id_grupo';
+			$columns[2] = 'id_nivel';
 			$columns[3] = 'id_estatus';
 			$column_order = $columns[0];
 			$where = '1 = 1';
@@ -42,7 +42,7 @@
 			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_grupo) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(nom_nivel) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
 			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
@@ -63,11 +63,11 @@
 			}
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->personal
-			->select("*,nom_grupo, nom_estatus")
+			$q = $ConnectionORM->getConnect()->C
+			->select("*,nom_nivel, nom_estatus")
 			->order("$column_order $order")
-                        ->join("grupos","INNER JOIN grupos g on g.id_grupo = personal.id_grupo")  
-                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = personal.id_estatus")        
+                        ->join("nivel","INNER JOIN nivel n on n.id_nivel = personas.id_nivel")  
+                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = personas.id_estatus")        
 			->where("$where")
 			->limit($limit,$offset);
 			//echo $q;die;
@@ -88,7 +88,7 @@
 			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_grupo) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(nom_nivel) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
 			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
@@ -97,19 +97,19 @@
 				//echo $values['columns'][0]['search']['value'];die;
 			}
                         $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->personal
+			$q = $ConnectionORM->getConnect()->personas
 			->select("count(*) as cuenta")	
-                        ->join("grupos","INNER JOIN grupos g on g.id_grupo = personal.id_grupo")  
-                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = personal.id_estatus") 
+                        ->join("nivel","INNER JOIN nivel n on n.id_nivel = personas.id_nivel")  
+                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = personas.id_estatus") 
 			->where("$where")
 			->fetch();
 			return $q['cuenta']; 			
 		}
 		public function getCompetenciasById($values){
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->personal
+			$q = $ConnectionORM->getConnect()->personas
 			->select("*")
-			->where("personal.id_persona=?",$values['id_persona'])
+			->where("personas.id_persona=?",$values['id_persona'])
 			->fetch();
 			return $q; 				
 			
@@ -135,9 +135,9 @@
                             
                         );
 			$ConnectionORM = new ConnectionORM();
-                        $q = $ConnectionORM->getConnect()->personal()->insert($array);
+                        $q = $ConnectionORM->getConnect()->personas()->insert($array);
                         
-			$values['id_persona'] = $ConnectionORM->getConnect()->personal()->insert_id();
+			$values['id_persona'] = $ConnectionORM->getConnect()->personas()->insert_id();
 
                         $array = array(
                             "cod_expediente" => strtoupper($values['doc_iden']),
@@ -170,7 +170,7 @@
 			$id_persona = $values['id_persona'];
                         //echo $id_persona;die;
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->personal("id_persona", $id_persona)->update($array);
+			$q = $ConnectionORM->getConnect()->personas("id_persona", $id_persona)->update($array);
                         $array = array(
                             "id_estatus" => $values['id_estatus']
                             
