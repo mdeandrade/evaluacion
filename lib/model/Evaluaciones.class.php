@@ -48,7 +48,9 @@
                        
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->Competencias
-			->select("competencias");
+			->select("competencias")
+                        ->where('id_competencia in (17,2)');
+                       // var_dump($q);
 			return $q; 
 			
 		}

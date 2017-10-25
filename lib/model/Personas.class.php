@@ -88,7 +88,7 @@ class Personas {
 			->select("*,nom_ubicacion")
 			->order("$column_order $order") 
 			->join("ubicaciones","INNER JOIN ubicaciones u on u.id_ubicacion = personas.id_ubicacion")
-                        //->join("cargos","INNER JOIN cargos c on c.id_cargo = personas.id_cargo")
+                        ->join("cargos","INNER JOIN cargos c on c.id_cargo = personas.id_cargo")
                         ->join("estatus","INNER JOIN estatus e on e.id_estatus = personas.id_estatus")
                         ->where("$where")
 			->limit($limit,$offset);
