@@ -436,14 +436,8 @@
                                     </div>
                             <div class="col-lg-3 col-md-3 col-sm-4">
                     <label for="exampleInputEmail1">Rango de actuación</label><small class="text-danger">(*)</small>
-                        <select class="form-control" name="rangos" value="<?php if(isset($values['rangos']) and $values['rangos']!='') echo $values['rangos'];?>" id="exampleInputEmail1" placeholder="Rango">
-                            <option value="" >Seleccione...</option>
-                            <?php if(isset($lista_rangos) and count($lista_rangos)>0):?>
-                                <?php foreach($lista_rangos as $rangos):?>
-                                    <option value="<?php echo $rango['rangos'];?>" <?php if(isset($values['rangos']) and $values['rangos']== $rangos['rangos']) echo "selected='selected'";?>><?php echo strtoupper($rangos['val_rango']);?> </option>
-                                <?php endforeach;?>
-                            <?php endif;?>
-                        </select>
+                                      <input readonly="" id="rang" type="text" name="rang" class="form-control k-textbox" data-role="text" placeholder="..."  required="required" >
+                                <span id="" class="error"></span>
                 </div>
                          </form>                   
                         </div>
@@ -497,7 +491,7 @@
                                 <div class="form-group" style="display: block;">
                                     <label class="control-label" for="field20">Comentarios del evaluado</label>
                                         <div class="controls">
-                                            <textarea class="form-control" name="textarea"></textarea>
+                                            <textarea class="form-control" name="textarea" maxlength="200"></textarea>
                                                 <span class="help-block">El evaluado podrá expresar cualquier observación adicional que considere pertinente sobre su evaluación.</span>
                                                 <span id="errId2" class="error"></span>
                                     </div>

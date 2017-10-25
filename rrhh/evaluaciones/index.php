@@ -13,6 +13,9 @@ $values = array_merge($values,$_FILES);
 		case "index":
 			executeIndex($values);
 		break;
+        case "pro":
+			executePro($values);
+		break;
 		case "new":
 			executeNew($values);
 		break;
@@ -60,6 +63,11 @@ $values = array_merge($values,$_FILES);
 	{
                   $values['action'] = "add";
 		require('form.php');
+	}
+	function executePro($values = null)
+	{
+                  $values['action'] = "add";
+		require('form1.php');
 	}
 	function executeNew($values = null, $errors = null)
 	{

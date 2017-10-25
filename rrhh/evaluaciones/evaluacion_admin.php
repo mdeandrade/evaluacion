@@ -308,7 +308,7 @@
                             <tbody>
                                   <tr>
                                       <td>1</td>
-                                      <td><input type="hidden" name="competencia" value="<?php echo $evaluador['id_competencia'];?>" <?php if(isset($values['id_ubicacion_evaluador']) and $values['id_ubicacion_evaluador']== $ubicacion['id_ubicacion']) echo "selected='selected'";?>><?php echo strtoupper($ubicacion['nom_ubicacion']);?>  ></td>
+                                      <td><input type="hidden" name="competencia" value="<?php echo $evaluador['id_competencia'];?>" ></td>
                                       <td><input type="hidden" name="peso19" value="7" onChange="sum1();" class="pesoc1" readonly><strong>7</strong></td>
                                       <td><input type="radio" name="rango5" class="rango_pt" value="1" checked="" onclick="operacion1(1, 'peso19', 'pxr19')"></td>
                                       <td><input type="radio" name="rango5" class="rango_pt" value="2" onclick="operacion1(2, 'peso19', 'pxr19')"></td>
@@ -441,15 +441,9 @@
                                         </div>
                                     </div>
                                 <div class="col-lg-3 col-md-3 col-sm-4">
-                    <label for="exampleInputEmail1">Rango de actuación</label><small class="text-danger">(*)</small>
-                        <select class="form-control" name="rangos" value="<?php if(isset($values['rangos']) and $values['rangos']!='') echo $values['rangos'];?>" id="exampleInputEmail1" placeholder="Rango">
-                            <option value="" >Seleccione...</option>
-                            <?php if(isset($lista_rangos) and count($lista_rangos)>0):?>
-                                <?php foreach($lista_rangos as $rangos):?>
-                                    <option value="<?php echo $rango['rangos'];?>" <?php if(isset($values['rangos']) and $values['rangos']== $rangos['rangos']) echo "selected='selected'";?>><?php echo strtoupper($rangos['val_rango']);?> </option>
-                                <?php endforeach;?>
-                            <?php endif;?>
-                        </select>
+                                    <label for="exampleInputEmail1">Rango de actuación</label><small class="text-danger">(*)</small>
+                                      <input readonly="" id="ran" type="text" name="ran" class="form-control k-textbox" data-role="text" placeholder="..."  required="required" >
+                                <span id="" class="error"></span>
                 </div>
                             </div>
                             
@@ -467,7 +461,7 @@
                   <div class="form-group col-lg-12" style="display: block;">
                                         <label class="control-label" for="field20">Comentarios del supervisor</label>
                                         <div class="controls">
-                                            <textarea class="form-control" name="textarea" id="textarea-input"></textarea>
+                                            <textarea class="form-control" name="textarea" id="textarea-input" maxlength="200"></textarea>
                                             <span class="help-block">El supervisor podrá expresar cualquier observación adicional que considere pertinente sobre el evaluado.</span>
                                             <span id="errId2" class="error"></span>
                                         </div>
@@ -504,7 +498,7 @@
                                 <div class="form-group" style="display: block;">
                                     <label class="control-label" for="field20">Comentarios del evaluado</label>
                                         <div class="controls">
-                                            <textarea class="form-control" name="textarea"></textarea>
+                                            <textarea class="form-control" name="textarea" maxlength="200"></textarea>
                                                 <span class="help-block">El evaluado podrá expresar cualquier observación adicional que considere pertinente sobre su evaluación.</span>
                                                 <span id="errId2" class="error"></span>
                                     </div>
@@ -532,7 +526,7 @@
     <br>
     <br>-->
     <script>   
-        
+       
         // datos ajax 
         function charge(){
             

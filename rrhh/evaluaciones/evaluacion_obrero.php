@@ -152,7 +152,7 @@
                   <div class="form-group col-lg-12" style="display: block;">
                                         <label class="control-label" for="field20">Comentarios del supervisor</label>
                                         <div class="controls">
-                                            <textarea class="form-control" name="textarea" id="textarea-input"></textarea>
+                                            <textarea class="form-control" name="textarea" id="textarea-input" maxlength="200"></textarea>
                                             <span class="help-block">El supervisor podrá expresar cualquier observación adicional que considere pertinente sobre el evaluado.</span>
                                             <span id="errId2" class="error"></span>
                                         </div>
@@ -189,7 +189,7 @@
                                 <div class="form-group" style="display: block;">
                                     <label class="control-label" for="field20">Comentarios del evaluado</label>
                                         <div class="controls">
-                                            <textarea class="form-control" name="textarea"></textarea>
+                                            <textarea class="form-control" name="textarea" maxlength="200"></textarea>
                                                 <span class="help-block">El evaluado podrá expresar cualquier observación adicional que considere pertinente sobre su evaluación.</span>
                                                 <span id="errId2" class="error"></span>
                                     </div>

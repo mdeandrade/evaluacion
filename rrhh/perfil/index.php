@@ -103,7 +103,7 @@ $values = array_merge($values,$_FILES);
 				$array_json['data'][] = array(
 					"id_usuario" => $id_usuario,
 					"nom_usuario" => $list['nom_usuario'],
-					"nom_grupo" => $list['nom_grupo'],
+					"nom_rol" => $list['nom_rol'],
 					"nom_estatus" => $list['nom_estatus'],
 					"actions" => 
                                        '<form method="POST" action = "'.full_url.'/rrhh/usuarios/index.php" >'
@@ -119,7 +119,7 @@ $values = array_merge($values,$_FILES);
 			$array_json['data'][0] = array(
                             "id_usuario"=>null,
                             "nom_usuario"=>"",
-                            "nom_grupo"=>"",
+                            "nom_rol"=>"",
                             "nom_estatus"=>"",
                             "actions"=>""
                             );
