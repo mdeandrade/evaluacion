@@ -126,10 +126,11 @@ $values = array_merge($values,$_FILES);
 					"id_usuario" => null,
 					"nom_usuario" => null,
 					"nom_estatus" => null,
+                                        "nom_rol" => null,
 					"actions" => null
 					);
 		}
-		echo json_encode($array_json);die;
+		echo  json_encode($array_json);die;
     }        
         /*function executeShow ($values)
                 {

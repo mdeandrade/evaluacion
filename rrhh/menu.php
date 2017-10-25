@@ -29,21 +29,21 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i> Mi perfil<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i> <strong><?php echo ucwords($_SESSION['nom_usuario']); ?></strong><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="<?php echo full_url?>/rrhh/perfil/index.php">Cambiar Clave</a></li>
           </ul>
         </li>
         <li><a href="<?php echo full_url?>/rrhh/index.php?action=logout"><i class="fa fa-power-off"></i> Cerrar sesión</a></li>
       </ul>
-    <?php if (($rol==1)||($rol==5)){ ?>
+    <?php if (($rol==1)||($rol==2)||($rol==4)||($rol==5)){ ?>
       <ul class="nav navbar-nav">
         <li class="">
           <a class="dropdown-toggle" href="<?php echo full_url?>/rrhh/usuarios/index.php?action=index" role="button" aria-haspopup="true"><i class="fa fa-users"></i>Usuarios</a>
         </li>
       </ul>
     <?php } ?>
-    <?php if (($rol==1)||($rol==2)){ ?>
+    <?php if (($rol==1)||($rol==4)||($rol==5)) { ?>
         <ul class="nav navbar-nav">
         <li class="dropdown">
           <a class="dropdown-toggle" href="<?php echo full_url?>/rrhh/procesos/index.php?action=index" role="button" aria-haspopup="true"><i class="fa fa-cogs"></i>Procesos</a>
@@ -65,7 +65,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Evaluaciones <span class="caret"></span></a>
                <ul class="dropdown-menu">
-              <li><a href="<?php echo full_url?>/rrhh/evaluaciones/index.php?action=index">Evaluaciones</a></li>
+              <li><a href="<?php echo full_url?>/rrhh/evaluaciones/index.php?action=index">Nivel Administrativo</a></li>
+              <li><a href="<?php echo full_url?>/rrhh/evaluaciones/index.php?action=pro">Nivel Técnico Profecional</a></li>
           </ul>
         </li>
       </ul> 
@@ -78,7 +79,7 @@
           </ul>
         </li>
       </ul>-->
-    <?php if (($rol==1)||($rol==4)||($rol==5)) { ?>
+    <?php if (($rol==1)||($rol==2)||($rol==3)||($rol==4)||($rol==5)) { ?>
       <ul class="nav navbar-nav">
         <li class="dropdown">
                     <a class="dropdown-toggle" href="<?php echo full_url?>/rrhh/estadisticas/index.php?action=index" role="button" aria-haspopup="true"><i class="fa fa-tasks"></i>Estadísticas</a>
@@ -91,8 +92,4 @@
 
   </div><!-- /.container-fluid -->
 </nav>
-		<div class="row">
-			<div class="col-sm-2 col-sm-offset-8">Usuario: <strong><?php echo $_SESSION['nom_usuario']; ?></strong></div> 
-
-
-		</div>
+		

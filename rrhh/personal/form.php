@@ -1,5 +1,27 @@
 <?php include('../../view_header_app.php')?>
 <?php include('../menu.php')?>
+<?php 
+            
+            $Ubicaciones = new Ubicaciones();
+            $lista_ubicaciones = $Ubicaciones->getUbicaciones($values);   
+            $Cargos = new Cargos();
+            $lista_cargos = $Cargos->getCargos($values);
+            $Personas = new Personas();
+            $lista_personas = $Personas->getPersonas($values);
+            $Roles = new Roles();
+            $lista_usuario_rol = $Roles->getRoles($values);
+            
+?>
+<style> 
+.fem 
+{ 
+background-color:rgba(249, 172, 187, 0.53); 
+} 
+.mas 
+{ 
+background-color:rgba(172, 210, 249, 0.53); 
+} 
+</style> 
 <br>
 <br>
 <div id="" class="col-xs-12">
@@ -11,16 +33,16 @@
     <input autocomplete="off" type="hidden" name='id_persona' value='<?php if(isset($values['id_persona']))echo $values['id_usuario'];?>'>
     <div class="row">
         <div class="panel-body" style="display:">
-         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+         <div class="col-lg-4 col-md-4 col-sm-3 col-xs-6">
        <label for="exampleInputEmail1">Tipo de documento</label><small class="text-danger">(*)</small>
             <select class="form-control" name="tip_documento" value="<?php if(isset($values['tip_documento']) and $values['tip_documento']!='') echo $values['tip_documento'];?>" id="exampleInputEmail1" placeholder="">
                 <option value="1" <?php if(isset($values['tip_documento']) and $values['tip_documento']=='1') echo "selected='selected'";?>>Cédula</option>
                 <option value="0" <?php if(isset($values['tip_documento']) and $values['tip_documento']=='0') echo "selected='selected'";?>>...</option>
             </select>
     </div>
-	    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+	    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
  		   <label for="exampleInputEmail1">Número de documento <small class="text-danger">(*)</small></label>
-   			 <input type="text" class="form-control" id="" name="num_documento" placeholder="Número de documento" value="<?php if(isset($values['num_documento']) and $values['num_documento']!='') echo $values['num_documento'];?>">
+                   <input type="text" class="form-control" id="" minlength="8" maxlength="9" name="num_documento" placeholder="Número de documento" value="<?php if(isset($values['num_documento']) and $values['num_documento']!='') echo $values['num_documento'];?>">
       		  <?php if(isset($errors['nom_usuario']) and $errors['num_documento']!=''):?>
        	<div class="alert alert-danger"><?php echo $errors['num_documento'];?></div>
         		<?php endif;?>
@@ -29,14 +51,15 @@
                  <div class="clearfix md-block clearfix sm-block"></div>
                         <div class="form-group" rel="popover" data-trigger="hover" data-content="Indicar su acuerdo o no con los resultados de su evaluación." style="display: block;">
                             <label class="control-label">Sexo<span class="req"> *</span></label>
-                          <div class="controls">
-                                <label class="radio col-md-6" for="radio4">
-                                    <input type="radio" value="" id="masc" name="field3" required="required" checked="">Masculino</label>
-              <div class="clearfix lg-block clearfix visible-sm-block"></div>
-                                <label class="radio col-md-6" for="radio5">
-                                    <input type="radio" value="" id="fem" name="field3" required="required" >Femenino</label>
-                                <span id="errId5" class="error"></span>
-                          </div>
+                                <SELECT NAME="sexo" class="form-control">
+                                    <OPTION VALUE="">Seleccione...</OPTION>
+                                    <OPTION class="fem" VALUE="F" <?php if(isset($values['sexo']) and $values['sexo']=='F') echo "selected='selected'"?>>Femenino</OPTION>
+                                    <OPTION class="mas" VALUE="M" <?php if(isset($values['sexo']) and $values['sexo']=='M') echo "selected='selected'"?>>Masculino</OPTION>
+
+                                </SELECT> 
+                                    <?php if(isset($errors['sexo']) and $errors['sexo']!=''):?>
+                                    <div class="alert alert-danger"><?php echo $errors['sexo'];?></div>
+                                    <?php endif;?>
                         </div>
                     </div>
          </div>
@@ -82,17 +105,26 @@
 
        <div class="form-group col-sm-3">
     <label for="exampleInputEmail1">Cargo <small class="text-danger">(*)</small></label>
-    <input type="text" class="form-control" id="cargo" name="cargo" placeholder="Cargo" value="<?php if(isset($values['cargo']) and $values['cargo']!='') echo $values['cargo'];?>">
-        <?php if(isset($errors['cargo']) and $errors['cargo']!=''):?>
-        <div class="alert alert-danger"><?php echo $errors['cargo'];?></div>
-        <?php endif;?>
+    <select class="form-control" name="id_cargo_persona" value="<?php if(isset($values['id_cargo_persona']) and $values['id_cargo_persona']!='') echo $values['id_cargo_persona'];?>" id="exampleInputEmail1" >
+                        <option value="" >Seleccione...</option>
+                            <?php if(isset($lista_cargos) and count($lista_cargos)>0):?>
+                                <?php foreach($lista_cargos as $cargos):?>
+                                    <option value="<?php echo $cargos['id_cargo'];?>" <?php if(isset($values['id_cargo_persona']) and $values['id_cargo_persona']== $cargos['id_cargo']) echo "selected='selected'";?>><?php echo strtoupper($cargos['nom_cargo']);?> </option>
+                                <?php endforeach;?>
+                            <?php endif;?>
+                    </select>
   </div>
     <div class="form-group col-sm-3">
-    <label for="exampleInputEmail1">Ubicación<small class="text-danger">(*)</small></label>
-    <input type="text" class="form-control" id="" name="ubicacion" placeholder="Ubicación" value="<?php if(isset($values['id_ubicación']) and $values['id_ubicación']!='') echo $values['id_ubicación'];?>">
-        <?php if(isset($errors['id_ubicación']) and $errors['id_ubicación']!=''):?>
-        <div class="alert alert-danger"><?php echo $errors['id_ubicación'];?></div>
-        <?php endif;?>
+            <label for="exampleInputEmail1">Ubicación <small class="text-danger">(*)</small></label>
+
+    <select class="form-control" name="id_ubicacion_evaluador" value="<?php if(isset($values['id_ubicacion_evaluador']) and $values['id_ubicacion_evaluador']!='') echo $values['id_ubicacion_evaluador'];?>" id="exampleInputEmail1" >
+                        <option value="" >Seleccione...</option>
+                            <?php if(isset($lista_ubicaciones) and count($lista_ubicaciones)>0):?>
+                                <?php foreach($lista_ubicaciones as $ubicacion):?>
+                                    <option value="<?php echo $evaluador['id_ubicacion'];?>" <?php if(isset($values['id_ubicacion_evaluador']) and $values['id_ubicacion_evaluador']== $ubicacion['id_ubicacion']) echo "selected='selected'";?>><?php echo strtoupper($ubicacion['nom_ubicacion']);?> </option>
+                                <?php endforeach;?>
+                            <?php endif;?>
+                    </select>
   </div>
   <div class="form-group col-sm-3">
     <label for="exampleInputEmail1">Fecha de ingreso<small class="text-danger">(*)</small></label>
@@ -169,7 +201,10 @@
                     <button type="submit" id="guardar" class="btn btn-success">Guardar</button>
                 <a class="btn btn-default" href="<?php echo full_url?>/rrhh/usuarios/index.php?action=Index">Regresar</a>
             </form>
+            <script>
 
+
+</script>
 <?php include('../../view_footer_solicitud.php')?>
 
     

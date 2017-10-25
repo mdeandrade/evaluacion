@@ -71,6 +71,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Evaluadores.class.
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Evaluaciones.class.php');
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Roles.class.php');
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Rangos.class.php');
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/model/Cargos.class.php');
 /*validation class*/
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendor/GUMP/gump.class.php");
 

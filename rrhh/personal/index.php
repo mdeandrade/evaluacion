@@ -43,7 +43,7 @@ $values = array_merge($values,$_FILES);
 		require('form.php');
 	}
 
-        
+
 	function executeAdd($values = null,$errors = array())
 	{
            
@@ -52,8 +52,8 @@ $values = array_merge($values,$_FILES);
 		executeNew($values,$errors);die;
             }else{
                 //print_r($values);die;
-                $id_persona = new Personas();
-                $values = $id_persona->savePersonas($values);
+                $Personas = new Personas();
+                $values = $Personas->savePersonas($values);
                
                 executeEdit($values);
             }

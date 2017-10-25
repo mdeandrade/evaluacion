@@ -89,6 +89,37 @@ $(document).ready(function() {
         }
     });
 });
+$(document).ready(function(){
+		
+        $('#fec_apertura_evaluacion,#fec_cierre_evaluacion,#fec_apertura_odi,#fec_cierre_odi,#fec_apertura_competencia,#fec_cierre_competencia').datetimepicker({
+			 viewMode: 'days',
+			 locale: 'es',
+			 format: 'YYYY-MM-DD',
+			 //useCurrent: true,
+			 showTodayButton: true,
+			 showClear: true,
+                         inline: false,
+			 showClose: true,
+			tooltips: {
+				today: 'Ir a hoy',
+				clear: 'Limpiar selección',
+				close: 'Cerrar el calendario',
+				selectMonth: 'Seleccionar mes',
+				prevMonth: 'Mes anterior',
+				nextMonth: 'Próximo mes',
+				selectYear: 'Seleccionar año',
+				prevYear: 'Previous Year',
+				nextYear: 'Próximo año',
+				selectDecade: 'Select Decade',
+				prevDecade: 'Previous Decade',
+				nextDecade: 'Next Decade',
+				prevCentury: 'Previous Century',
+				nextCentury: 'Next Century'
+			}
+			 
+        });		
+	});
+
 /*$(function () {
    //evaluación
         $('#fec_apertura').datetimepicker();
