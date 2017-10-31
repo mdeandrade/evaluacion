@@ -510,19 +510,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--<div class="col-md-3">
+                            <div class="col-md-3">
                                 <div class="form-group" rel="popover" data-trigger="hover" data-content="Fecha en la que se realiz? la evaluaci?n." data-original-title="">
                                     <label class="control-label" for="field17">Fecha de notificación<span class="req"> *</span></label>
                                         <div class="controls">
                                             <div class='input-group date' id='notificacion'>
-                                                <input type='text' class="form-control" placeholder="YYYY/MM/DD" />
+                                                <input type='text' class="form-control" readonly="" value="<?php echo date("Y-m-d") ?>" placeholder="YYYY/MM/DD" />
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
                                             </div>
                                         </div>
                                 </div>
-                            </div>-->
+                            </div>
                         </div>
                         <?php } ?>
                     </div>

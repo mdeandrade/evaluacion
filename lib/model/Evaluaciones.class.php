@@ -138,4 +138,14 @@
                         ->fetch();
 			return $q; 
                 }
-}
+               /* function getResultados($values){
+                       
+                        $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Estadisticas
+			->select("*");
+                        //->where("id_persona", $values)
+                        //->fetch();
+			return $q; 
+			
+		}
+*/}

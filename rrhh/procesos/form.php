@@ -9,7 +9,7 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#datos_generales" aria-controls="datos_generales" role="tab" data-toggle="tab">Datos generales</a></li>
-    <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
+    <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Carga de personal</a></li>
     <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
     <li role="presentation"><a href="#evaluadores" aria-controls="evaluadores" role="tab" data-toggle="tab">Evaluadores</a></li>
 
@@ -43,9 +43,10 @@
 
 <script>
 $(document).ready(function(){
-		
-        $('#fec_apertura_evaluacion,#fec_cierre_evaluacion,#fec_apertura_odi,#fec_cierre_odi,#fec_apertura_competencia,#fec_cierre_competencia').datetimepicker({
-			 viewMode: 'days',
+	 $('#fec_apertura_evaluacion').datetimepicker({
+			 minDate: moment(),
+                         dayViewHeaderFormat: 'DD MMMM YYYY',
+                         viewMode: 'days',
 			 locale: 'es',
 			 format: 'YYYY-MM-DD',
 			 //useCurrent: true,
@@ -70,11 +71,74 @@ $(document).ready(function(){
 				nextCentury: 'Next Century'
 			}
 			 
-        });		
+        });	
+        $('#fec_cierre_evaluacion').datetimepicker({
+			 minDate:$('#fec_apertura_evaluacion'),
+                         dayViewHeaderFormat: 'DD MMMM YYYY',
+                          maxDate: moment().add(6, 'month'),
+                         viewMode: 'days',
+			 locale: 'es',
+			 format: 'YYYY-MM-DD',
+			 //useCurrent: true,
+			 showTodayButton: true,
+			 showClear: true,
+                         inline: false,
+			 showClose: true,
+			tooltips: {
+				today: 'Ir a hoy',
+				clear: 'Limpiar selección',
+				close: 'Cerrar el calendario',
+				selectMonth: 'Seleccionar mes',
+				prevMonth: 'Mes anterior',
+				nextMonth: 'Próximo mes',
+				selectYear: 'Seleccionar año',
+				prevYear: 'Previous Year',
+				nextYear: 'Próximo año',
+				selectDecade: 'Select Decade',
+				prevDecade: 'Previous Decade',
+				nextDecade: 'Next Decade',
+				prevCentury: 'Previous Century',
+				nextCentury: 'Next Century'
+			}
+			 
+        });
+        
+        $('#fec_apertura_odi,#fec_cierre_odi,#fec_apertura_competencia,#fec_cierre_competencia').datetimepicker({
+			 minDate: moment(),
+                         dayViewHeaderFormat: 'DD MMMM YYYY',
+                          maxDate: moment().add(1, 'month'),
+                         viewMode: 'days',
+			 locale: 'es',
+			 format: 'YYYY-MM-DD',
+			 //useCurrent: true,
+			 showTodayButton: true,
+			 showClear: true,
+                         inline: false,
+			 showClose: true,
+			tooltips: {
+				today: 'Ir a hoy',
+				clear: 'Limpiar selección',
+				close: 'Cerrar el calendario',
+				selectMonth: 'Seleccionar mes',
+				prevMonth: 'Mes anterior',
+				nextMonth: 'Próximo mes',
+				selectYear: 'Seleccionar año',
+				prevYear: 'Previous Year',
+				nextYear: 'Próximo año',
+				selectDecade: 'Select Decade',
+				prevDecade: 'Previous Decade',
+				nextDecade: 'Next Decade',
+				prevCentury: 'Previous Century',
+				nextCentury: 'Next Century'
+			}
+			 
+        });
+        
 	});
 
 
 
+        
 jQuery(document).ready(function(){
 $(".oculto").hide();
   $(".inf").click(function(){

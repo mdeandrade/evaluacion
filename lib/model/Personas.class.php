@@ -243,5 +243,6 @@ class Personas {
 			->select("*");
 			return $q; 
 			
-		}
+		}    
+
 }

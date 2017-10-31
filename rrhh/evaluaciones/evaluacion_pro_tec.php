@@ -27,6 +27,7 @@
 <!-- Datos de identificación -->
         <div class="row">
             <div id="info4" class="col-xs-12 well oculto">
+                
               <p>DATOS DE IDENTIFICACIÓN </p>
                 <div class="panel-body">
                     <div class="col-md-4">
@@ -495,7 +496,7 @@
                                         </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="form-group" style="display: block;">
                                     <label class="control-label" for="field20">Comentarios del evaluado</label>
                                         <div class="controls">
@@ -505,19 +506,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--<div class="col-md-3">
+                          <div class="col-md-3">
                                 <div class="form-group" rel="popover" data-trigger="hover" data-content="Fecha en la que se realiz? la evaluaci?n." data-original-title="">
                                     <label class="control-label" for="field3">Fecha de notificación<span class="req"> *</span></label>
                                         <div class="controls">
                                             <div class='input-group date' id='notificacion'>
-                                                <input type='text' class="form-control"  />
+                                                <input type='text' class="form-control" readonly="" value="<?php echo date("Y-m-d") ?>"  />
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
                                             </div>
                                         </div>
                                 </div>
-                            </div>-->
+                            </div>
                         </div>
                         <?php } ?>
                     </div>
