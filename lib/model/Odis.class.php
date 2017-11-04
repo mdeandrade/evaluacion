@@ -20,10 +20,9 @@
 		public function getOdisList($values)
 		{	
 			$columns = array();
-			$columns[0] = 'id_persona';
-			$columns[1] = 'nombres';
-			$columns[2] = 'id_grupo';
-			$columns[3] = 'id_estatus';
+			$columns[0] = 'id_proc';
+			$columns[1] = 'descripcion';
+			$columns[2] = 'id_estatus';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -32,24 +31,19 @@
 			
 			if(isset($values['columns'][0]['search']['value']) and $values['columns'][0]['search']['value']!='')
 			{
-				$where.=" AND id_persona = ".$values['columns'][0]['search']['value']."";
+				$where.=" AND id_proc = ".$values['columns'][0]['search']['value']."";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
 			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
 			{
-				$where.=" AND upper(nombres) like ('%".$values['columns'][1]['search']['value']."%')";
+				$where.=" AND upper(descripcion) like ('%".$values['columns'][1]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_grupo) like ('%".$values['columns'][2]['search']['value']."%')";
+				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}			
-			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
-			{
-				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][3]['search']['value']."%')";
-				//echo $values['columns'][0]['search']['value'];die;
-			}	
+			}
 				
 			
 			
@@ -63,11 +57,11 @@
 			}
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->personal
-			->select("*,nom_grupo, nom_estatus")
+			$q = $ConnectionORM->getConnect()->procesos
+			->select("*, nom_estatus, descripcion")
 			->order("$column_order $order")
-                        ->join("grupos","INNER JOIN grupos g on g.id_grupo = personal.id_grupo")  
-                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = personal.id_estatus")        
+                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = procesos.id_estatus_proc") 
+                        //->join("procesos","INNER JOIN procesos p on p.id_proc = procesos.descripcion")        
 			->where("$where")
 			->limit($limit,$offset);
 			//echo $q;die;
@@ -76,32 +70,28 @@
 		public function getCountOdisList($values)
 		{	
 			$where = '1 = 1';
-			if(isset($values['columns'][0]['search']['value']) and $values['columns'][0]['search']['value']!='')
+                        if(isset($values['columns'][0]['search']['value']) and $values['columns'][0]['search']['value']!='')
 			{
-				$where.=" AND id_persona = ".$values['columns'][0]['search']['value']."";
+				$where.=" AND id_proc = ".$values['columns'][0]['search']['value']."";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
 			if(isset($values['columns'][1]['search']['value']) and $values['columns'][1]['search']['value']!='')
 			{
-				$where.=" AND upper(nombres) like ('%".$values['columns'][1]['search']['value']."%')";
+				$where.=" AND upper(descripcion) like ('%".$values['columns'][1]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}			
 			if(isset($values['columns'][2]['search']['value']) and $values['columns'][2]['search']['value']!='')
 			{
-				$where.=" AND upper(nom_grupo) like ('%".$values['columns'][2]['search']['value']."%')";
-				//echo $values['columns'][0]['search']['value'];die;
-			}			
-			if(isset($values['columns'][3]['search']['value']) and $values['columns'][3]['search']['value']!='')
-			{
-				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][3]['search']['value']."%')";
+				$where.=" AND upper(nom_estatus) like ('%".$values['columns'][2]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
 			}
+		
                         $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->personal
+			$q = $ConnectionORM->getConnect()->procesos
 			->select("count(*) as cuenta")	
-                        ->join("grupos","INNER JOIN grupos g on g.id_grupo = personal.id_grupo")  
-                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = personal.id_estatus") 
-			->where("$where")
+                        ->join("estatus","INNER JOIN estatus e on e.id_estatus = procesos.id_estatus_proc") 
+                        //->join("procesos","INNER JOIN procesos p on p.id_proc = procesos.descripcion")
+                        ->where("$where")
 			->fetch();
 			return $q['cuenta']; 			
 		}

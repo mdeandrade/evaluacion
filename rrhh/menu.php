@@ -60,16 +60,18 @@
         </li>
       </ul>
     <?php } ?>
-    <?php if (($rol==3)){ ?>
+            <?php if (($rol==3)){ ?>
+
         <ul class="nav navbar-nav">
         <li  class="dropdown">
           <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> ODI <span class="caret"></span></a>
           <ul class="dropdown-menu" >
-              <li><a href="<?php echo full_url?>/rrhh/odis/index.php?action=index">ODI asignados</a></li>
+              <li><a href="<?php echo full_url?>/rrhh/odi/index.php?action=index">ODI asignados</a></li>
           </ul>
         </li>
       </ul>
-    <?php } ?>
+            <?php } ?>
+
     <?php if (($rol==1)||($rol==2)||($rol==3)||($rol==4)||($rol==5)){ ?>
       <ul class="nav navbar-nav">
         <li class="dropdown">

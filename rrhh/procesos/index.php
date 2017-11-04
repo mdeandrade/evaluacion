@@ -212,8 +212,6 @@ $values = array_merge($values,$_FILES);
                                 "fec_ingreso" => $fec_ingreso,
                                 "id_ubicacion" => $id_ubicacion,
                                 "id_cargo" => $id_cargo,
-                                "correo" => $correo,
-                                "id_evaluador" => $id_evaluador,
                                 );
                                 
                                 $Personas->savePersonasArchivo($array[$i]);

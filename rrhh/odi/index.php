@@ -35,7 +35,7 @@ $values = array_merge($values,$_FILES);
 	function executeIndex($values = null)
 	{
 
-		require('form.php');
+		require('list.php');
 	}
 	function executeNew($values = null, $errors = null)
 	{
@@ -52,8 +52,8 @@ $values = array_merge($values,$_FILES);
 		executeNew($values,$errors);die;
             }else{
                 //print_r($values);die;
-                $Cargos = new Cargos();
-                $values = $Cargos->saveCargos($values);
+                $Odis = new Odis();
+                $values = $Odis->saveOdis($values);
                
                 executeEdit($values);
             }
@@ -62,8 +62,8 @@ $values = array_merge($values,$_FILES);
 	function executeEdit($values = null,$errors = null,$msg = null)
 	{
 		//print_r($values);die;
-		$Cargos = new Cargos();
-		$values = $Cargos->getCargosById($values);
+		$Odis = new Odis();
+		$values = $Odis->getOdisById($values);
 		$values['action'] = 'update';
                 $values['msg'] = $msg;
 		
@@ -78,7 +78,7 @@ $values = array_merge($values,$_FILES);
 		executeEdit($values,$errors);die;
             }else{
                
-                $Cargos = new Cargos();
+                $Cargos = new Odis();
                 $Cargos ->updateCargos($values);
                 $msg = "Actualizado correctamente";
                 //print_r($values);die;
@@ -89,9 +89,9 @@ $values = array_merge($values,$_FILES);
 	}
 	function executeListJson($values)
 	{
-		$Cargos= new Cargos();
-		$list_json = $Cargos ->getCargosList($values);
-		$list_json_cuenta = $Cargos ->getCountCargosList($values);
+		$Odis= new Odis();
+		$list_json = $Odis ->getOdisList($values);
+		$list_json_cuenta = $Odis ->getCountOdisList($values);
 		$array_json = array();
 		$array_json['recordsTotal'] = $list_json_cuenta;
 		$array_json['recordsFiltered'] = $list_json_cuenta;
@@ -102,13 +102,13 @@ $values = array_merge($values,$_FILES);
 
 				$id_cargo = $list['id_cargo'];
 				$array_json['data'][] = array(
-					"id_cargo" => $id_cargo,
-					"nom_cargo" => $list['nom_cargo'],
+					"id_proc" => $id_proc,
+					"descripcion" => $list['descripcion'],
 					"nom_estatus" => $list['nom_estatus'],
 					"actions" => 
-                                       '<form method="POST" action = "'.full_url.'/ap/Cargos/index.php" >'
+                                       '<form method="POST" action = "'.full_url.'/rrhh/odi/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id_cargo" value="'.$id_cargo.'">  '
+                                       .'<input type="hidden" name="id_proc" value="'.$id_proc.'">  '
                                        .'<button class="btn btn-default btn-sm" title="Ver detalle" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
                                         .'</form>'
 					);	
@@ -117,8 +117,8 @@ $values = array_merge($values,$_FILES);
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
 			$array_json['data'][0] = array(
-                            "id_cargo"=>null,
-                            "nom_cargo"=>"",
+                            "id_proc"=>null,
+                            "descripcion"=>"",
                             "nom_estatus"=>"",
                             "actions"=>""
                             );

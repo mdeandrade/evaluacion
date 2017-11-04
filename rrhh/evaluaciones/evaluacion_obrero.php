@@ -18,7 +18,7 @@
                                                 <?php if(isset($lista_personas) and count($lista_personas)>0):?>
                                             
                                                     <?php foreach($lista_personas as $personas):?>
-                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['pri_ape']);?><?php echo strtoupper($personas['pri_nom']);?> </option>
+                                                        <option value="<?php echo $personas['id_persona'];?>" <?php if(isset($values['id_personal_evaluacion']) and $values['id_personal_evaluacion']== $personas['id_persona']) echo "selected='selected'";?>><?php echo strtoupper($personas['pri_ape']);?> <?php echo strtoupper($personas['pri_nom']);?> </option>
                                                     <?php endforeach;?>
                                                 <?php endif;?>
                                         </select>                                    

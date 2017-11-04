@@ -1,8 +1,8 @@
-          <h1 class="text-center">Personal</h1>
+          <h1 class="text-center">Funcionarios</h1>
         <br>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
     <div class="form-group" rel="popover" data-trigger="hover" data-content="" data-original-title="" style="display: block;">
-<label class="control-label control-label-left col-sm-3" for="">Seleccione el archivo con el personal<span class="req"> *</span></label>
+<label class="control-label control-label-left col-sm-3" for="">Seleccione el archivo con los funcionarios<span class="req"> *</span></label>
 <input type="file" name="Archivo" id="id_persona">
     </div>
         </div> 

@@ -163,7 +163,7 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                            <td><textarea class="form-control" name="odi" id="odi-1" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                            <td><textarea class="form-control" readonly name="odi" id="odi-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                             <td><input type="number" name="peso14" min="5" max="25" placeholder="0" onChange="suma();" class="peso1"></td>
                                             <td><input type="radio" name="rango1"id="inlineRadio1" value="1" onclick="operacion1(1, 'peso14', 'pxr14')" checked></td>
                                             <td><input type="radio" name="rango1"id="inlineRadio1" value="2"onclick="operacion1(2, 'peso14', 'pxr14')"></td>
@@ -175,7 +175,7 @@
                                     
                                     <tr>
                                         <td>2</td>
-                                        <td><textarea class="form-control" name="odi" id="odi-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" readonly name="odi" id="odi-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                         <td><input type="number" name="peso15" min="5" max="25" placeholder="0" onChange="suma();" class="peso1"></td>
                                          <td><input type="radio" name="rango2"id="inlineRadio1" value="1" onclick="operacion1(1, 'peso15', 'pxr15')" checked></td>
                                         <td><input type="radio" name="rango2"id="inlineRadio1" value="2" onclick="operacion1(2, 'peso15', 'pxr15')"></td>
@@ -186,7 +186,7 @@
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td><textarea class="form-control" name="odi" id="odi-3" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" readonly name="odi" id="odi-3" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                         <td><input type="number" name="peso16" min="5" max="25" placeholder="0" onChange="suma();" class="peso1"></td>
                                         <td><input type="radio" name="rango3"id="inlineRadio1" value="1"   onclick="operacion1(1, 'peso16', 'pxr16')" checked></td>
                                         <td><input type="radio" name="rango3"id="inlineRadio1" value="2"  onclick="operacion1(2, 'peso16', 'pxr16')"></td>
@@ -197,7 +197,7 @@
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td><textarea class="form-control" name="odi" id="odi-4" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" readonly name="odi" id="odi-4" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                         <td><input type="number" name="peso17"  min="5" max="25"  min="1" max="7" placeholder="0" onChange="suma();" class="peso1"></td>
                                         <td><input type="radio" name="rango4"id="inlineRadio1" value="1"  onclick="operacion1(1, 'peso17', 'pxr17')" checked></td>
                                         <td><input type="radio" name="rango4"id="inlineRadio1" value="2" onclick="operacion1(2, 'peso17', 'pxr17')"></td>
@@ -208,7 +208,7 @@
                                     </tr>
                                     <tr>
                                         <td>5</td> 
-                                        <td><textarea class="form-control" name="odi" id="odi-5" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" readonly name="odi" id="odi-5" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                         <td><input type="number" name="peso18"  min="5" max="25" placeholder="0" onChange="suma();" class="peso1"></td>
                                         <td><input type="radio" name="rango5"id="inlineRadio1" value="1"  onclick="operacion1(1, 'peso18', 'pxr18')" checked></td>
                                         <td><input type="radio" name="rango5"id="inlineRadio1" value="2"  onclick="operacion1(2, 'peso18', 'pxr18')"></td>
@@ -321,7 +321,7 @@
                                   </tr>
                                   <tr>
                                       <td>2</td>
-                                      <td><textarea readonly class="form-control" name="competencia" id="competencia-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                      <td><textarea readonly class="form-control" readonly name="competencia" id="competencia-2" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                       <td><input type="hidden" name="peso20" value="6" min="1" max="7" readonly onChange="sum1();" class="pesoc1"><strong>6</strong></td>
                                       <td><input type="radio" name="rango6" value="1" checked="" class="rango_pt" onclick="operacion1(1, 'peso20', 'pxr20')"></td>
                                       <td><input type="radio" name="rango6" value="2" class="rango_pt" onclick="operacion1(2, 'peso20', 'pxr20')"></td>
@@ -332,7 +332,7 @@
                                   </tr>
                                   <tr>
                                        <td>3</td>
-                                       <td><textarea class="form-control" name="competencia" id="competencia-3" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                       <td><textarea class="form-control" readonly name="competencia" id="competencia-3" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                        <td><input type="hidden" name="peso21" min="1" max="7" value="7" onChange="sum1();" class="pesoc1" readonly=""><strong>7</strong></td>
                                        <td><input type="radio" name="rango7" value="1" checked="" class="rango_pt" onclick="operacion1(1, 'peso21', 'pxr21')"></td>
                                        <td><input type="radio" name="rango7" value="2" class="rango_pt" onclick="operacion1(2, 'peso21', 'pxr21')"></td>
@@ -343,7 +343,7 @@
                                   </tr>
                                   <tr>
                                        <td>4</td>
-                                        <td><textarea class="form-control" name="competencia" id="competencia-4" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                        <td><textarea class="form-control" readonly name="competencia" id="competencia-4" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                        <td><input type="number" name="peso22" min="1" max="7" placeholder="0" onChange="sum1();" class="pesoc1"></td>
                                        <td><input type="radio" name="rango8" value="1" checked="" class="rango_pt" onclick="operacion1(1, 'peso22', 'pxr22')"></td>
                                        <td><input type="radio" name="rango8" value="2" class="rango_pt" onclick="operacion1(2, 'peso22', 'pxr22')"></td>
@@ -354,7 +354,7 @@
                                   </tr>
                                   <tr>
                                        <td>5</td>
-                                       <td><textarea class="form-control" name="competencia" id="competencia-5" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                       <td><textarea class="form-control" readonly name="competencia" id="competencia-5" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                        <td><input type="number" name="peso23" min="1" max="7" placeholder="0" onChange="sum1();" class="pesoc1"></td>
                                        <td><input type="radio" name="rango9" value="1" checked=""  onclick="operacion1(1, 'peso23', 'pxr23')"></td>
                                        <td><input type="radio" name="rango9" value="2"class="rango_pt"  onclick="operacion1(2, 'peso23', 'pxr23')"></td>
@@ -365,7 +365,7 @@
                                   </tr>
                                   <tr>
                                       <td>6</td>
-                                      <td><textarea class="form-control" name="competencia" id="competencia-6" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                      <td><textarea class="form-control"  readonly name="competencia" id="competencia-6" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                       <td><input type="number" name="peso24" min="1" max="7" placeholder="0" onChange="sum1();" class="pesoc1"></td>
                                       <td><input type="radio" name="rango10" value="1"class="rango_pt"  checked="" onclick="operacion(1, 'peso24', 'pxr24')"></td>
                                       <td><input type="radio" name="rango10" value="2"class="rango_pt"  onclick="operacion1(2, 'peso24', 'pxr24')"></td>
@@ -376,7 +376,7 @@
                                   </tr>
                                   <tr>
                                       <td>7</td>
-                                      <td><textarea class="form-control" name="competencia" id="competencia-7" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                      <td><textarea class="form-control" readonly name="competencia" id="competencia-7" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                       <td><input type="number" name="peso25" min="1" max="7" placeholder="0" onChange="sum1();" class="pesoc1"></td>
                                       <td><input type="radio" name="rango11" value="1" class="rango_pt"  checked="" onclick="operacion1(1, 'peso25', 'pxr25')"></td>
                                       <td><input type="radio" name="rango11" value="2"  class="rango_pt" onclick="operacion1(2, 'peso25', 'pxr25')"></td>
@@ -387,7 +387,7 @@
                                   </tr>
                                   <tr>
                                       <td>8</td>
-                                      <td><textarea class="form-control" name="competencia" id="competencia-8" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
+                                      <td><textarea class="form-control" readonly name="competencia" id="competencia-8" style="    width: 100%;    height: 40px;    margin: 0px 110px 0px 0px;"></textarea></td>
                                       <td><input type="number" name="peso26" min="1" max="7" placeholder="0" onChange="sum1();" class="pesoc1"></td>
                                       <td><input type="radio" name="rango12" value="1" class="rango_pt"  checked="" onclick="operacion1(1, 'peso26', 'pxr26')"></td>
                                       <td><input type="radio" name="rango12" value="2" class="rango_pt"  onclick="operacion1(2, 'peso26', 'pxr26')"></td>

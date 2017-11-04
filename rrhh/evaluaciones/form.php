@@ -20,9 +20,8 @@
   </div>
 
 </div>
-           <?php if (($rol==2)){ ?>
            <button type="submit" id="guardar" class="btn btn-success">Guardar</button>
-           <?php } ?>
+
     <a class="btn btn-default" href="<?php echo full_url?>/rrhh/evaluaciones/index.php?action=Index">Regresar</a>
    
     

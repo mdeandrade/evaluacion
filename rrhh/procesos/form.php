@@ -9,7 +9,7 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#datos_generales" aria-controls="datos_generales" role="tab" data-toggle="tab">Datos generales</a></li>
-    <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Carga de personal</a></li>
+    <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
     <?php if(isset($values['id_proc']) and $values['id_proc']!=''):?>
     <li role="presentation"><a href="#evaluadores" aria-controls="evaluadores" role="tab" data-toggle="tab">Evaluadores</a></li>
 

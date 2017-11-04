@@ -50,6 +50,7 @@ $(document).ready(function() {
 		{
 			$(this).html( '<button id="clear">Limpiar</button>' );
 		}
+                
 
 	} );
 
